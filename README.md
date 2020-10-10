@@ -1,27 +1,26 @@
-# CavFinalProject
+# Coding A Vision - Angular Course
+## Final Project
+---
+### Global npm packages
+Useful global npm packages:
+- **npx**: Executes CLI tools by downloading the latest version on-demand or the
+project-specific local node_modules folder. Npx ships with npm 5+ and allows
+you to run code generators that frequently update without a global install.
+- **rimraf**: The Unix command rm -rf works on Windows as well. It's very
+useful for deleting the node_modules folder, especially when Windows is
+unable to do so due to the nested folder structure.
+- **npm-check-updates**: Analyzes your project folder and reports on which
+package has newer versions or not, with the option to be able to update all
+of them if you so wish. ncu for short.
+- **n**: A dead easy to tool to switch between versions of Node quickly, without
+having to remember the specific version number, which works on macOS/
+Linux. For Windows, you can use the choco package, nvs; both n and nvs
+are covered in the Appendix C, Keeping Angular and Tools Evergreen.
+- **http-server**: A simple, zero-configuration command-line HTTP server,
+which is a great way to locally test static HTML/CSS pages or even the dist
+folder of your Angular or React project.
+- **npm-windows-upgrade**: Necessary to upgrade npm on Windows.
+- **npkill**: Easily find and remove old and heavy node_modules folders and
+reclaim gigabytes of disk space.  
+--- 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
