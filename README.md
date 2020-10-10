@@ -23,4 +23,30 @@ folder of your Angular or React project.
 - **npkill**: Easily find and remove old and heavy node_modules folders and
 reclaim gigabytes of disk space.  
 --- 
+### Configuring your project automatically
+Apply the following configuration:
+- **Angular VS Code**  
+  Install the Angular VS Code task: `npm i -g mrm-task-angular-vscode`	  
+	Apply the Angular VS Code configuration: `npx mrm angular-vscode`  
+- **Npm scripts for the Docker tasks** 
+  Install the npm Scripts for the Docker task: `npm i -g mrm-task-npm-docker`  
+  Apply the npm Scripts for Docker configuration: `npx mrm npm-docker`  
 
+- Execute `npm run style:fix`  
+- Execute `npm run lint:fix`
+
+```
+For more information on the mrm tasks, refer to:
+• https://github.com/expertly-simple/mrm-task-angular-vscode
+• https://github.com/expertly-simple/mrm-task-npm-docker
+• https://github.com/expertly-simple/mrm-task-npm-aws
+```  
+---
+### Configuring Tooling
+- Make sure the **Prettier** – **Code formatter**, **TSLint**, **sort-imports**, and **Beautify**
+  extensions are installed (already included in extensions.json)   
+- Install the CLI tools by executing the following command:  
+  `npm i -D prettier tslint-config-prettier tslint-plugin-prettier`  
+  `npm i -D js-beautify`  
+  `npm i -D import-sort import-sort-cli import-sort-style-module`  
+  `npm i -D tslint tslint-etc`  
