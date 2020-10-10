@@ -1,13 +1,36 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
-workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+      keys:
+        - v1-dependencies-{{ checksum "package-lock.json" }}
+      - run: npm ci
+      # force update the webdriver
+      - run: cd ./node_modules/protractor && npm i webdrivermanager@latest
+      # because we use "npm ci" to install NPM dependencies
+      # we cache "~/.npm" folder
+      - save_cache:
+        key: v1-dependencies-{{ checksum "package-lock.json" }}
+        paths:
+          - ~/.npm
+      - run: npm run style
+      - run: npm run lint
+      - run: npm run build:prod
+      - run: npm run test:coverage -- --watch=false
+      - run: npm run e2e
+      - run:
+          name: Tar & Gzip compiled app
+          command: tar zcf dist.tar.gz dist/cav-final-project
+       - store_artifacts:
+    path: dist.tar.gz
+  workflows:
+    version: 2
+    build-and-test:
+     jobs:
+      - build
