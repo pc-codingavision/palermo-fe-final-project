@@ -40,4 +40,13 @@ For more information on the mrm tasks, refer to:
 • https://github.com/expertly-simple/mrm-task-angular-vscode
 • https://github.com/expertly-simple/mrm-task-npm-docker
 • https://github.com/expertly-simple/mrm-task-npm-aws
-```
+```  
+---
+### Configuring Tooling
+- Make sure the **Prettier** – **Code formatter**, **TSLint**, **sort-imports**, and **Beautify**
+  extensions are installed (already included in extensions.json)   
+- Install the CLI tools by executing the following command:  
+  `npm i -D prettier tslint-config-prettier tslint-plugin-prettier`  
+  `npm i -D js-beautify`  
+  `npm i -D import-sort import-sort-cli import-sort-style-module`  
+  `npm i -D tslint tslint-etc`  
