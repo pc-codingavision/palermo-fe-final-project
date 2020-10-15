@@ -1,14 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
 
-import { TenantRoutingModule } from './tenant-routing.module';
-
+import { TenantRoutingModule } from './tenant-routing.module'
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    TenantRoutingModule
-  ]
+  imports: [CommonModule, TenantRoutingModule],
 })
-export class TenantModule { }
+export class TenantModule {}
