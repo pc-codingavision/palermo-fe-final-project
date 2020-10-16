@@ -5,7 +5,7 @@ const landlordModule = () =>
   import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
 const routes: Routes = [
   {
-    path: 'lanlord',
+    path: 'landlord',
     loadChildren: landlordModule,
   },
 ]
