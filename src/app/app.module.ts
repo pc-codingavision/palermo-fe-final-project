@@ -4,10 +4,11 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { MaterialModule } from './shared/libraries/material/material.module'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule],
+  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
