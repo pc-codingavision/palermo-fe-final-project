@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
+const landlordModule = () =>
+  import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
 const routes: Routes = [
   {
     path: 'lanlord',
-    loadChildren: () =>
-      import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule),
+    loadChildren: landlordModule,
   },
 ]
 
