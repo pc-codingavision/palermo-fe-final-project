@@ -12,9 +12,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: profileModule,
   },
-  { path: 'reservation',
-   loadChildren: reservationModule 
-  }
+  { path: 'reservation', loadChildren: reservationModule },
 ]
 
 @NgModule({
