@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-const routes: Routes = [{ path: 'profile', component: prof }]
+import { ViewComponent } from './view/view.component'
+
+const routes: Routes = [{ path: 'view', component: ViewComponent }]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
