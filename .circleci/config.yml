@@ -28,7 +28,7 @@ jobs:
 
       - run: npx ng build --prod
       - run: npx ng test --watch=false
-      - run: npx ng e2e
+#      - run: npx ng e2e
 
       - run:
           name: Tar & Gzip compiled app
