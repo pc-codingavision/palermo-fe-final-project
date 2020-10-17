@@ -1,17 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
 
-import { TenantRoutingModule } from './tenant-routing.module';
-import { ListComponent } from './list/list.component';
-import { ViewComponent } from './view/view.component';
-import { EditComponent } from './edit/edit.component';
-
+import { EditComponent } from './edit/edit.component'
+import { ListComponent } from './list/list.component'
+import { TenantRoutingModule } from './tenant-routing.module'
+import { ViewComponent } from './view/view.component'
 
 @NgModule({
   declarations: [ListComponent, ViewComponent, EditComponent],
-  imports: [
-    CommonModule,
-    TenantRoutingModule
-  ]
+  imports: [CommonModule, TenantRoutingModule],
 })
-export class TenantModule { }
+export class TenantModule {}
