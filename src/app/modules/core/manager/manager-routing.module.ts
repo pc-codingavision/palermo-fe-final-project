@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { ManagerComponent } from './container/manager-container.component'
 
-const tenantModule = () => import('./tenant/tenant.module').then((m) => m.TenantModule)
+const tenantModule = () => import('./tenant/tenant.module').then((t) => t.TenantModule)
 
 const routes: Routes = [
   { path: '', component: ManagerComponent },
