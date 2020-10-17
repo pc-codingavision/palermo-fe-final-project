@@ -3,7 +3,12 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { ManagerComponent } from './container/manager-container.component'
 
-const routes: Routes = [{ path: '', component: ManagerComponent }]
+const tenantModule = () => import('./tenant/tenant.module').then((t) => t.TenantModule)
+
+const routes: Routes = [
+  { path: '', component: ManagerComponent },
+  { path: 'tenant', loadChildren: tenantModule },
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

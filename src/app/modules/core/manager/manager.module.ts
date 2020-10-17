@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core'
 
 import { ManagerComponent } from './container/manager-container.component'
 import { ManagerRoutingModule } from './manager-routing.module'
+import { TenantModule } from './tenant/tenant.module'
 
 @NgModule({
   declarations: [ManagerComponent],
-  imports: [CommonModule, ManagerRoutingModule],
+  imports: [CommonModule, ManagerRoutingModule, TenantModule],
 })
 export class ManagerModule {}
