@@ -1,16 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
 
-import { ReservationRoutingModule } from './reservation-routing.module';
-import { ListComponent } from './list/list.component';
-import { DetailsComponent } from './details/details.component';
-
+import { DetailsComponent } from './details/details.component'
+import { ListComponent } from './list/list.component'
+import { ReservationRoutingModule } from './reservation-routing.module'
 
 @NgModule({
   declarations: [ListComponent, DetailsComponent],
-  imports: [
-    CommonModule,
-    ReservationRoutingModule
-  ]
+  imports: [CommonModule, ReservationRoutingModule],
 })
-export class ReservationModule { }
+export class ReservationModule {}
