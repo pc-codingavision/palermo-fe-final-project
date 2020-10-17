@@ -9,6 +9,12 @@ import { TenantModule } from './tenant/tenant.module'
 
 @NgModule({
   declarations: [ManagerComponent],
-  imports: [CommonModule, ManagerRoutingModule, LandlordModule, TenantModule, ReservationModule],
+  imports: [
+    CommonModule,
+    ManagerRoutingModule,
+    LandlordModule,
+    TenantModule,
+    ReservationModule,
+  ],
 })
 export class ManagerModule {}
