@@ -1,8 +1,15 @@
-import { ListComponent } from './list/list.component'
 import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 
-const routes: Routes = [{ path: 'list', component: ListComponent }]
+import { EditComponent } from './edit/edit.component'
+import { ListComponent } from './list/list.component'
+import { ViewComponent } from './view/view.component'
+
+const routes: Routes = [
+  { path: 'list', component: ListComponent },
+  { path: 'view', component: ViewComponent },
+  { path: 'edit', component: EditComponent },
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
