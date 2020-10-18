@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { NewComponent } from './new.component'
+import { ManagerLandlordNewComponent } from './manager-landlord-new.component'
 
 describe('NewComponent', () => {
-  let component: NewComponent
-  let fixture: ComponentFixture<NewComponent>
+  let component: ManagerLandlordNewComponent
+  let fixture: ComponentFixture<ManagerLandlordNewComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NewComponent],
+      declarations: [ManagerLandlordNewComponent],
     }).compileComponents()
   })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewComponent)
+    fixture = TestBed.createComponent(ManagerLandlordNewComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

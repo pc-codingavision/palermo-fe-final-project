@@ -1,20 +1,18 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { EditComponent } from './edit/edit.component'
-import { LandlordContainerComponent } from './landlord-container/landlord-container.component'
+import { ManagerLandlordEditComponent } from './edit/manager-landlord-edit.component'
 import { LandlordRoutingModule } from './landlord-routing.module'
-import { ListComponent } from './list/list.component'
-import { NewComponent } from './new/new.component'
-import { ViewComponent } from './view/view.component'
+import { ManagerLandlordListComponent } from './list/manager-landlord-list.component'
+import { ManagerLandlordNewComponent } from './new/manager-landlord-new.component'
+import { ManagerLandlordViewComponent } from './view/manager-landlord-view.component'
 
 @NgModule({
   declarations: [
-    ListComponent,
-    NewComponent,
-    EditComponent,
-    ViewComponent,
-    LandlordContainerComponent,
+    ManagerLandlordEditComponent,
+    ManagerLandlordListComponent,
+    ManagerLandlordNewComponent,
+    ManagerLandlordViewComponent,
   ],
   imports: [CommonModule, LandlordRoutingModule],
 })
