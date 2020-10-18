@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ListComponent } from './manager-reservation-list.component'
+import { ManagerReservationListComponent } from './manager-reservation-list.component'
 
 describe('ListComponent', () => {
-  let component: ListComponent
-  let fixture: ComponentFixture<ListComponent>
+  let component: ManagerReservationListComponent
+  let fixture: ComponentFixture<ManagerReservationListComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
+      declarations: [ManagerReservationListComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent)
+    fixture = TestBed.createComponent(ManagerReservationListComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
