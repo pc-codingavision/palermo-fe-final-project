@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ListComponent } from './list.component'
+import { ListComponent } from './manager-reservation-list.component'
 
 describe('ListComponent', () => {
   let component: ListComponent

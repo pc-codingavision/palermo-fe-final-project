@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { DetailsComponent } from './details/details.component'
-import { ListComponent } from './list/list.component'
+import { ManagerReservationDetailsComponent } from './details/manager-reservation-details.component'
+import { ManagerReservationListComponent } from './list/manager-reservation-list.component'
 
 const routes: Routes = [
-  { path: 'list', component: ListComponent },
-  { path: 'details', component: DetailsComponent },
+  { path: 'list', component: ManagerReservationListComponent },
+  { path: 'details', component: ManagerReservationDetailsComponent },
 ]
 
 @NgModule({
