@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { EditComponent } from './edit/edit.component'
-import { ListComponent } from './list/list.component'
-import { ViewComponent } from './view/view.component'
+import { ManagerTenantEditComponent } from './edit/manager-tenant-edit.component'
+import { ManagerTenantListComponent } from './list/manager-tenant-list.component'
+import { ManagerTenantViewComponent } from './view/manager-tenant-view.component'
 
 const routes: Routes = [
-  { path: 'list', component: ListComponent },
-  { path: 'view', component: ViewComponent },
-  { path: 'edit', component: EditComponent },
+  {
+    path: 'list',
+    component: ManagerTenantEditComponent,
+  },
+  { path: 'view', component: ManagerTenantListComponent },
+  { path: 'edit', component: ManagerTenantViewComponent },
 ]
 
 @NgModule({

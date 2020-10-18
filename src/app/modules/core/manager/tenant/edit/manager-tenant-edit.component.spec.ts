@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { EditComponent } from './edit.component'
+import { ManagerTenantEditComponent } from './manager-tenant-edit.component'
 
 describe('EditComponent', () => {
-  let component: EditComponent
-  let fixture: ComponentFixture<EditComponent>
+  let component: ManagerTenantEditComponent
+  let fixture: ComponentFixture<ManagerTenantEditComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditComponent],
+      declarations: [ManagerTenantEditComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditComponent)
+    fixture = TestBed.createComponent(ManagerTenantEditComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
