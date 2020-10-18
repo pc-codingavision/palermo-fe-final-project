@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { ManagerComponent } from './container/manager-container.component'
+import { ManagerComponent } from './manager-container/manager-container.component'
 
 const reservationModule = () =>
   import('./reservation/reservation.module').then((r) => r.ReservationModule)
