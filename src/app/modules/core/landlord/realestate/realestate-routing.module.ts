@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { EditComponent } from './../profile/edit/edit.component'
 import { ListComponent } from './realestate-container/list/list.component'
-import { AddNewComponent } from './realestate-container/new/new.component'
+import { NewComponent } from './realestate-container/new/new.component'
 
 const routes: Routes = [
   {
@@ -11,12 +11,12 @@ const routes: Routes = [
     component: EditComponent,
   },
   {
-    path: 'lsit',
+    path: 'list',
     component: ListComponent,
   },
   {
-    path: 'add-new',
-    component: AddNewComponent,
+    path: 'new',
+    component: NewComponent,
   },
 ]
 
