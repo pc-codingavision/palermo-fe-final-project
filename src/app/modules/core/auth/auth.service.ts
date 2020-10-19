@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs'
 import { catchError, filter, flatMap, map, tap } from 'rxjs/operators'
 import { transformError } from '../../../shared/common'
 import { Role } from '../../../shared/models/role.enum'
+import { CacheService } from './cache.service'
 import { IUser, User } from './models/user'
 
 export interface IAuthStatus {
@@ -33,11 +34,13 @@ export interface IAuthService {
 }
 
 @Injectable()
-export abstract class AuthService implements IAuthService {
+export abstract class AuthService extends CacheService implements IAuthService {
   readonly authStatus$ = new BehaviorSubject<IAuthStatus>(defaultAuthStatus)
   readonly currentUser$ = new BehaviorSubject<IUser>(new User())
 
-  protected constructor() {}
+  protected constructor() {
+    super()
+  }
 
   protected abstract authProvider(
     email: string,
@@ -48,13 +51,25 @@ export abstract class AuthService implements IAuthService {
 
   protected abstract getCurrentUser(): Observable<User>
 
+  protected setToken(jwt: string): void {
+    this.setItem('jwt', jwt)
+  }
+
   getToken(): string {
-    throw new Error('Method not implemented.')
+    return this.getItem('jwt') ?? ''
+  }
+
+  protected clearToken(): void {
+    this.removeItem('jwt')
   }
 
   login(email: string, password: string): Observable<void> {
+    // clear a previously stored jwt token
+    this.clearToken()
+
     const loginResponse$ = this.authProvider(email, password).pipe(
       map((value) => {
+        this.setToken(value.accessToken)
         const token = decode(value.accessToken)
         return this.transformJwtToken(token)
       }),
@@ -74,6 +89,9 @@ export abstract class AuthService implements IAuthService {
   }
 
   logout(clearToken?: boolean): void {
+    if (clearToken) {
+      this.clearToken()
+    }
     // Note the use of setTimeout, which allows us to avoid timing
     // issues when core elements of the application are all changing statuses at once.
     setTimeout(() => this.authStatus$.next(defaultAuthStatus), 0)
