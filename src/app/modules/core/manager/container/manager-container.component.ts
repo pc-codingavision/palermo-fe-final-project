@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./manager-container.component.scss'],
 })
 export class ManagerContainerComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }
