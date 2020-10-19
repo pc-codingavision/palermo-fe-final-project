@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'reservation', loadChildren: reservationModule },
 ]
 
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
