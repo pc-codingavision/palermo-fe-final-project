@@ -4,7 +4,17 @@ import { RouterModule, Routes } from '@angular/router'
 const reservationModule = () =>
   import('./reservation/reservation.module').then((r) => r.ReservationModule)
 
-const routes: Routes = [{ path: 'reservation', loadChildren: reservationModule }]
+const profileModule = () =>
+  import('./profile/profile.module').then((p) => p.ProfileModule)
+
+const routes: Routes = [
+  {
+    path: 'profile',
+    loadChildren: profileModule,
+  },
+  { path: 'reservation', loadChildren: reservationModule },
+]
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
