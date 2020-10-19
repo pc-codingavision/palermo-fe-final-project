@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 import { EditComponent } from './../profile/edit/edit.component'
-import { AddNewComponent } from './realestate-container/add-new/add-new.component'
 import { ListComponent } from './realestate-container/list/list.component'
+import { AddNewComponent } from './realestate-container/new/new.component'
 
 const routes: Routes = [
   {
