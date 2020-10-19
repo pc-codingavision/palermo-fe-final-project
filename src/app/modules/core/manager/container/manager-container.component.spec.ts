@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ManagerComponent } from './manager-container.component'
+import { ManagerContainerComponent } from './manager-container.component'
 
 describe('ManagerComponent', () => {
-  let component: ManagerComponent
-  let fixture: ComponentFixture<ManagerComponent>
+  let component: ManagerContainerComponent
+  let fixture: ComponentFixture<ManagerContainerComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManagerComponent],
+      declarations: [ManagerContainerComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerComponent)
+    fixture = TestBed.createComponent(ManagerContainerComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

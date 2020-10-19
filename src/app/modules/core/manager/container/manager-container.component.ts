@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'cav-manager',
+  selector: 'cav-manager-container',
   templateUrl: './manager-container.component.html',
   styleUrls: ['./manager-container.component.scss'],
 })
-export class ManagerComponent implements OnInit {
-  constructor() {}
+export class ManagerContainerComponent implements OnInit {
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
