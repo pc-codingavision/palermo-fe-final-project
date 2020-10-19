@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { sign } from 'fake-jwt-sign'
 import { Observable, of, throwError } from 'rxjs'
+
 import { Role } from '../../../shared/models/role.enum'
 import { AuthService, IAuthStatus, IServerAuthResponse } from './auth.service'
 import { PhoneType, User } from './models/user'
