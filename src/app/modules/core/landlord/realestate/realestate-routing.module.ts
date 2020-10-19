@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { EditComponent } from './../profile/edit/edit.component'
-import { ListComponent } from './realestate-container/list/list.component'
-import { NewComponent } from './realestate-container/new/new.component'
+import { RealestateAddComponent } from './components/realestate-add/realestate-add.component'
+import { RealestateEditComponent } from './components/realestate-edit/realestate-edit.component'
+import { RealestateListComponent } from './components/realestate-list/realestate-list.component'
 
 const routes: Routes = [
   {
     path: 'edit',
-    component: EditComponent,
+    component: RealestateEditComponent,
   },
   {
     path: 'list',
-    component: ListComponent,
+    component: RealestateListComponent,
   },
   {
-    path: 'new',
-    component: NewComponent,
+    path: 'add-new',
+    component: RealestateAddComponent,
   },
 ]
 
