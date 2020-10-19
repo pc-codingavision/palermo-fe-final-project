@@ -5,6 +5,7 @@ import { transformError } from '../../../shared/common'
 import { Role } from '../../../shared/models/role.enum'
 import { CacheService } from './cache.service'
 import { IUser, User } from './models/user'
+import * as decode from 'jwt-decode'
 
 export interface IAuthStatus {
   isAuthenticated: boolean

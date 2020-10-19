@@ -31,7 +31,7 @@ export interface IUser {
   level: number
   address: {
     line1: string
-    line2: string
+    line2?: string
     city: string
     state: string
     zip: string
@@ -52,7 +52,6 @@ export class User implements IUser {
     public level = 0,
     public address = {
       line1: '',
-      line2: '',
       city: '',
       state: '',
       zip: '',
