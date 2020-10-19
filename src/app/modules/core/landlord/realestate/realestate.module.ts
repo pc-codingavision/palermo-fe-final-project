@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core'
 
 import { EditComponent } from './realestate-container/edit/edit.component'
 import { ListComponent } from './realestate-container/list/list.component'
-import { AddNewComponent } from './realestate-container/new/new.component'
+import { NewComponent } from './realestate-container/new/new.component'
 import { RealestateContainerComponent } from './realestate-container/realestate-container.component'
 import { RealestateRoutingModule } from './realestate-routing.module'
 
@@ -11,7 +11,7 @@ import { RealestateRoutingModule } from './realestate-routing.module'
   declarations: [
     RealestateContainerComponent,
     ListComponent,
-    AddNewComponent,
+    NewComponent,
     EditComponent,
   ],
 
