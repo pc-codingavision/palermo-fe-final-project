@@ -42,6 +42,7 @@
     "@angular/platform-browser": "~10.0.4",
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
+    "jwt-decode": "^3.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -52,6 +53,7 @@
     "@angular/compiler-cli": "~10.0.4",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jwt-decode": "^2.2.1",
     "@types/node": "^12.11.1",
     "angular-unit-test-helper": "^9.4.0",
     "codelyzer": "^6.0.0",
