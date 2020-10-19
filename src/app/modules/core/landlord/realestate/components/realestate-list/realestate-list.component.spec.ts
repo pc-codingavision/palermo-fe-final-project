@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ViewComponent } from './view.component'
+import { RealestateListComponent } from './realestate-list.component'
 
-describe('ViewComponent', () => {
-  let component: ViewComponent
-  let fixture: ComponentFixture<ViewComponent>
+describe('RealestateListComponent', () => {
+  let component: RealestateListComponent
+  let fixture: ComponentFixture<RealestateListComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewComponent],
+      declarations: [RealestateListComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewComponent)
+    fixture = TestBed.createComponent(RealestateListComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
