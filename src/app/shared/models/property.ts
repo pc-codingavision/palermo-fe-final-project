@@ -1,3 +1,4 @@
+import { IAddress } from './property'
 export interface IAddress {
   line1: string
   line2?: string
@@ -41,4 +42,21 @@ export interface IProperty {
   toilet: Toilet
   imagePath: string
   availability: boolean
+}
+
+export class Property implements IProperty {
+  constructor(
+    public id = '',
+    public address = '',
+    public propertyName = '',
+    public landlordName = '',
+    public rooms = '',
+    public beds = '',
+    public mq = '',
+    public description = '',
+    public facilities = '',
+    public toilet = '',
+    public imagePath = '',
+    public availability = true
+  ) {}
 }
