@@ -4,7 +4,15 @@ import { RouterModule, Routes } from '@angular/router'
 const tenantModule = () =>
   import('./modules/core/tenant/tenant.module').then((t) => t.TenantModule)
 
-const routes: Routes = [{ path: 'tenant', loadChildren: tenantModule }]
+const landlordModule = () =>
+  import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
+const routes: Routes = [
+  {
+    path: 'landlord',
+    loadChildren: landlordModule,
+  },
+  { path: 'tenant', loadChildren: tenantModule },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
