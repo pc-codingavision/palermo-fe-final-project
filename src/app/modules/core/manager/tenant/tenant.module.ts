@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { ManagerTenantEditComponent } from './components/edit/manager-tenant-edit.component'
-import { ManagerTenantListComponent } from './components/list/manager-tenant-list.component'
-import { ManagerTenantViewComponent } from './components/view/manager-tenant-view.component'
-import { TenantContainerComponent } from './container/tenant-container.component'
+import { TenantContainerComponent } from './components/container/tenant-container.component'
+import { TenantEditComponent } from './components/edit/tenant-edit.component'
+import { TenantListComponent } from './components/list/tenant-list.component'
+import { TenantViewComponent } from './components/view/tenant-view.component'
 import { TenantRoutingModule } from './tenant-routing.module'
 
 const tenantComponents = [
-  ManagerTenantEditComponent,
-  ManagerTenantListComponent,
-  ManagerTenantViewComponent,
+  TenantEditComponent,
+  TenantListComponent,
+  TenantViewComponent,
   TenantContainerComponent,
 ]
 @NgModule({

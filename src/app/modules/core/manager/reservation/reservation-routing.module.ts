@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { ManagerReservationDetailsComponent } from './components/details/manager-reservation-details.component'
-import { ManagerReservationListComponent } from './components/list/manager-reservation-list.component'
-import { ReservationContainerComponent } from './container/reservation-container.component'
+import { ReservationContainerComponent } from './components/container/reservation-container.component'
+import { ReservationDetailsComponent } from './components/details/reservation-details.component'
+import { ReservationListComponent } from './components/list/reservation-list.component'
 
 const routes: Routes = [
-  { path: 'container', component: ReservationContainerComponent },
-  { path: 'list', component: ManagerReservationListComponent },
-  { path: 'details', component: ManagerReservationDetailsComponent },
+  { path: '', component: ReservationContainerComponent },
+  { path: 'list', component: ReservationListComponent },
+  { path: 'details', component: ReservationDetailsComponent },
 ]
 
 @NgModule({

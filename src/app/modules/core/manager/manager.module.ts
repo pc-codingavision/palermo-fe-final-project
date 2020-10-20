@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { ManagerContainerComponent } from './container/manager-container.component'
+import { ManagerContainerComponent } from './components/container/manager-container.component'
 import { ManagerRoutingModule } from './manager-routing.module'
 
 @NgModule({

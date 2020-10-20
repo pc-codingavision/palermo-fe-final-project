@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { ManagerLandlordEditComponent } from './components/edit/manager-landlord-edit.component'
-import { ManagerLandlordListComponent } from './components/list/manager-landlord-list.component'
-import { ManagerLandlordNewComponent } from './components/new/manager-landlord-new.component'
-import { ManagerLandlordViewComponent } from './components/view/manager-landlord-view.component'
-import { LandlordContainerComponent } from './container/landlord-container.component'
+import { LandlordContainerComponent } from './components/container/landlord-container.component'
+import { LandlordEditComponent } from './components/edit/landlord-edit.component'
+import { LandlordListComponent } from './components/list/landlord-list.component'
+import { LandlordNewComponent } from './components/new/landlord-new.component'
+import { LandlordViewComponent } from './components/view/landlord-view.component'
 
 const routes: Routes = [
-  { path: 'container', component: LandlordContainerComponent },
-  { path: 'list', component: ManagerLandlordListComponent },
-  { path: 'new', component: ManagerLandlordNewComponent },
-  { path: 'edit', component: ManagerLandlordEditComponent },
-  { path: 'view', component: ManagerLandlordViewComponent },
+  { path: '', component: LandlordContainerComponent },
+  { path: 'list', component: LandlordListComponent },
+  { path: 'new', component: LandlordNewComponent },
+  { path: 'edit', component: LandlordEditComponent },
+  { path: 'view', component: LandlordViewComponent },
 ]
 
 @NgModule({

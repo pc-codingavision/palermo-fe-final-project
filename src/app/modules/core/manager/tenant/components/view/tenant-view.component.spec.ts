@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ManagerTenantViewComponent } from './manager-tenant-view.component'
+import { TenantViewComponent } from './tenant-view.component'
 
-describe('ManagerTenantViewComponent', () => {
-  let component: ManagerTenantViewComponent
-  let fixture: ComponentFixture<ManagerTenantViewComponent>
+describe('TenantViewComponent', () => {
+  let component: TenantViewComponent
+  let fixture: ComponentFixture<TenantViewComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManagerTenantViewComponent],
+      declarations: [TenantViewComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManagerTenantViewComponent)
+    fixture = TestBed.createComponent(TenantViewComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

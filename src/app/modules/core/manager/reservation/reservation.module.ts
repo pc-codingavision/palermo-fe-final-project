@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { ManagerReservationDetailsComponent } from './components/details/manager-reservation-details.component'
-import { ManagerReservationListComponent } from './components/list/manager-reservation-list.component'
-import { ReservationContainerComponent } from './container/reservation-container.component'
+import { ReservationContainerComponent } from './components/container/reservation-container.component'
+import { ReservationDetailsComponent } from './components/details/reservation-details.component'
+import { ReservationListComponent } from './components/list/reservation-list.component'
 import { ReservationRoutingModule } from './reservation-routing.module'
 
 const reservationComponents = [
   ReservationContainerComponent,
-  ManagerReservationListComponent,
-  ManagerReservationDetailsComponent,
-  ReservationContainerComponent,
+  ReservationListComponent,
+  ReservationDetailsComponent,
 ]
 @NgModule({
   declarations: [...reservationComponents],
