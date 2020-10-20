@@ -15,7 +15,7 @@ const routes: Routes = [
     component: RealestateListComponent,
   },
   {
-    path: 'add-new',
+    path: 'new',
     component: RealestateAddComponent,
   },
 ]
