@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'cav-view',
+  selector: 'cav-landlord-profile-view',
   templateUrl: './landlord-profile-view.component.html',
   styleUrls: ['./landlord-profile-view.component.scss'],
 })
