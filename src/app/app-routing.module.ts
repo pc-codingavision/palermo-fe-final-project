@@ -7,9 +7,13 @@ const managerModule = () =>
 const tenantModule = () =>
   import('./modules/core/tenant/tenant.module').then((t) => t.TenantModule)
 
+const landlordModule = () =>
+  import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
+
 const routes: Routes = [
   { path: 'tenant', loadChildren: tenantModule },
   { path: 'manager', loadChildren: managerModule },
+  { path: 'landlord', loadChildren: landlordModule },
 ]
 
 @NgModule({
