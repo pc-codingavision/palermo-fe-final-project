@@ -1,3 +1,33 @@
+export interface IAddress {
+  line1: string
+  line2?: string
+  city: string
+  postalCode: number | string
+  country: string
+}
+
+export interface ILandlordName {
+  first: string
+  middle?: string
+  last: string
+}
+
+export interface IFacilities {
+  tv: boolean
+  wifi: boolean
+  breakfastIncluded: boolean
+  parking: boolean
+  kitchen: boolean
+  shower: boolean
+  bath: boolean
+}
+
+export enum Toilet {
+  inside = 'INSIDE',
+  outside = 'OUTSIDE',
+  shared = 'SHARED',
+}
+
 export interface IProperty {
   id: number
   address: IAddress
@@ -8,7 +38,7 @@ export interface IProperty {
   mq: number
   description: string
   facilities: IFacilities
-  toilet: TOILET
+  toilet: Toilet
   imagePath: string
-  avaible: boolean
+  availability: boolean
 }
