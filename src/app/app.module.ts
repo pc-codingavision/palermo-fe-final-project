@@ -20,9 +20,9 @@ import { MaterialModule } from './modules/shared/material.module'
   ],
   providers: [
     {
-    provide: AuthService,
-    useClass: InMemoryAuthService,
-  },
+      provide: AuthService,
+      useClass: InMemoryAuthService,
+    },
   ],
   bootstrap: [AppComponent],
 })
