@@ -19,6 +19,8 @@ export interface IUser {
   username: string
   password: string
   picture: string
+
+  setRole(): void
 }
 
 export abstract class Address {
