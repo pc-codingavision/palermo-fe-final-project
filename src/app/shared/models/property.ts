@@ -1,4 +1,3 @@
-import { IAddress } from './property'
 export interface IAddress {
   line1: string
   line2?: string
@@ -24,39 +23,52 @@ export interface IFacilities {
 }
 
 export enum Toilet {
-  inside = 'INSIDE',
-  outside = 'OUTSIDE',
-  shared = 'SHARED',
+  INSIDE,
+  OUTSIDE,
+  SHARED,
+}
+
+export enum Category {
+  SINGLEROOM,
+  APARTMENT,
 }
 
 export interface IProperty {
   id: number
-  address: IAddress
+  address: IAddress[]
   propertyName: string
-  landlordName: ILandlordName
+  landlordName: ILandlordName[]
+  category: Category
   rooms: number
   beds: number
   mq: number
   description: string
-  facilities: IFacilities
+  facilities: IFacilities[]
   toilet: Toilet
-  imagePath: string
-  availability: boolean
+  numberOfToilet: number
+  imagePath: string[]
+  isAvailable: boolean
+  review: string
+  vote: number
 }
 
 export class Property implements IProperty {
   constructor(
-    public id = '',
-    public address = '',
+    public id,
+    public address: IAddress[] = [],
     public propertyName = '',
-    public landlordName = '',
-    public rooms = '',
-    public beds = '',
-    public mq = '',
+    public landlordName: ILandlordName[] = [],
+    public category,
+    public rooms,
+    public beds,
+    public mq,
     public description = '',
-    public facilities = '',
-    public toilet = '',
-    public imagePath = '',
-    public availability = true
+    public facilities: IFacilities[] = [],
+    public toilet,
+    public numberOfToilet,
+    public imagePath = [],
+    public isAvailable = true,
+    public review = '',
+    public vote
   ) {}
 }
