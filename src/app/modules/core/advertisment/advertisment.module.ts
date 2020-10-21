@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdvertismentRoutingModule } from './advertisment-routing.module';
+import { AdvertismentListContainerComponent } from './components/advertisment-list-container/advertisment-list-container.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AdvertismentListContainerComponent],
   imports: [
     CommonModule,
     AdvertismentRoutingModule
