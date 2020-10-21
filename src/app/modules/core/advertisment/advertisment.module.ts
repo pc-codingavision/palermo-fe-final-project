@@ -1,14 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'
+import { NgModule } from '@angular/core'
 
-import { AdvertismentRoutingModule } from './advertisment-routing.module';
-
+import { AdvertismentRoutingModule } from './advertisment-routing.module'
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    AdvertismentRoutingModule
-  ]
+  imports: [CommonModule, AdvertismentRoutingModule],
 })
-export class AdvertismentModule { }
+export class AdvertismentModule {}
