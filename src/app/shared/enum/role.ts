@@ -1,5 +1,6 @@
 export enum Role {
-  MANAGER,
-  LANDLORD,
-  TENANT,
+  None = 'none',
+  Manager = 'manager',
+  Landlord = 'landlord',
+  Tenant = 'tenant',
 }
