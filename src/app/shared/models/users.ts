@@ -13,12 +13,12 @@ export interface IAddress {
   postCode: string
 }
 export abstract class User {
+  role: Role
   constructor(
     public id: number,
     public name: IName,
     public phone: string,
     public mail: string,
-    public role = Role,
     public picture: string,
     public username: string,
     public password: string,
