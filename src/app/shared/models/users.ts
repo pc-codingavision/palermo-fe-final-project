@@ -1,36 +1,51 @@
-import { Role } from '../enum/role'
+import { Role } from './../enum/role'
 
-export abstract class Name {
+export interface IName {
   firstName: string
   middleName?: string
   surname: string
-
-  getFullName(): string {
-    return `${this.firstName} ${this.surname}`
-  }
 }
-
-export interface IUser {
-  _id: number
-  name: Name
-  mail: string
-  phone: string
-  role: Role
-  username: string
-  password: string
-  picture: string
-
-  setRole(): void
-}
-
-export abstract class Address {
+export interface IAddress {
   line1: string
   line2?: string
   city: string
   state: string
   postCode: string
+}
+export abstract class User {
+  role: Role
+  constructor(
+    public id: number,
+    public name: IName,
+    public phone: string,
+    public mail: string,
+    public picture: string,
+    public username: string,
+    public password: string,
+    public userStatus: boolean,
+    public dateOfBirth: Date | null | string,
+    public address?: IAddress
+  ) {}
+  getFullName(): string {
+    if (!this.name) {
+      return ''
+    }
 
+    if (this.name.middleName) {
+      return `${this.name.firstName} ${this.name.middleName} ${this.name.surname}`
+    }
+
+    return `${this.name.firstName} ${this.name.surname}`
+  }
   getFullAddress(): string {
-    return `${this.line1}, ${this.city}, ${this.state}, ${this.postCode}`
+    if (!this.address) {
+      return ''
+    }
+
+    if (this.address.line2) {
+      return `${this.address.line1}, ${this.address.line2},  ${this.address.city}, ${this.address.state}, ${this.address.postCode}, `
+    }
+
+    return `${this.address.line1}, ${this.address.city}, ${this.address.state}, ${this.address.postCode}`
   }
 }
