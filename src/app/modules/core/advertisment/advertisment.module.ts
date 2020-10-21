@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core'
 
 import { AdvertismentRoutingModule } from './advertisment-routing.module'
 import { AdvertismentContainerComponent } from './components/advertisment-container/advertisment-container.component'
-import { AdvertismentListContainerComponent } from './components/advertisment-list-container/advertisment-list-container.component'
+import { AdvertismentListComponent } from './components/advertisment-list/advertisment-list.component'
 
 @NgModule({
-  declarations: [AdvertismentListContainerComponent, AdvertismentContainerComponent],
+  declarations: [AdvertismentListComponent, AdvertismentContainerComponent],
   imports: [CommonModule, AdvertismentRoutingModule],
 })
 export class AdvertismentModule {}
