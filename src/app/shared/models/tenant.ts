@@ -1,18 +1,33 @@
 import { Role } from '../enum/role'
-import { IUser, Name } from './users'
+import { IAddress, IName, User } from './users'
 
-export class Tenant implements IUser {
-  // tslint:disable-next-line: variable-name
-  _id: number
-  name: Name
-  mail: string
-  phone: string
-  role: Role
-  username: string
-  password: string
-  picture: string
-  // listOfReservation: IReservation[]
-  setRole(): void {
-    this.role = Role.TENANT
+export interface IReservation {}
+export class Tenant extends User {
+  constructor(
+    id: number,
+    name: IName,
+    phone: string,
+    mail: string,
+    picture: string,
+    username: string,
+    password: string,
+    userStatus: boolean,
+    dateOfBirth: Date | null | string,
+    public reservation: IReservation[],
+    address?: IAddress
+  ) {
+    super(
+      id,
+      name,
+      phone,
+      mail,
+      picture,
+      username,
+      password,
+      userStatus,
+      dateOfBirth,
+      address
+    )
+    this.role = Role.Tenant
   }
 }

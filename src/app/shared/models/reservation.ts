@@ -1,14 +1,10 @@
-export interface ITenantName {
-  name: string
-  middle?: string
-  surname: string
-}
+import { IProperty } from './property'
+import { Tenant } from './tenant'
 
-export interface IReservation {
+export interface Reservation {
   reservationId: number
-  tenantName: ITenantName
-  tenantEmail: string
-  tenantPhone: number
+  tenant: Tenant
+  property: IProperty
   guestNumber: number
   checkIn: Date
   checkOut: Date
