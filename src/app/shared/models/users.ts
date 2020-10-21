@@ -13,21 +13,18 @@ export interface IAddress {
   postCode: string
 }
 export abstract class User {
-  // readonly fullName?: string
-  // mail: string
-  // userStatus: boolean
-  // phone: string
-  // role: Role
-  // username: string
-  // password: string
-  // picture: string
-  // dateOfBirth: Date | null | string
-
   constructor(
-    public _id: number,
+    public id: number,
     public name: IName,
-    public address?: IAddress,
-    public role = Role.None
+    public phone: string,
+    public mail: string,
+    public role = Role,
+    public picture: string,
+    public username: string,
+    public password: string,
+    public userStatus: boolean,
+    public dateOfBirth: Date | null | string,
+    public address?: IAddress
   ) {}
   getFullName(): string {
     if (!this.name) {
@@ -40,7 +37,7 @@ export abstract class User {
 
     return `${this.name.firstName} ${this.name.surname}`
   }
-  getFullAdress(): string {
+  getFullAddress(): string {
     if (!this.address) {
       return ''
     }
