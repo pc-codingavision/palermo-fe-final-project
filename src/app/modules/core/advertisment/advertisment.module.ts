@@ -7,6 +7,7 @@ import { AdvertismentListComponent } from './components/advertisment-list/advert
 
 @NgModule({
   declarations: [AdvertismentListComponent, AdvertismentContainerComponent],
+
   imports: [CommonModule, AdvertismentRoutingModule],
 })
 export class AdvertismentModule {}
