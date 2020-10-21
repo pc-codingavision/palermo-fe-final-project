@@ -8,9 +8,10 @@ import { AppComponent } from './app.component'
 import { InMemoryAuthService } from './modules/core/auth/auth-in-memory.service'
 import { AuthService } from './modules/core/auth/auth.service'
 import { MaterialModule } from './modules/shared/material.module'
+import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
