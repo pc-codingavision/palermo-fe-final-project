@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-advertisment-list-container',
   templateUrl: './advertisment-list-container.component.html',
-  styleUrls: ['./advertisment-list-container.component.scss']
+  styleUrls: ['./advertisment-list-container.component.scss'],
 })
 export class AdvertismentListContainerComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
