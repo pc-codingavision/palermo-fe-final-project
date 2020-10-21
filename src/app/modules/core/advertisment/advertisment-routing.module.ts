@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { AdvertismentListContainerComponent } from './components/advertisment-list-container/advertisment-list-container.component'
+import { AdvertismentListComponent } from './components/advertisment-list/advertisment-list.component'
 
-const routes: Routes = [{ path: 'list', component: AdvertismentListContainerComponent }]
+const routes: Routes = [{ path: 'list', component: AdvertismentListComponent }]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
