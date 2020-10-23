@@ -1,34 +1,33 @@
 import { Role } from '../enum/role'
-import { IAddress, IName, User } from './users'
+import { IAddress, IName, IUser } from './users'
 
-export interface IProperty {}
+export class Landlord implements IUser {
+  id: number
+  name: IName
+  phone: string
+  mail: string
+  picture: string
+  username: string
+  password: string
+  userStatus: boolean
+  dateOfBirth: string | Date
+  role: Role
+  address?: IAddress
 
-export class Landlord extends User {
-  constructor(
-    id: number,
-    name: IName,
-    phone: string,
-    mail: string,
-    picture: string,
-    username: string,
-    password: string,
-    userStatus: boolean,
-    dateOfBirth: Date | null | string,
-    public properties: IProperty[],
-    address?: IAddress
-  ) {
-    super(
-      id,
-      name,
-      phone,
-      mail,
-      picture,
-      username,
-      password,
-      userStatus,
-      dateOfBirth,
-      address
-    )
-    this.role = Role.Landlord
+  private constructor(user: Landlord) {
+    this.id = user.id
+    this.name = user.name
+    this.phone = user.phone
+    this.mail = user.mail
+    this.picture = user.picture
+    this.username = user.username
+    this.password = user.password
+    this.userStatus = user.userStatus
+    this.dateOfBirth = user.dateOfBirth
+    this.role = user.role
+    this.address = user.address
+  }
+  static Build(landLord: Landlord): Landlord {
+    return new this(landLord)
   }
 }
