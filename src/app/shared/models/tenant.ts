@@ -1,35 +1,34 @@
 import { Role } from '../enum/role'
-import { IAddress, IName, User } from './users'
+import { IAddress, IName, IUser } from './users'
 
-// tslint:disable-next-line: no-empty-interface
-export interface IReservation {}
+export class Tenant implements IUser {
+  id: number
+  name: IName
+  phone: string
+  mail: string
+  picture: string
+  username: string
+  password: string
+  userStatus: boolean
+  dateOfBirth: Date | null | string
+  role: Role
+  address?: IAddress
 
-export class Tenant extends User {
-  constructor(
-    id: number,
-    name: IName,
-    phone: string,
-    mail: string,
-    picture: string,
-    username: string,
-    password: string,
-    userStatus: boolean,
-    dateOfBirth: Date | null | string,
-    public reservation: IReservation[],
-    address?: IAddress
-  ) {
-    super(
-      id,
-      name,
-      phone,
-      mail,
-      picture,
-      username,
-      password,
-      userStatus,
-      dateOfBirth,
-      address
-    )
-    this.role = Role.Tenant
+  private constructor(user: Tenant) {
+    this.id = user.id
+    this.name = user.name
+    this.phone = user.phone
+    this.mail = user.mail
+    this.picture = user.picture
+    this.username = user.username
+    this.password = user.password
+    this.userStatus = user.userStatus
+    this.dateOfBirth = user.dateOfBirth
+    this.role = user.role
+    this.address = user.address
+  }
+
+  static Build(tenant: Tenant): Tenant {
+    return new this(tenant)
   }
 }
