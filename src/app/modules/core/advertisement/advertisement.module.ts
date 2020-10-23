@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
 import { AdvertisementContainerComponent } from './../advertisement/components/advertisement-container/advertisement-container.component'
-import { AdvertismentRoutingModule } from './advertisement-routing.module'
+import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 
@@ -13,6 +13,6 @@ import { AdvertisementListComponent } from './components/advertisement-list/adve
     AdvertisementDetailsComponent,
   ],
 
-  imports: [CommonModule, AdvertismentRoutingModule],
+  imports: [CommonModule, AdvertisementRoutingModule],
 })
-export class AdvertismentModule {}
+export class AdvertisementModule {}
