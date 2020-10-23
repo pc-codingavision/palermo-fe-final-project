@@ -1,12 +1,9 @@
-import { IProperty } from './property'
-import { Tenant } from './tenant'
-
-export interface Reservation {
+export interface IReservation {
   reservationId: number
-  tenant: Tenant
-  property: IProperty
+  tenantId: number
+  propertyId: number
   guestNumber: number
-  checkIn: Date
-  checkOut: Date
+  checkIn: Date | string
+  checkOut: Date | string
   specialRequest?: string
 }
