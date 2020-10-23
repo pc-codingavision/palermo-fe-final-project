@@ -1,3 +1,5 @@
+import { Category } from './../enum/category'
+
 export interface IFacilities {
   tv: boolean
   wifi: boolean
@@ -29,34 +31,31 @@ export enum Toilet {
   None = 'none',
 }
 
-export enum Category {
-  Singleroom = 'singleroom',
-  Apartment = 'apartment',
-  None = 'none',
+export enum Status {
+  Open = 'open',
+  Closed = 'closed',
 }
 
 export interface IProperty {
   id: number
-  landlordName: ILandlordName
+  landlordId: number
   address: IAddress
-  propertyName: string
+  propertyTitle: string
   category: Category
-  rooms: number
-  beds: number
-  mq: number
+  rooms: [
+    { roomName: string; beds: number; numberOfToilet: number; toilet: Toilet; mq: number }
+  ]
+
   description: string
   facilities: IFacilities
-  toilet: Toilet
-  numberOfToilet: number
-  imagePath: string[]
-  isAvailable: boolean
-  review: string
-  vote: number
+  imagesPath: string[]
+  status: Status
 }
 
 export class Property implements IProperty {
   constructor(
     public id,
+    public landlordId: 0,
     public address = {
       line1: '',
       line2: '',
@@ -64,12 +63,12 @@ export class Property implements IProperty {
       postalCode: '',
       country: '',
     } as IAddress,
-    public propertyName = '',
-    public landlordName = { first: '', middle: '', last: '' } as ILandlordName,
+    public propertyTitle = '',
     public category = Category.None,
-    public rooms = 0,
-    public beds = 0,
-    public mq = 0,
+    public rooms: [
+      { roomName: ''; beds: 0; numberOfToilet: 0; toilet: Toilet.None; mq: 0 }
+    ],
+
     public description = '',
     public facilities = {
       tv: false,
@@ -80,11 +79,7 @@ export class Property implements IProperty {
       shower: false,
       bath: false,
     } as IFacilities,
-    public toilet = Toilet.None,
-    public numberOfToilet = 0,
-    public imagePath = [],
-    public isAvailable = true,
-    public review = '',
-    public vote = 0
+    public imagesPath = [],
+    public status = Status.Open
   ) {}
 }
