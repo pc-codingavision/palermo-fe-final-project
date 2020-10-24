@@ -23,7 +23,6 @@ export interface IAddress {
 export interface IRoom {
   roomName: string
   beds: number
-  numberOfToilet: number
   toilet: Toilet
   mq: number
 }
@@ -35,6 +34,7 @@ export interface IProperty {
   propertyTitle: string
   category: Category
   rooms: IRoom[]
+  numberOfToilet: number
   description: string
   facilities: IFacilities
   imagesPath: string[]
@@ -49,13 +49,17 @@ export class Property implements IProperty {
     public propertyTitle: string,
     public category: Category,
     public rooms: IRoom[],
+    public numberOfToilet: number,
     public description: string,
     public facilities: IFacilities,
     public imagesPath: string[],
     public status: Status
   ) {}
 
-  static Build(property: Property): Property {
+  static Build(property: IProperty): Property {
+    if (!property) {
+      throw new Error('Insert a valid value')
+    }
     return new Property(
       property.id,
       property.landlordId,
@@ -63,6 +67,7 @@ export class Property implements IProperty {
       property.propertyTitle,
       property.category,
       property.rooms,
+      property.numberOfToilet,
       property.description,
       property.facilities,
       property.imagesPath,

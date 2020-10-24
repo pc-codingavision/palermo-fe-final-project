@@ -15,9 +15,8 @@ export const PROPERTY: Property[] = [
     },
     propertyTitle: 'Splendido monovano',
     category: Category.Apartment,
-    rooms: [
-      { roomName: 'room 1', beds: 1, numberOfToilet: 1, toilet: Toilet.Inside, mq: 25 },
-    ],
+    rooms: [{ roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
+    numberOfToilet: 1,
     description: '',
     facilities: {
       tv: true,
@@ -43,10 +42,11 @@ export const PROPERTY: Property[] = [
     propertyTitle: 'Splendido appartamento',
     category: Category.Apartment,
     rooms: [
-      { roomName: 'room 1', beds: 1, numberOfToilet: 1, toilet: Toilet.Inside, mq: 25 },
-      { roomName: 'room 2', beds: 2, numberOfToilet: 0, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 3', beds: 1, numberOfToilet: 0, toilet: Toilet.Outside, mq: 25 },
+      { roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
+      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      { roomName: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
     ],
+    numberOfToilet: 1,
     description: '',
     facilities: {
       tv: true,
