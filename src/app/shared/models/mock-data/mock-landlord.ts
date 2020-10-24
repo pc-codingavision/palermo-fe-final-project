@@ -1,7 +1,7 @@
 import { Role } from '../../enum/role'
 import { Landlord } from '../landlord'
 
-export const Landlords: Landlord[] = [
+export const LANDLORDS: Landlord[] = [
   {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
