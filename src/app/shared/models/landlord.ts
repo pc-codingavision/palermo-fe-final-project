@@ -1,6 +1,5 @@
 import { Role } from '../enum/role'
 import { IAddress, IName, IUser } from './users'
-
 export class Landlord implements IUser {
   private constructor(
     public id: number,
