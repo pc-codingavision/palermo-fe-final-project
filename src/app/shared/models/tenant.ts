@@ -2,33 +2,37 @@ import { Role } from '../enum/role'
 import { IAddress, IName, IUser } from './users'
 
 export class Tenant implements IUser {
-  id: number
-  name: IName
-  phone: string
-  mail: string
-  picture: string
-  username: string
-  password: string
-  userStatus: boolean
-  dateOfBirth: Date | null | string
-  role: Role.Tenant
-  address?: IAddress
-
-  private constructor(user: Tenant) {
-    this.id = user.id
-    this.name = user.name
-    this.phone = user.phone
-    this.mail = user.mail
-    this.picture = user.picture
-    this.username = user.username
-    this.password = user.password
-    this.userStatus = user.userStatus
-    this.dateOfBirth = user.dateOfBirth
-    this.role = user.role
-    this.address = user.address
-  }
+  private constructor(
+    public id: number,
+    public name: IName,
+    public phone: string,
+    public mail: string,
+    public picture: string,
+    public username: string,
+    public password: string,
+    public userStatus: boolean,
+    public dateOfBirth: Date | null | string,
+    public role: Role.Tenant,
+    public address?: IAddress
+  ) {}
 
   static Build(tenant: Tenant): Tenant {
-    return new this(tenant)
+    if (typeof tenant.dateOfBirth === 'string') {
+      tenant.dateOfBirth = new Date(tenant.dateOfBirth)
+    }
+
+    return new this(
+      tenant.id,
+      tenant.name,
+      tenant.phone,
+      tenant.mail,
+      tenant.picture,
+      tenant.username,
+      tenant.password,
+      tenant.userStatus,
+      tenant.dateOfBirth,
+      tenant.role,
+      tenant.address
+    )
   }
 }
