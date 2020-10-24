@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AdvertisementModule } from './modules/core/advertisement/advertisement.module'
 import { MaterialModule } from './modules/shared/material.module'
+import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

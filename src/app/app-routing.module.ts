@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
+import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
+
 const managerModule = () =>
   import('./modules/core/manager/manager.module').then((m) => m.ManagerModule)
 
@@ -14,6 +16,7 @@ const routes: Routes = [
   { path: 'tenant', loadChildren: tenantModule },
   { path: 'manager', loadChildren: managerModule },
   { path: 'landlord', loadChildren: landlordModule },
+  { path: '**', component: PageNotFoundComponent },
 ]
 
 @NgModule({
