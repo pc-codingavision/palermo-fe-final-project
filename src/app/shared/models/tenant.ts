@@ -11,7 +11,7 @@ export class Tenant implements IUser {
   password: string
   userStatus: boolean
   dateOfBirth: Date | null | string
-  role: Role
+  role: Role.Tenant
   address?: IAddress
 
   private constructor(user: Tenant) {
