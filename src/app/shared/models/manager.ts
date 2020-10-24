@@ -11,7 +11,7 @@ export class Manager implements IUser {
   password: string
   userStatus: boolean
   dateOfBirth: Date | null | string
-  role: Role
+  role: Role.Manager
   address?: IAddress
 
   constructor(user: Manager) {
