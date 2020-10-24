@@ -10,7 +10,7 @@ export class Manager implements IUser {
   username: string
   password: string
   userStatus: boolean
-  dateOfBirth: string | Date
+  dateOfBirth: Date | null | string
   role: Role
   address?: IAddress
 
