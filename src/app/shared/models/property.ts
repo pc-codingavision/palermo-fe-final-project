@@ -1,4 +1,6 @@
 import { Category } from './../enum/category'
+import { Status } from '../enum/status'
+import { Toilet } from '../enum/toilet'
 
 export interface IFacilities {
   tv: boolean
@@ -18,22 +20,12 @@ export interface IAddress {
   country: string
 }
 
-export interface ILandlordName {
-  first: string
-  middle?: string
-  last: string
-}
-
-export enum Toilet {
-  Inside = 'inside',
-  Outside = 'outside',
-  Shared = 'shared',
-  None = 'none',
-}
-
-export enum Status {
-  Open = 'open',
-  Closed = 'closed',
+export interface IRoom {
+  roomName: string
+  beds: number
+  numberOfToilet: number
+  toilet: Toilet
+  mq: number
 }
 
 export interface IProperty {
@@ -42,10 +34,7 @@ export interface IProperty {
   address: IAddress
   propertyTitle: string
   category: Category
-  rooms: [
-    { roomName: string; beds: number; numberOfToilet: number; toilet: Toilet; mq: number }
-  ]
-
+  rooms: IRoom[]
   description: string
   facilities: IFacilities
   imagesPath: string[]
@@ -53,33 +42,31 @@ export interface IProperty {
 }
 
 export class Property implements IProperty {
-  constructor(
-    public id,
-    public landlordId: 0,
-    public address = {
-      line1: '',
-      line2: '',
-      city: '',
-      postalCode: '',
-      country: '',
-    } as IAddress,
-    public propertyTitle = '',
-    public category = Category.None,
-    public rooms: [
-      { roomName: ''; beds: 0; numberOfToilet: 0; toilet: Toilet.None; mq: 0 }
-    ],
-
-    public description = '',
-    public facilities = {
-      tv: false,
-      wifi: false,
-      breakfastIncluded: false,
-      parking: false,
-      kitchen: false,
-      shower: false,
-      bath: false,
-    } as IFacilities,
-    public imagesPath = [],
-    public status = Status.Open
+  private constructor(
+    public id: number,
+    public landlordId: number,
+    public address: IAddress,
+    public propertyTitle: string,
+    public category: Category,
+    public rooms: IRoom[],
+    public description: string,
+    public facilities: IFacilities,
+    public imagesPath: string[],
+    public status: Status
   ) {}
+
+  static Build(property: Property): Property {
+    return new Property(
+      property.id,
+      property.landlordId,
+      property.address,
+      property.propertyTitle,
+      property.category,
+      property.rooms,
+      property.description,
+      property.facilities,
+      property.imagesPath,
+      property.status
+    )
+  }
 }
