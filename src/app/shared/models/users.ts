@@ -13,7 +13,7 @@ export interface IAddress {
   postCode: string
 }
 export interface IUser {
-  id: number
+  id: string
   name: IName
   phone: string
   mail: string
@@ -23,5 +23,6 @@ export interface IUser {
   userStatus: boolean
   dateOfBirth: Date | null | string
   role: Role
-  address?: IAddress
+  address: IAddress
+  readonly fullName?: string
 }

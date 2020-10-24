@@ -3,7 +3,7 @@ import { Landlord } from '../landlord'
 
 export const LANDLORDS: Landlord[] = [
   {
-    id: 1,
+    id: '1',
     name: { firstName: 'Piero', surname: 'Cascio' },
     phone: '333 3333 333',
     mail: 'piero-landlord@test.com',
@@ -11,7 +11,7 @@ export const LANDLORDS: Landlord[] = [
     username: 'landlord1',
     password: 'password',
     userStatus: true,
-    dateOfBirth: '10/10/1980',
+    dateOfBirth: new Date(1980, 10, 10),
     role: Role.Landlord,
     address: {
       line1: 'Via delle Magnolie',
@@ -19,9 +19,10 @@ export const LANDLORDS: Landlord[] = [
       state: 'italia',
       postCode: '90100',
     },
+    fullName: '',
   },
   {
-    id: 2,
+    id: '2',
     name: { firstName: 'Cosimo', surname: 'Nigrelli' },
     phone: '333 3333 332',
     mail: 'cosimo-landlord@test.com',
@@ -29,12 +30,13 @@ export const LANDLORDS: Landlord[] = [
     username: 'landlord2',
     password: 'password',
     userStatus: true,
-    dateOfBirth: '10/10/1982',
+    dateOfBirth: new Date(10, 10, 1982),
     role: Role.Landlord,
     address: { line1: 'Via Roma', city: 'Messina', state: 'italia', postCode: '90100' },
+    fullName: '',
   },
   {
-    id: 3,
+    id: '3',
     name: { firstName: 'Vito', surname: 'Rizzo' },
     phone: '3468769876',
     mail: 'vito-landlord@test.com',
@@ -42,7 +44,7 @@ export const LANDLORDS: Landlord[] = [
     username: 'landlord3',
     password: 'password',
     userStatus: true,
-    dateOfBirth: '10/10/1984',
+    dateOfBirth: new Date(10, 10, 1984),
     role: Role.Landlord,
     address: {
       line1: 'Via dei Cappuccini',
@@ -50,5 +52,6 @@ export const LANDLORDS: Landlord[] = [
       state: 'italia',
       postCode: '90100',
     },
+    fullName: '',
   },
 ]
