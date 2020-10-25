@@ -1,8 +1,9 @@
 import { Role } from '../enum/role'
 import { IAddress, IName, IUser } from './users'
+
 export class Landlord implements IUser {
-  constructor(
-    public id = '',
+  private constructor(
+    public id = 0,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
     public phone = '',
     public mail = '',
@@ -19,7 +20,7 @@ export class Landlord implements IUser {
       state: '',
       postCode: '',
     } as IAddress
-  ) {}
+  ) { }
 
   static Build(landlord: Landlord): Landlord {
     if (!landlord) {

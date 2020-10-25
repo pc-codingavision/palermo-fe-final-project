@@ -13,7 +13,7 @@ export interface IAddress {
   postCode: string
 }
 export interface IUser {
-  id: string
+  id: number
   name: IName
   phone: string
   mail: string

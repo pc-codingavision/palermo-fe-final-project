@@ -3,7 +3,7 @@ import { Landlord } from '../landlord'
 
 export const LANDLORDS: Landlord[] = [
   {
-    id: '1',
+    id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
     phone: '333 3333 333',
     mail: 'piero-landlord@test.com',
@@ -22,7 +22,7 @@ export const LANDLORDS: Landlord[] = [
     fullName: '',
   },
   {
-    id: '2',
+    id: 2,
     name: { firstName: 'Cosimo', surname: 'Nigrelli' },
     phone: '333 3333 332',
     mail: 'cosimo-landlord@test.com',
@@ -36,7 +36,7 @@ export const LANDLORDS: Landlord[] = [
     fullName: '',
   },
   {
-    id: '3',
+    id: 3,
     name: { firstName: 'Vito', surname: 'Rizzo' },
     phone: '3468769876',
     mail: 'vito-landlord@test.com',
