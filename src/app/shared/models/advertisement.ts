@@ -14,7 +14,7 @@ export class Advertisement {
 
   static Build(advertisement: Advertisement): Advertisement {
     if (!advertisement) {
-      throw new Error('Error: advertisement empty')
+      throw new Error('Insert a valid value')
     }
     return new this(
       advertisement.landlordId,
