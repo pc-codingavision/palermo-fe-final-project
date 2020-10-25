@@ -12,7 +12,7 @@ export class Manager implements IUser {
     public password: string,
     public userStatus: boolean,
     public dateOfBirth: Date | null | string,
-    public role: Role.Manager,
+    public role: Role,
     public address?: IAddress
   ) {}
 
