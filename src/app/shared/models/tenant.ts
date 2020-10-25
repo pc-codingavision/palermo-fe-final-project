@@ -17,8 +17,14 @@ export class Tenant implements IUser {
   ) {}
 
   static Build(tenant: Tenant): Tenant {
+    if (!tenant) {
+      throw new Error('Insert a valid value')
+    }
     if (typeof tenant.dateOfBirth === 'string') {
       tenant.dateOfBirth = new Date(tenant.dateOfBirth)
+    }
+    if (tenant.role !== 'tenant') {
+      throw new Error('Role must be Tenant')
     }
 
     return new this(
