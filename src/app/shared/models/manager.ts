@@ -17,8 +17,16 @@ export class Manager implements IUser {
   ) {}
 
   static Build(manager: Manager): Manager {
+    if (!manager) {
+      throw new Error('Insert a valid value')
+    }
+
     if (typeof manager.dateOfBirth === 'string') {
       manager.dateOfBirth = new Date(manager.dateOfBirth)
+    }
+
+    if (manager.role !== 'manager') {
+      throw new Error('Role must be Manager')
     }
 
     return new this(
