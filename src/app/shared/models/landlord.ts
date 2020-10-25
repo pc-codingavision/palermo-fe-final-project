@@ -20,7 +20,7 @@ export class Landlord implements IUser {
       state: '',
       postCode: '',
     } as IAddress
-  ) { }
+  ) {}
 
   static Build(landlord: Landlord): Landlord {
     if (!landlord) {
