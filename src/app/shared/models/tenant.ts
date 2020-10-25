@@ -12,7 +12,7 @@ export class Tenant implements IUser {
     public password: string,
     public userStatus: boolean,
     public dateOfBirth: Date | null | string,
-    public role: Role.Tenant,
+    public role: Role,
     public address?: IAddress
   ) {}
 
@@ -20,11 +20,11 @@ export class Tenant implements IUser {
     if (!tenant) {
       throw new Error('Insert a valid value')
     }
-    if (typeof tenant.dateOfBirth === 'string') {
-      tenant.dateOfBirth = new Date(tenant.dateOfBirth)
-    }
     if (tenant.role !== 'tenant') {
       throw new Error('Role must be Tenant')
+    }
+    if (typeof tenant.dateOfBirth === 'string') {
+      tenant.dateOfBirth = new Date(tenant.dateOfBirth)
     }
 
     return new this(
