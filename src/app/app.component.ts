@@ -6,5 +6,5 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'cav-final-project'
+  title = 'Angular Course - Final Project'
 }
