@@ -3,7 +3,7 @@ import { IAddress, IName, IUser } from './users'
 
 export class Landlord implements IUser {
   private constructor(
-    public id = 0,
+    public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
     public phone = '',
     public mail = '',
@@ -22,13 +22,9 @@ export class Landlord implements IUser {
     } as IAddress
   ) {}
 
-  static Build(landlord: Landlord): Landlord {
+  static Build(landlord: IUser): Landlord {
     if (!landlord) {
       return new Landlord()
-    }
-
-    if (landlord.role !== Role.Landlord) {
-      landlord.role = Role.Landlord
     }
 
     if (typeof landlord.dateOfBirth === 'string') {
