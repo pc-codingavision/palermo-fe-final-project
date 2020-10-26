@@ -1,4 +1,5 @@
 import { Role } from './../enum/role'
+import { PhoneType } from '../enum/phonetype'
 
 export interface IName {
   firstName: string
@@ -12,15 +13,22 @@ export interface IAddress {
   state: string
   postCode: string
 }
+
+export interface IPhone {
+  id: number
+  type: PhoneType
+  digits: string
+}
+
 export interface IUser {
   id: number
   name: IName
-  phone: string
+  phone: IPhone[]
   mail: string
   picture: string
   username: string
   password: string
-  userStatus: boolean
+  status: boolean
   dateOfBirth: Date | null | string
   role: Role
   address?: IAddress
