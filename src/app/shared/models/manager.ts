@@ -3,30 +3,32 @@ import { IAddress, IName, IUser } from './users'
 
 export class Manager implements IUser {
   private constructor(
-    public id: number,
-    public name: IName,
-    public phone: string,
-    public mail: string,
-    public picture: string,
-    public username: string,
-    public password: string,
-    public userStatus: boolean,
-    public dateOfBirth: Date | null | string,
-    public role: Role,
-    public address?: IAddress
+    public id = null,
+    public name = { firstName: '', middleName: '', surname: '' } as IName,
+    public phone = [],
+    public mail = '',
+    public picture = '',
+    public username = '',
+    public password = '',
+    public status = false,
+    public dateOfBirth: Date | null = null,
+    public role = Role.Manager,
+    public address = {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      postCode: '',
+    } as IAddress
   ) {}
 
-  static Build(manager: Manager): Manager {
+  static Build(manager: IUser): Manager {
     if (!manager) {
-      throw new Error('Insert a valid value')
+      return new Manager()
     }
 
     if (typeof manager.dateOfBirth === 'string') {
       manager.dateOfBirth = new Date(manager.dateOfBirth)
-    }
-
-    if (manager.role !== 'manager') {
-      throw new Error('Role must be Manager')
     }
 
     return new this(
@@ -37,7 +39,7 @@ export class Manager implements IUser {
       manager.picture,
       manager.username,
       manager.password,
-      manager.userStatus,
+      manager.status,
       manager.dateOfBirth,
       manager.role,
       manager.address
