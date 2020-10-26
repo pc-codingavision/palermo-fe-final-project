@@ -14,8 +14,8 @@ export class Reservation implements IReservation {
     public tenantId = null,
     public propertyId = null,
     public guestNumber = null,
-    public checkIn = '',
-    public checkOut = '',
+    public checkIn: Date | null = null,
+    public checkOut: Date | null = null,
     public specialRequest = ''
   ) {}
 
