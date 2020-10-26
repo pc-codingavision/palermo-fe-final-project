@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test:no-watch": "ng test --watch=false",
     "lint": "run-p lint:ts lint:tsc",
     "e2e": "ng e2e",
     "style": "import-sort -l \"**/{src,tests,e2e}/**/*.ts\" && prettier --check \"**/{src,tests,e2e}/**/*.{*css,ts}\"",
@@ -58,6 +59,7 @@
     "codelyzer": "^6.0.0",
     "cross-conf-env": "^1.2.0",
     "dev-norms": "^1.7.1",
+    "husky": "^4.3.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
     "import-sort-parser-typescript": "^6.0.0",
@@ -95,5 +97,10 @@
     "imageName": "custom_app_name",
     "imagePort": "3000",
     "internalContainerPort": "3000"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run style:fix && npm run lint:fix && npm run test:no-watch"
+    }
   }
 }
