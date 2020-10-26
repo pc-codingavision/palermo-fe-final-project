@@ -43,22 +43,22 @@ export interface IProperty {
 
 export class Property implements IProperty {
   private constructor(
-    public id: number,
-    public landlordId: number,
-    public address: IAddress,
-    public propertyTitle: string,
-    public category: Category,
-    public rooms: IRoom[],
-    public numberOfToilet: number,
-    public description: string,
-    public facilities: IFacilities,
-    public imagesPath: string[],
-    public status: Status
+    public id = null,
+    public landlordId = null,
+    public address = null,
+    public propertyTitle = null,
+    public category = null,
+    public rooms = null,
+    public numberOfToilet = null,
+    public description = null,
+    public facilities = null,
+    public imagesPath = null,
+    public status = null
   ) {}
 
   static Build(property: IProperty): Property {
     if (!property) {
-      throw new Error('Insert a valid value')
+      return new Property()
     }
     return new Property(
       property.id,
