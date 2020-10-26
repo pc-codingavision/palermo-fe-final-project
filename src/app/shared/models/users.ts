@@ -32,5 +32,4 @@ export interface IUser {
   dateOfBirth: Date | null | string
   role: Role
   address: IAddress
-  readonly fullName?: string
 }

@@ -5,12 +5,12 @@ export class Landlord implements IUser {
   private constructor(
     public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
-    public phone = '',
+    public phone = [],
     public mail = '',
     public picture = '',
     public username = '',
     public password = '',
-    public userStatus = false,
+    public status = false,
     public dateOfBirth: Date | null = null,
     public role = Role.Landlord,
     public address = {
@@ -38,7 +38,7 @@ export class Landlord implements IUser {
       landlord.picture,
       landlord.username,
       landlord.password,
-      landlord.userStatus,
+      landlord.status,
       landlord.dateOfBirth,
       landlord.role,
       landlord.address
