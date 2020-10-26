@@ -31,5 +31,5 @@ export interface IUser {
   status: boolean
   dateOfBirth: Date | null | string
   role: Role
-  address: IAddress
+  address?: IAddress
 }

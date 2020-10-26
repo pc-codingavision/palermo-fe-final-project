@@ -31,7 +31,7 @@ export const LANDLORDS: Landlord[] = [
     username: 'landlord2',
     password: 'password',
     status: true,
-    dateOfBirth: new Date(10, 10, 1982),
+    dateOfBirth: new Date(1982, 10, 10),
     role: Role.Landlord,
     address: {
       line1: 'Via Roma',
@@ -50,7 +50,7 @@ export const LANDLORDS: Landlord[] = [
     username: 'landlord3',
     password: 'password',
     status: true,
-    dateOfBirth: new Date(10, 10, 1984),
+    dateOfBirth: new Date(1984, 10, 1),
     role: Role.Landlord,
     address: {
       line1: 'Via dei Cappuccini',
