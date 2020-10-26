@@ -1,7 +1,7 @@
-import { Property } from './../models/property'
-import { Category } from '../enum/category'
-import { Status } from '../enum/status'
-import { Toilet } from '../enum/toilet'
+import { Property } from '../property'
+import { Category } from '../../enum/category'
+import { Status } from '../../enum/status'
+import { Toilet } from '../../enum/toilet'
 
 export const PROPERTY: Property[] = [
   {
