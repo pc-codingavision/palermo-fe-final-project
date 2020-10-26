@@ -3,25 +3,28 @@ import { IAddress, IName, IUser } from './users'
 
 export class Tenant implements IUser {
   private constructor(
-    public id: number,
-    public name: IName,
-    public phone: string,
-    public mail: string,
-    public picture: string,
-    public username: string,
-    public password: string,
-    public userStatus: boolean,
-    public dateOfBirth: Date | null | string,
-    public role: Role,
-    public address?: IAddress
+    public id = null,
+    public name = { firstName: '', middlename: '', surname: '' } as IName,
+    public phone = [],
+    public mail = '',
+    public picture = '',
+    public username = '',
+    public password = '',
+    public status = false,
+    public dateOfBirth: Date | null = null,
+    public role = Role.Tenant,
+    public address = {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      postCode: '',
+    } as IAddress
   ) {}
 
-  static Build(tenant: Tenant): Tenant {
+  static Build(tenant: IUser): Tenant {
     if (!tenant) {
-      throw new Error('Insert a valid value')
-    }
-    if (tenant.role !== 'tenant') {
-      throw new Error('Role must be Tenant')
+      return new Tenant()
     }
     if (typeof tenant.dateOfBirth === 'string') {
       tenant.dateOfBirth = new Date(tenant.dateOfBirth)
@@ -35,7 +38,7 @@ export class Tenant implements IUser {
       tenant.picture,
       tenant.username,
       tenant.password,
-      tenant.userStatus,
+      tenant.status,
       tenant.dateOfBirth,
       tenant.role,
       tenant.address
