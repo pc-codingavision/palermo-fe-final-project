@@ -1,7 +1,5 @@
-import { stringify } from 'querystring'
-
 export interface IReservation {
-  reservationId: number
+  id: number
   tenantId: number
   propertyId: number
   guestNumber: number
@@ -11,26 +9,19 @@ export interface IReservation {
 }
 
 export class Reservation implements IReservation {
-  reservationId: number
-  tenantId: number
-  propertyId: number
-  guestNumber: number
-  checkIn: Date | string
-  checkOut: Date | string
-  specialRequest?: string
+  private constructor(
+    public id = null,
+    public tenantId = null,
+    public propertyId = null,
+    public guestNumber = null,
+    public checkIn = '',
+    public checkOut = '',
+    public specialRequest = ''
+  ) {}
 
-  private constructor(res: Reservation) {
-    this.reservationId = res.reservationId
-    this.tenantId = res.tenantId
-    this.propertyId = res.propertyId
-    this.checkIn = res.checkIn
-    this.checkOut = res.checkOut
-    this.specialRequest = res.specialRequest
-  }
-
-  static Build(reservation: IReservation): Reservation {
+  static Build(reservation?: IReservation): Reservation {
     if (!reservation) {
-      throw new Error('Error: need to write something.')
+      return new Reservation()
     }
 
     if (typeof reservation.checkIn === 'string') {

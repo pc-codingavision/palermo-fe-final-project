@@ -2,7 +2,7 @@ import { IReservation } from './../reservation'
 
 export const RESERVATIONS: IReservation[] = [
   {
-    reservationId: 1,
+    id: 1,
     tenantId: 1,
     propertyId: 1,
     guestNumber: 3,
@@ -11,7 +11,7 @@ export const RESERVATIONS: IReservation[] = [
     specialRequest: '',
   },
   {
-    reservationId: 2,
+    id: 2,
     tenantId: 2,
     propertyId: 2,
     guestNumber: 3,
@@ -20,7 +20,7 @@ export const RESERVATIONS: IReservation[] = [
     specialRequest: 'I would like to do the check-in in early morning.',
   },
   {
-    reservationId: 3,
+    id: 3,
     tenantId: 3,
     propertyId: 3,
     guestNumber: 4,
