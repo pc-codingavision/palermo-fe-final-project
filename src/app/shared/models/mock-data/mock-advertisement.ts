@@ -27,7 +27,7 @@ export const ADVERTISEMENT: Advertisement[] = [
       {
         title: 'Good',
         tenantId: 3,
-        description: 'very spacious and accessible house',
+        description: 'Very spacious and accessible house',
         vote: 4.5,
       },
     ],
@@ -46,7 +46,7 @@ export const ADVERTISEMENT: Advertisement[] = [
       {
         title: 'Terrible',
         tenantId: 5,
-        description: 'very busy and people without masks',
+        description: 'Very busy and people without masks',
         vote: 2,
       },
     ],

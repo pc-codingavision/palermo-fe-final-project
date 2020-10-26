@@ -1,20 +1,25 @@
-interface IReviews {
+export interface IReviews {
   title: string
   tenantId: number
   description: string
   vote: number
 }
+export interface IAdvertisement {
+  landlordId: number
+  propertyId: number
+  reviews: IReviews[]
+}
 
-export class Advertisement {
+export class Advertisement implements IAdvertisement {
   private constructor(
-    public landlordId: number,
-    public propertyId: number,
-    public reviews: IReviews[]
+    public landlordId = null,
+    public propertyId = null,
+    public reviews = [{ title: '', tenantId: null, description: '', vote: null }]
   ) {}
 
-  static Build(advertisement: Advertisement): Advertisement {
+  static Build(advertisement?: IAdvertisement): Advertisement {
     if (!advertisement) {
-      throw new Error('Insert a valid value')
+      return new Advertisement()
     }
     return new this(
       advertisement.landlordId,
