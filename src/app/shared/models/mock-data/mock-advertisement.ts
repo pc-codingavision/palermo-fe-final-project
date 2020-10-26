@@ -1,6 +1,6 @@
-import { Advertisement } from './../advertisement'
+import { IAdvertisement } from '../advertisement'
 
-export const ADVERTISEMENT: Advertisement[] = [
+export const advertisements: IAdvertisement[] = [
   {
     landlordId: 1,
     propertyId: 1,
@@ -18,7 +18,6 @@ export const ADVERTISEMENT: Advertisement[] = [
         vote: 4,
       },
     ],
-    averageVote() {},
   },
   {
     landlordId: 2,
@@ -31,7 +30,6 @@ export const ADVERTISEMENT: Advertisement[] = [
         vote: 4.5,
       },
     ],
-    averageVote() {},
   },
   {
     landlordId: 3,
@@ -40,7 +38,7 @@ export const ADVERTISEMENT: Advertisement[] = [
       {
         title: 'Not great',
         tenantId: 4,
-        description: 'The hostel was very very caotic',
+        description: 'The hostel was very very chaotic',
         vote: 1.5,
       },
       {
@@ -50,7 +48,6 @@ export const ADVERTISEMENT: Advertisement[] = [
         vote: 2,
       },
     ],
-    averageVote() {},
   },
   {
     landlordId: 4,
@@ -75,6 +72,5 @@ export const ADVERTISEMENT: Advertisement[] = [
         vote: 5,
       },
     ],
-    averageVote() {},
   },
 ]

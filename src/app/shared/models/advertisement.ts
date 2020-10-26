@@ -4,6 +4,7 @@ export interface IReviews {
   description: string
   vote: number
 }
+
 export interface IAdvertisement {
   landlordId: number
   propertyId: number
@@ -14,7 +15,7 @@ export class Advertisement implements IAdvertisement {
   private constructor(
     public landlordId = null,
     public propertyId = null,
-    public reviews = [{ title: '', tenantId: null, description: '', vote: null }]
+    public reviews = []
   ) {}
 
   static Build(advertisement?: IAdvertisement): Advertisement {
@@ -27,5 +28,6 @@ export class Advertisement implements IAdvertisement {
       advertisement.reviews
     )
   }
-  averageVote() {}
+
+  averageVote(): void {}
 }
