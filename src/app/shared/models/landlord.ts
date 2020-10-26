@@ -3,28 +3,32 @@ import { IAddress, IName, IUser } from './users'
 
 export class Landlord implements IUser {
   private constructor(
-    public id: number,
-    public name: IName,
-    public phone: string,
-    public mail: string,
-    public picture: string,
-    public username: string,
-    public password: string,
-    public userStatus: boolean,
-    public dateOfBirth: Date | null | string,
-    public role: Role,
-    public address?: IAddress
+    public id = null,
+    public name = { firstName: '', middleName: '', surname: '' } as IName,
+    public phone = [],
+    public mail = '',
+    public picture = '',
+    public username = '',
+    public password = '',
+    public status = false,
+    public dateOfBirth: Date | null = null,
+    public role = Role.Landlord,
+    public address = {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      postCode: '',
+    } as IAddress
   ) {}
 
-  static Build(landlord: Landlord): Landlord {
+  static Build(landlord: IUser): Landlord {
     if (!landlord) {
-      throw new Error('Insert a valid value')
+      return new Landlord()
     }
+
     if (typeof landlord.dateOfBirth === 'string') {
       landlord.dateOfBirth = new Date(landlord.dateOfBirth)
-    }
-    if (landlord.role !== 'landlord') {
-      throw new Error('Role must be Landlord')
     }
     return new Landlord(
       landlord.id,
@@ -34,10 +38,20 @@ export class Landlord implements IUser {
       landlord.picture,
       landlord.username,
       landlord.password,
-      landlord.userStatus,
+      landlord.status,
       landlord.dateOfBirth,
       landlord.role,
       landlord.address
     )
+  }
+
+  public get fullName(): string {
+    if (!this.name) {
+      return ''
+    }
+    if (this.name.middleName) {
+      return `${this.name.firstName} ${this.name.middleName} ${this.name.surname}`
+    }
+    return `${this.name.firstName} ${this.name.surname}`
   }
 }
