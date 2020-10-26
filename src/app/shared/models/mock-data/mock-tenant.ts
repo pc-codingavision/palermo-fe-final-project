@@ -15,6 +15,7 @@ export const TENANTS: Tenant[] = [
     dateOfBirth: new Date(1960, 1, 1),
     role: Role.Tenant,
     address: { line1: 'Via Pina', city: 'Roma', state: 'Italia', postCode: '90000' },
+    fullName: '',
   },
   {
     id: 2,
@@ -31,5 +32,6 @@ export const TENANTS: Tenant[] = [
     dateOfBirth: new Date(1960, 2, 2),
     role: Role.Tenant,
     address: { line1: 'Via Abruzzo', city: 'Roma', state: 'Italia', postCode: '90000' },
+    fullName: '',
   },
 ]
