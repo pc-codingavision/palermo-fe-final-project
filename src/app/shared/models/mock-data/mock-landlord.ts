@@ -2,11 +2,11 @@ import { PhoneType } from '../../enum/phonetype'
 import { Role } from '../../enum/role'
 import { Landlord } from '../landlord'
 
-export const landlords: Landlord[] = [
+export const LANDLORDS: Landlord[] = [
   {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
-    phone: [{ id: 1, type: PhoneType, digits: 3454545 }],
+    phone: [{ id: 1, type: PhoneType.Mobile, digits: 3454545 }],
     mail: 'piero-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord1',
@@ -25,7 +25,7 @@ export const landlords: Landlord[] = [
   {
     id: 2,
     name: { firstName: 'Cosimo', surname: 'Nigrelli' },
-    phone: [{ id: 2, type: PhoneType, digits: 213455 }],
+    phone: [{ id: 2, type: PhoneType.Home, digits: 213455 }],
     mail: 'cosimo-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
@@ -44,7 +44,7 @@ export const landlords: Landlord[] = [
   {
     id: 3,
     name: { firstName: 'Vito', surname: 'Rizzo' },
-    phone: [{ id: 3, type: PhoneType, digits: 142354 }],
+    phone: [{ id: 3, type: PhoneType.Work, digits: 142354 }],
     mail: 'vito-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord3',
