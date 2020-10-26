@@ -1,5 +1,5 @@
 export enum Category {
-  Singleroom = 'singleroom',
+  SingleRoom = 'singleroom',
   Apartment = 'apartment',
   None = 'none',
 }
