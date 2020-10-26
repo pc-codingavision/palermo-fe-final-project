@@ -45,4 +45,14 @@ export class Manager implements IUser {
       manager.address
     )
   }
+
+  public get fullName(): string {
+    if (!this.name) {
+      return ''
+    }
+    if (this.name.middleName) {
+      return `${this.name.firstName} ${this.name.middleName} ${this.name.surname}`
+    }
+    return `${this.name.firstName} ${this.name.surname}`
+  }
 }

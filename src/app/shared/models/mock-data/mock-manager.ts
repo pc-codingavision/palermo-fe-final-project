@@ -30,6 +30,7 @@ export const MANAGERS: Manager[] = [
     status: true,
     dateOfBirth: new Date(1990, 10, 20),
     role: Role.Manager,
+    fullName: '',
     address: { line1: 'Via Roma', city: 'Palermo', state: 'italia', postCode: '90100' },
   },
   {
@@ -54,6 +55,7 @@ export const MANAGERS: Manager[] = [
     status: true,
     dateOfBirth: new Date(1980, 5, 10),
     role: Role.Manager,
+    fullName: '',
     address: { line1: 'Via Roma', city: 'Palermo', state: 'italia', postCode: '90100' },
   },
   {
@@ -73,6 +75,7 @@ export const MANAGERS: Manager[] = [
     status: true,
     dateOfBirth: new Date(1992, 2, 15),
     role: Role.Manager,
+    fullName: '',
     address: {
       line1: 'Via della Libertà',
       city: 'Palermo',
