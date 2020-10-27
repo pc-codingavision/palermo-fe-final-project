@@ -10,7 +10,7 @@ import { Landlord } from './../../../../../../../../shared/models/landlord'
 export class AddressComponent implements OnInit {
   @Input() landlord: Landlord
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }
