@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-phone',
   templateUrl: './phone.component.html',
-  styleUrls: ['./phone.component.scss']
+  styleUrls: ['./phone.component.scss'],
 })
 export class PhoneComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
