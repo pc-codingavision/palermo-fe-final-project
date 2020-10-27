@@ -2,9 +2,9 @@
   margin-left: 2%;
 }
 
-#facility-card {
-  width: 180px;
-  background-color: grey;
+.facility-card {
+  width: 200px;
+  background-color: white;
 }
 
 #facility-card-title {
@@ -12,17 +12,32 @@
   color: black;
 }
 
+#facility-divider {
+  border-top-color: black;
+  margin-bottom: 8%;
+}
+
+:host ::ng-deep .facility-checkbox .mat-checkbox-frame {
+  border-color: black;
+  border-radius: 20%;
+}
+
 .facility-checkbox {
   font-size: 12pt;
   margin-top: 5%;
+  color: black;
 }
 
 #facility-more {
   margin-top: 10%;
   font-size: 12pt;
+  color: black;
+  cursor: pointer;
 }
 
 #facility-less {
   margin-top: 10%;
   font-size: 12pt;
+  color: black;
+  cursor: pointer;
 }

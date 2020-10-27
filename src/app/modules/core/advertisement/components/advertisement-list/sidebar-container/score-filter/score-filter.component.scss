@@ -2,9 +2,9 @@
   margin-left: 2%;
 }
 
-#score-card {
-  width: 180px;
-  background-color: grey;
+.score-card {
+  width: 200px;
+  background-color: white;
 }
 
 #score-card-title {
@@ -12,12 +12,20 @@
   color: black;
 }
 
-.score-checkbox {
-  font-size: 12pt;
-  margin-top: 5%;
+#score-divider {
+  border-top-color: black;
 }
 
-#score-more {
-  margin-top: 10%;
+:host ::ng-deep .score-checkbox-container .mat-radio-outer-circle {
+  border-color: black;
+}
+
+.score-checkbox-container {
+  margin-top: 5%;
+  color: black;
+}
+
+mat-radio-button {
   font-size: 12pt;
+  margin-top: 3%;
 }

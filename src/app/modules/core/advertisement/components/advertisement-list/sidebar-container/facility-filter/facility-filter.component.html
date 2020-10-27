@@ -1,5 +1,5 @@
 <div class="facility-filter">
-  <mat-card id="facility-card" fxLayout="column">
+  <mat-card class="facility-card" fxLayout="column">
     <mat-card-title id="facility-card-title" fxLayoutAlign="start center">
       Facility
     </mat-card-title>
@@ -13,18 +13,17 @@
         <ng-template [ngIf]="expanded">
           <mat-checkbox>Tv</mat-checkbox>
           <mat-checkbox>Bath</mat-checkbox>
+          <div id="facility-less" fxLayout="row" fxLayoutAlign="center"
+            (click)="expand()">
+            <span>Hide</span>
+            <span class="material-icons"> expand_less </span>
+          </div>
         </ng-template>
       </div>
       <ng-template [ngIf]="!expanded">
         <div id="facility-more" fxLayout="row" fxLayoutAlign="center" (click)="expand()">
-          <p>Show more</p>
+          <span>Show more</span>
           <span class="material-icons"> expand_more </span>
-        </div>
-      </ng-template>
-      <ng-template [ngIf]="expanded">
-        <div id="facility-less" fxLayout="row" fxLayoutAlign="center" (click)="expand()">
-          <p>Hide</p>
-          <span class="material-icons"> expand_less </span>
         </div>
       </ng-template>
     </mat-card-content>

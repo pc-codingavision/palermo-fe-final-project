@@ -2,12 +2,39 @@
   margin-left: 2%;
 }
 
-#price-card {
-  width: 180px;
-  background-color: grey;
+.price-card {
+  width: 200px;
+  background-color: white;
 }
 
 #price-card-title {
   font-size: 14pt;
   color: black;
+}
+
+#price-divider {
+  border-top-color: black;
+  margin-bottom: 4%;
+}
+
+:host ::ng-deep #price-slider .mat-slider-thumb {
+  background-color: grey;
+}
+
+:host ::ng-deep #price-slider .mat-slider-track-fill {
+  background-color: grey;
+}
+
+:host ::ng-deep #price-slider .mat-slider-track-wrapper {
+  background-color: rgb(194, 193, 193);
+}
+
+#price-min {
+  color: black;
+  float: left;
+}
+
+#price-max {
+  color: black;
+  float: right;
 }

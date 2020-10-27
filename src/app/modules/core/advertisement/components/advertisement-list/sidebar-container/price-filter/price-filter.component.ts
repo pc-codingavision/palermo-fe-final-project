@@ -9,4 +9,8 @@ export class PriceFilterComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  formatLabel(value: number): string {
+    return value + '€'
+  }
 }
