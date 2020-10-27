@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
-import { MaterialModule } from '../../shared/material.module'
+import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from './../advertisement/components/advertisement-container/advertisement-container.component'
 import { DatesComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-main-view/dates/dates.component'
 import { FacilityComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facility/facility.component'
