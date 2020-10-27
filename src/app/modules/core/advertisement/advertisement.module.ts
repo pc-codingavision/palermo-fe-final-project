@@ -9,9 +9,10 @@ import { CardContainerComponent } from './components/advertisement-list/properti
 import { CardMainViewComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/card-main-view.component'
 import { FacilitiesContainerComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facility/facility.component'
+import { FavouriteComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/favourite/favourite.component'
 import { PhotogalleryComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/photogallery/photogallery.component'
 import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component';
-import { FavouriteComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/favourite/favourite.component'
+import { ScoreComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/score/score.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FavouriteComponent } from './components/advertisement-list/properties-c
     FacilitiesContainerComponent,
     FacilityComponent,
     FavouriteComponent,
+    ScoreComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule],
