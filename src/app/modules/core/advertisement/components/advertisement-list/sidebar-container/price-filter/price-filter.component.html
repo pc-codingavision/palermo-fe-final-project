@@ -1,0 +1,15 @@
+<div class="price-filter">
+  <mat-card id="price-card" fxLayout="column">
+    <mat-card-title id="price-card-title" fxLayoutAlign="start center">
+      Price per night
+    </mat-card-title>
+    <mat-card-content>
+      <mat-divider id="price-divider" [inset]="true">
+      </mat-divider>
+      <mat-slider id="price-slider" thumbLabel min="0" max="1000" step="10"
+        fxLayoutAlign="center center"></mat-slider>
+      <p style="float:left">€ 0</p>
+      <p style="float:right">€ 1000</p>
+    </mat-card-content>
+  </mat-card>
+</div>
