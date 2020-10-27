@@ -5,12 +5,14 @@ import { AdvertisementContainerComponent } from './../advertisement/components/a
 import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
+import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component'
 
 @NgModule({
   declarations: [
     AdvertisementListComponent,
     AdvertisementContainerComponent,
     AdvertisementDetailsComponent,
+    PropertiesContainerComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule],
