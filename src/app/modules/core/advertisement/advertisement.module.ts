@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from './../advertisement/components/advertisement-container/advertisement-container.component'
@@ -28,6 +29,6 @@ import { PropertiesContainerComponent } from './components/advertisement-list/pr
     FacilitiesComponent,
   ],
 
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule],
+  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
 })
 export class AdvertisementModule {}
