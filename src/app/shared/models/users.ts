@@ -6,6 +6,7 @@ export interface IName {
   middleName?: string
   surname: string
 }
+
 export interface IAddress {
   line1: string
   line2?: string
