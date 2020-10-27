@@ -11,8 +11,9 @@ import { FacilitiesContainerComponent } from './components/advertisement-list/pr
 import { FacilityComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/favourite/favourite.component'
 import { PhotogalleryComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/photogallery/photogallery.component'
-import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component';
 import { ScoreComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/score/score.component'
+import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component';
+import { DatesComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/dates/dates.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ScoreComponent } from './components/advertisement-list/properties-conta
     FacilityComponent,
     FavouriteComponent,
     ScoreComponent,
+    DatesComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule],
