@@ -1,18 +1,28 @@
-<!-- Titolo -->
 <div>
-  {{landlord.fullName}} Details
+  {{landlord.fullName}}
 </div>
 
-<!-- Img - Status-->
-<div>
-  <img [src]="landlord.picture" [alt]="landlord.fullName">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
 
-  <cav-status [landStatus]="landlord.status"></cav-status>
-</div>
+  <div id='container' fxFlex='10'>
 
-<!-- Contact details - Phone Details - Address Details-->
-<div>
-  <cav-contact [landlord]="landlord"></cav-contact>
-  <cav-phone [landlord]="landlord"></cav-phone>
-  <cav-address [landlord]="landlord"></cav-address>
+    <!-- Img - Status-->
+    <div>
+      <img [src]="landlord.picture" [alt]="landlord.fullName">
+
+      <cav-status [landStatus]="landlord.status"></cav-status>
+    </div>
+  </div>
+  <!-- Contact details - Phone Details - Address Details-->
+
+
+  <div fxFlex='30'>
+    <cav-contact id="contact" [landlord]="landlord"></cav-contact>
+  </div>
+  <div fxFlex='30'>
+    <cav-phone [landlord]="landlord"></cav-phone>
+  </div>
+  <div fxFlex='30'>
+    <cav-address [landlord]="landlord"></cav-address>
+  </div>
 </div>

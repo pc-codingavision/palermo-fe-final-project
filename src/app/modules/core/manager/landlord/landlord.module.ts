@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { MaterialModule } from './../../../shared/material.module'
 import { LandlordContainerComponent } from './components/container/landlord-container.component'
@@ -26,6 +27,6 @@ const landlordComponents = [
 ]
 @NgModule({
   declarations: [...landlordComponents],
-  imports: [CommonModule, LandlordRoutingModule, MaterialModule],
+  imports: [CommonModule, LandlordRoutingModule, MaterialModule, FlexLayoutModule],
 })
 export class LandlordModule {}
