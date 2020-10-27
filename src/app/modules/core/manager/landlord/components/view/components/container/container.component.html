@@ -1,1 +1,18 @@
-<p>container works!</p>
+<!-- Titolo -->
+<div>
+  {{landlord.fullName}} Details
+</div>
+
+<!-- Img - Status-->
+<div>
+  <img [src]="landlord.picture" [alt]="landlord.fullName">
+
+  <cav-status [landStatus]="landlord.status"></cav-status>
+</div>
+
+<!-- Contact details - Phone Details - Address Details-->
+<div>
+  <cav-contact [landlord]="landlord"></cav-contact>
+  <cav-phone></cav-phone>
+  <cav-address></cav-address>
+</div>

@@ -8,7 +8,7 @@ import { LandlordListComponent } from './components/list/landlord-list.component
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { AddressComponent } from './components/view/components/address/address.component'
 import { ContactComponent } from './components/view/components/contact/contact.component'
-import { ContainerComponent } from './components/view/components/container/container.component'
+import { ViewContainerComponent } from './components/view/components/container/container.component'
 import { PhoneComponent } from './components/view/components/phone/phone.component'
 import { StatusComponent } from './components/view/components/status/status.component'
 import { LandlordRoutingModule } from './landlord-routing.module'
@@ -18,7 +18,7 @@ const landlordComponents = [
   LandlordListComponent,
   LandlordNewComponent,
   LandlordContainerComponent,
-  ContainerComponent,
+  ViewContainerComponent,
   StatusComponent,
   AddressComponent,
   PhoneComponent,

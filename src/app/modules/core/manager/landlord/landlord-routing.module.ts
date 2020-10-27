@@ -5,14 +5,14 @@ import { LandlordContainerComponent } from './components/container/landlord-cont
 import { LandlordEditComponent } from './components/edit/landlord-edit.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
-import { ContainerComponent } from './components/view/components/container/container.component'
+import { ViewContainerComponent } from './components/view/components/container/container.component'
 
 const routes: Routes = [
   { path: '', component: LandlordContainerComponent },
   { path: 'list', component: LandlordListComponent },
   { path: 'new', component: LandlordNewComponent },
   { path: 'edit', component: LandlordEditComponent },
-  { path: 'view', component: ContainerComponent },
+  { path: 'view', component: ViewContainerComponent },
 ]
 
 @NgModule({
