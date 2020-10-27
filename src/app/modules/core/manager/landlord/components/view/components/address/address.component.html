@@ -1,1 +1,25 @@
-<p>address works!</p>
+<mat-card>
+  <mat-card-title>
+    Address
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-card-subtitle>
+      Line 1: {{landlord.address.line1}}
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      Line 2: {{landlord.address.line2}}
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      City: {{landlord.address.city}}
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      State: {{landlord.address.state}}
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      Postal Code: {{landlord.address.postCode}}
+    </mat-card-subtitle>
+
+
+  </mat-card-content>
+</mat-card>
