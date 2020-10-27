@@ -7,13 +7,14 @@ import { AdvertisementDetailsComponent } from './components/advertisement-detail
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 import { CardContainerComponent } from './components/advertisement-list/properties-container/card-container/card-container.component'
 import { CardMainViewComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/card-main-view.component'
+import { DatesComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/dates/dates.component'
 import { FacilitiesContainerComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/favourite/favourite.component'
 import { PhotogalleryComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/photogallery/photogallery.component'
 import { ScoreComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/score/score.component'
 import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component';
-import { DatesComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/dates/dates.component'
+import { BookButtonComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/book-button/book-button.component'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DatesComponent } from './components/advertisement-list/properties-conta
     FavouriteComponent,
     ScoreComponent,
     DatesComponent,
+    BookButtonComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule],
