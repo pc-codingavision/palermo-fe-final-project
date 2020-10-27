@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 import { LANDLORDS } from './../../../../../../../../shared/models/mock-data/mock-landlord'
