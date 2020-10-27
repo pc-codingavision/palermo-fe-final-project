@@ -8,7 +8,7 @@ import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { LandlordViewComponent } from './components/view/landlord-view.component'
 
 const routes: Routes = [
-  { path: '', outlet: 'section1', component: LandlordContainerComponent },
+  { path: '', component: LandlordContainerComponent },
   { path: 'list', component: LandlordListComponent },
   { path: 'new', component: LandlordNewComponent },
   { path: 'edit', component: LandlordEditComponent },
