@@ -5,7 +5,8 @@ import { AdvertisementContainerComponent } from './../advertisement/components/a
 import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
-import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component'
+import { PropertiesContainerComponent } from './components/advertisement-list/properties-container/properties-container.component';
+import { CardContainerComponent } from './components/advertisement-list/properties-container/card-container/card-container.component'
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PropertiesContainerComponent } from './components/advertisement-list/pr
     AdvertisementContainerComponent,
     AdvertisementDetailsComponent,
     PropertiesContainerComponent,
+    CardContainerComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule],
