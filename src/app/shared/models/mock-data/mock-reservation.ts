@@ -19,13 +19,4 @@ export const RESERVATIONS: IReservation[] = [
     checkOut: '30/11/2020',
     specialRequest: 'I would like to do the check-in in early morning.',
   },
-  {
-    id: 3,
-    tenantId: 3,
-    propertyId: 3,
-    guestNumber: 4,
-    checkIn: '21/10/2020',
-    checkOut: '30/10/2020',
-    specialRequest: 'I would like to find some water when I arrive.',
-  },
 ]
