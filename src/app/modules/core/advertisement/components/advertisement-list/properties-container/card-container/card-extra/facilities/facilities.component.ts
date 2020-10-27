@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-facilities',
   templateUrl: './facilities.component.html',
-  styleUrls: ['./facilities.component.scss']
+  styleUrls: ['./facilities.component.scss'],
 })
 export class FacilitiesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
