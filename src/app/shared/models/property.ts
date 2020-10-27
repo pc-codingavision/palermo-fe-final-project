@@ -1,6 +1,7 @@
 import { Category } from './../enum/category'
 import { Status } from '../enum/status'
 import { Toilet } from '../enum/toilet'
+import { IAddress } from './users'
 
 export interface IFacilities {
   tv: boolean
@@ -12,16 +13,8 @@ export interface IFacilities {
   bath: boolean
 }
 
-export interface IAddress {
-  line1: string
-  line2?: string
-  city: string
-  postalCode: number | string
-  country: string
-}
-
 export interface IRoom {
-  roomName: string
+  name: string
   beds: number
   toilet: Toilet
   mq: number
@@ -31,7 +24,7 @@ export interface IProperty {
   id: number
   landlordId: number
   address: IAddress
-  propertyTitle: string
+  title: string
   category: Category
   rooms: IRoom[]
   numberOfToilet: number
@@ -46,7 +39,7 @@ export class Property implements IProperty {
     public id = null,
     public landlordId = null,
     public address = null,
-    public propertyTitle = null,
+    public title = null,
     public category = null,
     public rooms = null,
     public numberOfToilet = null,
@@ -64,7 +57,7 @@ export class Property implements IProperty {
       property.id,
       property.landlordId,
       property.address,
-      property.propertyTitle,
+      property.title,
       property.category,
       property.rooms,
       property.numberOfToilet,
