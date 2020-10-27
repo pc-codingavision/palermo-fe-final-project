@@ -34,4 +34,3 @@ export interface IUser {
   role: Role
   address?: IAddress
 }
-
