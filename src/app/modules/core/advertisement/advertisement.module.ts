@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
+import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from './../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
@@ -33,6 +34,6 @@ import { PropertiesContainerComponent } from './components/advertisement-list/pr
     BookButtonComponent,
   ],
 
-  imports: [CommonModule, AdvertisementRoutingModule],
+  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule],
 })
 export class AdvertisementModule {}
