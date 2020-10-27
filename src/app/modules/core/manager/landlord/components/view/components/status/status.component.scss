@@ -1,3 +1,13 @@
+img {
+  display: flex;
+  max-height: 100px;
+  max-width: 100px;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 0 auto;
+}
+
 mat-card {
-  height: auto;
+  height: 200px;
+  border-radius: 0px;
 }

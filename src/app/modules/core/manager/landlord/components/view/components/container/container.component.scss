@@ -1,8 +1,15 @@
-#container img {
-  width: 100%;
+#container {
+  border: 1px solid whitesmoke;
+  background-color: wheat;
+  height: 350px;
+}
+#buttons-container {
+  margin-top: 1%;
+  float: right;
+  width: 20%;
+  margin-right: 1%;
 }
 
-#contact {
-  height: 30%;
-  width: 100%;
+button {
+  padding: 10px 25px;
 }

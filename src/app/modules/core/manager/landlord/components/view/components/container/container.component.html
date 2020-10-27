@@ -1,28 +1,40 @@
-<div>
-  {{landlord.fullName}}
-</div>
-
-<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
-
-  <div id='container' fxFlex='10'>
-
-    <!-- Img - Status-->
-    <div>
-      <img [src]="landlord.picture" [alt]="landlord.fullName">
-
-      <cav-status [landStatus]="landlord.status"></cav-status>
-    </div>
+<div id="container">
+  <div>
+    {{landlord.fullName}}
   </div>
-  <!-- Contact details - Phone Details - Address Details-->
+
+  <div id="cav-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="stretch">
 
 
-  <div fxFlex='30'>
-    <cav-contact id="contact" [landlord]="landlord"></cav-contact>
+    <cav-status fxFlex="10" [landlord]="landlord"></cav-status>
+
+
+
+    <cav-contact fxFlex="30" id="contact-cav" [landlord]="landlord"></cav-contact>
+
+
+
+    <cav-phone fxFlex="30" id="phone-cav" [landlord]="landlord"></cav-phone>
+
+
+
+    <cav-address fxFlex="30" id="address-cav" [landlord]="landlord"></cav-address>
+
+
   </div>
-  <div fxFlex='30'>
-    <cav-phone [landlord]="landlord"></cav-phone>
-  </div>
-  <div fxFlex='30'>
-    <cav-address [landlord]="landlord"></cav-address>
+
+  <div id="buttons-container" fxLayout="row" fxLayoutAlign="space-around">
+
+    <button routerLink="/manager/landlord/edit" mat-raised-button color="primary">
+      Edit
+    </button>
+
+    <button mat-raised-button color="accent" (click)="openDeactivateDialog()">
+      Deactivate
+    </button>
+
+    <button mat-raised-button color="warn">
+      Delete
+    </button>
   </div>
 </div>
