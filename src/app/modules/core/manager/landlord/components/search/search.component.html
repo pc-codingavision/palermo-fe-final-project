@@ -7,32 +7,32 @@
   <div class="inputs" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Name" [formControl]="nameControl"
+        <input type="text" placeholder="Name" [formControl]="formControl"
           [matAutocomplete]="auto" id="input">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let name of tenants" [value]="name">
-            {{name.fullName}}
+          <mat-option *ngFor="let names of filteredFullName | async" [value]="names">
+            {{names}}
           </mat-option>
         </mat-autocomplete>
       </form>
     </div>
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Email" [formControl]="emailControl"
+        <input type="text" placeholder="Email" [formControl]="formControl"
           [matAutocomplete]="email" id="input">
         <mat-autocomplete #email="matAutocomplete">
-          <mat-option *ngFor="let option of tenants" [value]="option">
-            {{option.mail}}
+          <mat-option *ngFor="let emails of filteredEmail | async" [value]="emails">
+            {{emails}}
           </mat-option>
         </mat-autocomplete>
       </form>
     </div>
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Phone" [formControl]="phoneControl"
+        <input type="text" placeholder="Phone" [formControl]="formControl"
           [matAutocomplete]="phone" id="input">
         <mat-autocomplete #phone="matAutocomplete">
-          <mat-option *ngFor="let option of tenantsPhoneNumber" [value]="option">
+          <mat-option *ngFor="let option of filteredPhone | async" [value]="option">
             {{option}}
           </mat-option>
         </mat-autocomplete>
