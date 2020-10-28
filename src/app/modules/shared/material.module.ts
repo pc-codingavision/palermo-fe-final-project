@@ -5,6 +5,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatNativeDateModule } from '@angular/material/core'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatDividerModule } from '@angular/material/divider'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
@@ -24,6 +26,8 @@ const modules = [
   MatDividerModule,
   MatCheckboxModule,
   MatRadioModule,
+  MatGridListModule,
+  MatIconModule,
 ]
 
 @NgModule({
