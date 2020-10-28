@@ -23,10 +23,18 @@ export class LandlordListComponent implements OnInit {
   landlords: Landlord[] = []
   dataSource = this.landlords
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
+  expandedElement: Elements | null
 
   ngOnInit(): void {
     LANDLORDS.forEach((val) => {
       this.landlords.push(Landlord.Build(val))
     })
   }
+}
+
+export interface Elements {
+  id: any
+  fullname: any
+  mail: any
+  phone_number: any
 }
