@@ -20,10 +20,7 @@ export const TENANTS: Tenant[] = [
   {
     id: 2,
     name: { firstName: 'Gigi', surname: 'Filini' },
-    phone: [
-      { id: 1, type: PhoneType.Home, digits: 0900256248 },
-      { id: 2, type: PhoneType.Mobile, digits: 355847229 },
-    ],
+    phone: [{ id: 2, type: PhoneType.Mobile, digits: 355847229 }],
     mail: 'geom-filini@test.com',
     picture: 'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
     username: 'geomFilini',

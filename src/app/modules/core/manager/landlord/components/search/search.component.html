@@ -1,0 +1,42 @@
+<div class="general">
+  <div class="title">
+    <mat-toolbar>
+      <span>Search</span>
+    </mat-toolbar>
+  </div>
+  <div class="inputs" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+    <div id="i-style">
+      <form id="i-form">
+        <input type="text" placeholder="Name" [formControl]="nameControl"
+          [matAutocomplete]="auto" id="input">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let name of tenants" [value]="name">
+            {{name.fullName}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    </div>
+    <div id="i-style">
+      <form id="i-form">
+        <input type="text" placeholder="Email" [formControl]="emailControl"
+          [matAutocomplete]="email" id="input">
+        <mat-autocomplete #email="matAutocomplete">
+          <mat-option *ngFor="let option of tenants" [value]="option">
+            {{option.mail}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    </div>
+    <div id="i-style">
+      <form id="i-form">
+        <input type="text" placeholder="Phone" [formControl]="phoneControl"
+          [matAutocomplete]="phone" id="input">
+        <mat-autocomplete #phone="matAutocomplete">
+          <mat-option *ngFor="let option of tenantsPhoneNumber" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    </div>
+  </div>
+</div>
