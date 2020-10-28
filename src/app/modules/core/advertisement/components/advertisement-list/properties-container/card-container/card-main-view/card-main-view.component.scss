@@ -2,18 +2,20 @@
   padding-left: 300px;
 }
 
-.content > mat-card {
+mat-card {
   width: 100%;
+  background-color: #f5f5f5;
 }
 
-.header {
-  float: right;
+mat-card-actions {
+  max-width: 250px;
 }
 
-.button {
-  float: right;
+mat-card-title {
+  margin-left: 11px;
+  color: black;
 }
 
-.card-contents {
+cav-book-button {
   float: right;
 }
