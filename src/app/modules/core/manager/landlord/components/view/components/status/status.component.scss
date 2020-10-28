@@ -1,13 +1,25 @@
 img {
-  display: flex;
-  max-height: 100px;
-  max-width: 100px;
-  min-width: 100px;
-  min-height: 100px;
-  margin: 0 auto;
+  width: 100px;
 }
 
 mat-card {
   height: 200px;
-  border-radius: 0px;
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+mat-card-title {
+  padding-top: 30px;
+}
+
+.active {
+  color: #28a745;
+}
+
+.disactive {
+  color: #ffc107;
+}
+
+img.disactive {
+  filter: grayscale(100%);
 }

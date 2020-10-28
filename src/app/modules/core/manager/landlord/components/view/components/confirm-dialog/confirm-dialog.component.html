@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Deactivate {{data}}</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to deactivate this Landlord?</p>
+  <p>
+    No data will be removed and it will be available as soon the landlord will be
+    activated again.
+  </p>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="primary" [mat-dialog-close]="true">Confirm</button>
+
+    <button mat-button color="warn" mat-dialog-close>Cancel</button>
+  </div>
+</div>

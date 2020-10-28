@@ -1,11 +1,10 @@
 <mat-card>
-  <mat-card-header>
-    <img [src]="landlord.picture" [alt]="landlord.fullName">
-  </mat-card-header>
+  <img [src]="landlord.picture" [alt]="landlord.fullName"
+    [ngClass]="(landlord.status)?'active':'disactive'">
   <mat-card-title>
     Status:
   </mat-card-title>
-  <mat-card-content>
-    {{status}}
+  <mat-card-content [ngClass]="(landlord.status)?'active':'disactive'">
+    <h2>{{status}}</h2>
   </mat-card-content>
 </mat-card>

@@ -1,7 +1,7 @@
 #container {
   border: 1px solid whitesmoke;
   background-color: wheat;
-  height: 350px;
+  height: 400px;
 }
 #buttons-container {
   margin-top: 1%;
@@ -12,4 +12,10 @@
 
 button {
   padding: 10px 25px;
+}
+
+h1 {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-weight: 500;
 }
