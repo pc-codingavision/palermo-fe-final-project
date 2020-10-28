@@ -11,6 +11,8 @@ import { FacilityFilterComponent } from './components/advertisement-list/sidebar
 import { PriceFilterComponent } from './components/advertisement-list/sidebar-container/price-filter/price-filter.component'
 import { ScoreFilterComponent } from './components/advertisement-list/sidebar-container/score-filter/score-filter.component'
 import { SidebarContainerComponent } from './components/advertisement-list/sidebar-container/sidebar-container.component'
+import { LatestContainerComponent } from './components/advertisement-list/latest-container/latest-container.component'
+import { LatestMiniCardComponent } from './components/advertisement-list/latest-container/latest-mini-card/latest-mini-card.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SidebarContainerComponent } from './components/advertisement-list/sideb
     PriceFilterComponent,
     FacilityFilterComponent,
     ScoreFilterComponent,
+    LatestContainerComponent,
+    LatestMiniCardComponent,
   ],
 
   imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
