@@ -16,7 +16,7 @@ export class ReviewComponent implements OnInit {
     {
       title: 'Not great',
       tenantId: 4,
-      description: 'The hostel was very very chaotic',
+      description: 'The hostel was very very chaotic ',
       vote: 1.5,
     },
   ]
