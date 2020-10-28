@@ -1,0 +1,10 @@
+<div class="mini-card" fxLayout="row" fxLayoutGap="10%">
+  <mat-card *ngFor="let property of properties" class="mini-card">
+    <img mat-card-image src="{{ property.imagesPath[0] }}">
+    <mat-card-content>
+      <mat-card-title>
+        <h3> {{ property.title }} a {{ property.address.city }} </h3>
+      </mat-card-title>
+    </mat-card-content>
+  </mat-card>
+</div>
