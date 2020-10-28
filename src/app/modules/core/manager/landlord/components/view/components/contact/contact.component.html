@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-title>
+    Contact Details
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-card-subtitle><span>FirstName: </span> {{landlord.name.firstName}}
+    </mat-card-subtitle>
+    <mat-card-subtitle><span>LastName: </span>{{landlord.name.surname}}
+    </mat-card-subtitle>
+    <mat-card-subtitle><span>Username: </span>{{landlord.username}}</mat-card-subtitle>
+    <mat-card-subtitle><span>DOB: </span>{{landlord.dateOfBirth | date}}
+    </mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

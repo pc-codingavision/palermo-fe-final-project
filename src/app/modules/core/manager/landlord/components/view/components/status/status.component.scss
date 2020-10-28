@@ -1,0 +1,28 @@
+img {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+mat-card {
+  height: 200px;
+  border-radius: 4px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+mat-card-title {
+  padding-top: 30px;
+}
+
+.active {
+  color: #28a745;
+}
+
+.disactive {
+  color: #ffc107;
+}
+
+img.disactive {
+  filter: grayscale(100%);
+}

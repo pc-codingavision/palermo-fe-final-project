@@ -1,0 +1,19 @@
+mat-card {
+  height: 200px;
+  border-radius: 4px;
+  margin: 0 10px;
+  line-height: 20px;
+}
+
+mat-card-content {
+  margin-top: 25px;
+}
+
+mat-card-subtitle {
+  font-size: 18px;
+}
+
+mat-card-subtitle span {
+  color: white;
+  font-weight: 500;
+}
