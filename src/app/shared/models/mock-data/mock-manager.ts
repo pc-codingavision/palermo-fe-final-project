@@ -10,17 +10,17 @@ export const MANAGERS: Manager[] = [
       {
         id: 1,
         type: PhoneType.Home,
-        digits: 0911113333,
+        digits: '0911113333',
       },
       {
         id: 2,
         type: PhoneType.Mobile,
-        digits: 3333333333,
+        digits: '3333333333',
       },
       {
         id: 3,
         type: PhoneType.Work,
-        digits: 3216549871,
+        digits: '3216549871',
       },
     ],
     mail: 'piero-manager@test.com',
@@ -40,12 +40,12 @@ export const MANAGERS: Manager[] = [
       {
         id: 1,
         type: PhoneType.Work,
-        digits: 3216549871,
+        digits: '3216549871',
       },
       {
         id: 2,
         type: PhoneType.Mobile,
-        digits: 369258147,
+        digits: '369258147',
       },
     ],
     mail: 'cosimo-manager@test.com',
@@ -65,7 +65,7 @@ export const MANAGERS: Manager[] = [
       {
         id: 1,
         type: PhoneType.Mobile,
-        digits: 3571594862,
+        digits: '3571594862',
       },
     ],
     mail: 'mario-manager@test.com',

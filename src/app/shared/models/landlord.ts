@@ -1,11 +1,11 @@
 import { Role } from '../enum/role'
-import { IAddress, IName, IUser } from './users'
+import { IAddress, IName, IPhone, IUser } from './users'
 
 export class Landlord implements IUser {
   private constructor(
     public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
-    public phone = [],
+    public phone = [] as IPhone[],
     public mail = '',
     public picture = '',
     public username = '',
