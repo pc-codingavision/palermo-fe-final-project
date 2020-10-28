@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Landlord } from 'src/app/shared/models/landlord'
 
-import { LANDLORDS } from './../../../../../../../../shared/models/mock-data/mock-landlord'
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component'
 
 @Component({
@@ -11,8 +10,8 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   styleUrls: ['./container.component.scss'],
 })
 export class ViewContainerComponent implements OnInit {
-  landlord = Landlord.Build(LANDLORDS[0])
-
+  @Input() landlord: Landlord
+  @Output() remove = new EventEmitter<any>()
   constructor(public confirmDialog: MatDialog) {}
 
   ngOnInit(): void {}
@@ -26,7 +25,7 @@ export class ViewContainerComponent implements OnInit {
       if (result) {
         this.landlord.status = !this.landlord.status
       } else {
-        // Remove the element
+        this.remove.emit(this.landlord)
       }
     })
   }

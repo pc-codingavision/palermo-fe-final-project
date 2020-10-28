@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { Observable } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
-import { Tenant } from 'src/app/shared/models/tenant'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LANDLORDS } from './../../../../../../shared/models/mock-data/mock-landlord'
@@ -22,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     LANDLORDS.forEach((v) => {
-      this.landlords.push(Tenant.Build(v))
+      this.landlords.push(Landlord.Build(v))
     })
 
     this.filteredFullName = this.formControl.valueChanges.pipe(
@@ -42,25 +41,24 @@ export class SearchComponent implements OnInit {
   private _filterFullName(value: string): string[] {
     const filterValue = this._normalizeValue(value)
     const landlordsUsername = this.landlords.map((landlord) => landlord.fullName)
-    return landlordsUsername.filter((tenant) =>
-      this._normalizeValue(tenant).includes(filterValue)
+    return landlordsUsername.filter((landlord) =>
+      this._normalizeValue(landlord).includes(filterValue)
     )
   }
 
   private _filterEmail(value: string): string[] {
     const filterValue = this._normalizeValue(value)
     const landlordsEmail = this.landlords.map((landlord) => landlord.mail)
-    return landlordsEmail.filter((tenant) =>
-      this._normalizeValue(tenant).includes(filterValue)
+    return landlordsEmail.filter((landlord) =>
+      this._normalizeValue(landlord).includes(filterValue)
     )
   }
 
   private _filterPhone(value: string): string[] {
     const filterValue = this._normalizeValue(value)
     const landlordsPhone = this.landlords.map((landlord) => landlord.phone[0].digits)
-    console.log(landlordsPhone)
-    return landlordsPhone.filter((tenant) =>
-      this._normalizeValue(tenant).includes(filterValue)
+    return landlordsPhone.filter((landlord) =>
+      this._normalizeValue(landlord).includes(filterValue)
     )
   }
 

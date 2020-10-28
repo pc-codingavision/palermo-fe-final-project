@@ -4,6 +4,13 @@ import { Component, OnInit } from '@angular/core'
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LANDLORDS } from './../../../../../../shared/models/mock-data/mock-landlord'
 
+export interface Elements {
+  id: any
+  fullname: any
+  mail: any
+  phone_number: any
+}
+
 @Component({
   selector: 'cav-landlord-list',
   templateUrl: './landlord-list.component.html',
@@ -30,11 +37,9 @@ export class LandlordListComponent implements OnInit {
       this.landlords.push(Landlord.Build(val))
     })
   }
-}
 
-export interface Elements {
-  id: any
-  fullname: any
-  mail: any
-  phone_number: any
+  remove(event: any): void {
+    const index = this.landlords.indexOf(event)
+    LANDLORDS.splice(index, 1)
+  }
 }
