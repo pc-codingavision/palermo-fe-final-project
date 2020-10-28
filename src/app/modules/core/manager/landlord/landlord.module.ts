@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { MaterialModule } from './../../../shared/material.module'
 import { LandlordContainerComponent } from './components/container/landlord-container.component'
 import { LandlordEditComponent } from './components/edit/landlord-edit.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
+import { SearchComponent } from './components/search/search.component'
 import { AddressComponent } from './components/view/components/address/address.component'
 import { ConfirmDialogComponent } from './components/view/components/confirm-dialog/confirm-dialog.component'
 import { ContactComponent } from './components/view/components/contact/contact.component'
@@ -25,9 +27,18 @@ const landlordComponents = [
   AddressComponent,
   PhoneComponent,
   ContactComponent,
+  SearchComponent,
+  ConfirmDialogComponent,
 ]
 @NgModule({
-  declarations: [...landlordComponents, ConfirmDialogComponent],
-  imports: [CommonModule, LandlordRoutingModule, MaterialModule, FlexLayoutModule],
+  declarations: [...landlordComponents],
+  imports: [
+    CommonModule,
+    LandlordRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule,
+  ],
 })
 export class LandlordModule {}
