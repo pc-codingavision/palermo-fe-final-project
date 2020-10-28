@@ -1,18 +1,24 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
+import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from './../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
+import { LatestContainerComponent } from './components/advertisement-list/latest-container/latest-container.component'
+import { LatestMiniCardComponent } from './components/advertisement-list/latest-container/latest-mini-card/latest-mini-card.component'
 
 @NgModule({
   declarations: [
     AdvertisementListComponent,
     AdvertisementContainerComponent,
     AdvertisementDetailsComponent,
+    LatestContainerComponent,
+    LatestMiniCardComponent,
   ],
 
-  imports: [CommonModule, AdvertisementRoutingModule],
+  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
 })
 export class AdvertisementModule {}
