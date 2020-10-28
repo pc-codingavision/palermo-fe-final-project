@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { Landlord } from './../../../../../../../../shared/models/landlord'
+import { IAddress } from './../../../../../../../../shared/models/users'
 
 @Component({
   selector: 'cav-address',
@@ -8,7 +8,7 @@ import { Landlord } from './../../../../../../../../shared/models/landlord'
   styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent implements OnInit {
-  @Input() landlord: Landlord
+  @Input() address: IAddress
 
   constructor() {}
 

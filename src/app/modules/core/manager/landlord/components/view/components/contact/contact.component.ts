@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { Landlord } from './../../../../../../../../shared/models/landlord'
+import { IName } from 'src/app/shared/models/users'
 
 @Component({
   selector: 'cav-contact',
@@ -8,7 +7,11 @@ import { Landlord } from './../../../../../../../../shared/models/landlord'
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  @Input() landlord: Landlord
+  @Input() landlord: {
+    name: IName
+    username: string
+    dateOfBirth: Date
+  }
 
   constructor() {}
 

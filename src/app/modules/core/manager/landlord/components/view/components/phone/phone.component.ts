@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { Landlord } from './../../../../../../../../shared/models/landlord'
+import { IPhone } from './../../../../../../../../shared/models/users'
 
 @Component({
   selector: 'cav-phone',
@@ -8,7 +8,7 @@ import { Landlord } from './../../../../../../../../shared/models/landlord'
   styleUrls: ['./phone.component.scss'],
 })
 export class PhoneComponent implements OnInit {
-  @Input() landlord: Landlord
+  @Input() landlord: { phones: IPhone[]; mail: string }
 
   constructor() {}
 

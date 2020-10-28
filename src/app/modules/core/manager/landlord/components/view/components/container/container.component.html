@@ -4,10 +4,16 @@
   </div>
 
   <div id="cav-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="stretch">
-    <cav-status fxFlex="10" [landlord]="landlord"></cav-status>
-    <cav-contact fxFlex="30" id="contact-cav" [landlord]="landlord"></cav-contact>
-    <cav-phone fxFlex="30" id="phone-cav" [landlord]="landlord"></cav-phone>
-    <cav-address fxFlex="30" id="address-cav" [landlord]="landlord"></cav-address>
+    <cav-status fxFlex="10"
+      [landlord]="{fullName: landlord.fullName, picture: landlord.picture, status: landlord.status}">
+    </cav-status>
+    <cav-contact fxFlex="30" id="contact-cav"
+      [landlord]="{name: landlord.name, username: landlord.username, dateOfBirth: landlord.dateOfBirth}">
+    </cav-contact>
+    <cav-phone fxFlex="30" id="phone-cav"
+      [landlord]="{phones: landlord.phone, mail: landlord.mail}"></cav-phone>
+    <cav-address fxFlex="30" id="address-cav" [address]="landlord.address">
+    </cav-address>
   </div>
 
   <div id="buttons-container" fxLayout="row" fxLayoutAlign="space-around">
@@ -15,11 +21,12 @@
       Edit
     </button>
 
-    <button mat-raised-button color="accent" (click)="openDeactivateDialog()">
-      Deactivate
+    <button mat-raised-button color="accent"
+      (click)="openDialog(landlord.status ? 'deactivate' : 'activate')">
+      {{landlord.status ? 'Deactivate' : 'Activate'}}
     </button>
 
-    <button mat-raised-button color="warn">
+    <button mat-raised-button color="warn" (click)="openDialog('delete')">
       Delete
     </button>
   </div>

@@ -17,14 +17,16 @@ export class ViewContainerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  openDeactivateDialog(): void {
-    const deactivateDialogRef = this.confirmDialog.open(ConfirmDialogComponent, {
-      data: this.landlord.fullName,
+  openDialog(type: string): void {
+    const dialogRef = this.confirmDialog.open(ConfirmDialogComponent, {
+      data: { fullName: this.landlord.fullName, status: this.landlord.status, type },
     })
 
-    deactivateDialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.landlord.status = false
+        this.landlord.status = !this.landlord.status
+      } else {
+        // Remove the element
       }
     })
   }
