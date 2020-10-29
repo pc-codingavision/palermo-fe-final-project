@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
   selector: 'cav-status',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core'
   styleUrls: ['./status.component.scss'],
 })
 export class StatusComponent implements OnInit {
-  @Input() landlord: { fullName: string; picture: string; status: boolean }
+  @Input() landlord: Landlord
 
   status: string
 
