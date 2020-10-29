@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { MaterialModule } from '../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
 import { LatestContainerComponent } from '../advertisement/components/advertisement-list/latest-container/latest-container.component'
-import { CardContainerComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-container.component'
 import { DatesComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-main-view/dates/dates.component'
 import { FacilityComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facility/facility.component'
 import { ScoreComponent } from '../advertisement/components/advertisement-list/properties-container/card-container/card-main-view/score/score.component'
@@ -23,6 +22,7 @@ import { CardMainViewComponent } from './components/advertisement-list/propertie
 import { FacilitiesContainerComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facilities-container.component'
 import { FavouriteComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/favourite/favourite.component'
 import { PhotogalleryComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/photogallery/photogallery.component'
+import { CardComponent } from './components/advertisement-list/properties-container/card-container/card.component'
 import { FacilityFilterComponent } from './components/advertisement-list/sidebar-container/facility-filter/facility-filter.component'
 import { PriceFilterComponent } from './components/advertisement-list/sidebar-container/price-filter/price-filter.component'
 import { ScoreFilterComponent } from './components/advertisement-list/sidebar-container/score-filter/score-filter.component'
@@ -39,7 +39,7 @@ import { SidebarContainerComponent } from './components/advertisement-list/sideb
     ReviewComponent,
     AboutComponent,
     FacilitiesComponent,
-    CardContainerComponent,
+    CardComponent,
     CardMainViewComponent,
     PhotogalleryComponent,
     FacilitiesContainerComponent,
