@@ -17,8 +17,7 @@ import { LatestMiniCardComponent } from './components/advertisement-list/latest-
 import { AboutComponent } from './components/advertisement-list/properties-container/card-container/card-extra/about/about.component'
 import { CardExtraComponent } from './components/advertisement-list/properties-container/card-container/card-extra/card-extra.component'
 import { FacilitiesComponent } from './components/advertisement-list/properties-container/card-container/card-extra/facilities/facilities.component'
-import { ReviewComponent } from './components/advertisement-list/properties-container/card-container/card-extra/reviews-container/review/review.component'
-import { ReviewsContainerComponent } from './components/advertisement-list/properties-container/card-container/card-extra/reviews-container/reviews-container.component'
+import { ReviewComponent } from './components/advertisement-list/properties-container/card-container/card-extra/review/review.component'
 import { BookButtonComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/book-button/book-button.component'
 import { CardMainViewComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/card-main-view.component'
 import { FacilitiesContainerComponent } from './components/advertisement-list/properties-container/card-container/card-main-view/facilities-container/facilities-container.component'
@@ -36,7 +35,7 @@ import { SidebarContainerComponent } from './components/advertisement-list/sideb
     AdvertisementDetailsComponent,
     PropertiesContainerComponent,
     CardExtraComponent,
-    ReviewsContainerComponent,
+
     ReviewComponent,
     AboutComponent,
     FacilitiesComponent,
