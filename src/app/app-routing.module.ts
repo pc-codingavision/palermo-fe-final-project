@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 import { advertisementRoutes } from './modules/core/advertisement/advertisement-routing.module'
+import { LogoutComponent } from './shared/components/logout/logout.component'
 import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
 const managerModule = () =>
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'tenant', loadChildren: tenantModule },
   { path: 'manager', loadChildren: managerModule },
   { path: 'landlord', loadChildren: landlordModule },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: PageNotFoundComponent },
 ]
 
