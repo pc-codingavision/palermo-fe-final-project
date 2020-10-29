@@ -1,8 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
-import { LANDLORDS } from './../../../../../../shared/models/mock-data/mock-landlord'
+import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
 
 export interface Elements {
   id: any
@@ -27,19 +28,19 @@ export interface Elements {
   ],
 })
 export class LandlordListComponent implements OnInit {
-  landlords: Landlord[] = []
-  dataSource = this.landlords
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
 
-  ngOnInit(): void {
-    LANDLORDS.forEach((val) => {
-      this.landlords.push(Landlord.Build(val))
-    })
+  constructor(private landlordService: LandlordService) {}
+
+  getLandlords(): Observable<Landlord[]> {
+    return this.landlordService.getAll()
   }
 
-  remove(event: any): void {
-    const index = this.landlords.indexOf(event)
-    LANDLORDS.splice(index, 1)
-  }
+  ngOnInit(): void {}
+
+  // remove(event: any): void {
+  //   const index = this.landlords.indexOf(event)
+  //   LANDLORDS.splice(index, 1)
+  // }
 }
