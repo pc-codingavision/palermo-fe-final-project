@@ -10,6 +10,7 @@ import { LandlordListComponent } from './components/list/landlord-list.component
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
 import { AddressComponent } from './components/view/components/address/address.component'
+import { ButtonContainerComponent } from './components/view/components/button-container/button-container.component'
 import { ConfirmDialogComponent } from './components/view/components/confirm-dialog/confirm-dialog.component'
 import { ContactComponent } from './components/view/components/contact/contact.component'
 import { ViewContainerComponent } from './components/view/components/container/container.component'
@@ -31,7 +32,7 @@ const landlordComponents = [
   ConfirmDialogComponent,
 ]
 @NgModule({
-  declarations: [...landlordComponents],
+  declarations: [...landlordComponents, ButtonContainerComponent],
   imports: [
     CommonModule,
     LandlordRoutingModule,
