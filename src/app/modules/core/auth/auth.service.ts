@@ -37,6 +37,8 @@ export interface IAuthService {
 
 @Injectable()
 export abstract class AuthService extends CacheService implements IAuthService {
+  private readonly JWT_KEY = 'jwt'
+
   readonly authStatus$ = new BehaviorSubject<IAuthStatus>(defaultAuthStatus)
   readonly currentUser$ = new BehaviorSubject<IUser>(new User())
 
@@ -54,15 +56,15 @@ export abstract class AuthService extends CacheService implements IAuthService {
   protected abstract getCurrentUser(): Observable<User>
 
   protected setToken(jwt: string): void {
-    this.setItem('jwt', jwt)
+    this.setItem(this.JWT_KEY, jwt)
   }
 
   getToken(): string {
-    return this.getItem('jwt') ?? ''
+    return this.getItem(this.JWT_KEY) ?? ''
   }
 
   protected clearToken(): void {
-    this.removeItem('jwt')
+    this.removeItem(this.JWT_KEY)
   }
 
   login(email: string, password: string): Observable<void> {
