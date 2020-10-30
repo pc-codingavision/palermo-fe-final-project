@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
 import { IAdvertisement } from 'src/app/shared/models/advertisement'
 
-import { ADVERTISEMENTS } from './../../../shared/models/mock-data/mock-advertisement'
+import { ADVERTISEMENTS } from '../../../shared/models/mock-data/mock-advertisement'
 
 @Injectable()
 export class AdvertisementService {
