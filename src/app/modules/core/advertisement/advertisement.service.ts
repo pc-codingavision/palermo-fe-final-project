@@ -4,7 +4,9 @@ import { IAdvertisement } from 'src/app/shared/models/advertisement'
 
 import { ADVERTISEMENTS } from '../../../shared/models/mock-data/mock-advertisement'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AdvertisementService {
   constructor() {}
 
