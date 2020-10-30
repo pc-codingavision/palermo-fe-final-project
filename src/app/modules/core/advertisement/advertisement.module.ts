@@ -22,10 +22,10 @@ import { FavouriteComponent } from './components/advertisement-list/card/card-ma
 import { PhotogalleryComponent } from './components/advertisement-list/card/card-main-view/photogallery/photogallery.component'
 import { ScoreComponent } from './components/advertisement-list/card/card-main-view/score/score.component'
 import { LatestMiniCardComponent } from './components/advertisement-list/latest-container/latest-mini-card/latest-mini-card.component'
-import { FacilityFilterComponent } from './components/advertisement-list/sidebar-container/facility-filter/facility-filter.component'
-import { PriceFilterComponent } from './components/advertisement-list/sidebar-container/price-filter/price-filter.component'
-import { ScoreFilterComponent } from './components/advertisement-list/sidebar-container/score-filter/score-filter.component'
-import { SidebarContainerComponent } from './components/advertisement-list/sidebar-container/sidebar-container.component'
+import { FacilityFilterComponent } from './components/advertisement-list/sidebar/facility-filter/facility-filter.component'
+import { PriceFilterComponent } from './components/advertisement-list/sidebar/price-filter/price-filter.component'
+import { ScoreFilterComponent } from './components/advertisement-list/sidebar/score-filter/score-filter.component'
+import { SidebarContainerComponent } from './components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
 
 @NgModule({
   declarations: [
