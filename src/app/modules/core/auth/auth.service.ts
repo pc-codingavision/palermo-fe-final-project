@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
-import * as decode from 'jwt-decode'
+// @ts-ignore
+import jwt_decode from 'jwt-decode'
 import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs'
 import { catchError, filter, map, mergeMap, tap } from 'rxjs/operators'
 
@@ -37,6 +38,8 @@ export interface IAuthService {
 
 @Injectable()
 export abstract class AuthService extends CacheService implements IAuthService {
+  private readonly JWT_KEY = 'jwt'
+
   readonly authStatus$ = new BehaviorSubject<IAuthStatus>(defaultAuthStatus)
   readonly currentUser$ = new BehaviorSubject<IUser>(new User())
 
@@ -76,29 +79,29 @@ export abstract class AuthService extends CacheService implements IAuthService {
   protected abstract getCurrentUser(): Observable<User>
 
   protected setToken(jwt: string): void {
-    this.setItem('jwt', jwt)
+    this.setItem(this.JWT_KEY, jwt)
+  }
+
+  getToken(): string {
+    return this.getItem(this.JWT_KEY) ?? ''
   }
 
   protected clearToken(): void {
-    this.removeItem('jwt')
+    this.removeItem(this.JWT_KEY)
   }
 
   protected hasExpiredToken(): boolean {
     const jwtToken = this.getToken()
 
     if (jwtToken) {
-      const payload = decode(jwtToken) as any
+      const payload = jwt_decode(jwtToken) as any
       return Date.now() >= payload.exp * 1000
     }
     return true
   }
 
   protected getAuthStatusFromToken(): IAuthStatus {
-    return this.transformJwtToken(decode(this.getToken()))
-  }
-
-  getToken(): string {
-    return this.getItem('jwt') ?? ''
+    return this.transformJwtToken(jwt_decode(this.getToken()))
   }
 
   login(email: string, password: string): Observable<void> {
@@ -108,7 +111,7 @@ export abstract class AuthService extends CacheService implements IAuthService {
     const loginResponse$ = this.authProvider(email, password).pipe(
       map((value) => {
         this.setToken(value.accessToken)
-        const token = decode(value.accessToken)
+        const token = jwt_decode(value.accessToken)
         return this.transformJwtToken(token)
       }),
       tap((status) => this.authStatus$.next(status)),
