@@ -13,4 +13,17 @@ export class LandlordService {
   getAll(): Observable<Landlord[]> {
     return of(LANDLORDS)
   }
+
+  findById(id: number): Observable<Landlord> {
+    return of(
+      LANDLORDS.find((landlord) => {
+        landlord.id === id
+      })
+    )
+  }
+
+  deleteLandlord(landlord: number | Landlord): void {
+    const id = typeof landlord === 'number' ? landlord - 1 : LANDLORDS.indexOf(landlord)
+    LANDLORDS.splice(id, 1)
+  }
 }
