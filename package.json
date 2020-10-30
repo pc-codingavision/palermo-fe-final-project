@@ -100,7 +100,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run style:fix && npm run lint:fix && npm run test:no-watch"
+      "pre-push": "npm run style:fix && npm run lint:fix && npm run test:no-watch"
     }
   }
 }
