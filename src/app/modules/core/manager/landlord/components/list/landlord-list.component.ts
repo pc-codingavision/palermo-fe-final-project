@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
+import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
@@ -30,6 +31,7 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
+  landlords: Landlord[]
 
   constructor(private landlordService: LandlordService) {}
 
@@ -39,8 +41,8 @@ export class LandlordListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // remove(event: any): void {
-  //   const index = this.landlords.indexOf(event)
-  //   LANDLORDS.splice(index, 1)
-  // }
+  remove(landlord: Landlord): void {
+    this.landlordService.deleteLandlord(landlord)
+    console.log(LANDLORDS)
+  }
 }
