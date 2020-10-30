@@ -1,24 +1,24 @@
-<div id="container">
+<div id="primary-container">
   <div>
     <mat-toolbar>
       <span>Edit Landlord</span>
     </mat-toolbar>
   </div>
 
-  <div fxLayout="row">
+  <div fxLayout="row" fxLayoutAlign="center" id="secondary-container">
     <div id="picture-change">
       <img [src]="landlord.picture">
       <button mat-button>Change</button>
     </div>
     <div>
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <div>
+      <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">
+        <h2>
           {{landlord.fullName}}
-        </div>
+        </h2>
 
-        <div>
-          {{landlord.username}}
-        </div>
+        <h2>
+          Username: {{landlord.username}}
+        </h2>
       </div>
       <div id="cav-container" fxLayout="row">
         <cav-personal-details [landlord]="landlord"></cav-personal-details>

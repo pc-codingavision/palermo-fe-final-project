@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { Landlord } from 'src/app/shared/models/landlord'
+
 @Component({
   selector: 'cav-personal-details',
   templateUrl: './personal-details.component.html',
