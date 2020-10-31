@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-buttons-container',
   templateUrl: './buttons-container.component.html',
-  styleUrls: ['./buttons-container.component.scss']
+  styleUrls: ['./buttons-container.component.scss'],
 })
 export class ButtonsContainerComponent implements OnInit {
+  constructor(private location: Location) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  goBack(): void {
+    this.location.back()
   }
-
 }
