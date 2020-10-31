@@ -7,6 +7,7 @@
     "build": "ng build",
     "test": "ng test",
     "test:no-watch": "ng test --watch=false",
+    "validate": "npm run style:fix && npm run lint:fix && npm run test:no-watch",
     "lint": "run-p lint:ts lint:tsc",
     "e2e": "ng e2e",
     "style": "import-sort -l \"**/{src,tests,e2e}/**/*.ts\" && prettier --check \"**/{src,tests,e2e}/**/*.{*css,ts}\"",
@@ -103,7 +104,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run style:fix && npm run lint:fix && npm run test:no-watch"
+      "pre-push": "npm run validate"
     }
   }
 }

@@ -9,10 +9,13 @@ import { AdvertisementModule } from './modules/core/advertisement/advertisement.
 import { InMemoryAuthService } from './modules/core/auth/auth-in-memory.service'
 import { AuthService } from './modules/core/auth/auth.service'
 import { MaterialModule } from './modules/shared/material.module'
+import { LogoutComponent } from './shared/components/logout/logout.component'
 import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
+const appComponents = [AppComponent, PageNotFoundComponent, LogoutComponent]
+
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent],
+  declarations: [...appComponents],
   imports: [
     BrowserModule,
     AppRoutingModule,
