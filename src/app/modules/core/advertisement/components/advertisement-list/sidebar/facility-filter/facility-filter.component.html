@@ -1,0 +1,31 @@
+<div class="facility-filter">
+  <mat-card class="facility-card" fxLayout="column">
+    <mat-card-title id="facility-card-title" fxLayoutAlign="start center">
+      Facility
+    </mat-card-title>
+    <mat-card-content>
+      <mat-divider id="facility-divider" [inset]="true"></mat-divider>
+      <div class="facility-checkbox" fxLayout="column">
+        <mat-checkbox>Free Wi-Fi</mat-checkbox>
+        <mat-checkbox>Breakfast included</mat-checkbox>
+        <mat-checkbox>Parking</mat-checkbox>
+        <mat-checkbox>Kitchen</mat-checkbox>
+        <ng-template [ngIf]="expanded">
+          <mat-checkbox>Tv</mat-checkbox>
+          <mat-checkbox>Bath</mat-checkbox>
+          <div id="facility-less" fxLayout="row" fxLayoutAlign="center"
+            (click)="expand()">
+            <span>Hide</span>
+            <span class="material-icons"> expand_less </span>
+          </div>
+        </ng-template>
+      </div>
+      <ng-template [ngIf]="!expanded">
+        <div id="facility-more" fxLayout="row" fxLayoutAlign="center" (click)="expand()">
+          <span>Show more</span>
+          <span class="material-icons"> expand_more </span>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>
