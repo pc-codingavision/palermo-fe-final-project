@@ -7,10 +7,10 @@ import { Landlord } from './../../../../../../shared/models/landlord'
 import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
 
 export interface Elements {
-  id: any
-  fullname: any
-  mail: any
-  phone_number: any
+  id: number
+  fullname: string
+  mail: string
+  phone_number: string
 }
 
 @Component({
