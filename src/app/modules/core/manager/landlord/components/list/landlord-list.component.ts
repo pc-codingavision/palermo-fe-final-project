@@ -36,7 +36,7 @@ export class LandlordListComponent implements OnInit {
   constructor(private landlordService: LandlordService) {}
 
   getLandlords(): Observable<Landlord[]> {
-    return this.landlordService.getAll()
+    return this.landlordService.getAllLandlords()
   }
 
   ngOnInit(): void {}
