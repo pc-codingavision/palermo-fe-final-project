@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-// @ts-ignore
 import jwt_decode from 'jwt-decode'
 import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs'
 import { catchError, filter, map, mergeMap, tap } from 'rxjs/operators'
@@ -8,6 +7,8 @@ import { transformError } from '../../../shared/common'
 import { Role } from '../../../shared/models/role.enum'
 import { CacheService } from './cache.service'
 import { IUser, User } from './models/user'
+
+// @ts-ignore
 
 export interface IAuthStatus {
   isAuthenticated: boolean
