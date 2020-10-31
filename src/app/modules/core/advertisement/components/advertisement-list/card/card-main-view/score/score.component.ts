@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core'
   selector: 'cav-score',
   template: `<div>
     <button mat-icon-button class="hidden">
-      <mat-icon> star </mat-icon>
+      <mat-icon>star</mat-icon>
     </button>
   </div> `,
   styles: [
