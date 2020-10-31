@@ -9,7 +9,7 @@ import { CardContainerComponent } from '../advertisement/components/advertisemen
 import { CardExtraComponent } from '../advertisement/components/advertisement-list/card/card-extra/card-extra.component'
 import { ReviewComponent } from '../advertisement/components/advertisement-list/card/card-extra/review/review.component'
 import { CardMainViewComponent } from '../advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { DatapickerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/datapicker/datapicker.component'
+import { DatepickerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/datepicker/datepicker.component'
 import { FacilitiesContainerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from '../advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
@@ -26,7 +26,7 @@ import { PriceFilterComponent } from './components/advertisement-list/sidebar/pr
 import { ScoreFilterComponent } from './components/advertisement-list/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from './components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
 
-const advertisementComponent = [
+const advertisementsComponent = [
   AdvertisementListComponent,
   AdvertisementContainerComponent,
   AdvertisementDetailsComponent,
@@ -41,7 +41,7 @@ const advertisementComponent = [
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
-  DatapickerComponent,
+  DatepickerComponent,
   SidebarContainerComponent,
   PriceFilterComponent,
   FacilityFilterComponent,
@@ -50,7 +50,7 @@ const advertisementComponent = [
   LatestMiniCardComponent,
 ]
 @NgModule({
-  declarations: [...advertisementComponent],
+  declarations: [...advertisementsComponent],
 
   imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
 })

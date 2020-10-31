@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 
-import { PROPERTY } from './../../../../../../../shared/models/mock-data/mock-property'
+import { PROPERTYS } from './../../../../../../../shared/models/mock-data/mock-property'
 
 @Component({
   selector: 'cav-latest-mini-card',
@@ -10,7 +10,7 @@ import { PROPERTY } from './../../../../../../../shared/models/mock-data/mock-pr
 export class LatestMiniCardComponent implements OnInit {
   constructor() {}
 
-  properties = PROPERTY
+  properties = PROPERTYS
 
   ngOnInit(): void {}
 }
