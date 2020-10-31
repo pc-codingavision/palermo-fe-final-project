@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { Property } from 'src/app/shared/models/property'
 
 import { PropertiesService } from './../../../../services/properties.service'
 

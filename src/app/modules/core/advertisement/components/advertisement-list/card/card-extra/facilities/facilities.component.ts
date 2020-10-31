@@ -1,8 +1,9 @@
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Property } from 'src/app/shared/models/property'
-import { Observable } from 'rxjs'
+
 import { PropertiesService } from './../../../../../services/properties.service'
-import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-facilities',
