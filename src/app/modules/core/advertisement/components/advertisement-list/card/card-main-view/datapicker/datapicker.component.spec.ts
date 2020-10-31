@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { DatesComponent } from './dates.component'
+import { DatapickerComponent } from './datapicker.component'
 
 describe('DatesComponent', () => {
-  let component: DatesComponent
-  let fixture: ComponentFixture<DatesComponent>
+  let component: DatapickerComponent
+  let fixture: ComponentFixture<DatapickerComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DatesComponent],
+      declarations: [DatapickerComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatesComponent)
+    fixture = TestBed.createComponent(DatapickerComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
