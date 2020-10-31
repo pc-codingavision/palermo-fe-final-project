@@ -1,0 +1,20 @@
+<mat-card id="card-extra">
+
+  <div class="container-more-info" fxLayout fxLayout.xs="column"
+    fxLayoutAlign="space-between" fxLayoutWrap="wrap">
+
+    <mat-card class="side" fxFlex="38%">
+      <h2>Most recent reviews</h2>
+      <cav-review></cav-review>
+    </mat-card>
+
+    <mat-card class="aside" fxFlex="48%">
+      <h2>About this property</h2>
+      <cav-about></cav-about>
+      <h4>Facilities</h4>
+      <mat-divider [inset]="true"></mat-divider>
+      <cav-facilities></cav-facilities>
+    </mat-card>
+
+  </div>
+</mat-card>
