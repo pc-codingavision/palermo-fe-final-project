@@ -6,12 +6,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AdvertisementModule } from './modules/core/advertisement/advertisement.module'
+import { InMemoryAuthService } from './modules/core/auth/auth-in-memory.service'
+import { AuthService } from './modules/core/auth/auth.service'
 import { MaterialModule } from './modules/shared/material.module'
 import { DialogComponent } from './shared/components/dialog/dialog.component'
+import { LogoutComponent } from './shared/components/logout/logout.component'
 import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
+const appComponents = [
+  AppComponent,
+  PageNotFoundComponent,
+  LogoutComponent,
+  DialogComponent,
+]
+
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, DialogComponent],
+  declarations: [...appComponents],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +31,12 @@ import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotf
     BrowserAnimationsModule,
     AdvertisementModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthService,
+      useClass: InMemoryAuthService,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
