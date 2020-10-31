@@ -1,0 +1,26 @@
+<mat-card>
+  <form [formGroup]="personalDetailsForm" fxLayout="column" fxFlexFill>
+    <mat-form-field class="example-form-field">
+      <mat-label>FirstName</mat-label>
+      <input matInput type="text" formControlName="firstName">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>MiddleName</mat-label>
+      <input matInput type="text" formControlName="middleName">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>LastName</mat-label>
+      <input matInput type="text" formControlName="lastName">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>Date Of Birth</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+  </form>
+</mat-card>

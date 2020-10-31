@@ -5,11 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { MaterialModule } from './../../../shared/material.module'
 import { LandlordContainerComponent } from './components/container/landlord-container.component'
-import { LandlordEditComponent } from './components/edit/landlord-edit.component'
+import { AddressDetailsComponent } from './components/edit/components/address-details/address-details.component'
+import { ContactDetailsComponent } from './components/edit/components/contact-details/contact-details.component'
+import { EditContainerComponent } from './components/edit/components/container/edit-container.component'
+import { PersonalDetailsComponent } from './components/edit/components/personal-details/personal-details.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
 import { AddressComponent } from './components/view/components/address/address.component'
+import { ButtonContainerComponent } from './components/view/components/button-container/button-container.component'
 import { ConfirmDialogComponent } from './components/view/components/confirm-dialog/confirm-dialog.component'
 import { ContactComponent } from './components/view/components/contact/contact.component'
 import { ViewContainerComponent } from './components/view/components/container/container.component'
@@ -18,7 +22,6 @@ import { StatusComponent } from './components/view/components/status/status.comp
 import { LandlordRoutingModule } from './landlord-routing.module'
 
 const landlordComponents = [
-  LandlordEditComponent,
   LandlordListComponent,
   LandlordNewComponent,
   LandlordContainerComponent,
@@ -29,9 +32,16 @@ const landlordComponents = [
   ContactComponent,
   SearchComponent,
   ConfirmDialogComponent,
+  EditContainerComponent,
+  ButtonContainerComponent,
 ]
 @NgModule({
-  declarations: [...landlordComponents],
+  declarations: [
+    ...landlordComponents,
+    PersonalDetailsComponent,
+    AddressDetailsComponent,
+    ContactDetailsComponent,
+  ],
   imports: [
     CommonModule,
     LandlordRoutingModule,

@@ -1,0 +1,48 @@
+<mat-card>
+  <form [formGroup]="contactDetailsForm" fxLayout="column">
+
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-icon>phone</mat-icon>
+          <mat-option value="phone">Phone</mat-option>
+          <br>
+          <mat-icon>stay_current_portrait</mat-icon>
+          <mat-option value="mobile">Mobile</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Phone 1</mat-label>
+        <input matInput type="text" formControlName="mobile">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-icon>phone</mat-icon>
+          <mat-option value="phone">Phone</mat-option>
+          <br>
+          <mat-icon>stay_current_portrait</mat-icon>
+          <mat-option value="mobile">Mobile</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Phone 2</mat-label>
+        <input matInput type="text" formControlName="phone">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <mat-icon id="mail-icon">mail</mat-icon>
+      <mat-form-field class="example-form-field">
+        <mat-label>Mail</mat-label>
+        <input matInput type="text" formControlName="email">
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

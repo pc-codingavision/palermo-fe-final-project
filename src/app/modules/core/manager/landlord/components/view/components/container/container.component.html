@@ -13,19 +13,7 @@
     </cav-address>
   </div>
 
-  <div id="buttons-container" fxLayout="row" fxLayoutGap="10px"
-    fxLayoutAlign="space-around">
-    <button routerLink="/manager/landlord/edit" mat-raised-button color="primary">
-      Edit
-    </button>
+  <cav-button-container [landlord]="landlord" (changeStatus)="changeStatus($event)">
+  </cav-button-container>
 
-    <button mat-raised-button color="accent"
-      (click)="openDialog(landlord.status ? 'deactivate' : 'activate')">
-      {{landlord.status ? 'Deactivate' : 'Activate'}}
-    </button>
-
-    <button mat-raised-button color="warn" (click)="openDialog('delete')">
-      Delete
-    </button>
-  </div>
 </div>

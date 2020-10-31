@@ -1,0 +1,31 @@
+<div id="container">
+  <div>
+    <mat-toolbar>
+      <span>Edit Landlord</span>
+    </mat-toolbar>
+  </div>
+
+  <div fxLayout="row">
+    <div id="picture-change">
+      <img [src]="landlord.picture">
+      <button mat-button>Change</button>
+    </div>
+    <div>
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div>
+          {{landlord.fullName}}
+        </div>
+
+        <div>
+          {{landlord.username}}
+        </div>
+      </div>
+      <div id="cav-container" fxLayout="row">
+        <cav-personal-details [landlord]="landlord"></cav-personal-details>
+        <cav-address-details [landlord]="landlord"></cav-address-details>
+        <cav-contact-details [landlord]="landlord"></cav-contact-details>
+
+      </div>
+    </div>
+  </div>
+</div>

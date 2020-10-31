@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LANDLORDS } from './../../../../../../shared/models/mock-data/mock-landlord'
@@ -24,18 +23,18 @@ export class SearchComponent implements OnInit {
       this.landlords.push(Landlord.Build(v))
     })
 
-    this.filteredFullName = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterFullName(value))
-    )
-    this.filteredEmail = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterEmail(value))
-    )
-    this.filteredPhone = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterPhone(value))
-    )
+    // this.filteredFullName = this.formControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map((value) => this._filterFullName(value))
+    // )
+    // this.filteredEmail = this.formControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map((value) => this._filterEmail(value))
+    // )
+    // this.filteredPhone = this.formControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map((value) => this._filterPhone(value))
+    // )
   }
 
   private _filterFullName(value: string): string[] {
