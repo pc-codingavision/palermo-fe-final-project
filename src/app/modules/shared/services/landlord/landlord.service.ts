@@ -31,7 +31,9 @@ export class LandlordService {
 
   updateLandlord(landlord: Landlord): Observable<Landlord> {
     let updatedLandlord: Landlord
-    this.getAll().subscribe((lands) => updatedLandlord = lands.find((land) => land.id === landlord.id))
+    this.getAll().subscribe(
+      (lands) => (updatedLandlord = lands.find((land) => land.id === landlord.id))
+    )
     return of(updatedLandlord)
   }
 
@@ -40,5 +42,4 @@ export class LandlordService {
     landlord.status = !landlord.status
     return of(landlord)
   }
-
 }

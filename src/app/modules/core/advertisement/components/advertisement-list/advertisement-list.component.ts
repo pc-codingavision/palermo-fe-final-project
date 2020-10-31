@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { LandlordService } from '../../../../shared/services/landlord/landlord.service'
 
+import { LandlordService } from '../../../../shared/services/landlord/landlord.service'
 
 @Component({
   selector: 'cav-advertisement-list',
