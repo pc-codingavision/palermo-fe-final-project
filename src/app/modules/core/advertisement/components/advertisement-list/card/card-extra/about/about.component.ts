@@ -1,4 +1,8 @@
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs'
+import { PropertiesService } from './../../../../../services/properties.service'
 import { Component, OnInit } from '@angular/core'
+import { Property } from 'src/app/shared/models/property'
 
 @Component({
   selector: 'cav-about',
@@ -6,9 +10,21 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  description =
-    "L'appartamento è situato nel pieno centro di Palermo, immerso nella zona più dinamica della città, tutti i principali monumenti ed attrazioni sono raggiungibili a piedi Adatto per vivere il fascino di Palermo Consigliato ad avventurieri singoli, coppie, famiglie e piccoli gruppi di amici"
-  constructor() {}
+  constructor(private propertiesService: PropertiesService) {}
 
   ngOnInit(): void {}
+
+  getProperties(): Observable<Property[]> {
+    return this.propertiesService.findAll()
+  }
+
+  getPropertyById(id: number): Observable<Property> {
+    return this.propertiesService.findById(id)
+  }
+
+  getDescriptionById(): Observable<any> {
+    return this.propertiesService
+      .findById(1)
+      .pipe(map((property) => `${property.description}`))
+  }
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
+import { Property } from 'src/app/shared/models/property'
+
+import { PropertiesService } from './../../../../services/properties.service'
 
 @Component({
   selector: 'cav-card-extra',
@@ -6,7 +10,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
-  constructor() {}
+  constructor(private propertiesService: PropertiesService) {}
 
   ngOnInit(): void {}
 }
