@@ -3,5 +3,17 @@ button {
   text-align: center;
   vertical-align: auto;
   margin-right: 4%;
-  min-width: 89px;
+  min-width: auto;
+}
+
+#buttons-save {
+  background-color: #106cc8;
+}
+
+#buttons-reset-password {
+  background-color: #ff9800;
+}
+
+#buttons-cancel {
+  background-color: #f4511e;
 }
