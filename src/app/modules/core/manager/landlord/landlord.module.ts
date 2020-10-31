@@ -19,7 +19,8 @@ import { ContactComponent } from './components/view/components/contact/contact.c
 import { ViewContainerComponent } from './components/view/components/container/container.component'
 import { PhoneComponent } from './components/view/components/phone/phone.component'
 import { StatusComponent } from './components/view/components/status/status.component'
-import { LandlordRoutingModule } from './landlord-routing.module'
+import { LandlordRoutingModule } from './landlord-routing.module';
+import { ButtonsContainerComponent } from './components/edit/components/buttons-container/buttons-container.component'
 
 const landlordComponents = [
   LandlordListComponent,
@@ -41,6 +42,7 @@ const landlordComponents = [
     PersonalDetailsComponent,
     AddressDetailsComponent,
     ContactDetailsComponent,
+    ButtonsContainerComponent,
   ],
   imports: [
     CommonModule,
