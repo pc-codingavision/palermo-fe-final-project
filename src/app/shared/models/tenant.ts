@@ -44,6 +44,7 @@ export class Tenant implements IUser {
       tenant.address
     )
   }
+
   public get fullName(): string {
     if (!this.name) {
       return ''

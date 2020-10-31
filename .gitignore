@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 .env
 node_modules
+/debug.log
