@@ -10,13 +10,13 @@ import { LANDLORDS } from './../../../../shared/models/mock-data/mock-landlord'
 export class LandlordService {
   constructor() {}
 
-  getAll(): Observable<Landlord[]> {
+  getAllLandlords(): Observable<Landlord[]> {
     const landlords: Landlord[] = []
     LANDLORDS.forEach((land) => landlords.push(Landlord.Build(land)))
     return of(landlords)
   }
 
-  findById(id: number): Observable<Landlord> {
+  findLandlordById(id: number): Observable<Landlord> {
     return of(Landlord.Build(LANDLORDS.find((landlord) => landlord.id === id)))
   }
 
@@ -31,14 +31,13 @@ export class LandlordService {
 
   updateLandlord(landlord: Landlord): Observable<Landlord> {
     let updatedLandlord: Landlord
-    this.getAll().subscribe(
+    this.getAllLandlords().subscribe(
       (lands) => (updatedLandlord = lands.find((land) => land.id === landlord.id))
     )
     return of(updatedLandlord)
   }
 
   changeLandlordStatus(landlord: Landlord): Observable<Landlord> {
-    console.log(landlord.status)
     landlord.status = !landlord.status
     return of(landlord)
   }
