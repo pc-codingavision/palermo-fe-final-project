@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 
+import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '../advertisement/components/advertisement-details/advertisement-details.component'
 import { CardContainerComponent } from '../advertisement/components/advertisement-list/card/card-container/card-container.component'
@@ -51,7 +52,7 @@ const advertisementComponent = [
 @NgModule({
   declarations: [...advertisementComponent],
 
-  imports: [CommonModule, AdvertisementRoutingModule],
+  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule],
   providers: [AdvertisementService],
 })
 export class AdvertisementModule {}

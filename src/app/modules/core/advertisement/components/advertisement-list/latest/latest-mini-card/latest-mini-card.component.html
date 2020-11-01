@@ -1,5 +1,5 @@
 <div class="mini-card" fxLayout="row" fxLayoutGap="10%">
-  <mat-card *ngFor="let property of properties" class="mini-card">
+  <mat-card *ngFor="let property of latest | async" class="mini-card">
     <img mat-card-image src="{{ property.imagesPath[0] }}">
     <mat-card-content>
       <mat-card-title>

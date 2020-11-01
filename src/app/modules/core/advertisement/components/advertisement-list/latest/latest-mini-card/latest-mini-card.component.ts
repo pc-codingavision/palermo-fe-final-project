@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
-import { PROPERTY } from './../../../../../../../shared/models/mock-data/mock-property'
+import { AdvertisementService } from './../../../../advertisement.service'
 
 @Component({
   selector: 'cav-latest-mini-card',
@@ -8,9 +9,11 @@ import { PROPERTY } from './../../../../../../../shared/models/mock-data/mock-pr
   styleUrls: ['./latest-mini-card.component.scss'],
 })
 export class LatestMiniCardComponent implements OnInit {
-  constructor() {}
+  constructor(private advService: AdvertisementService) {}
 
-  properties = PROPERTY
+  latest: Observable<any[]>
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.latest = this.advService.getLatestAdv()
+  }
 }
