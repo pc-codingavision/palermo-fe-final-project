@@ -30,8 +30,8 @@ export class PriceFilterComponent implements OnInit {
       .subscribe(
         (maxPriceAdvertisement) => (this.maxPriceAdvertisement = maxPriceAdvertisement)
       )
-    const string = this.maxPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(string)
+    const maxPricestring = this.maxPriceAdvertisement.map((x) => x.price).toString()
+    return parseInt(maxPricestring, 0)
   }
 
   returnMinPrice(): number {
@@ -40,7 +40,7 @@ export class PriceFilterComponent implements OnInit {
       .subscribe(
         (minPriceAdvertisement) => (this.minPriceAdvertisement = minPriceAdvertisement)
       )
-    const string = this.minPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(string)
+    const minPricestring = this.minPriceAdvertisement.map((x) => x.price).toString()
+    return parseInt(minPricestring, 0)
   }
 }
