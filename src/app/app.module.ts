@@ -13,19 +13,28 @@ import { AuthService } from './modules/core/auth/auth.service'
 import { MaterialModule } from './modules/shared/material.module'
 import { LogoutComponent } from './shared/components/logout/logout.component'
 import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
+import { LoginComponent } from './shared/components/login/login.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
-const appComponents = [AppComponent, PageNotFoundComponent, LogoutComponent]
+const appComponents = [
+  AppComponent,
+  PageNotFoundComponent,
+  LoginComponent,
+  LogoutComponent,
+]
+const appModules = [
+  BrowserModule,
+  AppRoutingModule,
+  FlexLayoutModule,
+  MaterialModule,
+  ReactiveFormsModule,
+  BrowserAnimationsModule,
+  AdvertisementModule,
+]
 
 @NgModule({
   declarations: [...appComponents],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    MaterialModule,
-    BrowserAnimationsModule,
-    AdvertisementModule,
-  ],
+  imports: [...appModules],
   providers: [
     {
       provide: AuthService,
