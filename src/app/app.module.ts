@@ -11,6 +11,8 @@ import { AuthService } from './modules/core/auth/auth.service'
 import { MaterialModule } from './modules/shared/material.module'
 import { LogoutComponent } from './shared/components/logout/logout.component'
 import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AuthHttpInterceptor } from './modules/core/auth/auth-http-interceptor'
 
 const appComponents = [AppComponent, PageNotFoundComponent, LogoutComponent]
 
@@ -28,6 +30,11 @@ const appComponents = [AppComponent, PageNotFoundComponent, LogoutComponent]
     {
       provide: AuthService,
       useClass: InMemoryAuthService,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
