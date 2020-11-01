@@ -1,9 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
+import { Router } from '@angular/router'
 
 import { AuthHttpInterceptor } from './auth-http-interceptor'
 import { AuthService } from './auth.service'
-import { Router } from '@angular/router'
-import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 describe('AuthHttpInterceptorService', () => {
   let service: AuthHttpInterceptor
