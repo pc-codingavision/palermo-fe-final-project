@@ -3,7 +3,7 @@ import { Status } from '../../enum/status'
 import { Toilet } from '../../enum/toilet'
 import { Property } from '../property'
 
-export const PROPERTYS: Property[] = [
+export const PROPERTIES: Property[] = [
   {
     id: 1,
     landlordId: 1,
