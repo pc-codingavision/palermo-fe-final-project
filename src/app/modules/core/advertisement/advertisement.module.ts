@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { MaterialModule } from '../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '../advertisement/components/advertisement-details/advertisement-details.component'
 import { CardContainerComponent } from '../advertisement/components/advertisement-list/card/card-container/card-container.component'
@@ -17,6 +15,7 @@ import { ScoreComponent } from '../advertisement/components/advertisement-list/c
 import { LatestContainerComponent } from '../advertisement/components/advertisement-list/latest/latest-container/latest-container.component'
 import { LatestMiniCardComponent } from '../advertisement/components/advertisement-list/latest/latest-mini-card/latest-mini-card.component'
 import { AdvertisementRoutingModule } from './advertisement-routing.module'
+import { AdvertisementService } from './advertisement.service'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 import { AboutComponent } from './components/advertisement-list/card/card-extra/about/about.component'
 import { FacilitiesComponent } from './components/advertisement-list/card/card-extra/facilities/facilities.component'
@@ -52,6 +51,7 @@ const advertisementComponent = [
 @NgModule({
   declarations: [...advertisementComponent],
 
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
+  imports: [CommonModule, AdvertisementRoutingModule],
+  providers: [AdvertisementService],
 })
 export class AdvertisementModule {}
