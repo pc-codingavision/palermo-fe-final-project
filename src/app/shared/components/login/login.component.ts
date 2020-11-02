@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { SubSink } from 'subsink'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { AuthService } from '../../../modules/core/auth/auth.service'
 import { ActivatedRoute, Router } from '@angular/router'
-import { catchError, filter, tap } from 'rxjs/operators'
 import { combineLatest } from 'rxjs'
+import { catchError, filter, tap } from 'rxjs/operators'
+import { SubSink } from 'subsink'
+
+import { AuthService } from '../../../modules/core/auth/auth.service'
 
 @Component({
   selector: 'cav-login',
