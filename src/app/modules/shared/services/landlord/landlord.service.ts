@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable, of } from 'rxjs'
 import { Landlord } from 'src/app/shared/models/landlord'
-
-import { LANDLORDS } from './../../../../shared/models/mock-data/mock-landlord'
 
 @Injectable({
   providedIn: 'root',
@@ -12,21 +11,22 @@ export class LandlordService {
 
   getAllLandlords(): Observable<Landlord[]> {
     const landlords: Landlord[] = []
-    LANDLORDS.forEach((land) => landlords.push(Landlord.Build(land)))
+    LANDLORDS_MOCK_DATA.forEach((land) => landlords.push(Landlord.Build(land)))
     return of(landlords)
   }
 
   findLandlordById(id: number): Observable<Landlord> {
-    return of(Landlord.Build(LANDLORDS.find((landlord) => landlord.id === id)))
+    return of(Landlord.Build(LANDLORDS_MOCK_DATA.find((landlord) => landlord.id === id)))
   }
 
   deleteLandlord(landlord: number | Landlord): void {
-    const id = typeof landlord === 'number' ? landlord - 1 : LANDLORDS.indexOf(landlord)
-    LANDLORDS.splice(id, 1)
+    const id =
+      typeof landlord === 'number' ? landlord - 1 : LANDLORDS_MOCK_DATA.indexOf(landlord)
+    LANDLORDS_MOCK_DATA.splice(id, 1)
   }
 
   addLandlord(landlord: Landlord): void {
-    LANDLORDS.push(landlord)
+    LANDLORDS_MOCK_DATA.push(landlord)
   }
 
   updateLandlord(landlord: Landlord): Observable<Landlord> {

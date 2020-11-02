@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing'
-import { PhoneType } from 'src/app/shared/enum/phonetype'
-import { Role } from 'src/app/shared/enum/role'
+import { PhoneType, Role } from '@shared/enum/enums'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Landlord } from 'src/app/shared/models/landlord'
-import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { LandlordService } from './landlord.service'
 
@@ -99,6 +98,6 @@ describe('LandlordService', () => {
 
   xit('#deleteLandlord should delete landlord', () => {
     service.deleteLandlord(1)
-    expect(LANDLORDS).toEqual([LANDLORDS[0], LANDLORDS[1]])
+    expect(LANDLORDS_MOCK_DATA).toEqual([LANDLORDS_MOCK_DATA[0], LANDLORDS_MOCK_DATA[1]])
   })
 })

@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
-import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
@@ -41,6 +40,5 @@ export class LandlordListComponent implements OnInit {
 
   remove(landlord: Landlord): void {
     this.landlordService.deleteLandlord(landlord)
-    console.log(LANDLORDS)
   }
 }
