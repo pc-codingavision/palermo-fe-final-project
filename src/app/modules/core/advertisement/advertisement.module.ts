@@ -9,7 +9,6 @@ import { CardContainerComponent } from '../advertisement/components/advertisemen
 import { CardExtraComponent } from '../advertisement/components/advertisement-list/card/card-extra/card-extra.component'
 import { ReviewComponent } from '../advertisement/components/advertisement-list/card/card-extra/review/review.component'
 import { CardMainViewComponent } from '../advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { DatepickerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/datepicker/datepicker.component'
 import { FacilitiesContainerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from '../advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
@@ -20,6 +19,7 @@ import { AdvertisementRoutingModule } from './advertisement-routing.module'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 import { AboutComponent } from './components/advertisement-list/card/card-extra/about/about.component'
 import { FacilitiesComponent } from './components/advertisement-list/card/card-extra/facilities/facilities.component'
+import { CheckInCheckOutComponent } from './components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
 import { PhotogalleryComponent } from './components/advertisement-list/card/card-main-view/photogallery/photogallery.component'
 import { FacilityFilterComponent } from './components/advertisement-list/sidebar/facility-filter/facility-filter.component'
 import { PriceFilterComponent } from './components/advertisement-list/sidebar/price-filter/price-filter.component'
@@ -41,7 +41,7 @@ const advertisementsComponent = [
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
-  DatepickerComponent,
+  CheckInCheckOutComponent,
   SidebarContainerComponent,
   PriceFilterComponent,
   FacilityFilterComponent,
