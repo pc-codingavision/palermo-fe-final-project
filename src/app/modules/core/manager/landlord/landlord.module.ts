@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { LandlordContainerComponent } from '@modules/core/manager/landlord/components/container/landlord-container.component'
 import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 import { LandlordListComponent } from '@modules/core/manager/landlord/components/list/landlord-list.component'
 import { LandlordNewComponent } from '@modules/core/manager/landlord/components/new/landlord-new.component'
 import { LandlordRoutingModule } from '@modules/core/manager/landlord/landlord-routing.module'
-import { MaterialModule } from '@modules/shared/material.module'
+import { SharedModule } from '@modules/shared/shared.module'
 
 import { SearchComponent } from './components/search/search.component'
 import { AddressComponent } from './components/view/components/address/address.component'
@@ -33,13 +32,6 @@ const landlordComponents = [
 
 @NgModule({
   declarations: [...landlordComponents],
-  imports: [
-    CommonModule,
-    LandlordRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    FlexLayoutModule,
-  ],
+  imports: [CommonModule, LandlordRoutingModule, FormsModule, SharedModule],
 })
 export class LandlordModule {}
