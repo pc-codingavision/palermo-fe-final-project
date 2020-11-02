@@ -85,19 +85,15 @@ describe('LandlordService', () => {
   })
 
   xit('#getAllLandlords should return all landlords', () => {
-    service
-      .getAllLandlords()
-      .subscribe((landlords) => expect(landlords).toEqual(landlordslist))
+    service.getAll().subscribe((landlords) => expect(landlords).toEqual(landlordslist))
   })
 
   xit('#findLandlordById should return landlord by id', () => {
-    service
-      .findLandlordById(1)
-      .subscribe((landlord) => expect(landlord).toEqual(landlordslist[0]))
+    service.getById(1).subscribe((landlord) => expect(landlord).toEqual(landlordslist[0]))
   })
 
   xit('#deleteLandlord should delete landlord', () => {
-    service.deleteLandlord(1)
+    service.delete(1)
     expect(LANDLORDS_MOCK_DATA).toEqual([LANDLORDS_MOCK_DATA[0], LANDLORDS_MOCK_DATA[1]])
   })
 })
