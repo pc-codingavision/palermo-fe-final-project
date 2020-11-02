@@ -1,6 +1,7 @@
 import { Category, Status, Toilet } from '@shared/enum/enums'
 
 import { Property } from '../property'
+
 export const PROPERTIES: Property[] = [
   {
     id: 1,
