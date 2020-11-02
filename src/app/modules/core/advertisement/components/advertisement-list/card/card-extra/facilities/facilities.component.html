@@ -1,6 +1,6 @@
-<!--<p>{{getFacilitiesById() | async | json}} </p>-->
+<!-- <p>{{getPropertyById() | async | json}} </p> -->
 
-<div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
+<!-- <div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
   fxLayoutWrap="wrap">
   <div class="side" fxFlex="49%">
     <div fxLayout="row">
@@ -35,4 +35,10 @@
       <p>Bath</p>
     </div>
   </div>
+</div> -->
+
+
+<div fxLayout="row" *ngIf="getFacilitiesById()">
+  <i id="done" class="material-icons">done</i>
+  <p>TV</p>
 </div>
