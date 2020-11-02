@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { advertisementRoutes } from '@modules/core/advertisement/advertisement-routing.module'
+import { LogoutComponent } from '@shared/components/logout/logout.component'
+import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
 
-import { advertisementRoutes } from './modules/core/advertisement/advertisement-routing.module'
 import { LoginComponent } from './shared/components/login/login.component'
-import { LogoutComponent } from './shared/components/logout/logout.component'
-import { PageNotFoundComponent } from './shared/components/pagenotfound/pagenotfound.component'
 
 const managerModule = () =>
   import('./modules/core/manager/manager.module').then((m) => m.ManagerModule)
@@ -15,7 +15,7 @@ const tenantModule = () =>
 const landlordModule = () =>
   import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
 
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: '', children: [...advertisementRoutes] },
   { path: 'login', component: LoginComponent },
   { path: 'login/:redirectUrl', component: LoginComponent },
@@ -27,7 +27,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
