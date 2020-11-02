@@ -8,6 +8,7 @@ import { AuthService } from '@modules/core/auth/auth.service'
 import { SharedModule } from '@modules/shared/shared.module'
 import { LoginComponent } from '@shared/components/login/login.component'
 import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
+
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { InMemoryAuthService } from './modules/core/auth/auth-in-memory.service'

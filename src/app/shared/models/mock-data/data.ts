@@ -66,7 +66,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
-    phone: [{ id: 1, type: PhoneType.Mobile, digits: '3454545' }],
+    phone: [
+      { id: 1, type: PhoneType.Mobile, digits: '3454545' },
+      { id: 2, type: PhoneType.Home, digits: '09252525' },
+    ],
     mail: 'piero-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord1',
@@ -85,7 +88,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 2,
     name: { firstName: 'Cosimo', surname: 'Nigrelli' },
-    phone: [{ id: 2, type: PhoneType.Home, digits: '213455' }],
+    phone: [
+      { id: 1, type: PhoneType.Home, digits: '213455' },
+      { id: 2, type: PhoneType.Mobile, digits: '0251628' },
+    ],
     mail: 'cosimo-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
@@ -104,7 +110,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 3,
     name: { firstName: 'Vito', surname: 'Rizzo' },
-    phone: [{ id: 3, type: PhoneType.Work, digits: '142354' }],
+    phone: [
+      { id: 1, type: PhoneType.Work, digits: '142354' },
+      { id: 2, type: PhoneType.Mobile, digits: '252152' },
+    ],
     mail: 'vito-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord3',
