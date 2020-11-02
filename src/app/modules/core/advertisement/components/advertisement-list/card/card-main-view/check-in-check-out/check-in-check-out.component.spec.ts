@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
-import { DatapickerComponent } from './datapicker.component'
+import { CheckInCheckOutComponent } from './check-in-check-out.component'
 
-describe('DatesComponent', () => {
-  let component: DatapickerComponent
-  let fixture: ComponentFixture<DatapickerComponent>
+describe('CheckInCheckOutComponent', () => {
+  let component: CheckInCheckOutComponent
+  let fixture: ComponentFixture<CheckInCheckOutComponent>
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [DatapickerComponent],
+        declarations: [CheckInCheckOutComponent],
       }).compileComponents()
     })
   )
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatapickerComponent)
+    fixture = TestBed.createComponent(CheckInCheckOutComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
