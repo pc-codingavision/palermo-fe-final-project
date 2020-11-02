@@ -1,7 +1,5 @@
-import { Category } from './../enum/category'
-import { Status } from '../enum/status'
-import { Toilet } from '../enum/toilet'
-import { IAddress } from './users'
+import { Category, Status, Toilet } from '@shared/enum/enums'
+import { IAddress } from '@shared/models/users'
 
 export interface IFacilities {
   tv: boolean

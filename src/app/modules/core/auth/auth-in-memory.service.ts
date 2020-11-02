@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core'
+import {
+  AuthService,
+  IAuthStatus,
+  IServerAuthResponse,
+} from '@modules/core/auth/auth.service'
+import { PhoneType, User } from '@modules/core/auth/models/user'
+import { Role } from '@shared/enum/enums'
 import { sign } from 'fake-jwt-sign'
 import { Observable, of, throwError } from 'rxjs'
-
-import { Role } from '../../../shared/models/role.enum'
-import { AuthService, IAuthStatus, IServerAuthResponse } from './auth.service'
-import { PhoneType, User } from './models/user'
 
 @Injectable()
 export class InMemoryAuthService extends AuthService {
