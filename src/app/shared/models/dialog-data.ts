@@ -1,6 +1,6 @@
 export interface IDialogData {
-  h1: string
-  h2: string
-  p: string
+  title: string
+  subtitle: string
+  text: string
   returnValue: string
 }

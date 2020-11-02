@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { SharedModule } from '@modules/shared/shared.module'
 
 import { DialogComponent } from './dialog.component'
 
@@ -9,6 +10,7 @@ describe('DialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [DialogComponent],
+      imports: [SharedModule],
     }).compileComponents()
   }))
 
