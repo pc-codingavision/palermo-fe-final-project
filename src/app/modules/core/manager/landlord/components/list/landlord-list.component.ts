@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
@@ -28,21 +28,15 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit, OnDestroy {
+export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  landlords: Landlord[]
-  private subscription: Subscription
+  $landlords: Observable<Landlord[]>
 
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
-    const $landlords = this.landlordService.getAllLandlords()
-    this.subscription = $landlords.subscribe((landlord) => (this.landlords = landlord))
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    this.$landlords = this.landlordService.getAllLandlords()
   }
 
   remove(landlord: Landlord): void {
