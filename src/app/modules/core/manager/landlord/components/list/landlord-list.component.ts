@@ -1,16 +1,17 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
+
 import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
 
 export interface Elements {
-  id: any
-  fullname: any
-  mail: any
-  phone_number: any
+  id: number
+  fullname: string
+  mail: string
+  phone_number: string
 }
 
 @Component({
@@ -32,22 +33,17 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
   landlords: Landlord[]
-  $landlords: Subscription
+  private subscription: Subscription
 
   constructor(private landlordService: LandlordService) {}
 
-  getLandlords(): void {
-    this.landlordService
-      .getAllLandlords()
-      .subscribe((landlords) => (this.landlords = landlords))
-  }
-
   ngOnInit(): void {
-    this.getLandlords()
+    const $landlords = this.landlordService.getAllLandlords()
+    this.subscription = $landlords.subscribe((landlord) => (this.landlords = landlord))
   }
 
   ngOnDestroy(): void {
-    this.$landlords.unsubscribe()
+    this.subscription.unsubscribe()
   }
 
   remove(landlord: Landlord): void {
