@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
-import { TenantContainerComponent } from './tenant-container.component'
+import { TenantContainerComponent } from '@modules/core/tenant/components/container/tenant-container.component'
 
 describe('TenantContainerComponent', () => {
   let component: TenantContainerComponent

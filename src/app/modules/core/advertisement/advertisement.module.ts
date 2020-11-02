@@ -49,6 +49,7 @@ const advertisementsComponent = [
   LatestContainerComponent,
   LatestMiniCardComponent,
 ]
+
 @NgModule({
   declarations: [...advertisementsComponent],
 

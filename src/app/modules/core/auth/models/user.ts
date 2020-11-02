@@ -1,4 +1,4 @@
-import { Role } from 'src/app/shared/models/role.enum'
+import { Role } from '@shared/enum/enums'
 
 export interface IName {
   first: string
