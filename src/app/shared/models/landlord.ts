@@ -1,5 +1,5 @@
-import { Role } from '../enum/role'
-import { IAddress, IName, IPhone, IUser } from './users'
+import { Role } from '@shared/enum/enums'
+import { IAddress, IName, IPhone, IUser } from '@shared/models/users'
 
 export class Landlord implements IUser {
   private constructor(

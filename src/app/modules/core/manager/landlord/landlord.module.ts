@@ -10,6 +10,7 @@ import { ButtonsContainerComponent } from './components/edit/components/buttons-
 import { ContactDetailsComponent } from './components/edit/components/contact-details/contact-details.component'
 import { EditContainerComponent } from './components/edit/components/container/edit-container.component'
 import { PersonalDetailsComponent } from './components/edit/components/personal-details/personal-details.component'
+import { ResetPasswordComponent } from './components/edit/components/reset-password/reset-password.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
@@ -20,8 +21,7 @@ import { ContactComponent } from './components/view/components/contact/contact.c
 import { ViewContainerComponent } from './components/view/components/container/container.component'
 import { PhoneComponent } from './components/view/components/phone/phone.component'
 import { StatusComponent } from './components/view/components/status/status.component'
-import { LandlordRoutingModule } from './landlord-routing.module';
-import { ResetPasswordComponent } from './components/edit/components/reset-password/reset-password.component'
+import { LandlordRoutingModule } from './landlord-routing.module'
 
 const landlordComponents = [
   LandlordListComponent,
@@ -36,16 +36,15 @@ const landlordComponents = [
   ConfirmDialogComponent,
   EditContainerComponent,
   ButtonContainerComponent,
+  PersonalDetailsComponent,
+  AddressDetailsComponent,
+  ContactDetailsComponent,
+  ButtonsContainerComponent,
+  ResetPasswordComponent,
 ]
+
 @NgModule({
-  declarations: [
-    ...landlordComponents,
-    PersonalDetailsComponent,
-    AddressDetailsComponent,
-    ContactDetailsComponent,
-    ButtonsContainerComponent,
-    ResetPasswordComponent,
-  ],
+  declarations: [...landlordComponents],
   imports: [
     CommonModule,
     LandlordRoutingModule,

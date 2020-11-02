@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Landlord } from 'src/app/shared/models/landlord'
 
-import { LANDLORDS } from './../../../../../../../../shared/models/mock-data/mock-landlord'
+import { LANDLORDS_MOCK_DATA } from './../../../../../../../../shared/models/mock-data/data'
 
 @Component({
   selector: 'cav-edit-container',
@@ -20,6 +20,6 @@ export class EditContainerComponent implements OnInit {
 
   getLandlord(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.landlord = Landlord.Build(LANDLORDS.find((land) => land.id === id))
+    this.landlord = Landlord.Build(LANDLORDS_MOCK_DATA.find((land) => land.id === id))
   }
 }

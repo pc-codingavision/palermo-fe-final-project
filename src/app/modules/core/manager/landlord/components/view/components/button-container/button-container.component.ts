@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Landlord } from 'src/app/shared/models/landlord'
 
-import { OpenDialogService } from './../../../../../../../../shared/services/opendialog/open-dialog.service'
-
 @Component({
   selector: 'cav-button-container',
   templateUrl: './button-container.component.html',
@@ -30,11 +28,11 @@ export class ButtonContainerComponent implements OnInit {
   h2Delete = 'Are you sure you want to delete this Landlord?'
   pDelete = `This will be removed all the landlord's associated data and it won't be possible to recover them!`
 
-  constructor(private openDialogService: OpenDialogService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  openDialog(operation: string): void {
+  /*openDialog(operation: string): void {
     if (operation === 'deactivate') {
       this.openDialogService.openDialog({
         h1: this.h1Deactivate,
@@ -62,5 +60,5 @@ export class ButtonContainerComponent implements OnInit {
       .getDialogRef()
       .afterClosed()
       .subscribe((result) => this.changeStatus.emit(result))
-  }
+  }*/
 }

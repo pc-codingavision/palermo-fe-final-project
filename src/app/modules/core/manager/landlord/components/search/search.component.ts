@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms'
 import { Observable } from 'rxjs'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
-import { LANDLORDS } from './../../../../../../shared/models/mock-data/mock-landlord'
+import { LANDLORDS_MOCK_DATA } from './../../../../../../shared/models/mock-data/data'
 
 @Component({
   selector: 'cav-search',
@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    LANDLORDS.forEach((v) => {
+    LANDLORDS_MOCK_DATA.forEach((v) => {
       this.landlords.push(Landlord.Build(v))
     })
 
