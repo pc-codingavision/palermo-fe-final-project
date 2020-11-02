@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { Router } from '@angular/router'
-
 import { AuthService } from '@modules/core/auth/auth.service'
 import { LogoutComponent } from '@shared/components/logout/logout.component'
 

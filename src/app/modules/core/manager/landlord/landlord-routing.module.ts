@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-
 import { LandlordContainerComponent } from '@modules/core/manager/landlord/components/container/landlord-container.component'
 import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 import { LandlordListComponent } from '@modules/core/manager/landlord/components/list/landlord-list.component'

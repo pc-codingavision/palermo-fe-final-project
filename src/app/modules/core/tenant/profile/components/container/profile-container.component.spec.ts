@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { ProfileContainerComponent } from '@modules/core/tenant/profile/components/container/profile-container.component'
 
 describe('ProfileContainerComponent', () => {

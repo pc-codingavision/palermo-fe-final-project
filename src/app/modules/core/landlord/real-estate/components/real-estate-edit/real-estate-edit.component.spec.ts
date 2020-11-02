@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { RealEstateEditComponent } from '@modules/core/landlord/real-estate/components/real-estate-edit/real-estate-edit.component'
 
 describe('RealestateEditComponent', () => {

@@ -1,5 +1,4 @@
-import { async, ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { LandlordViewComponent } from '@modules/core/manager/landlord/components/view/landlord-view.component'
 
 describe('LandlordViewComponent', () => {

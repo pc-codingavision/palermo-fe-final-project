@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { ManagerContainerComponent } from '@modules/core/manager/components/container/manager-container.component'
 
 describe('ManagerComponent', () => {

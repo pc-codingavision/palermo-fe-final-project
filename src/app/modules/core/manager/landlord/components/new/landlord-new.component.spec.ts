@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { LandlordNewComponent } from '@modules/core/manager/landlord/components/new/landlord-new.component'
 
 describe('LandlordNewComponent', () => {

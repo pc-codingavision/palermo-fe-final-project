@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-
 import { TenantContainerComponent } from '@modules/core/manager/tenant/components/container/tenant-container.component'
 import { TenantEditComponent } from '@modules/core/manager/tenant/components/edit/tenant-edit.component'
 import { TenantListComponent } from '@modules/core/manager/tenant/components/list/tenant-list.component'

@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { LandlordContainerComponent } from '@modules/core/manager/landlord/components/container/landlord-container.component'
 
 describe('LandlordContainerComponent', () => {

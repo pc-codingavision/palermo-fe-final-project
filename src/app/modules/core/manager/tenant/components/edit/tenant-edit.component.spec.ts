@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { TenantEditComponent } from '@modules/core/manager/tenant/components/edit/tenant-edit.component'
 
 describe('TenantEditComponent', () => {

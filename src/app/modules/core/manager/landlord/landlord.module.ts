@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-
 import { LandlordContainerComponent } from '@modules/core/manager/landlord/components/container/landlord-container.component'
 import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 import { LandlordListComponent } from '@modules/core/manager/landlord/components/list/landlord-list.component'

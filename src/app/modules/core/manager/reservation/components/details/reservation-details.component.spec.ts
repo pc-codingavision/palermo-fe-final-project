@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed, async, waitForAsync } from '@angular/core/testing'
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { ReservationDetailsComponent } from '@modules/core/manager/reservation/components/details/reservation-details.component'
 
 describe('ReservationDetailsComponent', () => {

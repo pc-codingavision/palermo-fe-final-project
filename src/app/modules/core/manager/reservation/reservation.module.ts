@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-
 import { ReservationContainerComponent } from '@modules/core/manager/reservation/components/container/reservation-container.component'
 import { ReservationDetailsComponent } from '@modules/core/manager/reservation/components/details/reservation-details.component'
 import { ReservationListComponent } from '@modules/core/manager/reservation/components/list/reservation-list.component'
