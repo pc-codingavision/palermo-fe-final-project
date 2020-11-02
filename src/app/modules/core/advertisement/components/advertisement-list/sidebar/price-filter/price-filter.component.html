@@ -7,7 +7,8 @@
       <mat-divider id="price-divider" [inset]="true">
       </mat-divider>
       <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
-        min="{{ minPrice }}" max="{{ maxPrice }}" step="10" fxLayoutAlign="center center">
+        min="{{ minPrice }}" max="{{ maxPrice }}" step="10" fxLayoutAlign="center center"
+        (change)="emitFilter($event.value)">
       </mat-slider>
       <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
       <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>

@@ -1,8 +1,5 @@
 import { formatCurrency } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
-import { Advertisement } from 'src/app/shared/models/advertisement'
-
-import { AdvertisementService } from '../../../../advertisement.service'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-price-filter',
@@ -10,38 +7,19 @@ import { AdvertisementService } from '../../../../advertisement.service'
   styleUrls: ['./price-filter.component.scss'],
 })
 export class PriceFilterComponent implements OnInit {
-  constructor(private advertisementService: AdvertisementService) {}
-  maxPriceAdvertisement: Advertisement[]
-  minPriceAdvertisement: Advertisement[]
-  maxPrice: number
-  minPrice: number
+  @Input() maxPrice: number
+  @Input() minPrice: number
+  @Output() filter = new EventEmitter<number>()
 
-  ngOnInit(): void {
-    this.maxPrice = this.returnMaxPrice()
-    this.minPrice = this.returnMinPrice()
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   formatLabel(value: number): string {
     return formatCurrency(value, 'en', '€', '', '.0')
   }
 
-  returnMaxPrice(): number {
-    this.advertisementService
-      .returnMaxPriceProperty()
-      .subscribe(
-        (maxPriceAdvertisement) => (this.maxPriceAdvertisement = maxPriceAdvertisement)
-      )
-    const maxPricestring = this.maxPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(maxPricestring, 0)
-  }
-
-  returnMinPrice(): number {
-    this.advertisementService
-      .returnMinPriceProperty()
-      .subscribe(
-        (minPriceAdvertisement) => (this.minPriceAdvertisement = minPriceAdvertisement)
-      )
-    const minPricestring = this.minPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(minPricestring, 0)
+  emitFilter(value: number): void {
+    this.filter.emit(value)
   }
 }

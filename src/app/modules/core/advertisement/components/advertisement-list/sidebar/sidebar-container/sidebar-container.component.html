@@ -1,4 +1,5 @@
-<cav-price-filter></cav-price-filter>
+<cav-price-filter [maxPrice]="maxPrice" [minPrice]="minPrice"
+  (filter)="applyPriceFilter($event)"></cav-price-filter>
 <div class="divider"></div>
 <cav-facility-filter></cav-facility-filter>
 <div class="divider"></div>
