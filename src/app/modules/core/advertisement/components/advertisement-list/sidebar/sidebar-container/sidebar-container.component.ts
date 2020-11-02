@@ -48,4 +48,8 @@ export class SidebarContainerComponent implements OnInit {
   applyFacilityFilter(filter: object): void {
     console.log(`Value received from facility: ${JSON.stringify(filter)}`)
   }
+
+  applyScoreFilter(filter: object): void {
+    console.log(`Value received from score: ${filter}`)
+  }
 }

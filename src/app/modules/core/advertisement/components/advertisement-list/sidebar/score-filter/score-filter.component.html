@@ -7,10 +7,14 @@
       <mat-divider id="score-divider" [inset]="true"></mat-divider>
       <div class="score-checkbox-container">
         <mat-radio-group>
-          <mat-radio-button value="1">Superb: 9+</mat-radio-button>
-          <mat-radio-button value="2">Very good: 8+</mat-radio-button>
-          <mat-radio-button value="3">Good: 7+</mat-radio-button>
-          <mat-radio-button value="4">Pleasant: 6+</mat-radio-button>
+          <mat-radio-button (change)="emitFilter($event.value)" value="1">Superb: 9+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitFilter($event.value)" value="2">Very good: 8+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitFilter($event.value)" value="3">Good: 7+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitFilter($event.value)" value="4">Pleasant: 6+
+          </mat-radio-button>
         </mat-radio-group>
       </div>
     </mat-card-content>
