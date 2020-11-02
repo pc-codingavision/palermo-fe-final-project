@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { RealestateAddComponent } from './realestate-add.component'
+import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
 
-describe('RealestateAddComponent', () => {
-  let component: RealestateAddComponent
-  let fixture: ComponentFixture<RealestateAddComponent>
+describe('PageNotFoundComponent', () => {
+  let component: PageNotFoundComponent
+  let fixture: ComponentFixture<PageNotFoundComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RealestateAddComponent],
+      declarations: [PageNotFoundComponent],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RealestateAddComponent)
+    fixture = TestBed.createComponent(PageNotFoundComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

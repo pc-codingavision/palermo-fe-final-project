@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { LandlordContainerComponent } from './landlord-container.component'
+import { LandlordContainerComponent } from '@modules/core/manager/landlord/components/container/landlord-container.component'
 
 describe('LandlordContainerComponent', () => {
   let component: LandlordContainerComponent

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { LandlordProfileEditComponent } from './landlord-profile-edit.component'
+import { LandlordProfileEditComponent } from '@modules/core/landlord/landlord-profile/components/landlord-profile-edit/landlord-profile-edit.component'
 
 describe('LandlordProfileEditComponent', () => {
   let component: LandlordProfileEditComponent

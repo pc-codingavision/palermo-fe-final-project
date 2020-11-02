@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { LandlordProfileViewComponent } from './landlord-profile-view.component'
+import { LandlordProfileViewComponent } from '@modules/core/landlord/landlord-profile/components/landlord-profile-view/landlord-profile-view.component'
 
 describe('LandlordProfileViewComponent', () => {
   let component: LandlordProfileViewComponent

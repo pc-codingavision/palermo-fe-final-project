@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { TenantListComponent } from './tenant-list.component'
+import { TenantListComponent } from '@modules/core/manager/tenant/components/list/tenant-list.component'
 
 describe('TenantListComponent', () => {
   let component: TenantListComponent

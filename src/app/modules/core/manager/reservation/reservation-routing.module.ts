@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { ReservationContainerComponent } from './components/container/reservation-container.component'
-import { ReservationDetailsComponent } from './components/details/reservation-details.component'
-import { ReservationListComponent } from './components/list/reservation-list.component'
+import { ReservationContainerComponent } from '@modules/core/manager/reservation/components/container/reservation-container.component'
+import { ReservationDetailsComponent } from '@modules/core/manager/reservation/components/details/reservation-details.component'
+import { ReservationListComponent } from '@modules/core/manager/reservation/components/list/reservation-list.component'
 
 const routes: Routes = [
   { path: '', component: ReservationContainerComponent },

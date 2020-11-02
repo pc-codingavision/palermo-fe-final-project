@@ -1,5 +1,4 @@
-import { Role } from './../enum/role'
-import { PhoneType } from '../enum/phonetype'
+import { PhoneType, Role } from '@shared/enum/enums'
 
 export interface IName {
   firstName: string

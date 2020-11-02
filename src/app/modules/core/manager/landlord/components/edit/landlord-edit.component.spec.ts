@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { LandlordEditComponent } from './landlord-edit.component'
+import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 
 describe('LandlordEditComponent', () => {
   let component: LandlordEditComponent

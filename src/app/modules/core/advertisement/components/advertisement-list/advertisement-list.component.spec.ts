@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { AdvertisementListComponent } from './advertisement-list.component'
+import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
 
 describe('AdvertisementListComponent', () => {
   let component: AdvertisementListComponent

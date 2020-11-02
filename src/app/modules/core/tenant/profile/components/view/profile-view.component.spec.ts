@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
-import { ProfileViewComponent } from './profile-view.component'
+import { ProfileViewComponent } from '@modules/core/tenant/profile/components/view/profile-view.component'
 
 describe('ProfileViewComponent', () => {
   let component: ProfileViewComponent
