@@ -44,4 +44,8 @@ export class SidebarContainerComponent implements OnInit {
   applyPriceFilter(filter: number): void {
     console.log(`Value received from slider: ${filter}`)
   }
+
+  applyFacilityFilter(filter: object): void {
+    console.log(`Value received from facility: ${JSON.stringify(filter)}`)
+  }
 }
