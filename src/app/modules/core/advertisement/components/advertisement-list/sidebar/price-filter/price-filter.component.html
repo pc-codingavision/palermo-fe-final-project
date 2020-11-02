@@ -9,8 +9,8 @@
       <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
         min="{{ minPrice }}" max="{{ maxPrice }}" step="10" fxLayoutAlign="center center">
       </mat-slider>
-      <p id="price-min">€ {{ minPrice }}</p>
-      <p id="price-max">€ {{ maxPrice }}</p>
+      <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
+      <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
     </mat-card-content>
   </mat-card>
 </div>

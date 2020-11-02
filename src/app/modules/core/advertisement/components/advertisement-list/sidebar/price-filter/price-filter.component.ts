@@ -1,3 +1,4 @@
+import { formatCurrency } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import { Advertisement } from 'src/app/shared/models/advertisement'
 
@@ -9,11 +10,11 @@ import { AdvertisementService } from '../../../../advertisement.service'
   styleUrls: ['./price-filter.component.scss'],
 })
 export class PriceFilterComponent implements OnInit {
+  constructor(private advertisementService: AdvertisementService) {}
   maxPriceAdvertisement: Advertisement[]
   minPriceAdvertisement: Advertisement[]
   maxPrice: number
   minPrice: number
-  constructor(private advertisementService: AdvertisementService) {}
 
   ngOnInit(): void {
     this.maxPrice = this.returnMaxPrice()
@@ -21,7 +22,7 @@ export class PriceFilterComponent implements OnInit {
   }
 
   formatLabel(value: number): string {
-    return value + '€'
+    return formatCurrency(value, 'en', '€', '', '.0')
   }
 
   returnMaxPrice(): number {

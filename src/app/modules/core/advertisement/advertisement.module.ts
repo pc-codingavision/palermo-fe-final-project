@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { LOCALE_ID } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { MaterialModule } from '../../shared/material.module'
@@ -54,6 +55,6 @@ const advertisementComponent = [
   declarations: [...advertisementComponent],
 
   imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
-  providers: [AdvertisementService],
+  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
 export class AdvertisementModule {}
