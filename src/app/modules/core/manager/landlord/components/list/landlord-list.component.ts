@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
-
 import { LANDLORDS } from 'src/app/shared/models/mock-data/mock-landlord'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
