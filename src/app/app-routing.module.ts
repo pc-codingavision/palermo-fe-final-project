@@ -13,7 +13,7 @@ const tenantModule = () =>
 const landlordModule = () =>
   import('./modules/core/landlord/landlord.module').then((l) => l.LandlordModule)
 
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: '', children: [...advertisementRoutes] },
   { path: 'tenant', loadChildren: tenantModule },
   { path: 'manager', loadChildren: managerModule },
@@ -23,7 +23,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

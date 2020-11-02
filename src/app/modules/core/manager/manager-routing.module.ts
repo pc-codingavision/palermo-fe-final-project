@@ -8,7 +8,7 @@ const landlordModule = () =>
   import('./landlord/landlord.module').then((l) => l.LandlordModule)
 const tenantModule = () => import('./tenant/tenant.module').then((t) => t.TenantModule)
 
-const routes: Routes = [
+const managerRoutes: Routes = [
   { path: '', component: ManagerContainerComponent },
   { path: 'landlord', loadChildren: landlordModule },
   { path: 'tenant', loadChildren: tenantModule },
@@ -16,7 +16,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(managerRoutes)],
   exports: [RouterModule],
 })
 export class ManagerRoutingModule {}

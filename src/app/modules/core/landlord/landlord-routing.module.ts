@@ -9,7 +9,7 @@ const landlordProfileModule = () =>
     (p) => p.LandlordProfileModule
   )
 
-const routes: Routes = [
+const landlordRoutes: Routes = [
   {
     path: 'profile',
     loadChildren: landlordProfileModule,
@@ -21,7 +21,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(landlordRoutes)],
   exports: [RouterModule],
 })
 export class LandlordRoutingModule {}

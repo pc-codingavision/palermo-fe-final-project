@@ -6,7 +6,7 @@ import { LandlordListComponent } from '@modules/core/manager/landlord/components
 import { LandlordNewComponent } from '@modules/core/manager/landlord/components/new/landlord-new.component'
 import { LandlordViewComponent } from '@modules/core/manager/landlord/components/view/landlord-view.component'
 
-const landlordRouting: Routes = [
+const landlordRoutes: Routes = [
   { path: '', component: LandlordContainerComponent },
   { path: 'list', component: LandlordListComponent },
   { path: 'new', component: LandlordNewComponent },
@@ -15,7 +15,7 @@ const landlordRouting: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(landlordRouting)],
+  imports: [RouterModule.forChild(landlordRoutes)],
   exports: [RouterModule],
 })
 export class LandlordRoutingModule {}
