@@ -10,7 +10,8 @@ export class LandlordService {
   constructor() {}
 
   getArrayIndexById(id: number): number {
-    return LANDLORDS_MOCK_DATA.findIndex((landlord) => landlord.id === id)
+    const index = LANDLORDS_MOCK_DATA.findIndex((landlord) => landlord.id === id)
+    return index === -1 ? null : index
   }
 
   getAll(): Observable<Landlord[]> {
@@ -22,7 +23,9 @@ export class LandlordService {
   }
 
   delete(id: number): void {
-    LANDLORDS_MOCK_DATA.splice(this.getArrayIndexById(id), 1)
+    if (this.getArrayIndexById(id) !== null) {
+      LANDLORDS_MOCK_DATA.splice(this.getArrayIndexById(id), 1)
+    }
   }
 
   add(landlord: Landlord): void {
