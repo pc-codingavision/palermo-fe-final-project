@@ -13,13 +13,16 @@ import { PageNotFoundComponent } from '@shared/components/page-not-found/page-no
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { DialogComponent } from './shared/components/dialog/dialog.component'
 
 const appComponents = [
   AppComponent,
   PageNotFoundComponent,
   LoginComponent,
   LogoutComponent,
+  DialogComponent,
 ]
+
 const appModules = [
   BrowserModule,
   AppRoutingModule,
