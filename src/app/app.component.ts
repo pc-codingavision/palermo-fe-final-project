@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { AuthService } from '@modules/core/auth/auth.service'
 
 @Component({
   selector: 'cav-root',

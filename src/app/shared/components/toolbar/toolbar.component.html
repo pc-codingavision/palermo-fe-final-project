@@ -1,52 +1,26 @@
-<mat-toolbar
-  color="primary"
-  fxLayoutGap="8px"
-  class="app-toolbar margin-bottom"
-  [class.app-is-mobile]="media.isActive('xs')"
-  *ngIf="{
+<mat-toolbar color="primary" fxLayoutGap="8px" class="app-toolbar margin-bottom"
+  [class.app-is-mobile]="media.isActive('xs')" *ngIf="{
       status: authService.authStatus$ | async,
       user: authService.currentUser$ | async
-    } as auth"
->
-  <button
-    mat-icon-button
-    *ngIf="auth?.status?.isAuthenticated"
-    (click)="toggleSideNav.emit()"
-  >
+    } as auth">
+  <button mat-icon-button *ngIf="auth?.status?.isAuthenticated"
+    (click)="toggleSideNav.emit()">
     <mat-icon class="mat-18">menu</mat-icon>
   </button>
-  <a mat-button routerLink="/"><h1>RentMe</h1></a>
+  <a mat-button routerLink="/">
+    <h1>RentMe</h1>
+  </a>
   <span class="flex-spacer"></span>
-    <button
-      mat-mini-fab
-      routerLink=""
-      matTooltip="Profile"
-      aria-label="User Profile"
-      *ngIf="auth?.status?.isAuthenticated"
-    >
-      <img
-        alt="User Profile Picture"
-        *ngIf="auth?.user?.picture"
-        class="image-cropper"
-        [src]="auth?.user?.picture"
-      />
-      <mat-icon *ngIf="!auth?.user?.picture">account_circle</mat-icon>
-    </button>
-    <button
-      *ngIf="auth?.status?.isAuthenticated"
-      mat-mini-fab
-      routerLink="/logout"
-      matTooltip="Logout"
-      aria-label="Logout"
-    >
-      <mat-icon class="mat-18">lock_open</mat-icon>
-    </button>
-    <button
-      *ngIf="!auth?.status?.isAuthenticated"
-      mat-button
-      color="accent"
-      routerLink="/login"
-      matTooltip="Login"
-      aria-label="Login"
-    >Login</button>
+  <button mat-mini-fab routerLink="" matTooltip="Profile" aria-label="User Profile"
+    *ngIf="auth?.status?.isAuthenticated">
+    <img alt="User Profile Picture" *ngIf="auth?.user?.picture" class="image-cropper"
+      [src]="auth?.user?.picture" />
+    <mat-icon *ngIf="!auth?.user?.picture">account_circle</mat-icon>
+  </button>
+  <button *ngIf="auth?.status?.isAuthenticated" mat-mini-fab routerLink="/logout"
+    matTooltip="Logout" aria-label="Logout">
+    <mat-icon class="mat-18">lock_open</mat-icon>
+  </button>
+  <button *ngIf="!auth?.status?.isAuthenticated" mat-button color="accent"
+    routerLink="/login" matTooltip="Login" aria-label="Login">Login</button>
 </mat-toolbar>
