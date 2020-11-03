@@ -14,9 +14,9 @@ import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { NavigationMenuComponent } from './shared/components/navigation-menu/navigation-menu.component'
-import { SidenavComponent } from './shared/components/sidenav/sidenav.component'
-import { DialogComponent } from './shared/components/dialog/dialog.component'
+import { DialogComponent } from '@shared/components/dialog/dialog.component'
+import { NavigationMenuComponent } from '@shared/components/navigation-menu/navigation-menu.component'
+import { SidenavComponent } from '@shared/components/sidenav/sidenav.component'
 
 const appComponents = [
   AppComponent,
