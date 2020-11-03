@@ -35,10 +35,15 @@ export class LandlordListComponent implements OnInit {
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  getAll(): void {
     this.$landlords = this.landlordService.getAll()
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord)
+    this.landlordService.delete(landlord.id)
+    this.getAll()
   }
 }

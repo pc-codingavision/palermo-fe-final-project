@@ -17,10 +17,9 @@ export class LandlordService {
     return of(Landlord.Build(LANDLORDS_MOCK_DATA.find((landlord) => landlord.id === id)))
   }
 
-  delete(landlord: number | Landlord): void {
-    const id =
-      typeof landlord === 'number' ? landlord - 1 : LANDLORDS_MOCK_DATA.indexOf(landlord)
-    LANDLORDS_MOCK_DATA.splice(id, 1)
+  delete(id: number): void {
+    const index = LANDLORDS_MOCK_DATA.findIndex((landlord) => landlord.id === id)
+    LANDLORDS_MOCK_DATA.splice(index, 1)
   }
 
   add(landlord: Landlord): void {
