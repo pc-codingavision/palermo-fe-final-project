@@ -21,6 +21,8 @@ const modules = [
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
+  MatIconModule,
+  MatDialogModule,
   MatDatepickerModule,
   MatDialogModule,
   MatDividerModule,
