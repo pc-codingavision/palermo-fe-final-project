@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { MatDialog } from '@angular/material/dialog'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
@@ -11,14 +10,17 @@ export class ViewContainerComponent implements OnInit {
   @Input() landlord: Landlord
   @Output() remove = new EventEmitter<any>()
 
-  constructor(public confirmDialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
-  changeStatus(operation: string): void {
+  toggleStatus(operation: string): void {
     if (operation === 'deactivate' || operation === 'activate') {
       // chiamata al servizio
       this.landlord.status = !this.landlord.status
+    } else if (operation === 'delete') {
+      // chiamata al servizio
+      console.log('eliminato')
     }
   }
 }

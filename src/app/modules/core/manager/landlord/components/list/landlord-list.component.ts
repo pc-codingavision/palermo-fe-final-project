@@ -1,5 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { Observable, of } from 'rxjs'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 
@@ -28,9 +30,12 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  landlords: Landlord[]
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  getLandlords(): Observable<Landlord[]> {
+    return of(LANDLORDS_MOCK_DATA)
+  }
 }

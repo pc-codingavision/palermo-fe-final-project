@@ -6,6 +6,7 @@ import { AdvertisementModule } from '@modules/core/advertisement/advertisement.m
 import { AuthHttpInterceptor } from '@modules/core/auth/auth-http-interceptor'
 import { AuthService } from '@modules/core/auth/auth.service'
 import { SharedModule } from '@modules/shared/shared.module'
+import { DialogComponent } from '@shared/components/dialog/dialog.component'
 import { LoginComponent } from '@shared/components/login/login.component'
 import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
 
@@ -19,6 +20,7 @@ const appComponents = [
   PageNotFoundComponent,
   LoginComponent,
   LogoutComponent,
+  DialogComponent,
 ]
 
 const appModules = [

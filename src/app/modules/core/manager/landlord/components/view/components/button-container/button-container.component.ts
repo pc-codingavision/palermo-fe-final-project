@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { DialogService } from '@shared/services/dialog.service'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
@@ -8,57 +9,57 @@ import { Landlord } from 'src/app/shared/models/landlord'
 })
 export class ButtonContainerComponent implements OnInit {
   @Input() landlord: Landlord
-  @Output() changeStatus = new EventEmitter<string>()
+  @Output() toggleStatus = new EventEmitter<string>()
 
   status: string
 
   // Deactivate
-  h1Deactivate = 'Deactivate'
-  h2Deactivate = 'Are you sure you want to deactivate this Landlord?'
-  pDeactivate =
+  titleDeactivate = 'Deactivate'
+  subTitleDeactivate = 'Are you sure you want to deactivate this Landlord?'
+  textDeactivate =
     'No data will be removed and it will be available as soon the landlord will be activated again.'
 
   // Activate
-  h1Activate = 'Activate'
-  h2Activate = 'Are you sure you want to activate this Landlord?'
-  pActivate = ''
+  titleActivate = 'Activate'
+  subTitleActivate = 'Are you sure you want to activate this Landlord?'
+  textActivate = ''
 
   // Delete
-  h1Delete = 'Delete'
-  h2Delete = 'Are you sure you want to delete this Landlord?'
-  pDelete = `This will be removed all the landlord's associated data and it won't be possible to recover them!`
+  titleDelete = 'Delete'
+  subTitleDelete = 'Are you sure you want to delete this Landlord?'
+  textDelete = `This will be removed all the landlord's associated data and it won't be possible to recover them!`
 
-  constructor() {}
+  constructor(private dialogService: DialogService) {}
 
   ngOnInit(): void {}
 
-  /*openDialog(operation: string): void {
+  openDialog(operation: string): void {
     if (operation === 'deactivate') {
-      this.openDialogService.openDialog({
-        h1: this.h1Deactivate,
-        h2: this.h2Deactivate,
-        p: this.pDeactivate,
+      this.dialogService.openDialog({
+        title: this.titleDeactivate,
+        subtitle: this.subTitleDeactivate,
+        text: this.textDeactivate,
         returnValue: operation,
       })
     } else if (operation === 'activate') {
-      this.openDialogService.openDialog({
-        h1: this.h1Activate,
-        h2: this.h2Activate,
-        p: this.pActivate,
+      this.dialogService.openDialog({
+        title: this.titleActivate,
+        subtitle: this.subTitleActivate,
+        text: this.textActivate,
         returnValue: operation,
       })
     } else {
-      this.openDialogService.openDialog({
-        h1: this.h1Delete,
-        h2: this.h2Delete,
-        p: this.pDelete,
+      this.dialogService.openDialog({
+        title: this.titleDelete,
+        subtitle: this.subTitleDelete,
+        text: this.textDelete,
         returnValue: operation,
       })
     }
 
-    this.openDialogService
+    this.dialogService
       .getDialogRef()
       .afterClosed()
-      .subscribe((result) => this.changeStatus.emit(result))
-  }*/
+      .subscribe((result) => this.toggleStatus.emit(result))
+  }
 }

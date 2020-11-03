@@ -5,11 +5,12 @@
     Edit
   </button>
 
-  <button mat-raised-button color="accent">
+  <button mat-raised-button color="accent"
+    (click)="openDialog(landlord.status ? 'deactivate' : 'activate')">
     {{landlord.status ? 'Deactivate' : 'Activate'}}
   </button>
 
-  <button mat-raised-button color="warn">
+  <button mat-raised-button color="warn" (click)="openDialog('delete')">
     Delete
   </button>
 </div>
