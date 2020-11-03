@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
-import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatTooltipModule } from '@angular/material/tooltip'
 
 import { MaterialModule } from '../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
@@ -50,8 +48,6 @@ const advertisementsComponent = [
   ScoreFilterComponent,
   LatestContainerComponent,
   LatestMiniCardComponent,
-  MatSnackBarModule,
-  MatTooltipModule,
 ]
 
 @NgModule({

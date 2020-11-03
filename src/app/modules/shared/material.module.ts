@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSliderModule } from '@angular/material/slider'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 const modules = [
   MatButtonModule,
@@ -27,6 +29,8 @@ const modules = [
   MatRadioModule,
   MatGridListModule,
   MatIconModule,
+  MatSnackBarModule,
+  MatTooltipModule,
 ]
 
 @NgModule({
