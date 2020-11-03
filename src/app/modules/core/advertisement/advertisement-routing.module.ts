@@ -5,8 +5,8 @@ import { AdvertisementDetailsComponent } from '@modules/core/advertisement/compo
 import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
 
 export const advertisementRoutes: Routes = [
-  { path: '', redirectTo: 'advertisement/container', pathMatch: 'full' },
-  { path: 'advertisement/container', component: AdvertisementContainerComponent },
+  { path: '', redirectTo: 'advertisement', pathMatch: 'full' },
+  { path: 'advertisement', component: AdvertisementContainerComponent },
   { path: 'advertisement/list', component: AdvertisementListComponent },
   { path: 'advertisement/details/:id', component: AdvertisementDetailsComponent },
 ]
