@@ -1,10 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { LANDLORDS_MOCK_DATA } from 'src/app/shared/models/mock-data/data'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
-import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
 
 export interface Elements {
   id: any
@@ -33,16 +30,7 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords: Landlord[]
 
-  constructor(private landlordService: LandlordService) {}
-
-  getLandlords(): Observable<Landlord[]> {
-    return this.landlordService.getAll()
-  }
+  constructor() {}
 
   ngOnInit(): void {}
-
-  remove(landlord: Landlord): void {
-    this.landlordService.deleteLandlord(landlord)
-    console.log(LANDLORDS_MOCK_DATA)
-  }
 }
