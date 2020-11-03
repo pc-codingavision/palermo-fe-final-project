@@ -13,12 +13,16 @@ import { PageNotFoundComponent } from '@shared/components/page-not-found/page-no
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
+import { NavigationMenuComponent } from './shared/components/navigation-menu/navigation-menu.component'
 
 const appComponents = [
   AppComponent,
   PageNotFoundComponent,
   LoginComponent,
   LogoutComponent,
+  ToolbarComponent,
 ]
 const appModules = [
   BrowserModule,
@@ -29,7 +33,7 @@ const appModules = [
 ]
 
 @NgModule({
-  declarations: [...appComponents],
+  declarations: [...appComponents, SidenavComponent, NavigationMenuComponent],
   imports: [...appModules],
   providers: [
     {
