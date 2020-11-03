@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { LOCALE_ID } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
 import { AdvertisementRoutingModule } from '@modules/core/advertisement/advertisement-routing.module'
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
@@ -23,8 +22,8 @@ import { FacilityFilterComponent } from '@modules/core/advertisement/components/
 import { PriceFilterComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
-import { MaterialModule } from '@modules/shared/material.module'
 
+import { SharedModule } from './../../shared/shared.module'
 import { AdvertisementService } from './advertisement.service'
 import { CheckInCheckOutComponent } from './components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
 
@@ -54,8 +53,7 @@ const advertisementsComponent = [
 
 @NgModule({
   declarations: [...advertisementsComponent],
-
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
+  imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
   providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
 export class AdvertisementModule {}
