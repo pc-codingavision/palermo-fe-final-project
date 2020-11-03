@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing'
 import { ADVERTISEMENTS_MOCK_DATA } from './../../../shared/models/mock-data/data'
 import { AdvertisementService } from './advertisement.service'
 
-fdescribe('AdvertisementService', () => {
+describe('AdvertisementService', () => {
   let service: AdvertisementService
   const mockPriceFilter = [
     {
