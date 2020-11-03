@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Advertisement } from 'src/app/shared/models/advertisement'
 
 import { AdvertisementService } from './../../../../advertisement.service'
 
@@ -11,34 +10,24 @@ import { AdvertisementService } from './../../../../advertisement.service'
 export class SidebarContainerComponent implements OnInit {
   constructor(private advertisementService: AdvertisementService) {}
 
-  maxPriceAdvertisement: Advertisement[]
-  minPriceAdvertisement: Advertisement[]
   maxPrice: number
   minPrice: number
 
   ngOnInit(): void {
-    this.maxPrice = this.returnMaxPrice()
-    this.minPrice = this.returnMinPrice()
+    this.getMaxPrice()
+    this.getMinPrice()
   }
 
-  returnMaxPrice(): number {
+  getMaxPrice(): void {
     this.advertisementService
-      .returnMaxPriceProperty()
-      .subscribe(
-        (maxPriceAdvertisement) => (this.maxPriceAdvertisement = maxPriceAdvertisement)
-      )
-    const maxPricestring = this.maxPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(maxPricestring, 0)
+      .findAdvertisementsHighestPrice()
+      .subscribe((maxPrice) => (this.maxPrice = maxPrice))
   }
 
-  returnMinPrice(): number {
+  getMinPrice(): void {
     this.advertisementService
-      .returnMinPriceProperty()
-      .subscribe(
-        (minPriceAdvertisement) => (this.minPriceAdvertisement = minPriceAdvertisement)
-      )
-    const minPricestring = this.minPriceAdvertisement.map((x) => x.price).toString()
-    return parseInt(minPricestring, 0)
+      .findAdvertisementsLowestPrice()
+      .subscribe((minPrice) => (this.minPrice = minPrice))
   }
 
   applyPriceFilter(filter: number): void {

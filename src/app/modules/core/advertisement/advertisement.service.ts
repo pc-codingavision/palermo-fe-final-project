@@ -27,20 +27,28 @@ export class AdvertisementService {
     )
   }
 
-  returnMaxPriceProperty(): Observable<IAdvertisement[]> {
+  findAdvertisementsHighestPrice(): Observable<number> {
     return of(ADVERTISEMENTS_MOCK_DATA).pipe(
-      map((maxPriceProperty: IAdvertisement[]) => {
-        maxPriceProperty.sort((x, y) => y.price - x.price)
-        return maxPriceProperty.slice(0, 1)
+      map((sourceArray: IAdvertisement[]) => {
+        const advertisementArray = sourceArray
+          .sort((x, y) => y.price - x.price)
+          .slice(0, 1)
+          .map((x) => x.price)
+          .toString()
+        return parseInt(advertisementArray, 0)
       })
     )
   }
 
-  returnMinPriceProperty(): Observable<IAdvertisement[]> {
+  findAdvertisementsLowestPrice(): Observable<number> {
     return of(ADVERTISEMENTS_MOCK_DATA).pipe(
-      map((minPriceProperty: IAdvertisement[]) => {
-        minPriceProperty.sort((x, y) => x.price - y.price)
-        return minPriceProperty.slice(0, 1)
+      map((sourceArray: IAdvertisement[]) => {
+        const advertisementArray = sourceArray
+          .sort((x, y) => x.price - y.price)
+          .slice(0, 1)
+          .map((x) => x.price)
+          .toString()
+        return parseInt(advertisementArray, 0)
       })
     )
   }

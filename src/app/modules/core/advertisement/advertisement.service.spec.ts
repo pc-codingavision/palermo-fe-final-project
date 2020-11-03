@@ -49,6 +49,10 @@ fdescribe('AdvertisementService', () => {
     price: 40,
   }
 
+  const mockMaxPrice = 40
+
+  const mockMinPrice = 20
+
   beforeEach(() => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(AdvertisementService)
@@ -82,6 +86,26 @@ fdescribe('AdvertisementService', () => {
         .returnPriceFilteredAdvertisements(20)
         .subscribe((filteredAdvertisements) =>
           expect(filteredAdvertisements).toEqual(mockPriceFilter)
+        )
+    )
+  })
+
+  it('should return the highest price between advertisements', () => {
+    expect(
+      service
+        .findAdvertisementsHighestPrice()
+        .subscribe((filteredAdvertisementPrice) =>
+          expect(filteredAdvertisementPrice).toEqual(mockMaxPrice)
+        )
+    )
+  })
+
+  it('should return the lowest price between advertisements', () => {
+    expect(
+      service
+        .findAdvertisementsLowestPrice()
+        .subscribe((filteredAdvertisementPrice) =>
+          expect(filteredAdvertisementPrice).toEqual(mockMinPrice)
         )
     )
   })
