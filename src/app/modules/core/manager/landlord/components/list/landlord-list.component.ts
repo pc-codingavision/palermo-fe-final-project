@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { PhoneType, Role } from '@shared/enum/enums'
 import { Observable } from 'rxjs'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
@@ -35,6 +36,35 @@ export class LandlordListComponent implements OnInit {
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
+    this.getAll()
+    this.update()
+  }
+
+  update(): void {
+    this.landlordService
+      .update({
+        id: 1,
+        name: { firstName: 'Pino', surname: 'Cascio' },
+        phone: [
+          { id: 1, type: PhoneType.Mobile, digits: '3454545' },
+          { id: 2, type: PhoneType.Home, digits: '09252525' },
+        ],
+        mail: 'piero-landlord@test.com',
+        picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
+        username: 'landlord1',
+        password: 'password',
+        status: true,
+        dateOfBirth: new Date(1980, 10, 10),
+        role: Role.Landlord,
+        address: {
+          line1: 'Via delle Magnolie',
+          city: 'Messina',
+          state: 'italia',
+          postCode: '90100',
+        },
+        fullName: '',
+      })
+      .subscribe((land) => console.log(land))
     this.getAll()
   }
 
