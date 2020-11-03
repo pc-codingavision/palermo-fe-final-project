@@ -65,10 +65,4 @@ export class NavigationMenuComponent implements OnInit {
   ngOnInit(): void {
     this.authStatus$ = this.authService.authStatus$
   }
-
-  isManager() {}
-
-  isLandlord() {}
-
-  isTenant() {}
 }
