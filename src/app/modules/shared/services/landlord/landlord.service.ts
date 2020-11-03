@@ -34,8 +34,9 @@ export class LandlordService {
     return of((LANDLORDS_MOCK_DATA[index] = landlord))
   }
 
-  toggleStatus(landlord: Landlord): Observable<Landlord> {
-    landlord.status = !landlord.status
-    return of(landlord)
+  toggleStatus(id: number): Observable<Landlord> {
+    const index = this.getArrayIndexById(id)
+    LANDLORDS_MOCK_DATA[index].status = !LANDLORDS_MOCK_DATA[index].status
+    return of(LANDLORDS_MOCK_DATA[index])
   }
 }
