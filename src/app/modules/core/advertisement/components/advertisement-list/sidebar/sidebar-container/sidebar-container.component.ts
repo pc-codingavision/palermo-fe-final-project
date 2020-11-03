@@ -42,7 +42,7 @@ export class SidebarContainerComponent implements OnInit {
   }
 
   applyPriceFilter(filter: number): void {
-    console.log(`Value received from slider: ${filter}`)
+    this.advertisementService.returnPriceFilteredAdvertisements(filter)
   }
 
   applyFacilityFilter(filter: object): void {

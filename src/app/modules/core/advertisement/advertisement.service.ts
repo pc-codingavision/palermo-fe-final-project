@@ -19,6 +19,14 @@ export class AdvertisementService {
     return of(ADVERTISEMENTS_MOCK_DATA.find((advert) => (advert.id = id)))
   }
 
+  returnPriceFilteredAdvertisements(filter: number): Observable<IAdvertisement[]> {
+    return of(ADVERTISEMENTS_MOCK_DATA).pipe(
+      map((filteredAdvertisements: IAdvertisement[]) => {
+        return filteredAdvertisements.filter((x) => x.price <= filter)
+      })
+    )
+  }
+
   returnMaxPriceProperty(): Observable<IAdvertisement[]> {
     return of(ADVERTISEMENTS_MOCK_DATA).pipe(
       map((maxPriceProperty: IAdvertisement[]) => {
