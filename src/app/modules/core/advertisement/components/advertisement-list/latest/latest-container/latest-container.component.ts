@@ -20,7 +20,7 @@ export class LatestContainerComponent implements OnInit {
   }
 
   goForward(): void {
-    if (this.end != 3) {
+    if (this.end !== 3) {
       this.start++
       this.end++
       this.latest = this.advService.getLatestAdv(this.start, this.end)
@@ -28,7 +28,7 @@ export class LatestContainerComponent implements OnInit {
   }
 
   goBehind(): void {
-    if (this.start != 0) {
+    if (this.start !== 0) {
       this.start--
       this.end--
       this.latest = this.advService.getLatestAdv(this.start, this.end)

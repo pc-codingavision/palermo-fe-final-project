@@ -24,11 +24,11 @@ export class AdvertisementService {
 
   getAll(): Observable<any[]> {
     return of(
-      (ADVERTISEMENTS_MOCK_DATA.map((adv, i) => {
+      ADVERTISEMENTS_MOCK_DATA.map((adv, i) => {
         if (adv.propertyId === PROPERTIES_MOCK_DATA[i].id) {
           return Object.assign({}, adv, PROPERTIES_MOCK_DATA[i])
         }
-      })).map((adv, i) => {
+      }).map((adv, i) => {
         if (adv.landlordId === LANDLORDS_MOCK_DATA[i].id) {
           return Object.assign({}, adv, LANDLORDS_MOCK_DATA[i])
         }
