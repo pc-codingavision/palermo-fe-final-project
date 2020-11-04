@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { MaterialModule } from './../../shared/material.module'
+import { MaterialModule } from '../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '../advertisement/components/advertisement-details/advertisement-details.component'
 import { CardContainerComponent } from '../advertisement/components/advertisement-list/card/card-container/card-container.component'
 import { CardExtraComponent } from '../advertisement/components/advertisement-list/card/card-extra/card-extra.component'
 import { ReviewComponent } from '../advertisement/components/advertisement-list/card/card-extra/review/review.component'
 import { CardMainViewComponent } from '../advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { DatapickerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/datapicker/datapicker.component'
 import { FacilitiesContainerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from '../advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
@@ -20,13 +20,14 @@ import { AdvertisementService } from './advertisement.service'
 import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 import { AboutComponent } from './components/advertisement-list/card/card-extra/about/about.component'
 import { FacilitiesComponent } from './components/advertisement-list/card/card-extra/facilities/facilities.component'
+import { CheckInCheckOutComponent } from './components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
 import { PhotogalleryComponent } from './components/advertisement-list/card/card-main-view/photogallery/photogallery.component'
 import { FacilityFilterComponent } from './components/advertisement-list/sidebar/facility-filter/facility-filter.component'
 import { PriceFilterComponent } from './components/advertisement-list/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from './components/advertisement-list/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from './components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
 
-const advertisementComponent = [
+const advertisementsComponent = [
   AdvertisementListComponent,
   AdvertisementContainerComponent,
   AdvertisementDetailsComponent,
@@ -41,7 +42,7 @@ const advertisementComponent = [
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
-  DatapickerComponent,
+  CheckInCheckOutComponent,
   SidebarContainerComponent,
   PriceFilterComponent,
   FacilityFilterComponent,
@@ -51,9 +52,9 @@ const advertisementComponent = [
 ]
 
 @NgModule({
-  declarations: [...advertisementComponent],
+  declarations: [...advertisementsComponent],
 
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule],
+  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
   providers: [AdvertisementService],
 })
 export class AdvertisementModule {}
