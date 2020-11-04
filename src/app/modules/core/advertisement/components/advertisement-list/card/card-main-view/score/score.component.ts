@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-score',
@@ -6,7 +6,21 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./score.component.css'],
 })
 export class ScoreComponent implements OnInit {
+  @Input() rating: number
+  @Input() itemId: number
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>()
+
+  inputName: string
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.inputName = this.itemId + '_rating'
+  }
+  onClick(rating: number): void {
+    this.rating = rating
+    this.ratingClick.emit({
+      itemId: this.itemId,
+      rating,
+    })
+  }
 }
