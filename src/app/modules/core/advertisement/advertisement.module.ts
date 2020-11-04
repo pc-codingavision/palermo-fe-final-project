@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
 
-import { MaterialModule } from '../../shared/material.module'
+import { MaterialModule } from './../../shared/material.module'
 import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '../advertisement/components/advertisement-details/advertisement-details.component'
 import { CardContainerComponent } from '../advertisement/components/advertisement-list/card/card-container/card-container.component'
