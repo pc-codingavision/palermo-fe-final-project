@@ -25,6 +25,8 @@ const appComponents = [
   LogoutComponent,
   DialogComponent,
   ToolbarComponent,
+  SidenavComponent,
+  NavigationMenuComponent,
 ]
 
 const appModules = [
@@ -36,7 +38,7 @@ const appModules = [
 ]
 
 @NgModule({
-  declarations: [...appComponents, SidenavComponent, NavigationMenuComponent],
+  declarations: [...appComponents],
   imports: [...appModules],
   providers: [
     {
