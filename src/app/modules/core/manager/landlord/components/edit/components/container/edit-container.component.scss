@@ -2,10 +2,12 @@ mat-toolbar {
   background-color: #424242;
 }
 img {
-  width: 150px;
-  height: 30%;
+  width: 160px;
+  height: 160px;
   display: block;
   margin: 0 auto;
+  padding-top: 10px;
+  padding-right: 50px;
 }
 
 #primary-container {
@@ -26,4 +28,11 @@ img {
 
 #select-picture {
   background-color: whitesmoke;
+}
+
+.mat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.mat-flat-button {
+  margin-left: 41px;
 }

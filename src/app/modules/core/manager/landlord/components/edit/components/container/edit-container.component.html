@@ -6,13 +6,19 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center" id="secondary-container">
-    <div id="picture-change">
-      <img [src]="landlord.picture">
-      <button mat-button (click)="openPictureContainer()">Change</button>
-      <div id="select-picture" *ngIf="togglePictureContainer">
-        <mat-label>Insert a new picture</mat-label>
-        <input matInput placeholder="New picture" [formControl]="picture">
-        <button mat-button color="primary" (click)="updatePicture()">Confirm</button>
+    <div fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20px">
+      <div id="picture-change">
+        <img [src]="landlord.picture">
+      </div>
+      <div class="change-button">
+        <button mat-button (click)="openPictureContainer()">Change</button>
+        <div>
+          <div id="select-picture" *ngIf="togglePictureContainer">
+            <mat-label>Insert a new picture</mat-label>
+            <input matInput placeholder="New picture" [formControl]="picture">
+            <button mat-button color="primary" (click)="updatePicture()">Confirm</button>
+          </div>
+        </div>
       </div>
     </div>
 
