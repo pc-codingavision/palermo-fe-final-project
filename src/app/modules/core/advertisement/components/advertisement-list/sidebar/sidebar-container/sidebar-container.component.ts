@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { AdvertisementService } from './../../../../advertisement.service'
 
@@ -10,24 +11,20 @@ import { AdvertisementService } from './../../../../advertisement.service'
 export class SidebarContainerComponent implements OnInit {
   constructor(private advertisementService: AdvertisementService) {}
 
-  maxPrice: number
-  minPrice: number
+  maxPrice: Observable<number>
+  minPrice: Observable<number>
 
   ngOnInit(): void {
-    this.getMaxPrice()
-    this.getMinPrice()
+    this.maxPrice = this.getMaxPrice()
+    this.minPrice = this.getMinPrice()
   }
 
-  getMaxPrice(): void {
-    this.advertisementService
-      .findAdvertisementsHighestPrice()
-      .subscribe((maxPrice) => (this.maxPrice = maxPrice))
+  getMaxPrice(): Observable<number> {
+    return this.advertisementService.findAdvertisementsHighestPrice()
   }
 
-  getMinPrice(): void {
-    this.advertisementService
-      .findAdvertisementsLowestPrice()
-      .subscribe((minPrice) => (this.minPrice = minPrice))
+  getMinPrice(): Observable<number> {
+    return this.advertisementService.findAdvertisementsLowestPrice()
   }
 
   applyPriceFilter(filter: number): void {
