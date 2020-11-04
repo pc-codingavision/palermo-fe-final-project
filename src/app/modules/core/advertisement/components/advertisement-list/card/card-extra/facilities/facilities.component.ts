@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
+import { IFacilities } from '@shared/models/property'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-import { IFacilities } from './../../../../../../../../shared/models/property'
-import { PropertiesService } from './../../../../../services/properties.service'
+import { PropertyService } from './../../../../../services/property.service'
 
 @Component({
   selector: 'cav-facilities',
@@ -11,12 +11,12 @@ import { PropertiesService } from './../../../../../services/properties.service'
   styleUrls: ['./facilities.component.scss'],
 })
 export class FacilitiesComponent implements OnInit {
-  constructor(private propertiesService: PropertiesService) {}
+  constructor(private propertyService: PropertyService) {}
 
   ngOnInit(): void {}
 
   getFacilitiesById(): Observable<IFacilities> {
-    return this.propertiesService
+    return this.propertyService
       .findById(1)
       .pipe(map((property) => property.facilities.tv))
   }

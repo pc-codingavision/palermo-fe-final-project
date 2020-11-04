@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Component, Input, OnInit } from '@angular/core'
 
-import { PropertiesService } from './../../../../../services/properties.service'
+import { IProperty } from './../../../../../../../../shared/models/property'
 
 @Component({
   selector: 'cav-about',
@@ -10,7 +8,8 @@ import { PropertiesService } from './../../../../../services/properties.service'
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  constructor(private propertiesService: PropertiesService) {}
+  @Input() property: IProperty
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -22,9 +21,7 @@ export class AboutComponent implements OnInit {
   //   return this.propertiesService.findById(id)
   // }
 
-  getDescriptionById(): Observable<any> {
-    return this.propertiesService
-      .findById(1)
-      .pipe(map((property) => property.description))
-  }
+  // getDescriptionById(): Observable<any> {
+  //   return this.propertyService.findById(1).pipe(map((property) => property.description))
+  // }
 }

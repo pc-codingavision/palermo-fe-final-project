@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { Observable } from 'rxjs'
+import { Property } from 'src/app/shared/models/property'
+
+import { IAdvertisement } from './../../../../../../../shared/models/advertisement'
+import { PropertyService } from './../../../../services/property.service'
 
 @Component({
   selector: 'cav-card-container',
@@ -6,7 +11,16 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent implements OnInit {
-  constructor() {}
+  @Input() advertisements: IAdvertisement[]
+  property: Observable<Property>
+  id = 1
+  constructor(private propertyService: PropertyService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.property = this.getDescriptionById()
+  }
+
+  getDescriptionById(): Observable<Property> {
+    return this.propertyService.findById(this.id)
+  }
 }
