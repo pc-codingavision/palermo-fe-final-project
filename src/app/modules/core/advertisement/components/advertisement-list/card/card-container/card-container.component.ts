@@ -25,7 +25,7 @@ export class CardContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    ;(this.property = this.getDescriptionById()),
+    (this.property = this.getDescriptionById()),
       (this.advertisement = this.getReviewById())
   }
 

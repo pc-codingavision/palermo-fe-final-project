@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
 import { IAdvertisement } from './../../../../../../../../shared/models/advertisement'
-import { IProperty } from './../../../../../../../../shared/models/property'
 
 @Component({
   selector: 'cav-review',
