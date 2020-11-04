@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { LOCALE_ID } from '@angular/core'
 import { AdvertisementRoutingModule } from '@modules/core/advertisement/advertisement-routing.module'
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
@@ -11,7 +11,6 @@ import { CardExtraComponent } from '@modules/core/advertisement/components/adver
 import { FacilitiesComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/facilities/facilities.component'
 import { ReviewComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/review/review.component'
 import { CardMainViewComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { DatapickerComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/datapicker/datapicker.component'
 import { FacilitiesContainerComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
 import { FacilityComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
 import { FavouriteComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
@@ -23,9 +22,12 @@ import { FacilityFilterComponent } from '@modules/core/advertisement/components/
 import { PriceFilterComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
-import { MaterialModule } from '@modules/shared/material.module'
 
-const advertisementComponent = [
+import { SharedModule } from './../../shared/shared.module'
+import { AdvertisementService } from './advertisement.service'
+import { CheckInCheckOutComponent } from './components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
+
+const advertisementsComponent = [
   AdvertisementListComponent,
   AdvertisementContainerComponent,
   AdvertisementDetailsComponent,
@@ -40,7 +42,7 @@ const advertisementComponent = [
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
-  DatapickerComponent,
+  CheckInCheckOutComponent,
   SidebarContainerComponent,
   PriceFilterComponent,
   FacilityFilterComponent,
@@ -50,8 +52,8 @@ const advertisementComponent = [
 ]
 
 @NgModule({
-  declarations: [...advertisementComponent],
-
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
+  declarations: [...advertisementsComponent],
+  imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
+  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
 export class AdvertisementModule {}

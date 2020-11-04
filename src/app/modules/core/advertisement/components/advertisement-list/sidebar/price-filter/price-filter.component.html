@@ -6,10 +6,12 @@
     <mat-card-content>
       <mat-divider id="price-divider" [inset]="true">
       </mat-divider>
-      <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel" min="0"
-        max="1000" step="10" fxLayoutAlign="center center"></mat-slider>
-      <p id="price-min">€ 0</p>
-      <p id="price-max">€ 1000</p>
+      <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
+        min="{{ minPrice }}" max="{{ maxPrice }}" step="10" fxLayoutAlign="center center"
+        (change)="emitFilter($event.value)">
+      </mat-slider>
+      <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
+      <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
     </mat-card-content>
   </mat-card>
 </div>

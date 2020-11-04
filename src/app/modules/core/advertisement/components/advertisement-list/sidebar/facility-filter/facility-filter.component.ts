@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-facility-filter',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./facility-filter.component.scss'],
 })
 export class FacilityFilterComponent implements OnInit {
+  @Output() filter = new EventEmitter<object>()
+
   expanded = false
 
   constructor() {}
@@ -14,5 +16,9 @@ export class FacilityFilterComponent implements OnInit {
 
   expand(): boolean {
     return (this.expanded = !this.expanded)
+  }
+
+  emitFilter(type: string, active: boolean): void {
+    this.filter.emit({ type, active })
   }
 }
