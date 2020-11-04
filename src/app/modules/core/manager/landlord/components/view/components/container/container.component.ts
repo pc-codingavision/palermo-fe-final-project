@@ -20,7 +20,7 @@ export class ViewContainerComponent implements OnInit {
       this.landlord.status = !this.landlord.status
     } else if (operation === 'delete') {
       // chiamata al servizio
-      console.log('eliminato')
+      this.remove.emit(this.landlord)
     }
   }
 }

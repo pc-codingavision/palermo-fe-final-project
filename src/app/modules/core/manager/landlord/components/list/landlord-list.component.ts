@@ -38,4 +38,8 @@ export class LandlordListComponent implements OnInit {
   getLandlords(): Observable<Landlord[]> {
     return of(LANDLORDS_MOCK_DATA)
   }
+
+  remove(landlord: Landlord): void {
+    // Chiamata al servizio
+  }
 }

@@ -8,7 +8,12 @@
   <div fxLayout="row" fxLayoutAlign="center" id="secondary-container">
     <div id="picture-change">
       <img [src]="landlord.picture">
-      <button mat-button>Change</button>
+      <button mat-button (click)="openPictureContainer()">Change</button>
+      <div id="select-picture" *ngIf="togglePictureContainer">
+        <mat-label>Insert a new picture</mat-label>
+        <input matInput placeholder="New picture" [formControl]="picture">
+        <button mat-button color="primary" (click)="updatePicture()">Confirm</button>
+      </div>
     </div>
     <div>
       <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">

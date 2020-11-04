@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
@@ -14,10 +14,17 @@ export class ContactDetailsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.getData()
+  }
+
+  private getData(): void {
     this.contactDetailsForm = this.formBuilder.group({
+      mobile: [
+        this.landlord.phone[1].digits,
+        [Validators.required, Validators.minLength(8)],
+      ],
       phone: [this.landlord.phone[0].digits],
-      mobile: [this.landlord.phone[1].digits],
-      email: [this.landlord.mail],
+      email: [this.landlord.mail, [Validators.required, Validators.email]],
     })
   }
 }

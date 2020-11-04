@@ -5,7 +5,8 @@
     </span>
     Save
   </button>
-  <button id="buttons-reset-password" mat-raised-button>
+  <button id="buttons-reset-password" mat-raised-button
+    (click)="openResetPasswordContainer()">
     <span class="material-icons">
       vpn_key
     </span>
@@ -17,4 +18,26 @@
     </span>
     Cancel
   </button>
+</div>
+
+<div id="reset-password-container" *ngIf="toggleResetPasswordContainer">
+  <h2>Change Password</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hidePassword ? 'password' : 'text'" [formControl]="password">
+    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Confirm password</mat-label>
+    <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
+      [formControl]="confirmPassword">
+    <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword"
+      [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+      <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
 </div>

@@ -1,5 +1,6 @@
 import { Location } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'cav-buttons-container',
@@ -7,19 +8,24 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./buttons-container.component.scss'],
 })
 export class ButtonsContainerComponent implements OnInit {
+  hidePassword = true
+  hideConfirmPassword = true
+  toggleResetPasswordContainer = false
+  password: FormControl
+  confirmPassword: FormControl
+
   constructor(private location: Location) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.password = new FormControl()
+    this.confirmPassword = new FormControl()
+  }
 
   goBack(): void {
     this.location.back()
   }
 
-  /*openDialogInput(): void {
-    this.openDialogService.openDialogInput({
-      h1: 'Reset Password',
-      h2: 'Inserisci la nuova password',
-      password: 'ciao',
-    })
-  }*/
+  openResetPasswordContainer(): void {
+    this.toggleResetPasswordContainer = !this.toggleResetPasswordContainer
+  }
 }
