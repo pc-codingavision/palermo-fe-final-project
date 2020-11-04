@@ -1,5 +1,5 @@
 import { Location } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { FormControl } from '@angular/forms'
 
 @Component({
@@ -8,6 +8,8 @@ import { FormControl } from '@angular/forms'
   styleUrls: ['./buttons-container.component.scss'],
 })
 export class ButtonsContainerComponent implements OnInit {
+  @Output() newPassword = new EventEmitter<string>()
+  @Output() newLandlord = new EventEmitter<void>()
   hidePassword = true
   hideConfirmPassword = true
   toggleResetPasswordContainer = false
@@ -27,5 +29,13 @@ export class ButtonsContainerComponent implements OnInit {
 
   openResetPasswordContainer(): void {
     this.toggleResetPasswordContainer = !this.toggleResetPasswordContainer
+  }
+
+  updatePassword(): void {
+    this.newPassword.emit(this.password.value)
+  }
+
+  updateLandlord(): void {
+    this.newLandlord.emit()
   }
 }

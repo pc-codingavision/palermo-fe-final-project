@@ -1,5 +1,5 @@
 <div id="buttons-container" fxLayout="row" fxLayoutAlign="space-around">
-  <button id="buttons-save" mat-raised-button>
+  <button id="buttons-save" mat-raised-button (click)="updateLandlord()">
     <span class="material-icons">
       check_circle
     </span>
@@ -40,4 +40,7 @@
       <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
+  <br>
+  <button mat-button color="primary" (click)="updatePassword()"
+    [disabled]="password.value !== confirmPassword.value">Confirm</button>
 </div>

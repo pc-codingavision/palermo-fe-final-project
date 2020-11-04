@@ -8,6 +8,7 @@ import { Landlord } from 'src/app/shared/models/landlord'
   styleUrls: ['./address-details.component.scss'],
 })
 export class AddressDetailsComponent implements OnInit {
+  prova = 'prova'
   @Input() landlord: Landlord
   addressDetailsForm: FormGroup
 

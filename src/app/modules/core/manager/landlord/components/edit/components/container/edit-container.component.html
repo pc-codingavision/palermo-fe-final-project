@@ -15,6 +15,7 @@
         <button mat-button color="primary" (click)="updatePicture()">Confirm</button>
       </div>
     </div>
+
     <div>
       <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">
         <h2>
@@ -25,14 +26,16 @@
           Username: {{landlord.username}}
         </h2>
       </div>
+
       <div id="cav-container" fxLayout="row">
         <cav-personal-details [landlord]="landlord"></cav-personal-details>
         <cav-address-details [landlord]="landlord"></cav-address-details>
         <cav-contact-details [landlord]="landlord"></cav-contact-details>
-
       </div>
-      <div id="cav-buttons-container" fxLayout="row" fxLayoutAlign="end center">
-        <cav-buttons-container>
+
+      <div id="cav-buttons-container" fxLayout="row" fxLayoutAlign="end">
+        <cav-buttons-container (newPassword)="updatePassword($event)"
+          (newLandlord)="updateLandlord()">
         </cav-buttons-container>
       </div>
     </div>
