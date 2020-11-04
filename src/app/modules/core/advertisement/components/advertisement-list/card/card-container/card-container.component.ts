@@ -6,6 +6,7 @@ import {
   Advertisement,
   IAdvertisement,
 } from './../../../../../../../shared/models/advertisement'
+import { AdvertisementService } from './../../../../advertisement.service'
 import { PropertyService } from './../../../../services/property.service'
 
 @Component({
@@ -18,13 +19,21 @@ export class CardContainerComponent implements OnInit {
   property: Observable<Property>
   advertisement: Observable<Advertisement>
   id = 1
-  constructor(private propertyService: PropertyService) {}
+  constructor(
+    private propertyService: PropertyService,
+    private advertisementService: AdvertisementService
+  ) {}
 
   ngOnInit(): void {
-    this.property = this.getDescriptionById()
+    ;(this.property = this.getDescriptionById()),
+      (this.advertisement = this.getReviewById())
   }
 
   getDescriptionById(): Observable<Property> {
     return this.propertyService.findById(this.id)
+  }
+
+  getReviewById(): Observable<Advertisement> {
+    return this.advertisementService.findById(this.id)
   }
 }

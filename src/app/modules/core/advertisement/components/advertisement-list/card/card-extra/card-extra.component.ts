@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
+import { IAdvertisement } from './../../../../../../../shared/models/advertisement'
 import { IProperty } from './../../../../../../../shared/models/property'
 
 @Component({
@@ -9,6 +10,7 @@ import { IProperty } from './../../../../../../../shared/models/property'
 })
 export class CardExtraComponent implements OnInit {
   @Input() property: IProperty
+  @Input() advertisements: IAdvertisement
 
   constructor() {}
 
