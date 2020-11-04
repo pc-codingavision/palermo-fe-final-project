@@ -9,6 +9,7 @@ import { IProperty } from './../../../../../../../shared/models/property'
 })
 export class CardExtraComponent implements OnInit {
   @Input() property: IProperty
+
   constructor() {}
 
   ngOnInit(): void {}

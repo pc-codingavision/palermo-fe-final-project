@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Property } from 'src/app/shared/models/property'
 
-import { IAdvertisement } from './../../../../../../../shared/models/advertisement'
+import {
+  Advertisement,
+  IAdvertisement,
+} from './../../../../../../../shared/models/advertisement'
 import { PropertyService } from './../../../../services/property.service'
 
 @Component({
@@ -13,6 +16,7 @@ import { PropertyService } from './../../../../services/property.service'
 export class CardContainerComponent implements OnInit {
   @Input() advertisements: IAdvertisement[]
   property: Observable<Property>
+  advertisement: Observable<Advertisement>
   id = 1
   constructor(private propertyService: PropertyService) {}
 

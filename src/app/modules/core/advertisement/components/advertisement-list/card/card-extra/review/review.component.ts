@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
+import { IAdvertisement } from './../../../../../../../../shared/models/advertisement'
 import { IProperty } from './../../../../../../../../shared/models/property'
 
 @Component({
@@ -8,8 +9,7 @@ import { IProperty } from './../../../../../../../../shared/models/property'
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() property: IProperty
-
+  @Input() advertisements: IAdvertisement
   constructor() {}
 
   ngOnInit(): void {}
