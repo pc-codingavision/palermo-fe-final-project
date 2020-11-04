@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { IFacilities } from '@shared/models/property'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-import { IFacilities } from './../../../../../../../../shared/models/property'
 import { PropertyService } from './../../../../../services/property.service'
 
 @Component({

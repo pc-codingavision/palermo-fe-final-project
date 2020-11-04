@@ -38,7 +38,11 @@
 </div> -->
 
 
-<div fxLayout="row" *ngIf="getFacilitiesById()">
+<div fxLayout="row" *ngIf="getFacilitiesById(); else clearBlock">
   <i id="done" class="material-icons">done</i>
   <p>TV</p>
 </div>
+<ng-template fxLayout="row" #clearBlock>
+  <i id="clear" class="material-icons">clear</i>
+  <p>TV</p>
+</ng-template>

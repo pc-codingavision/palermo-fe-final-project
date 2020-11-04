@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
-import { PropertyService } from './../../../../services/property.service'
+import { IProperty } from './../../../../../../../shared/models/property'
 
 @Component({
   selector: 'cav-card-extra',
@@ -8,7 +8,8 @@ import { PropertyService } from './../../../../services/property.service'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
-  constructor(private propertyService: PropertyService) {}
+  @Input() property: IProperty
+  constructor() {}
 
   ngOnInit(): void {}
 }
