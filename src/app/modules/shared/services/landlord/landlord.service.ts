@@ -43,3 +43,4 @@ export class LandlordService {
     return of(LANDLORDS_MOCK_DATA[index])
   }
 }
+

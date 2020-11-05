@@ -43,7 +43,6 @@ const modules = [
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-
 ]
 
 @NgModule({
