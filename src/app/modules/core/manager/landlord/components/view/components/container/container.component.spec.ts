@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { ViewContainerComponent } from './container.component'
 
@@ -9,6 +10,7 @@ describe('ContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ViewContainerComponent],
+      imports: [MatDialogModule]
     }).compileComponents()
   }))
 
@@ -18,7 +20,7 @@ describe('ContainerComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

@@ -1,6 +1,6 @@
 <div id="container">
   <div>
-    <h1 md-display-4>{{landlord.fullName}} details</h1>
+    <h1 md-display-4>{{landlord?.fullName}} details</h1>
   </div>
 
   <div id="cav-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="stretch">
@@ -9,7 +9,7 @@
     <cav-contact fxFlex="30" id="contact-cav" [landlord]="landlord">
     </cav-contact>
     <cav-phone fxFlex="30" id="phone-cav" [landlord]="landlord"></cav-phone>
-    <cav-address fxFlex="30" id="address-cav" [address]="landlord.address">
+    <cav-address fxFlex="30" id="address-cav" [address]="landlord?.address">
     </cav-address>
   </div>
 
@@ -20,8 +20,8 @@
     </button>
 
     <button mat-raised-button color="accent"
-      (click)="openDialog(landlord.status ? 'deactivate' : 'activate')">
-      {{landlord.status ? 'Deactivate' : 'Activate'}}
+      (click)="openDialog(landlord?.status ? 'deactivate' : 'activate')">
+      {{landlord?.status ? 'Deactivate' : 'Activate'}}
     </button>
 
     <button mat-raised-button color="warn" (click)="openDialog('delete')">

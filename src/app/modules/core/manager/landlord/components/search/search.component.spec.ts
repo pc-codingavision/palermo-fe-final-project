@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 import { SearchComponent } from './search.component'
 
@@ -9,6 +10,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchComponent],
+      imports: [MatAutocompleteModule]
     }).compileComponents()
   }))
 
@@ -18,7 +20,7 @@ describe('SearchComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })
