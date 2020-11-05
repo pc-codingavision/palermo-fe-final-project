@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { IAdvertisement } from './../../../../../../../../shared/models/advertisement'
+import { Advertisement } from './../../../../../../../../shared/models/advertisement'
 
 @Component({
   selector: 'cav-review',
@@ -8,7 +8,7 @@ import { IAdvertisement } from './../../../../../../../../shared/models/advertis
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() advertisements: IAdvertisement
+  @Input() advertisement: Advertisement
   constructor() {}
 
   ngOnInit(): void {}

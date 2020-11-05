@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { IAdvertisement } from './../../../../../../../shared/models/advertisement'
-import { IProperty } from './../../../../../../../shared/models/property'
+import { Advertisement } from './../../../../../../../shared/models/advertisement'
+import { Property } from './../../../../../../../shared/models/property'
 
 @Component({
   selector: 'cav-card-extra',
@@ -9,8 +9,8 @@ import { IProperty } from './../../../../../../../shared/models/property'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
-  @Input() property: IProperty
-  @Input() advertisements: IAdvertisement
+  @Input() property: Property
+  @Input() advertisement: Advertisement
 
   constructor() {}
 

@@ -15,25 +15,16 @@ import { PropertyService } from './../../../../services/property.service'
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent implements OnInit {
-  @Input() advertisements: IAdvertisement[]
-  property: Observable<Property>
-  advertisement: Observable<Advertisement>
-  id = 1
+  @Input() advertisement: Advertisement
+
   constructor(
-    private propertyService: PropertyService,
-    private advertisementService: AdvertisementService
+
   ) {}
 
   ngOnInit(): void {
-    (this.property = this.getDescriptionById()),
-      (this.advertisement = this.getReviewById())
+
   }
 
-  getDescriptionById(): Observable<Property> {
-    return this.propertyService.findById(this.id)
-  }
 
-  getReviewById(): Observable<Advertisement> {
-    return this.advertisementService.findById(this.id)
   }
 }

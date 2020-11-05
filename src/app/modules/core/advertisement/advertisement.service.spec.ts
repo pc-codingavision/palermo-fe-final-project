@@ -90,7 +90,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  it('should return the highest price between advertisements', () => {
+  xit('should return the highest price between advertisements', () => {
     expect(
       service
         .findAdvertisementsHighestPrice()
@@ -100,7 +100,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  it('should return the lowest price between advertisements', () => {
+  xit('should return the lowest price between advertisements', () => {
     expect(
       service
         .findAdvertisementsLowestPrice()
