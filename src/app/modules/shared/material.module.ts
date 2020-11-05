@@ -11,7 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
+import { MatListModule } from '@angular/material/list'
 import { MatRadioModule } from '@angular/material/radio'
+import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatTableModule } from '@angular/material/table'
 import { MatTabsModule } from '@angular/material/tabs'
@@ -37,6 +39,11 @@ const modules = [
   MatNativeDateModule,
   MatRadioModule,
   MatSliderModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+
 ]
 
 @NgModule({

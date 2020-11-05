@@ -17,3 +17,20 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+.margin-top {
+  margin-top: 16px;
+}
+
+.margin-bottom {
+  margin-bottom: 16px;
+}
+
+.horizontal-padding {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
