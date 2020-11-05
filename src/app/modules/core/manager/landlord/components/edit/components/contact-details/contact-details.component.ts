@@ -11,7 +11,7 @@ export class ContactDetailsComponent implements OnInit {
   contactDetailsForm: FormGroup
   @Input() landlord: Landlord
   value = ''
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.getData()

@@ -10,7 +10,7 @@ describe('EditContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EditContainerComponent],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule],
     }).compileComponents()
   }))
 

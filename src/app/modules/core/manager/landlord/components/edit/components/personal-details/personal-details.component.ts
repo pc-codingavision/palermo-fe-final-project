@@ -12,7 +12,7 @@ export class PersonalDetailsComponent implements OnInit {
   personalDetailsForm: FormGroup
   maxDate = new Date()
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.getData()

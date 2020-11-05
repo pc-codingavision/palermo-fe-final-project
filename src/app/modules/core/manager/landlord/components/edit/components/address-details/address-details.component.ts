@@ -12,7 +12,7 @@ export class AddressDetailsComponent implements OnInit {
   @Input() landlord: Landlord
   addressDetailsForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.getData()

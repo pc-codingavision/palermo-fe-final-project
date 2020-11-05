@@ -10,7 +10,7 @@ describe('ButtonContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ButtonContainerComponent],
-      imports: [MatDialogModule]
+      imports: [MatDialogModule],
     }).compileComponents()
   }))
 

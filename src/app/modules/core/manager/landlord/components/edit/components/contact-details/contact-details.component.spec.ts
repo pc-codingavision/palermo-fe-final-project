@@ -10,7 +10,7 @@ describe('ContactDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContactDetailsComponent],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule],
     }).compileComponents()
   }))
 
