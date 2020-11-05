@@ -7,47 +7,56 @@ import { Landlord } from 'src/app/shared/models/landlord'
   providedIn: 'root',
 })
 export class LandlordService {
+  landlords: Landlord[] = LANDLORDS_MOCK_DATA.map((landlord) => ({
+    ...landlord,
+  })) as Landlord[]
+
   constructor() {}
 
-  private getArrayIndexById(id: number): number | null {
-    const index = LANDLORDS_MOCK_DATA.findIndex((landlord) => landlord.id === id)
-    return index === -1 ? null : index
-  }
-
   getAll(): Observable<Landlord[]> {
-    return of(LANDLORDS_MOCK_DATA.map((landlord) => Landlord.Build(landlord)))
+    console.log(this.landlords)
+    return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
   }
 
-  getById(id: number): Observable<Landlord> | null {
-    const landlordById = LANDLORDS_MOCK_DATA.find((landlord) => landlord.id === id)
-    if (landlordById) {
-      return of(landlordById)
+  getById(id: number): Observable<Landlord | null> {
+    if (id !== null) {
+      const landlordById = this.landlords.find((landlord) => landlord.id === id)
+      if (landlordById !== undefined) {
+        return of(landlordById)
+      }
     }
-    return null
+    return of(null)
   }
 
   delete(id: number): void {
     if (this.getArrayIndexById(id) !== null) {
-      LANDLORDS_MOCK_DATA.splice(this.getArrayIndexById(id), 1)
+      this.landlords.splice(this.getArrayIndexById(id), 1)
     }
   }
 
   add(landlord: Landlord): void {
-    LANDLORDS_MOCK_DATA.push(landlord)
+    this.landlords.push(landlord)
   }
 
   update(landlord: Landlord): Observable<Landlord> {
     const index = this.getArrayIndexById(landlord.id)
-    if (this.getArrayIndexById(landlord.id)) {
-      return of((LANDLORDS_MOCK_DATA[index] = landlord))
+    if (typeof index === 'number') {
+      return of((this.landlords[index] = landlord))
     }
+    return null
   }
 
   toggleStatus(id: number): Observable<Landlord> {
     const index = this.getArrayIndexById(id)
-    if (this.getArrayIndexById(id)) {
-      LANDLORDS_MOCK_DATA[index].status = !LANDLORDS_MOCK_DATA[index].status
-      return of(LANDLORDS_MOCK_DATA[index])
+    if (typeof index === 'number') {
+      this.landlords[index].status = !this.landlords[index].status
+      return of(this.landlords[index])
     }
+    return null
+  }
+
+  private getArrayIndexById(id: number): number | null {
+    const index = this.landlords.findIndex((landlord) => landlord.id === id)
+    return index === -1 ? null : index
   }
 }
