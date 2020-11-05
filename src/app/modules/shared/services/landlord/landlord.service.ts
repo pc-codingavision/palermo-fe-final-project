@@ -9,7 +9,7 @@ import { Landlord } from 'src/app/shared/models/landlord'
 export class LandlordService {
   constructor() {}
 
-  getArrayIndexById(id: number): number {
+  private getArrayIndexById(id: number): number | null {
     const index = LANDLORDS_MOCK_DATA.findIndex((landlord) => landlord.id === id)
     return index === -1 ? null : index
   }
@@ -18,8 +18,12 @@ export class LandlordService {
     return of(LANDLORDS_MOCK_DATA.map((landlord) => Landlord.Build(landlord)))
   }
 
-  getById(id: number): Observable<Landlord> {
-    return of(Landlord.Build(LANDLORDS_MOCK_DATA.find((landlord) => landlord.id === id)))
+  getById(id: number): Observable<Landlord> | null {
+    const landlordById = LANDLORDS_MOCK_DATA.find((landlord) => landlord.id === id)
+    if (landlordById) {
+      return of(landlordById)
+    }
+    return null
   }
 
   delete(id: number): void {
@@ -34,13 +38,16 @@ export class LandlordService {
 
   update(landlord: Landlord): Observable<Landlord> {
     const index = this.getArrayIndexById(landlord.id)
-    return of((LANDLORDS_MOCK_DATA[index] = landlord))
+    if (this.getArrayIndexById(landlord.id)) {
+      return of((LANDLORDS_MOCK_DATA[index] = landlord))
+    }
   }
 
   toggleStatus(id: number): Observable<Landlord> {
     const index = this.getArrayIndexById(id)
-    LANDLORDS_MOCK_DATA[index].status = !LANDLORDS_MOCK_DATA[index].status
-    return of(LANDLORDS_MOCK_DATA[index])
+    if (this.getArrayIndexById(id)) {
+      LANDLORDS_MOCK_DATA[index].status = !LANDLORDS_MOCK_DATA[index].status
+      return of(LANDLORDS_MOCK_DATA[index])
+    }
   }
 }
-
