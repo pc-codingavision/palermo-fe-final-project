@@ -5,16 +5,16 @@
 
   <mat-card-content>
     <mat-card-subtitle>
-      <mat-icon>phone</mat-icon> <span>{{landlord.phone[0].digits}}</span>
+      <mat-icon>phone</mat-icon> <span>{{landlord?.phone[0].digits}}</span>
     </mat-card-subtitle>
 
     <mat-card-subtitle>
       <mat-icon>stay_primary_portrait</mat-icon>
-      <span>{{landlord.phone[1].digits}}</span>
+      <span>{{landlord?.phone[1].digits}}</span>
     </mat-card-subtitle>
 
     <mat-card-subtitle>
-      <mat-icon>mail</mat-icon> <span>{{landlord.mail}}</span>
+      <mat-icon>mail</mat-icon> <span>{{landlord?.mail}}</span>
     </mat-card-subtitle>
   </mat-card-content>
 </mat-card>

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
 
 import { EditContainerComponent } from './edit-container.component'
 
@@ -9,6 +10,7 @@ describe('EditContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EditContainerComponent],
+      imports: [RouterTestingModule]
     }).compileComponents()
   }))
 
@@ -18,7 +20,7 @@ describe('EditContainerComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

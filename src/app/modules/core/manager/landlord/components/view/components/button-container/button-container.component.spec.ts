@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { ButtonContainerComponent } from './button-container.component'
 
@@ -9,6 +10,7 @@ describe('ButtonContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ButtonContainerComponent],
+      imports: [MatDialogModule]
     }).compileComponents()
   }))
 
@@ -18,7 +20,7 @@ describe('ButtonContainerComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

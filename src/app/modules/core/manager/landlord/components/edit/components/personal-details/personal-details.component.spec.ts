@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { PersonalDetailsComponent } from './personal-details.component'
 
@@ -9,6 +10,7 @@ describe('PersonalDetailsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PersonalDetailsComponent],
+      imports: [ReactiveFormsModule],
     }).compileComponents()
   }))
 
@@ -18,7 +20,7 @@ describe('PersonalDetailsComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

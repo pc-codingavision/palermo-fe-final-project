@@ -12,7 +12,7 @@ export class PersonalDetailsComponent implements OnInit {
   personalDetailsForm: FormGroup
   maxDate = new Date()
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getData()
@@ -21,15 +21,15 @@ export class PersonalDetailsComponent implements OnInit {
   private getData(): void {
     this.personalDetailsForm = this.formBuilder.group({
       firstName: [
-        this.landlord.name.firstName,
+        this.landlord?.name.firstName,
         [Validators.required, Validators.minLength(2)],
       ],
-      middleName: [this.landlord.name.middleName, [Validators.minLength(2)]],
+      middleName: [this.landlord?.name.middleName, [Validators.minLength(2)]],
       lastName: [
-        this.landlord.name.surname,
+        this.landlord?.name.surname,
         [Validators.required, Validators.minLength(2)],
       ],
-      dateOfBirth: [this.landlord.dateOfBirth],
+      dateOfBirth: [this.landlord?.dateOfBirth],
     })
   }
 }
