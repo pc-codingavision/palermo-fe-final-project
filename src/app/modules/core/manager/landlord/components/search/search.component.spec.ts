@@ -10,7 +10,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchComponent],
-      imports: [MatAutocompleteModule]
+      imports: [MatAutocompleteModule],
     }).compileComponents()
   }))
 

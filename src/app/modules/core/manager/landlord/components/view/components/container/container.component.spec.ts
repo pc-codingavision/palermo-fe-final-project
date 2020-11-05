@@ -10,7 +10,7 @@ describe('ContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ViewContainerComponent],
-      imports: [MatDialogModule]
+      imports: [MatDialogModule],
     }).compileComponents()
   }))
 

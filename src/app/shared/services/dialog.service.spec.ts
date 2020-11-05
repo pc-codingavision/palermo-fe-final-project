@@ -8,7 +8,7 @@ describe('DialogService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule]
+      imports: [MatDialogModule],
     })
     service = TestBed.inject(DialogService)
   })
