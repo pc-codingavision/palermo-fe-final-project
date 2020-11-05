@@ -15,7 +15,7 @@ const landlordRoutes: Routes = [
     loadChildren: landlordProfileModule,
   },
   {
-    path: 'realestate',
+    path: 'real-estate',
     loadChildren: realEstateModule,
   },
 ]
