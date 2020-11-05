@@ -1,13 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-import { Property } from 'src/app/shared/models/property'
 
-import {
-  Advertisement,
-  IAdvertisement,
-} from './../../../../../../../shared/models/advertisement'
-import { AdvertisementService } from './../../../../advertisement.service'
-import { PropertyService } from './../../../../services/property.service'
+import { Advertisement, } from './../../../../../../../shared/models/advertisement'
 
 @Component({
   selector: 'cav-card-container',
