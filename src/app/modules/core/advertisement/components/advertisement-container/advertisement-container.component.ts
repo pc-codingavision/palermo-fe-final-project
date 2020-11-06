@@ -1,4 +1,7 @@
+import { Input } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
+
+import { MockAdvertisement } from './../../mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -7,6 +10,6 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AdvertisementContainerComponent implements OnInit {
   constructor() {}
-
+  @Input() advertisement: MockAdvertisement
   ngOnInit(): void {}
 }

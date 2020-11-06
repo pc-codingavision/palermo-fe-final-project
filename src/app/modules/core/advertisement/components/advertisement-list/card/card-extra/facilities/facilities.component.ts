@@ -1,8 +1,7 @@
+import { Input } from '@angular/core'
 import { Component, OnInit } from '@angular/core'
-import { IFacilities } from '@shared/models/property'
-import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
 
+import { MockAdvertisement } from './../../../../../mock-advertisement/mock-advertisement'
 import { PropertyService } from './../../../../../services/property.service'
 
 @Component({
@@ -11,13 +10,14 @@ import { PropertyService } from './../../../../../services/property.service'
   styleUrls: ['./facilities.component.scss'],
 })
 export class FacilitiesComponent implements OnInit {
+  @Input() advertisement: MockAdvertisement
   constructor(private propertyService: PropertyService) {}
 
   ngOnInit(): void {}
 
-  getFacilitiesById(): Observable<IFacilities> {
+  /* getFacilitiesById(): Observable<IFacilities> {
     return this.propertyService
       .findById(1)
       .pipe(map((property) => property.facilities.tv))
-  }
+  }*/
 }

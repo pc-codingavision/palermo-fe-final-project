@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { Advertisement } from './../../../../../../../shared/models/advertisement'
 import { Property } from './../../../../../../../shared/models/property'
+import { MockAdvertisement } from './../../../../mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-card-extra',
@@ -9,6 +9,7 @@ import { Property } from './../../../../../../../shared/models/property'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
+  @Input() advertisement: MockAdvertisement
   constructor() {}
 
   ngOnInit(): void {}
