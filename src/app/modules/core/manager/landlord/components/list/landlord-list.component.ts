@@ -1,9 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { Landlord } from '@shared/models/landlord'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable, of } from 'rxjs'
-
-import { Landlord } from './../../../../../../shared/models/landlord'
 
 export interface Elements {
   id: any
@@ -29,11 +29,18 @@ export interface Elements {
 })
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
-  expandedElement: Elements | null
+  expandedElement: any | null
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params.landlordId) {
+        // Chiamata al servizio per recuperare il landlord by id
+        this.expandedElement = LANDLORDS_MOCK_DATA[0] // service.getById(params.landlordId)
+      }
+    })
+  }
 
   getLandlords(): Observable<Landlord[]> {
     return of(LANDLORDS_MOCK_DATA)

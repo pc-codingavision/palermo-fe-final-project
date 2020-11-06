@@ -1,6 +1,7 @@
-import { Location } from '@angular/common'
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormControl } from '@angular/forms'
+import { NavigationExtras, Router } from '@angular/router'
+import { Landlord } from '@shared/models/landlord'
 
 @Component({
   selector: 'cav-buttons-container',
@@ -8,6 +9,7 @@ import { FormControl } from '@angular/forms'
   styleUrls: ['./buttons-container.component.scss'],
 })
 export class ButtonsContainerComponent implements OnInit {
+  @Input() landlord: Landlord
   @Output() newPassword = new EventEmitter<string>()
   @Output() newLandlord = new EventEmitter<void>()
   hidePassword = true
@@ -16,7 +18,7 @@ export class ButtonsContainerComponent implements OnInit {
   password: FormControl
   confirmPassword: FormControl
 
-  constructor(private location: Location) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.password = new FormControl()
@@ -24,7 +26,10 @@ export class ButtonsContainerComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back()
+    const navigationExtras: NavigationExtras = {
+      queryParams: { landlordId: this.landlord.id },
+    }
+    this.router.navigate(['/manager/landlord'], navigationExtras)
   }
 
   openResetPasswordContainer(): void {

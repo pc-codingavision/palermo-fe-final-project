@@ -46,8 +46,8 @@
       </div>
 
       <div id="cav-buttons-container" fxLayout="row" fxLayoutAlign="end">
-        <cav-buttons-container (newPassword)="updatePassword($event)"
-          (newLandlord)="updateLandlord()">
+        <cav-buttons-container [landlord]="landlord"
+          (newPassword)="updatePassword($event)" (newLandlord)="updateLandlord()">
         </cav-buttons-container>
       </div>
     </div>

@@ -5,9 +5,8 @@ import { AddressDetailsComponent } from '@modules/core/manager/landlord/componen
 import { ContactDetailsComponent } from '@modules/core/manager/landlord/components/edit/components/contact-details/contact-details.component'
 import { PersonalDetailsComponent } from '@modules/core/manager/landlord/components/edit/components/personal-details/personal-details.component'
 import { PhoneType } from '@shared/enum/enums'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Landlord } from 'src/app/shared/models/landlord'
-
-import { LANDLORDS_MOCK_DATA } from './../../../../../../../../shared/models/mock-data/data'
 
 @Component({
   selector: 'cav-edit-container',
