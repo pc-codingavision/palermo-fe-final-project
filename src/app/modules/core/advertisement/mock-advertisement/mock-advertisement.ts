@@ -1,11 +1,12 @@
 import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
 import { IReviews } from '@shared/models/advertisement'
 import { IProperty } from '@shared/models/property'
-import { IUser } from '@shared/models/users'
+
+import { Landlord } from './../../../../shared/models/landlord'
 
 export interface IMockAdvertisement {
   id: number
-  landlord: IUser
+  landlord: Landlord
   property: IProperty
   reviews: IReviews[]
   price: number
