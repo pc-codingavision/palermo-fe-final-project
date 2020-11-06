@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
-
-import { Advertisement, } from './../../../../../../../shared/models/advertisement'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-card-container',
@@ -8,16 +6,7 @@ import { Advertisement, } from './../../../../../../../shared/models/advertiseme
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent implements OnInit {
-  @Input() advertisement: Advertisement
+  constructor() {}
 
-  constructor(
-
-  ) {}
-
-  ngOnInit(): void {
-
-  }
-
-
-  }
+  ngOnInit(): void {}
 }

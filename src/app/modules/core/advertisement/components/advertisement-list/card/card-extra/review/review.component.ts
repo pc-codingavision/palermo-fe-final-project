@@ -8,7 +8,6 @@ import { Advertisement } from './../../../../../../../../shared/models/advertise
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() advertisement: Advertisement
   constructor() {}
 
   ngOnInit(): void {}

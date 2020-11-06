@@ -9,9 +9,6 @@ import { Property } from './../../../../../../../shared/models/property'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
-  @Input() property: Property
-  @Input() advertisement: Advertisement
-
   constructor() {}
 
   ngOnInit(): void {}

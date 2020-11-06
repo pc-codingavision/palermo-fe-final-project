@@ -8,8 +8,6 @@ import { IProperty } from './../../../../../../../../shared/models/property'
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  @Input() property: IProperty
-
   constructor() {}
 
   ngOnInit(): void {}
