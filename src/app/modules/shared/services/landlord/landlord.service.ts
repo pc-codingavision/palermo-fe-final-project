@@ -19,7 +19,6 @@ export class LandlordService {
   }
 
   getAll(): Observable<Landlord[]> {
-    console.log(this.landlords)
     return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
   }
 
