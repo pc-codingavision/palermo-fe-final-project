@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { Property } from './../../../../../../../shared/models/property'
 import { MockAdvertisement } from './../../../../mock-advertisement/mock-advertisement'
 
 @Component({
