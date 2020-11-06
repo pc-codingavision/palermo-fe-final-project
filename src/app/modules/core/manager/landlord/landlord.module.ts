@@ -10,7 +10,6 @@ import { ButtonsContainerComponent } from './components/edit/components/buttons-
 import { ContactDetailsComponent } from './components/edit/components/contact-details/contact-details.component'
 import { EditContainerComponent } from './components/edit/components/container/edit-container.component'
 import { PersonalDetailsComponent } from './components/edit/components/personal-details/personal-details.component'
-import { ResetPasswordComponent } from './components/edit/components/reset-password/reset-password.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
@@ -40,7 +39,6 @@ const landlordComponents = [
   AddressDetailsComponent,
   ContactDetailsComponent,
   ButtonsContainerComponent,
-  ResetPasswordComponent,
 ]
 
 @NgModule({

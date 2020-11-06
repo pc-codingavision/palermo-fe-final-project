@@ -20,7 +20,7 @@
   </button>
 </div>
 
-<div id="reset-password-container" *ngIf="toggleResetPasswordContainer">
+<div id="reset-password-container" *ngIf="toggleResetPasswordContainer" fxLayout="column">
   <h2>Change Password</h2>
   <mat-form-field appearance="fill">
     <mat-label>Enter your password</mat-label>
@@ -42,5 +42,5 @@
   </mat-form-field>
   <br>
   <button mat-button color="primary" (click)="updatePassword()"
-    [disabled]="password.value !== confirmPassword.value">Confirm</button>
+    [disabled]="password.value !== confirmPassword.value || !password.value">Confirm</button>
 </div>
