@@ -13,6 +13,11 @@ export class LandlordService {
 
   constructor() {}
 
+  private getArrayIndexById(id: number): number | null {
+    const index = this.landlords.findIndex((landlord) => landlord.id === id)
+    return index === -1 ? null : index
+  }
+
   getAll(): Observable<Landlord[]> {
     console.log(this.landlords)
     return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
@@ -35,28 +40,27 @@ export class LandlordService {
   }
 
   add(landlord: Landlord): void {
-    this.landlords.push(landlord)
-  }
-
-  update(landlord: Landlord): Observable<Landlord> {
-    const index = this.getArrayIndexById(landlord.id)
-    if (typeof index === 'number') {
-      return of((this.landlords[index] = landlord))
+    if (landlord !== null) {
+      this.landlords.push(landlord)
     }
-    return null
   }
 
-  toggleStatus(id: number): Observable<Landlord> {
+  update(landlord: Landlord): Observable<Landlord | null> {
+    if (landlord !== null) {
+      const index = this.getArrayIndexById(landlord.id)
+      if (typeof index === 'number') {
+        return of((this.landlords[index] = landlord))
+      }
+    }
+    return of(null)
+  }
+
+  toggleStatus(id: number): Observable<Landlord | null> {
     const index = this.getArrayIndexById(id)
     if (typeof index === 'number') {
       this.landlords[index].status = !this.landlords[index].status
       return of(this.landlords[index])
     }
-    return null
-  }
-
-  private getArrayIndexById(id: number): number | null {
-    const index = this.landlords.findIndex((landlord) => landlord.id === id)
-    return index === -1 ? null : index
+    return of(null)
   }
 }

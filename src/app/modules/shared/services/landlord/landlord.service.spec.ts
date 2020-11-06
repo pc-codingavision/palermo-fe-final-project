@@ -57,16 +57,13 @@ describe('LandlordService', () => {
     buildLandlords = LANDLORDS_MOCK_DATA.map((landlord) =>
       Landlord.Build(landlord)
     ) as Landlord[]
-
-    console.log('landlords', service.landlords)
-    console.log('mock', LANDLORDS_MOCK_DATA)
   })
 
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
 
-  it('#getAllLandlords should return all landlords', (done: DoneFn) => {
+  it('#getAll should return all landlords', (done: DoneFn) => {
     service.getAll().subscribe((landlords) => expect(landlords).toEqual(buildLandlords))
     done()
   })
@@ -104,16 +101,31 @@ describe('LandlordService', () => {
     expect(service.landlords).toContain(defaultLandlord)
   })
 
-  it('#update should update a landlord and return it', () => {
+  it("#add shouldn't add if we don't pass Landlord ", () => {
+    expect(service.landlords.length).toBe(3)
+    service.add(null)
+    expect(service.landlords.length).toBe(3)
+  })
+
+  it('#update should update a landlord and return it', (done: DoneFn) => {
     service
       .update(landlordUpdate)
       .subscribe(() => expect(service.landlords).not.toEqual(LANDLORDS_MOCK_DATA))
+    done()
   })
 
-  it('#toggleStatus should change the Landlord status', () => {
+  it("#update shouldn't update if we don't pass landlord", (done: DoneFn) => {
+    service
+      .update(null)
+      .subscribe(() => expect(service.landlords).toEqual(LANDLORDS_MOCK_DATA))
+    done()
+  })
+
+  it('#toggleStatus should change the Landlord status', (done: DoneFn) => {
     const status = service.landlords[0].status
     service
       .toggleStatus(1)
       .subscribe(() => expect(service.landlords[0].status).not.toEqual(status))
+    done()
   })
 })
