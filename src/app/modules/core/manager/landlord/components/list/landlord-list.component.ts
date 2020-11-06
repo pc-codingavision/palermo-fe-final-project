@@ -1,9 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
-
-import { Landlord } from './../../../../../../shared/models/landlord'
-import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
+import { Landlord } from '@shared/models/landlord'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { Observable, of } from 'rxjs'
 
 export interface Elements {
   id: number
@@ -32,18 +31,18 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   $landlords: Observable<Landlord[]>
 
-  constructor(private landlordService: LandlordService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.getAll()
   }
 
   getAll(): void {
-    this.$landlords = this.landlordService.getAll()
+    // chiamata al servizio
+    this.$landlords = of(LANDLORDS_MOCK_DATA)
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id)
-    this.getAll()
+    // chiamata al servizio
   }
 }
