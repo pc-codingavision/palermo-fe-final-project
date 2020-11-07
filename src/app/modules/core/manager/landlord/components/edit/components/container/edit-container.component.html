@@ -9,7 +9,7 @@
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
       id="picture-container">
       <div>
-        <img [src]="landlord.picture">
+        <img [src]="landlord?.picture">
       </div>
 
       <div>
@@ -31,11 +31,11 @@
     <div>
       <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">
         <h2>
-          {{landlord.fullName}}
+          {{landlord?.fullName}}
         </h2>
 
         <h2>
-          Username: {{landlord.username}}
+          Username: {{landlord?.username}}
         </h2>
       </div>
 

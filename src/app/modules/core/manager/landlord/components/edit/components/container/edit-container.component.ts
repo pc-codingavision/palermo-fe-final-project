@@ -38,8 +38,8 @@ export class EditContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getLandlord()
-    this.picture = new FormControl(this.landlord.picture)
-    this.password = this.landlord.password
+    this.picture = new FormControl(this.landlord?.picture)
+    this.password = this.landlord?.password
   }
 
   ngOnDestroy(): void {
