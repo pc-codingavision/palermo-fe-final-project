@@ -9,4 +9,8 @@ export class CardMainViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  isFavourite(favourite: boolean): void {
+    console.log('favourite: ', favourite)
+  }
 }
