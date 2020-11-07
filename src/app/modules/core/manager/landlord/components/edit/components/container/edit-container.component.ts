@@ -1,19 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { AddressDetailsComponent } from '@modules/core/manager/landlord/components/edit/components/address-details/address-details.component'
 import { ContactDetailsComponent } from '@modules/core/manager/landlord/components/edit/components/contact-details/contact-details.component'
 import { PersonalDetailsComponent } from '@modules/core/manager/landlord/components/edit/components/personal-details/personal-details.component'
 import { PhoneType } from '@shared/enum/enums'
-import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { Subscription } from 'rxjs'
 import { Landlord } from 'src/app/shared/models/landlord'
+
+import { LandlordService } from './../../../../../../../shared/services/landlord/landlord.service'
 
 @Component({
   selector: 'cav-edit-container',
   templateUrl: './edit-container.component.html',
   styleUrls: ['./edit-container.component.scss'],
 })
-export class EditContainerComponent implements OnInit {
+export class EditContainerComponent implements OnInit, OnDestroy {
   @ViewChild(AddressDetailsComponent, { static: false })
   addressRef: AddressDetailsComponent
 
@@ -27,8 +29,12 @@ export class EditContainerComponent implements OnInit {
   togglePictureContainer = false
   picture: FormControl
   password: string
+  subscriptionLandlord: Subscription
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private landlordService: LandlordService
+  ) {}
 
   ngOnInit(): void {
     this.getLandlord()
@@ -36,10 +42,15 @@ export class EditContainerComponent implements OnInit {
     this.password = this.landlord.password
   }
 
+  ngOnDestroy(): void {
+    this.subscriptionLandlord.unsubscribe()
+  }
+
   getLandlord(): void {
-    // Chiamata al servizio
     const id = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.landlord = Landlord.Build(LANDLORDS_MOCK_DATA.find((land) => land.id === id))
+    this.subscriptionLandlord = this.landlordService
+      .getById(id)
+      .subscribe((landlord) => (this.landlord = landlord))
   }
 
   openPictureContainer(): void {
@@ -47,7 +58,6 @@ export class EditContainerComponent implements OnInit {
   }
 
   updatePicture(): void {
-    // Chiamata al servizio
     this.landlord.picture = this.picture.value
   }
 
@@ -56,8 +66,8 @@ export class EditContainerComponent implements OnInit {
   }
 
   updateLandlord(): void {
-    // Chiamata al servizio
-    const newLandlord = {
+    const newLandlord: Landlord = {
+      id: this.landlord.id,
       name: {
         firstName: this.personalRef.personalDetailsForm.value.firstName,
         surname: this.personalRef.personalDetailsForm.value.lastName,
@@ -89,6 +99,7 @@ export class EditContainerComponent implements OnInit {
       },
       fullName: '',
     }
-    console.log(newLandlord)
+
+    this.landlordService.update(newLandlord)
   }
 }
