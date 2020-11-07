@@ -30,6 +30,7 @@ export class EditContainerComponent implements OnInit, OnDestroy {
   picture: FormControl
   password: string
   subscriptionLandlord: Subscription
+  isEditLandlord: boolean
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,7 +38,9 @@ export class EditContainerComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getLandlord()
+    this.isEditLandlord =
+      this.activatedRoute.snapshot.url[0].path === 'edit' ? true : false
+    this.isEditLandlord ? this.getLandlord() : (this.landlord = Landlord.Build())
     this.picture = new FormControl(this.landlord?.picture)
     this.password = this.landlord?.password
   }
@@ -87,7 +90,7 @@ export class EditContainerComponent implements OnInit, OnDestroy {
       mail: this.contactRef.contactDetailsForm.value.email,
       picture: this.picture.value,
       username: this.landlord.username,
-      password: this.personalRef.personalDetailsForm.value.password,
+      password: this.password,
       status: this.landlord.status,
       dateOfBirth: this.personalRef.personalDetailsForm.value.dateOfBirth,
       role: this.landlord.role,
@@ -100,6 +103,8 @@ export class EditContainerComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    this.landlordService.update(newLandlord)
+    this.isEditLandlord
+      ? this.landlordService.update(newLandlord)
+      : this.landlordService.add(newLandlord)
   }
 }

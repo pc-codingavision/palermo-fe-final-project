@@ -20,10 +20,10 @@ export class ContactDetailsComponent implements OnInit {
   private getData(): void {
     this.contactDetailsForm = this.formBuilder.group({
       mobile: [
-        this.landlord?.phone[1].digits,
+        this.landlord?.phone[1]?.digits,
         [Validators.required, Validators.minLength(8)],
       ],
-      phone: [this.landlord?.phone[0].digits],
+      phone: [this.landlord?.phone[0]?.digits],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
     })
   }
