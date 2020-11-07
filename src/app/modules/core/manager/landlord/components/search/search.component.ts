@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
+import { Landlord } from '@shared/models/landlord'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable } from 'rxjs'
 import { map, startWith } from 'rxjs/operators'
-
-import { Landlord } from './../../../../../../shared/models/landlord'
 
 @Component({
   selector: 'cav-search',

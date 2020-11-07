@@ -7,7 +7,6 @@ import { LandlordListComponent } from '@modules/core/manager/landlord/components
 import { LandlordNewComponent } from '@modules/core/manager/landlord/components/new/landlord-new.component'
 import { AddressComponent } from '@modules/core/manager/landlord/components/view/components/address/address.component'
 import { ButtonContainerComponent } from '@modules/core/manager/landlord/components/view/components/button-container/button-container.component'
-import { ConfirmDialogComponent } from '@modules/core/manager/landlord/components/view/components/confirm-dialog/confirm-dialog.component'
 import { ContactComponent } from '@modules/core/manager/landlord/components/view/components/contact/contact.component'
 import { ViewContainerComponent } from '@modules/core/manager/landlord/components/view/components/container/container.component'
 import { PhoneComponent } from '@modules/core/manager/landlord/components/view/components/phone/phone.component'
@@ -28,7 +27,6 @@ const landlordComponents = [
   PhoneComponent,
   ContactComponent,
   SearchComponent,
-  ConfirmDialogComponent,
   ButtonContainerComponent,
 ]
 
