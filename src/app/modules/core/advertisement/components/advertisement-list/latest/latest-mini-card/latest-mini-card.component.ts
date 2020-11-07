@@ -12,7 +12,5 @@ export class LatestMiniCardComponent implements OnInit {
 
   @Input() latest
 
-  ngOnInit(): void {
-    this.latest = this.advService.getLatestAdv()
-  }
+  ngOnInit(): void {}
 }

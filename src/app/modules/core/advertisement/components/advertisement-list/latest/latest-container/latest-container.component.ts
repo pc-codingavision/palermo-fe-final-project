@@ -10,8 +10,8 @@ import { AdvertisementService } from './../../../../advertisement.service'
 })
 export class LatestContainerComponent implements OnInit {
   constructor(private advService: AdvertisementService) {}
-  start = 0
-  end = 2
+  start = 0;
+  end = 2;
 
   latest: Observable<any[]>
 
