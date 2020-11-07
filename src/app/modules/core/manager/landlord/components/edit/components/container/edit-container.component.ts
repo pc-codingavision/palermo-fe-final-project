@@ -39,7 +39,7 @@ export class EditContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isEditLandlord =
-      this.activatedRoute.snapshot.url[0].path === 'edit' ? true : false
+      this.activatedRoute?.snapshot?.url[0]?.path === 'edit' ? true : false
     this.isEditLandlord ? this.getLandlord() : (this.landlord = Landlord.Build())
     this.picture = new FormControl(this.landlord?.picture)
     this.password = this.landlord?.password
