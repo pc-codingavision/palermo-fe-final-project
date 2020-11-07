@@ -1,2 +1,4 @@
-<h1>{{ title }}</h1>
-<router-outlet></router-outlet>
+<div class="app-container">
+  <cav-toolbar (toggleSideNav)="onToggleSideNav()"></cav-toolbar>
+  <cav-sidenav [opened]="sideNavOpened"></cav-sidenav>
+</div>
