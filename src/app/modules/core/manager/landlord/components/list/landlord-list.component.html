@@ -1,3 +1,12 @@
+<div id="add-button">
+  <button mat-mini-fab color="primary" routerLink="/manager/landlord/new/"
+    alt="Button for add new Landlord" title="Add Landlord">
+    <mat-icon>
+      add
+    </mat-icon>
+  </button>
+</div>
+
 <table mat-table [dataSource]="$landlords | async" multiTemplateDataRows
   class="mat-elevation-z8">
   <ng-container matColumnDef="id">

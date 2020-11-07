@@ -1,9 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable } from 'rxjs'
-
-import { LandlordService } from './../../../../../shared/services/landlord/landlord.service'
 
 export interface Elements {
   id: number
