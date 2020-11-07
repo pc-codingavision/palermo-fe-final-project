@@ -1,48 +1,43 @@
-<!-- <p>{{getPropertyById() | async | json}} </p> -->
-
-<!-- <div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
+<div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
   fxLayoutWrap="wrap">
   <div class="side" fxFlex="49%">
     <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
+      <i class="material-icons">{{advertisement?.property[0]?.facilities.tv ? 'done' : 'clear'}}
+      </i>
       <p>TV</p>
     </div>
     <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.wifi ? 'done' : 'clear'}}</i>
       <p>WIFI</p>
     </div>
     <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.breakfastIncluded ? 'done' : 'clear'}}</i>
       <p>Breakfast included</p>
     </div>
     <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.parking ? 'done' : 'clear'}}</i>
       <p>Parking</p>
     </div>
   </div>
 
   <div class="aside" fxFlex="49%">
     <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.kitchen ? 'done' : 'clear'}}</i>
       <p>Kitchen</p>
     </div>
     <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.shower ? 'done' : 'clear'}}</i>
       <p>Shower</p>
     </div>
     <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
+      <i
+        class="material-icons">{{advertisement?.property[0]?.facilities.bath ? 'done' : 'clear'}}</i>
       <p>Bath</p>
     </div>
   </div>
 </div>
-
-
-<div fxLayout="row" *ngIf="getFacilitiesById(); else clearBlock">
-  <i id="done" class="material-icons">done</i>
-  <p>TV</p>
-</div>
-<ng-template fxLayout="row" #clearBlock>
-  <i id="clear" class="material-icons">clear</i>
-  <p>TV</p>
-</ng-template>-->
