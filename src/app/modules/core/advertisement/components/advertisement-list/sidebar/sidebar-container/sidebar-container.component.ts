@@ -35,7 +35,7 @@ export class SidebarContainerComponent implements OnInit {
     console.log(`Value received from facility: ${JSON.stringify(filter)}`)
   }
 
-  applyScoreFilter(filter: object): void {
-    console.log(`Value received from score: ${filter}`)
+  applyScoreFilter(filter: number): void {
+    this.advertisementService.returnScoreFilteredAdvertisements(filter)
   }
 }

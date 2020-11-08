@@ -27,6 +27,24 @@ export class AdvertisementService {
     )
   }
 
+  returnScoreFilteredAdvertisements(filter: number): Observable<IAdvertisement[]> {
+    const filteredArray: IAdvertisement[] = []
+    return of(ADVERTISEMENTS_MOCK_DATA).pipe(
+      map((filteredAdvertisements: IAdvertisement[]) => {
+        filteredAdvertisements.forEach((advertisement) => {
+          const lenght = advertisement.reviews.length
+          const score = advertisement.reviews
+            .map((review) => review.vote)
+            .reduce((a, b) => Math.round((a + b) / lenght))
+          if (score >= filter) {
+            filteredArray.push(advertisement)
+          }
+        })
+        return filteredArray
+      })
+    )
+  }
+
   findAdvertisementsHighestPrice(): Observable<number> {
     return of(ADVERTISEMENTS_MOCK_DATA).pipe(
       map((sourceArray: IAdvertisement[]) => {
