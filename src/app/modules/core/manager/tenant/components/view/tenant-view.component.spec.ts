@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
-
-import { TenantViewComponent } from './tenant-view.component'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { TenantViewComponent } from '@modules/core/manager/tenant/components/view/tenant-view.component'
 
 describe('TenantViewComponent', () => {
   let component: TenantViewComponent
   let fixture: ComponentFixture<TenantViewComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [TenantViewComponent],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TenantViewComponent],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TenantViewComponent)

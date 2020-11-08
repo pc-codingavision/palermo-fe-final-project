@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <h2>{{data.subtitle}}</h2>
+  <p>{{data.text}}</p>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="primary"
+      [mat-dialog-close]="data.returnValue">Confirm</button>
+
+    <button mat-button color="warn" mat-dialog-close>Cancel</button>
+  </div>
+</div>

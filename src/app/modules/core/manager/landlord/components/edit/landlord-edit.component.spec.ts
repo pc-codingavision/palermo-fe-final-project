@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
-
-import { LandlordEditComponent } from './landlord-edit.component'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 
 describe('LandlordEditComponent', () => {
   let component: LandlordEditComponent
   let fixture: ComponentFixture<LandlordEditComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LandlordEditComponent],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LandlordEditComponent],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LandlordEditComponent)

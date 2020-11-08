@@ -1,0 +1,9 @@
+<mat-sidenav-container class="app-sidenav-container">
+  <mat-sidenav #sidenav [mode]="media.isActive('xs') ? 'over' : 'side'"
+    [fixedInViewport]="media.isActive('xs')" fixedTopGap="56" [(opened)]="opened">
+    <cav-navigation-menu></cav-navigation-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

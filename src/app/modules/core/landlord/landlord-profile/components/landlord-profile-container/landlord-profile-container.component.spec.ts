@@ -1,16 +1,17 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
-
-import { ProfileContainerComponent } from './landlord-profile-container.component'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { ProfileContainerComponent } from '@modules/core/landlord/landlord-profile/components/landlord-profile-container/landlord-profile-container.component'
 
 describe('ProfileContainerComponent', () => {
   let component: ProfileContainerComponent
   let fixture: ComponentFixture<ProfileContainerComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ProfileContainerComponent],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ProfileContainerComponent],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfileContainerComponent)
