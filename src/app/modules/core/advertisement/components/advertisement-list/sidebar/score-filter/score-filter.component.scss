@@ -4,25 +4,14 @@
 
 .score-card {
   width: 200px;
-  background-color: #f5f5f5;
 }
 
 #score-card-title {
   font-size: 14pt;
-  color: black;
-}
-
-#score-divider {
-  border-top-color: black;
-}
-
-:host ::ng-deep .score-checkbox-container .mat-radio-outer-circle {
-  border-color: black;
 }
 
 .score-checkbox-container {
   margin-top: 5%;
-  color: black;
 }
 
 mat-radio-button {
