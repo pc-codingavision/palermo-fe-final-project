@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 const realEstateModule = () =>
-  import('./real-estate/real-estate.module').then((p) => p.RealEstateModule)
+  import('./realestate/realestate.module').then((p) => p.RealestateModule)
 
 const landlordProfileModule = () =>
   import('./landlord-profile/landlord-profile.module').then(
     (p) => p.LandlordProfileModule
   )
 
-const landlordRoutes: Routes = [
+const routes: Routes = [
   {
     path: 'profile',
     loadChildren: landlordProfileModule,
   },
   {
-    path: 'real-estate',
+    path: 'realestate',
     loadChildren: realEstateModule,
   },
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(landlordRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class LandlordRoutingModule {}

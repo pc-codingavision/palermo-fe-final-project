@@ -7,7 +7,7 @@ const reservationModule = () =>
 const profileModule = () =>
   import('./profile/profile.module').then((p) => p.ProfileModule)
 
-const tenantRoutes: Routes = [
+const routes: Routes = [
   {
     path: 'profile',
     loadChildren: profileModule,
@@ -16,7 +16,7 @@ const tenantRoutes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forChild(tenantRoutes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class TenantRoutingModule {}

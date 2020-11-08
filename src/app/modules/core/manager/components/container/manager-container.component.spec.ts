@@ -1,17 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-import { ManagerContainerComponent } from '@modules/core/manager/components/container/manager-container.component'
+import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+
+import { ManagerContainerComponent } from './manager-container.component'
 
 describe('ManagerComponent', () => {
   let component: ManagerContainerComponent
   let fixture: ComponentFixture<ManagerContainerComponent>
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ManagerContainerComponent],
-      }).compileComponents()
-    })
-  )
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ManagerContainerComponent],
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ManagerContainerComponent)

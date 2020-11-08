@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
-import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
-import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
+
+import { AdvertisementDetailsComponent } from './components/advertisement-details/advertisement-details.component'
+import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
 
 export const advertisementRoutes: Routes = [
-  { path: '', redirectTo: 'advertisement', pathMatch: 'full' },
-  { path: 'advertisement', component: AdvertisementContainerComponent },
+  { path: '', redirectTo: 'advertisement/list', pathMatch: 'full' },
   { path: 'advertisement/list', component: AdvertisementListComponent },
   { path: 'advertisement/details/:id', component: AdvertisementDetailsComponent },
 ]

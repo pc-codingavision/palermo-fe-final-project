@@ -1,17 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
+import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+
+import { AdvertisementListComponent } from './advertisement-list.component'
 
 describe('AdvertisementListComponent', () => {
   let component: AdvertisementListComponent
   let fixture: ComponentFixture<AdvertisementListComponent>
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AdvertisementListComponent],
-      }).compileComponents()
-    })
-  )
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [AdvertisementListComponent],
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvertisementListComponent)
