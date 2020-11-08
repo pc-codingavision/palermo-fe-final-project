@@ -25,12 +25,12 @@ export class EditContainerComponent implements OnInit, OnDestroy {
   @ViewChild(PersonalDetailsComponent, { static: false })
   personalRef: PersonalDetailsComponent
 
-  landlord: Landlord
-  togglePictureContainer = false
-  picture: FormControl
   password: string
-  subscriptionLandlord: Subscription
-  isEditLandlord: boolean
+  isEdit: boolean
+  togglePictureContainer = false
+  landlord: Landlord
+  landlord$: Subscription
+  picture: FormControl
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,34 +38,28 @@ export class EditContainerComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.isEditLandlord =
-      this.activatedRoute?.snapshot?.url[0]?.path === 'edit' ? true : false
-    this.isEditLandlord ? this.getLandlord() : (this.landlord = Landlord.Build())
+    this.isEdit = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
+    if (this.isEdit) {
+      this.getLandlord()
+    } else {
+      this.landlord = Landlord.Build()
+      this.togglePictureContainer = true
+    }
     this.picture = new FormControl(this.landlord?.picture)
     this.password = this.landlord?.password
   }
 
   ngOnDestroy(): void {
-    this.subscriptionLandlord.unsubscribe()
+    if (this.isEdit) {
+      this.landlord$.unsubscribe()
+    }
   }
 
   getLandlord(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.subscriptionLandlord = this.landlordService
+    this.landlord$ = this.landlordService
       .getById(id)
       .subscribe((landlord) => (this.landlord = landlord))
-  }
-
-  openPictureContainer(): void {
-    this.togglePictureContainer = !this.togglePictureContainer
-  }
-
-  updatePicture(): void {
-    this.landlord.picture = this.picture.value
-  }
-
-  updatePassword(newPassword: string): void {
-    this.password = newPassword
   }
 
   updateLandlord(): void {
@@ -103,7 +97,7 @@ export class EditContainerComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    this.isEditLandlord
+    this.isEdit
       ? this.landlordService.update(newLandlord)
       : this.landlordService.add(newLandlord)
   }

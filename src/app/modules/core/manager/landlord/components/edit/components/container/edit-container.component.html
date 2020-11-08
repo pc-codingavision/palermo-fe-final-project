@@ -1,7 +1,7 @@
 <div id="primary-container">
   <div>
     <mat-toolbar>
-      <span>Edit Landlord</span>
+      <span>{{isEdit ? 'Edit' : 'Add'}} Landlord</span>
     </mat-toolbar>
   </div>
 
@@ -13,7 +13,8 @@
       </div>
 
       <div>
-        <button mat-button (click)="openPictureContainer()">Change</button>
+        <button mat-button
+          (click)="togglePictureContainer = !togglePictureContainer">Change</button>
       </div>
 
       <div>
@@ -23,7 +24,8 @@
             <mat-label>Insert a new picture</mat-label>
             <input matInput placeholder="New picture" [formControl]="picture">
           </mat-form-field>
-          <button mat-button color="primary" (click)="updatePicture()">Confirm</button>
+          <button mat-button color="primary"
+            (click)="landlord.picture = picture.value">Confirm</button>
         </div>
       </div>
     </div>
@@ -46,8 +48,8 @@
       </div>
 
       <div id="cav-buttons-container" fxLayout="row" fxLayoutAlign="end">
-        <cav-buttons-container [landlord]="landlord"
-          (newPassword)="updatePassword($event)" (newLandlord)="updateLandlord()">
+        <cav-buttons-container [landlord]="landlord" [isEdit]="isEdit"
+          (newPassword)="this.password = $event" (saveLandlord)="updateLandlord()">
         </cav-buttons-container>
       </div>
     </div>

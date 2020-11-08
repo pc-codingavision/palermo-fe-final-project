@@ -41,6 +41,6 @@
     </button>
   </mat-form-field>
   <br>
-  <button mat-button color="primary" (click)="updatePassword()"
+  <button mat-button color="primary" (click)="newPassword.emit(this.password.value)"
     [disabled]="password.value !== confirmPassword.value || !password.value">Confirm</button>
 </div>

@@ -10,13 +10,16 @@ import { Landlord } from '@shared/models/landlord'
 })
 export class ButtonsContainerComponent implements OnInit {
   @Input() landlord: Landlord
-  @Output() newPassword = new EventEmitter<string>()
-  @Output() newLandlord = new EventEmitter<void>()
+  @Input() isEdit: boolean
+  @Output()
+  newPassword = new EventEmitter<string>()
+  @Output() saveLandlord = new EventEmitter<void>()
   hidePassword = true
   hideConfirmPassword = true
   toggleResetPasswordContainer = false
   password: FormControl
   confirmPassword: FormControl
+  navigationExtras: NavigationExtras
 
   constructor(private router: Router) {}
 
@@ -26,21 +29,17 @@ export class ButtonsContainerComponent implements OnInit {
   }
 
   goBack(): void {
-    const navigationExtras: NavigationExtras = {
+    this.navigationExtras = {
       queryParams: { landlordId: this.landlord.id },
     }
-    this.router.navigate(['/manager/landlord'], navigationExtras)
+    this.router.navigate(['/manager/landlord'], this.navigationExtras)
   }
 
   openResetPasswordContainer(): void {
     this.toggleResetPasswordContainer = !this.toggleResetPasswordContainer
   }
 
-  updatePassword(): void {
-    this.newPassword.emit(this.password.value)
-  }
-
   updateLandlord(): void {
-    this.newLandlord.emit()
+    this.saveLandlord.emit()
   }
 }
