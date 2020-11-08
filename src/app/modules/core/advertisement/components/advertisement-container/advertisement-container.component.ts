@@ -11,7 +11,5 @@ export class AdvertisementContainerComponent implements OnInit {
   advertisement = MOCKADVERTISEMENT_MOCK_DATA
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.advertisement)
-  }
+  ngOnInit(): void {}
 }

@@ -5,12 +5,13 @@
 
     <mat-card class="side" fxFlex="38%">
       <h2>Most recent reviews</h2>
-      <cav-review [advertisement]="advertisement">
+      <cav-review [advertisement]="advertisement"
+        *ngFor='let review of advertisement?.reviews'>
       </cav-review>
     </mat-card>
 
     <mat-card class="aside" fxFlex="48%">
-      <h2>About this proprty</h2>
+      <h2>About this property</h2>
       <cav-about [advertisement]="advertisement"></cav-about>
       <h4>Facilities</h4>
       <mat-divider [inset]="true"></mat-divider>

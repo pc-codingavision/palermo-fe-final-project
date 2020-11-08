@@ -72,7 +72,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  xit('should return specific advertisement based on the passed id', () => {
+  it('should return specific advertisement based on the passed id', () => {
     expect(
       service
         .findById(1)
@@ -80,7 +80,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  xit('should return filtered advertisements', () => {
+  it('should return filtered advertisements', () => {
     expect(
       service
         .returnPriceFilteredAdvertisements(20)
@@ -90,7 +90,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  xit('should return the highest price between advertisements', () => {
+  it('should return the highest price between advertisements', () => {
     expect(
       service
         .findAdvertisementsHighestPrice()
@@ -100,7 +100,7 @@ describe('AdvertisementService', () => {
     )
   })
 
-  xit('should return the lowest price between advertisements', () => {
+  it('should return the lowest price between advertisements', () => {
     expect(
       service
         .findAdvertisementsLowestPrice()
