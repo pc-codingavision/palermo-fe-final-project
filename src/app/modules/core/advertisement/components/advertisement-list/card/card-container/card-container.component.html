@@ -1,2 +1,2 @@
 <cav-card-main-view></cav-card-main-view>
-<cav-card-extra></cav-card-extra>
+<cav-card-extra (emitValue)="status = $event" *ngIf="status"></cav-card-extra>

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./card-container.component.scss'],
 })
 export class CardContainerComponent implements OnInit {
+  status = false
   constructor() {}
 
   ngOnInit(): void {}

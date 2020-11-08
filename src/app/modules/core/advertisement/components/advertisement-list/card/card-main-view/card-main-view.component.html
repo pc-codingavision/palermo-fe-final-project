@@ -16,7 +16,9 @@
       <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
 
     </mat-card-content>
-    <button mat-raised-button color="accent">More Info <mat-icon>arrow_drop_down
+    <button mat-raised-button color="accent" (click)="emitValue()">More Info
+      <mat-icon>
+        arrow_drop_down
       </mat-icon>
     </button>
     <button mat-raised-button class="button">Book</button>
