@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { StarRatingComponent } from 'ng-starrating'
 
 @Component({
   selector: 'cav-score',
@@ -14,16 +13,8 @@ export class ScoreComponent implements OnInit {
   inputName: string
   constructor() {}
 
-  ngOnInit(): void {}
-
-  onRate($event: {
-    oldValue: number
-    newValue: number
-    starRating: StarRatingComponent
-  }) {
-    alert(`Old Value:${$event.oldValue},
-      New Value: ${$event.newValue},
-      Checked Color: ${$event.starRating.checkedcolor},
-      Unchecked Color: ${$event.starRating.uncheckedcolor}`)
+  ngOnInit(): void {
+    this.inputName = this.itemId + '_rating'
   }
+  onClick(rating: number): void {}
 }
