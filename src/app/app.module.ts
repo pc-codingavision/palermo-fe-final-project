@@ -15,7 +15,6 @@ import { NavigationMenuComponent } from '@shared/components/navigation-menu/navi
 import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
 import { SidenavComponent } from '@shared/components/sidenav/sidenav.component'
 import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component'
-import { RatingModule } from 'ng-starrating'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -38,7 +37,6 @@ const appModules = [
   SharedModule,
   MatListModule,
   MatSidenavModule,
-  RatingModule,
 ]
 
 @NgModule({
