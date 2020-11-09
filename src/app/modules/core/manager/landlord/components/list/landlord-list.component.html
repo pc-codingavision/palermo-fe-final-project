@@ -7,7 +7,9 @@
   </button>
 </div>
 
-<table mat-table [dataSource]="$landlords | async" multiTemplateDataRows
+<input matInput (keyup)="searchByName($event)">
+
+<table mat-table [dataSource]="filteredLandlords$ | async" multiTemplateDataRows
   class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -51,6 +53,7 @@
     [class.expanded-row]="expandedElement === element"
     (click)="expandedElement = expandedElement === element ? null : element">
     ></tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row">
+  </tr>
 
 </table>

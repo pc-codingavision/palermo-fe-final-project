@@ -2,7 +2,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
 export interface Elements {
   id: number
@@ -29,8 +30,8 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  $landlords: Observable<Landlord[]>
-
+  landlords$: Observable<Landlord[]>
+  filteredLandlords$: Observable<Landlord[]>
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
@@ -38,11 +39,30 @@ export class LandlordListComponent implements OnInit {
   }
 
   getAll(): void {
-    this.$landlords = this.landlordService.getAll()
+    this.filteredLandlords$ = this.landlordService.getAll()
+    this.landlords$ = this.filteredLandlords$
   }
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id)
     this.getAll()
+  }
+
+  searchByName(searchEvent: KeyboardEvent): void {
+    of(searchEvent)
+      .pipe(
+        debounceTime(100),
+        distinctUntilChanged(),
+        map((e) => (e.target as HTMLInputElement).value)
+      )
+      .subscribe((searchTerm) => {
+        this.filteredLandlords$ = this.landlords$.pipe(
+          map((landlords) =>
+            landlords.filter((landlord) =>
+              landlord.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+          )
+        )
+      })
   }
 }
