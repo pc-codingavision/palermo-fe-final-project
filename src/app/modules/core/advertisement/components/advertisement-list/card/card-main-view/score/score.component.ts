@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-score',
+<<<<<<< HEAD
   template: `<div>
     <button mat-icon-button class="hidden">
       <mat-icon>star</mat-icon>
@@ -16,9 +17,21 @@ import { Component, OnInit } from '@angular/core'
       }
     `,
   ],
+=======
+  templateUrl: './score.component.html',
+  styleUrls: ['./score.component.css'],
+>>>>>>> locale
 })
 export class ScoreComponent implements OnInit {
+  @Input() rating = 2
+  @Input() itemId: number
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>()
+
+  inputName: string
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.inputName = this.itemId + '_rating'
+  }
+  onClick(rating: number): void {}
 }

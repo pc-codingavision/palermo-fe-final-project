@@ -1,28 +1,21 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-favourite',
-  template: `<div class="flex-container">
-    <button
-      mat-icon-button
-      color="warn"
-      aria-label="Example icon button with a heart icon"
-    >
-      <mat-icon>favorite</mat-icon>
-    </button>
-  </div> `,
-  styles: [
-    `
-      .flex-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-    `,
-  ],
+  templateUrl: './favourite.component.html',
+  styleUrls: ['./favourite.component.css'],
 })
 export class FavouriteComponent implements OnInit {
+  @Input() selected: boolean
+  @Output() favouriteEvent = new EventEmitter<boolean>()
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  // tslint:disable-next-line: typedef
+  public toggleSelected() {
+    this.selected = !this.selected
+    this.favouriteEvent.emit(this.selected)
+  }
 }

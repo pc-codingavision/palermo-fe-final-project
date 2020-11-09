@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
@@ -16,5 +17,9 @@ export class CardMainViewComponent implements OnInit {
 
   emitStatus(): void {
     this.btnClick.emit()
+  }
+
+  isFavourite(favourite: boolean): void {
+    console.log('favourite: ', favourite)
   }
 }

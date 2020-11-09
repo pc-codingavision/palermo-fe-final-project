@@ -13,12 +13,13 @@
         <cav-check-in-check-out></cav-check-in-check-out>
       </mat-card-actions>
 
-      <cav-favourite></cav-favourite>
+      <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
 
     </mat-card-content>
 
     <button mat-raised-button color="accent" (click)="emitStatus()">More Info
       <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+
     </button>
     <button mat-raised-button class="button">Book</button>
   </mat-card>
