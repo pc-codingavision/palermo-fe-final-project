@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { FormBuilder } from '@angular/forms'
 
 import { CheckInCheckOutComponent } from './check-in-check-out.component'
 
@@ -10,6 +11,7 @@ describe('CheckInCheckOutComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [CheckInCheckOutComponent],
+        providers: [FormBuilder],
       }).compileComponents()
     })
   )
