@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 @Component({
   selector: 'cav-favourite',
   templateUrl: './favourite.component.html',
-  styleUrls: ['./favourite.component.css'],
+  styleUrls: ['./favourite.component.scss'],
 })
 export class FavouriteComponent implements OnInit {
   @Input() selected: boolean
@@ -13,8 +13,7 @@ export class FavouriteComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // tslint:disable-next-line: typedef
-  public toggleSelected() {
+  public toggleSelected(): void {
     this.selected = !this.selected
     this.favouriteEvent.emit(this.selected)
   }

@@ -49,11 +49,7 @@
     "angular-star-rating": "^4.0.0-beta.3",
     "fake-jwt-sign": "^1.1.1",
     "jwt-decode": "^3.0.0",
-<<<<<<< HEAD
     "moment": "^2.29.1",
-=======
-    "ng-starrating": "^1.0.20",
->>>>>>> locale
     "rxjs": "~6.6.3",
     "subsink": "^1.0.1",
     "tslib": "^2.0.0",
