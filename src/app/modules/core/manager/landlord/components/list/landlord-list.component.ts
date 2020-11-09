@@ -29,7 +29,7 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  $landlords: Observable<Landlord[]>
+  landlords$: Observable<Landlord[]>
 
   constructor(private landlordService: LandlordService) {}
 
@@ -38,7 +38,7 @@ export class LandlordListComponent implements OnInit {
   }
 
   getAll(): void {
-    this.$landlords = this.landlordService.getAll()
+    this.landlords$ = this.landlordService.getAll()
   }
 
   remove(landlord: Landlord): void {
