@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { Observable } from 'rxjs'
-
-import { AdvertisementService } from './../../../../advertisement.service'
 
 @Component({
   selector: 'cav-sidebar-container',

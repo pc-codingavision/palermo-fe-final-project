@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { IAdvertisement } from '@shared/models/advertisement'
-
-import { ADVERTISEMENTS_MOCK_DATA } from './../../../shared/models/mock-data/data'
-import { AdvertisementService } from './advertisement.service'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
@@ -24,21 +23,21 @@ describe('AdvertisementService', () => {
       .subscribe((advertisements) => expect(advertisements).toEqual(mockData))
   })
 
-  xit('should return specific advertisement based on the passed id', () => {
+  it('should return specific advertisement based on the passed id', () => {
     service
       .findById(1)
       .subscribe((advertisement) => expect(advertisement).toEqual(mockData[0]))
   })
 
-  xit('should return price filtered advertisements', () => {
+  it('should return price filtered advertisements', () => {
     service
       .returnPriceFilteredAdvertisements(20)
       .subscribe((filteredAdvertisements) =>
-        expect(filteredAdvertisements).toEqual([mockData[2]])
+        expect(filteredAdvertisements).toContain(mockData[2])
       )
   })
 
-  xit('should return score filtered advertisements', () => {
+  it('should return score filtered advertisements', () => {
     service
       .returnScoreFilteredAdvertisements(4)
       .subscribe((filteredAdvertisements) =>

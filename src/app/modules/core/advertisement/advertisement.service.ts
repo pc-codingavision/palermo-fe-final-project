@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core'
+import { IAdvertisement } from '@shared/models/advertisement'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
+import * as _ from 'lodash'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { IAdvertisement } from 'src/app/shared/models/advertisement'
-
-import { ADVERTISEMENTS_MOCK_DATA } from '../../../shared/models/mock-data/data'
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class AdvertisementService {
   }
 
   findById(id: number): Observable<IAdvertisement> {
-    return of(ADVERTISEMENTS_MOCK_DATA.find((advert) => (advert.id = id)))
+    return of(ADVERTISEMENTS_MOCK_DATA.find((advert) => advert.id === id))
   }
 
   returnPriceFilteredAdvertisements(filter: number): Observable<IAdvertisement[]> {
@@ -30,8 +30,8 @@ export class AdvertisementService {
   returnScoreFilteredAdvertisements(filter: number): Observable<IAdvertisement[]> {
     const filteredArray: IAdvertisement[] = []
     return of(ADVERTISEMENTS_MOCK_DATA).pipe(
-      map((filteredAdvertisements: IAdvertisement[]) => {
-        filteredAdvertisements.forEach((advertisement) => {
+      map((sourceArray: IAdvertisement[]) => {
+        sourceArray.forEach((advertisement) => {
           const lenght = advertisement.reviews.length
           const score = advertisement.reviews
             .map((review) => review.vote)
@@ -46,28 +46,10 @@ export class AdvertisementService {
   }
 
   findAdvertisementsHighestPrice(): Observable<number> {
-    return of(ADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IAdvertisement[]) => {
-        const advertisementArray = sourceArray
-          .sort((x, y) => y.price - x.price)
-          .slice(0, 1)
-          .map((x) => x.price)
-          .toString()
-        return parseInt(advertisementArray, 0)
-      })
-    )
+    return of(_.max(ADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
   }
 
   findAdvertisementsLowestPrice(): Observable<number> {
-    return of(ADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IAdvertisement[]) => {
-        const advertisementArray = sourceArray
-          .sort((x, y) => x.price - y.price)
-          .slice(0, 1)
-          .map((x) => x.price)
-          .toString()
-        return parseInt(advertisementArray, 0)
-      })
-    )
+    return of(_.min(ADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
   }
 }
