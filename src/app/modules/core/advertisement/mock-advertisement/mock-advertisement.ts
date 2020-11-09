@@ -1,13 +1,23 @@
 import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
-import { IReviews } from '@shared/models/advertisement'
 import { Landlord } from '@shared/models/landlord'
 import { IProperty } from '@shared/models/property'
+import { IName } from '@shared/models/users'
 
+export interface IMockTenant {
+  id: number
+  name: IName
+}
+export interface IMockReview {
+  title: string
+  tenant: IMockTenant
+  description: string
+  vote: number
+}
 export interface IMockAdvertisement {
   id: number
   landlord: Landlord
   property: IProperty
-  reviews: IReviews[]
+  reviews: IMockReview[]
   price: number
 }
 
@@ -33,10 +43,10 @@ export class MockAdvertisement implements IMockAdvertisement {
     )
   }
 }
-export const MOCKADVERTISEMENT_MOCK_DATA: MockAdvertisement = {
-  id: 1,
-  landlord: [
-    {
+export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
+  {
+    id: 1,
+    landlord: {
       id: 1,
       name: { firstName: 'Piero', surname: 'Cascio' },
       phone: [{ id: 1, type: PhoneType.Mobile, digits: '3454545' }],
@@ -55,23 +65,21 @@ export const MOCKADVERTISEMENT_MOCK_DATA: MockAdvertisement = {
       },
       fullName: '',
     },
-  ],
-  property: [
-    {
+    property: {
       id: 1,
       landlordId: 1,
       address: {
         line1: 'Via Roma',
         city: 'Palermo',
-        country: 'italia',
-        postalCode: '90100',
+        state: 'italia',
+        postCode: '90100',
       },
       title: 'Splendido monovano',
       category: Category.Apartment,
-      rooms: [{ roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
+      rooms: [{ name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
       numberOfToilet: 1,
       description:
-        "Non si intrometta! No, aspetti, mi porga l'indice; ecco lo alzi così... guardi, guardi, guardi; lo vede il dito? Lo vede che stuzzica, che prematura anche. E lei.. cosa si sente? Professore, non le dico. Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra.",
+        "Perfetto per immergersi a pieno nella vita dello storico e caratteristico Mercato del Capo. La palazzina si trova nel cuore della città antica, all'interno del Mercato; zona ben fornita di mezzi pubblici e servizi. L'edificio è composto da 4 appartamenti ciascuno dei quali è così suddiviso: ingresso, cucina abitabile totalmente arredata, camera da letto, bagno con doccia ed antibagno",
       facilities: {
         tv: true,
         wifi: true,
@@ -84,59 +92,26 @@ export const MOCKADVERTISEMENT_MOCK_DATA: MockAdvertisement = {
       imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
       status: Status.Open,
     },
-  ],
-  reviews: [
-    {
-      title: 'Fantastic vacation',
-      tenant: {
-        id: 1,
-        name: { firstName: 'Ugo', surname: 'Fantozzi' },
-        phone: [{ id: 1, type: PhoneType.Mobile, digits: '321456789' }],
-        mail: 'rag-fantozzi@test.com',
-        picture: 'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
-        username: 'ragUgo',
-        password: '4321',
-        status: true,
-        dateOfBirth: new Date(1960, 1, 1),
-        role: Role.Tenant,
-        address: {
-          line1: 'Via Pina',
-          city: 'Roma',
-          state: 'Italia',
-          postCode: '90000',
+    reviews: [
+      {
+        title: 'Fantastic vacation',
+        tenant: {
+          id: 1,
+          name: { firstName: 'Ugo', surname: 'Fantozzi' },
         },
-        fullName: '',
+        description: 'Fantastic vacation. Perfect house',
+        vote: 4.5,
       },
-      description: 'Fantastic vacation. Perfect house',
-      vote: 4.5,
-    },
-    {
-      title: 'Good',
-      tenant: {
-        id: 2,
-        name: { firstName: 'Gigi', surname: 'Filini' },
-        phone: [
-          { id: 1, type: PhoneType.Home, digits: '0900256248' },
-          { id: 2, type: PhoneType.Mobile, digits: '355847229' },
-        ],
-        mail: 'geom-filini@test.com',
-        picture: 'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
-        username: 'geomFilini',
-        password: '1234',
-        status: true,
-        dateOfBirth: new Date(1960, 2, 2),
-        role: Role.Tenant,
-        address: {
-          line1: 'Via Abruzzo',
-          city: 'Roma',
-          state: 'Italia',
-          postCode: '90000',
+      {
+        title: 'Good',
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
         },
-        fullName: '',
+        description: 'Nice house, very very clean',
+        vote: 4,
       },
-      description: 'Nice house, very very clean',
-      vote: 4,
-    },
-  ],
-  price: 40,
-}
+    ],
+    price: 40,
+  },
+]

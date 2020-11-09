@@ -210,12 +210,12 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      country: 'italia',
+      state: 'italia',
       postalCode: '90100',
     },
     title: 'Splendido monovano',
     category: Category.Apartment,
-    rooms: [{ roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
+    rooms: [{ name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
     numberOfToilet: 1,
     description:
       "Non si intrometta! No, aspetti, mi porga l'indice; ecco lo alzi così... guardi, guardi, guardi; lo vede il dito? Lo vede che stuzzica, che prematura anche. E lei.. cosa si sente? Professore, non le dico. Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra.",
@@ -237,15 +237,15 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      country: 'italia',
+      state: 'italia',
       postalCode: '90100',
     },
     title: 'Splendido appartamento',
     category: Category.Apartment,
     rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
+      { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
     ],
     numberOfToilet: 1,
     description:
@@ -268,14 +268,14 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      country: 'italia',
+      state: 'italia',
       postalCode: '90100',
     },
     title: 'Splendido attico con vista',
     category: Category.Apartment,
     rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
     ],
     numberOfToilet: 1,
     description:

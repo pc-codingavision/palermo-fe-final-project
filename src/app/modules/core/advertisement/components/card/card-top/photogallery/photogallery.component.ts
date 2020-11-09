@@ -7,7 +7,7 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
   styleUrls: ['./photogallery.component.scss'],
 })
 export class PhotogalleryComponent implements OnInit {
-  @Input() advertisement: MockAdvertisement
+  @Input() advertisements: MockAdvertisement[]
   constructor() {}
 
   ngOnInit(): void {}
