@@ -11,7 +11,7 @@ export class LandlordService {
     ...landlord,
   })) as Landlord[]
 
-  constructor() { }
+  constructor() {}
 
   private getArrayIndexById(id: number): number | null {
     const index = this.landlords.findIndex((landlord) => landlord.id === id)

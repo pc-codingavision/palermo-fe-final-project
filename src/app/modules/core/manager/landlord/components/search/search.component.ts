@@ -20,9 +20,9 @@ export class SearchComponent implements OnInit {
   filteredEmail = ''
   filteredPhone = ''
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   searchFilter(searchEvent: KeyboardEvent): void {
     of(searchEvent)
@@ -36,9 +36,9 @@ export class SearchComponent implements OnInit {
           return (
             landlord.fullName
               .toLowerCase()
-              .includes(this.filteredFullName?.toLowerCase()) &&
+              .includes(this.filteredFullName.toLowerCase()) &&
             landlord.id.toString().includes(this.filteredId) &&
-            landlord.mail.toLowerCase().includes(this.filteredEmail?.toLowerCase()) &&
+            landlord.mail.toLowerCase().includes(this.filteredEmail.toLowerCase()) &&
             landlord.phone
               .map((val) => val.digits)
               .toString()
@@ -50,9 +50,8 @@ export class SearchComponent implements OnInit {
   }
 
   createOptions(key: string): any[] {
-    return this.landlords.map((val) => {
+    return this.landlords?.map((val) => {
       return val[key]
     })
   }
 }
-

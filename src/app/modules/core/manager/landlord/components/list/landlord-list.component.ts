@@ -2,8 +2,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, Input, OnInit } from '@angular/core'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { of } from 'rxjs'
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
 export interface Elements {
   id: number
@@ -32,23 +30,14 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   @Input() landlords: Landlord[]
 
+  constructor(private landlordService: LandlordService) {}
 
-
-
-  constructor(private landlordService: LandlordService) { }
-
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id).subscribe((response) => {
       this.landlords = response
-
     })
     // this.getAll()
   }
-
-
 }
