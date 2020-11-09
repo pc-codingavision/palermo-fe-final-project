@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
-import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
+import { of } from 'rxjs'
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 
 import { Landlord } from './../../../../../../shared/models/landlord'
 
@@ -12,57 +11,48 @@ import { Landlord } from './../../../../../../shared/models/landlord'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  landlords: Landlord[] = []
+  @Input() landlords: Landlord[]
+  @Output() filterEvent = new EventEmitter<Landlord[]>()
   formControl = new FormControl()
-  filteredFullName: Observable<string[]>
-  filteredEmail: Observable<string[]>
-  filteredPhone: Observable<string[]>
-  constructor() {}
 
-  ngOnInit(): void {
-    LANDLORDS_MOCK_DATA.forEach((v) => {
-      this.landlords.push(Landlord.Build(v))
+  filteredId = ''
+  filteredFullName = ''
+  filteredEmail = ''
+  filteredPhone = ''
+
+  constructor() { }
+
+  ngOnInit(): void { }
+
+  searchFilter(searchEvent: KeyboardEvent): void {
+    of(searchEvent)
+      .pipe(
+        debounceTime(100),
+        distinctUntilChanged(),
+        map((e) => (e.target as HTMLInputElement).value)
+      )
+      .subscribe((searchTerm) => {
+        const filtered = this.landlords.filter((landlord) => {
+          return (
+            landlord.fullName
+              .toLowerCase()
+              .includes(this.filteredFullName?.toLowerCase()) &&
+            landlord.id.toString().includes(this.filteredId) &&
+            landlord.mail.toLowerCase().includes(this.filteredEmail?.toLowerCase()) &&
+            landlord.phone
+              .map((val) => val.digits)
+              .toString()
+              .includes(this.filteredPhone)
+          )
+        })
+        this.filterEvent.emit(filtered)
+      })
+  }
+
+  createOptions(key: string): any[] {
+    return this.landlords.map((val) => {
+      return val[key]
     })
-
-    this.filteredFullName = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterFullName(value))
-    )
-    this.filteredEmail = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterEmail(value))
-    )
-    this.filteredPhone = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterPhone(value))
-    )
-  }
-
-  private _filterFullName(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsUsername = this.landlords.map((landlord) => landlord.fullName)
-    return landlordsUsername.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _filterEmail(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsEmail = this.landlords.map((landlord) => landlord.mail)
-    return landlordsEmail.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _filterPhone(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsPhone = this.landlords.map((landlord) => landlord.phone[0].digits)
-    return landlordsPhone.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '')
   }
 }
+

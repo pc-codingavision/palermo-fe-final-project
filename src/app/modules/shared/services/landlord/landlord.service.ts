@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
+import { Landlord } from '@shared/models/landlord'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable, of } from 'rxjs'
-import { Landlord } from 'src/app/shared/models/landlord'
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class LandlordService {
     ...landlord,
   })) as Landlord[]
 
-  constructor() {}
+  constructor() { }
 
   private getArrayIndexById(id: number): number | null {
     const index = this.landlords.findIndex((landlord) => landlord.id === id)
@@ -32,10 +32,11 @@ export class LandlordService {
     return of(null)
   }
 
-  delete(id: number): void {
+  delete(id: number): Observable<Landlord[]> {
     if (this.getArrayIndexById(id) !== null) {
       this.landlords.splice(this.getArrayIndexById(id), 1)
     }
+    return of(this.landlords)
   }
 
   add(landlord: Landlord): void {

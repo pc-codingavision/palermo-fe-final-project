@@ -87,12 +87,12 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   },
   {
     id: 2,
-    name: { firstName: 'Cosimo', surname: 'Nigrelli' },
+    name: { firstName: 'Cosimo', surname: 'Cascio' },
     phone: [
       { id: 1, type: PhoneType.Home, digits: '213455' },
       { id: 2, type: PhoneType.Mobile, digits: '0251628' },
     ],
-    mail: 'cosimo-landlord@test.com',
+    mail: 'piero-landlord@test.it',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
     password: 'password',
