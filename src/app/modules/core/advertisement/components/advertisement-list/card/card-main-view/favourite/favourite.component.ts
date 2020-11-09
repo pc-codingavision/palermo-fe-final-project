@@ -13,6 +13,7 @@ export class FavouriteComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // tslint:disable-next-line: typedef
   public toggleSelected() {
     this.selected = !this.selected
     this.favouriteEvent.emit(this.selected)
