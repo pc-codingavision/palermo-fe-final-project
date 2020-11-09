@@ -1,8 +1,7 @@
 import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
 import { IReviews } from '@shared/models/advertisement'
+import { Landlord } from '@shared/models/landlord'
 import { IProperty } from '@shared/models/property'
-
-import { Landlord } from './../../../../shared/models/landlord'
 
 export interface IMockAdvertisement {
   id: number
