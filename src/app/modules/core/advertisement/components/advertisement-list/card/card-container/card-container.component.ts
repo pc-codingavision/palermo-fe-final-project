@@ -13,7 +13,7 @@ export class CardContainerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changeStatus() {
+  changeStatus(): void {
     this.show = !this.show
   }
 }
