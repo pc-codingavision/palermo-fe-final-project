@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { IFacilities } from '@shared/models/property'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -30,8 +31,8 @@ export class SidebarContainerComponent implements OnInit {
     this.advertisementService.returnPriceFilteredAdvertisements(filter)
   }
 
-  applyFacilityFilter(filter: object): void {
-    console.log(`Value received from facility: ${JSON.stringify(filter)}`)
+  applyFacilityFilter(filter: IFacilities): void {
+    this.advertisementService.returnFacilitiesFilteredAdvertisements(filter)
   }
 
   applyScoreFilter(filter: number): void {
