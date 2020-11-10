@@ -1,16 +1,18 @@
 import { TestBed } from '@angular/core/testing'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
-import { IAdvertisement } from '@shared/models/advertisement'
-import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
+import {
+  MOCKADVERTISEMENTS_MOCK_DATA,
+  MockAdvertisement,
+} from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
-  let mockData: IAdvertisement[]
+  let mockData: MockAdvertisement[]
 
   beforeEach(() => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(AdvertisementService)
-    mockData = ADVERTISEMENTS_MOCK_DATA.map((a) => ({ ...a }))
+    mockData = MOCKADVERTISEMENTS_MOCK_DATA.map((a) => ({ ...a }))
   })
 
   it('should be created', () => {
