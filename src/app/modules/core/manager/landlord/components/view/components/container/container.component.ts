@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Landlord } from 'src/app/shared/models/landlord'
+import { Landlord } from '@shared/models/landlord'
 
 @Component({
   selector: 'cav-view-container',
@@ -8,7 +8,7 @@ import { Landlord } from 'src/app/shared/models/landlord'
 })
 export class ViewContainerComponent implements OnInit {
   @Input() landlord: Landlord
-  @Output() remove = new EventEmitter<any>()
+  @Output() remove = new EventEmitter<Landlord>()
 
   constructor() {}
 

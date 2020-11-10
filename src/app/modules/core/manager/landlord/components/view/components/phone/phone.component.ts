@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Landlord } from 'src/app/shared/models/landlord'
+import { Landlord } from '@shared/models/landlord'
 
 @Component({
   selector: 'cav-phone',

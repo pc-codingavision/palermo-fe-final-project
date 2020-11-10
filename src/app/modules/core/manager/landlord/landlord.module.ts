@@ -5,6 +5,7 @@ import { LandlordContainerComponent } from '@modules/core/manager/landlord/compo
 import { LandlordEditComponent } from '@modules/core/manager/landlord/components/edit/landlord-edit.component'
 import { LandlordListComponent } from '@modules/core/manager/landlord/components/list/landlord-list.component'
 import { LandlordNewComponent } from '@modules/core/manager/landlord/components/new/landlord-new.component'
+import { SearchComponent } from '@modules/core/manager/landlord/components/search/search.component'
 import { AddressComponent } from '@modules/core/manager/landlord/components/view/components/address/address.component'
 import { ButtonContainerComponent } from '@modules/core/manager/landlord/components/view/components/button-container/button-container.component'
 import { ContactComponent } from '@modules/core/manager/landlord/components/view/components/contact/contact.component'
@@ -13,8 +14,6 @@ import { PhoneComponent } from '@modules/core/manager/landlord/components/view/c
 import { StatusComponent } from '@modules/core/manager/landlord/components/view/components/status/status.component'
 import { LandlordRoutingModule } from '@modules/core/manager/landlord/landlord-routing.module'
 import { SharedModule } from '@modules/shared/shared.module'
-
-import { SearchComponent } from './components/search/search.component'
 
 const landlordComponents = [
   LandlordEditComponent,
