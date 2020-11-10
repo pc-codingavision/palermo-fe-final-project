@@ -4,6 +4,7 @@ import {
   MOCKADVERTISEMENTS_MOCK_DATA,
   MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import * as _ from 'lodash'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
@@ -19,47 +20,75 @@ describe('AdvertisementService', () => {
     expect(service).toBeTruthy()
   })
 
-  it('should return all advertisements', () => {
-    service
-      .findAll()
-      .subscribe((advertisements) => expect(advertisements).toEqual(mockData))
+  describe('#findAll', () => {
+    it('should return all advertisements', () => {
+      service
+        .findAll()
+        .subscribe((advertisements) => expect(advertisements).toEqual(mockData))
+    })
   })
 
-  it('should return specific advertisement based on the passed id', () => {
-    service
-      .findById(1)
-      .subscribe((advertisement) => expect(advertisement).toEqual(mockData[0]))
+  describe('#findById', () => {
+    it('should return specific advertisement based on the passed id', () => {
+      service
+        .findById(1)
+        .subscribe((advertisement) => expect(advertisement).toEqual(mockData[0]))
+    })
+
+    it('should return undefined if the passed id does not exist on advertisements data', () => {
+      service
+        .findById(5)
+        .subscribe((advertisement) => expect(advertisement).toBeUndefined())
+    })
   })
 
-  it('should return price filtered advertisements', () => {
-    service
-      .returnPriceFilteredAdvertisements(20)
-      .subscribe((filteredAdvertisements) =>
-        expect(filteredAdvertisements).toContain(mockData[2])
-      )
+  describe('#returnPriceFilteredAdvertisements', () => {
+    it('should return an array of advertisements that match price filter criteria', () => {
+      service
+        .returnPriceFilteredAdvertisements(20)
+        .subscribe((filteredAdvertisements) =>
+          expect(filteredAdvertisements).toContain(mockData[2])
+        )
+    })
+
+    it('should return an empty array if no advertisement match filter criteria', () => {
+      service
+        .returnPriceFilteredAdvertisements(10)
+        .subscribe((filteredAdvertisements) => expect(filteredAdvertisements).toEqual([]))
+    })
   })
 
-  it('should return score filtered advertisements', () => {
-    service
-      .returnScoreFilteredAdvertisements(4)
-      .subscribe((filteredAdvertisements) =>
-        expect(filteredAdvertisements).toEqual(mockData.slice(0, 2))
-      )
+  describe('#returnScoreFilteredAdvertisements', () => {
+    it('should return an array of advertisements that match score filter criteria', () => {
+      service
+        .returnScoreFilteredAdvertisements(4)
+        .subscribe((filteredAdvertisements) =>
+          expect(filteredAdvertisements).toEqual(mockData.slice(0, 2))
+        )
+    })
+
+    it('should return an empty array if no advertisement match filter criteria', () => {
+      service
+        .returnScoreFilteredAdvertisements(8)
+        .subscribe((filteredAdvertisements) => expect(filteredAdvertisements).toEqual([]))
+    })
   })
 
-  it('should return the highest price between advertisements', () => {
-    service
-      .findAdvertisementsHighestPrice()
-      .subscribe((filteredAdvertisementPrice) =>
-        expect(filteredAdvertisementPrice).toEqual(40)
-      )
+  describe('#findAdvertisementsHighestPrice', () => {
+    it('should return the highest price between advertisements', () => {
+      const mockMaxPrice = _.max(mockData.map((adv) => adv.price))
+      service
+        .findAdvertisementsHighestPrice()
+        .subscribe((maxPrice) => expect(maxPrice).toEqual(mockMaxPrice))
+    })
   })
 
-  it('should return the lowest price between advertisements', () => {
-    service
-      .findAdvertisementsLowestPrice()
-      .subscribe((filteredAdvertisementPrice) =>
-        expect(filteredAdvertisementPrice).toEqual(20)
-      )
+  describe('#findAdvertisementsLowestPrice', () => {
+    it('shouldreturn the lowest price between advertisements', () => {
+      const mockMinPrice = _.min(mockData.map((adv) => adv.price))
+      service
+        .findAdvertisementsLowestPrice()
+        .subscribe((minPrice) => expect(minPrice).toEqual(mockMinPrice))
+    })
   })
 })
