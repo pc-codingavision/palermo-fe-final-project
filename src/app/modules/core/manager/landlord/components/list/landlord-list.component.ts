@@ -30,9 +30,9 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   @Input() landlords: Landlord[]
 
-  constructor(private landlordService: LandlordService) { }
+  constructor(private landlordService: LandlordService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   remove(id: number): void {
     this.landlordService.delete(id).subscribe((landlords) => {
