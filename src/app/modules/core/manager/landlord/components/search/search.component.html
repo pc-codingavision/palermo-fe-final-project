@@ -11,8 +11,8 @@
           [matAutocomplete]="id" id="input" [(ngModel)]="filteredId"
           (keyup)="searchFilter($event)">
         <mat-autocomplete #id="matAutocomplete">
-          <mat-option *ngFor="let option of createOptions('id') " [value]="option">
-            {{option}}
+          <mat-option>
+
           </mat-option>
         </mat-autocomplete>
       </form>
@@ -24,8 +24,8 @@
           [matAutocomplete]="name" id="input" [(ngModel)]="filteredFullName"
           (keyup)="searchFilter($event)">
         <mat-autocomplete #name="matAutocomplete">
-          <mat-option *ngFor="let option of createOptions('fullName') " [value]="option">
-            {{option}}
+          <mat-option>
+
           </mat-option>
         </mat-autocomplete>
       </form>
@@ -37,8 +37,8 @@
           [matAutocomplete]="email" id="input" [(ngModel)]="filteredEmail"
           (keyup)="searchFilter($event)">
         <mat-autocomplete #email="matAutocomplete">
-          <mat-option *ngFor="let option of createOptions('mail') " [value]="option">
-            {{option}}
+          <mat-option>
+
           </mat-option>
         </mat-autocomplete>
       </form>
@@ -46,14 +46,14 @@
 
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Phone" [formControl]="formControl" id="input"
-          [(ngModel)]="filteredPhone" (keyup)="searchFilter($event)">
-        <!-- <mat-autocomplete #phone="matAutocomplete">
-          <mat-option *ngFor="let option of createOptions('phone.digits')"
-            [value]="option">
-            {{option}}
+        <input type="text" placeholder="Phone" [formControl]="formControl"
+          [matAutocomplete]="phone" id="input" [(ngModel)]="filteredPhone"
+          (keyup)="searchFilter($event)">
+        <mat-autocomplete #phone="matAutocomplete">
+          <mat-option>
+
           </mat-option>
-        </mat-autocomplete> -->
+        </mat-autocomplete>
       </form>
     </div>
   </div>

@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormControl } from '@angular/forms'
+import { Landlord } from '@shared/models/landlord'
 import { of } from 'rxjs'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
-
-import { Landlord } from './../../../../../../shared/models/landlord'
 
 @Component({
   selector: 'cav-search',
@@ -31,7 +30,7 @@ export class SearchComponent implements OnInit {
         distinctUntilChanged(),
         map((e) => (e.target as HTMLInputElement).value)
       )
-      .subscribe((searchTerm) => {
+      .subscribe(() => {
         const filtered = this.landlords.filter((landlord) => {
           return (
             landlord.fullName
@@ -40,18 +39,12 @@ export class SearchComponent implements OnInit {
             landlord.id.toString().includes(this.filteredId) &&
             landlord.mail.toLowerCase().includes(this.filteredEmail.toLowerCase()) &&
             landlord.phone
-              .map((val) => val.digits)
+              .map((phone) => phone.digits)
               .toString()
               .includes(this.filteredPhone)
           )
         })
         this.filterEvent.emit(filtered)
       })
-  }
-
-  createOptions(key: string): any[] {
-    return this.landlords?.map((val) => {
-      return val[key]
-    })
   }
 }

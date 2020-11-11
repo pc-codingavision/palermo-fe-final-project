@@ -14,9 +14,9 @@ export class LandlordContainerComponent implements OnInit {
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
-    this.landlordService.getAll().subscribe((response) => {
-      this.landlords = response
-      this.filteredLandlords = response
+    this.landlordService.getAll().subscribe((landlords) => {
+      this.landlords = landlords
+      this.filteredLandlords = landlords
     })
   }
 

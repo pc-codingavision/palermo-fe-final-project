@@ -30,14 +30,13 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   @Input() landlords: Landlord[]
 
-  constructor(private landlordService: LandlordService) {}
+  constructor(private landlordService: LandlordService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id).subscribe((response) => {
-      this.landlords = response
+  remove(id: number): void {
+    this.landlordService.delete(id).subscribe((landlords) => {
+      this.landlords = landlords
     })
-    // this.getAll()
   }
 }

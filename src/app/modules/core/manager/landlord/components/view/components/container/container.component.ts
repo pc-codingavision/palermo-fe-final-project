@@ -8,7 +8,7 @@ import { Landlord } from 'src/app/shared/models/landlord'
 })
 export class ViewContainerComponent implements OnInit {
   @Input() landlord: Landlord
-  @Output() remove = new EventEmitter<any>()
+  @Output() remove = new EventEmitter<number>()
 
   constructor() {}
 
@@ -20,7 +20,7 @@ export class ViewContainerComponent implements OnInit {
       this.landlord.status = !this.landlord.status
     } else if (operation === 'delete') {
       // chiamata al servizio
-      this.remove.emit(this.landlord)
+      this.remove.emit(this.landlord.id)
     }
   }
 }
