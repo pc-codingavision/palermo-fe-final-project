@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: #6d7ede;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #6d7ede;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.element-diagram {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  height: 450px;
+}
+
+#add-button {
+  padding: 8px;
+}
