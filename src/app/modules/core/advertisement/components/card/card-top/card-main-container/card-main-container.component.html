@@ -4,11 +4,12 @@
     <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
       fxLayoutWrap="wrap">
 
-      <cav-photogallery [advertisements]="advertisements"></cav-photogallery>
+      <cav-photogallery [photo]="advertisement?.property?.imagesPath[0]">
+      </cav-photogallery>
       <cav-facilities-container></cav-facilities-container>
 
       <mat-card-actions>
-        <mat-card-title>{{advertisements[0]?.property?.title}}</mat-card-title>
+        <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
         <cav-score></cav-score>
         <cav-check-in-check-out></cav-check-in-check-out>
       </mat-card-actions>
@@ -19,7 +20,6 @@
     <button mat-raised-button color="accent" (click)="changeStatus()">More Info
       <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
     </button>
-    <button mat-raised-button class="button">Book</button>
 
     <cav-card-extra *ngIf="show"></cav-card-extra>
   </mat-card>
