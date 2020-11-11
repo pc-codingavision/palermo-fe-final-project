@@ -27,7 +27,7 @@ export class FacilityFilterComponent implements OnInit {
     return (this.expanded = !this.expanded)
   }
 
-  emitFilter(facility: string, status: boolean): void {
+  emitFacilityFilter(facility: string, status: boolean): void {
     this.filterObj[facility] = status
     this.filter.emit(this.filterObj)
   }

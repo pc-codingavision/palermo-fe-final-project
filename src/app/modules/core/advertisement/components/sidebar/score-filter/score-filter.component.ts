@@ -12,7 +12,7 @@ export class ScoreFilterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  emitFilter(value: number): void {
+  emitScoreFilter(value: number): void {
     this.filter.emit(value)
   }
 }
