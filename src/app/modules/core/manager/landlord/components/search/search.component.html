@@ -7,9 +7,8 @@
   <div class="inputs" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Id" [formControl]="formControl"
-          [matAutocomplete]="id" id="input" [(ngModel)]="filteredId"
-          (keyup)="searchFilter($event)">
+        <input type="text" placeholder="Id" [matAutocomplete]="id" id="input"
+          [formControl]="filteredId" (keyup)="searchFilter($event)">
         <mat-autocomplete #id="matAutocomplete">
           <mat-option>
 
@@ -20,9 +19,8 @@
 
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Name" [formControl]="formControl"
-          [matAutocomplete]="name" id="input" [(ngModel)]="filteredFullName"
-          (keyup)="searchFilter($event)">
+        <input type="text" placeholder="Name" [matAutocomplete]="name" id="input"
+          [(ngModel)]="filteredFullName" (keyup)="searchFilter($event)">
         <mat-autocomplete #name="matAutocomplete">
           <mat-option>
 
@@ -33,9 +31,8 @@
 
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Email" [formControl]="formControl"
-          [matAutocomplete]="email" id="input" [(ngModel)]="filteredEmail"
-          (keyup)="searchFilter($event)">
+        <input type="text" placeholder="Email" [matAutocomplete]="email" id="input"
+          [formControl]="filteredEmail" (keyup)="searchFilter($event)">
         <mat-autocomplete #email="matAutocomplete">
           <mat-option>
 
@@ -46,9 +43,8 @@
 
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Phone" [formControl]="formControl"
-          [matAutocomplete]="phone" id="input" [(ngModel)]="filteredPhone"
-          (keyup)="searchFilter($event)">
+        <input type="text" placeholder="Phone" [matAutocomplete]="phone" id="input"
+          [formControl]="filteredPhone" (keyup)="searchFilter($event)">
         <mat-autocomplete #phone="matAutocomplete">
           <mat-option>
 

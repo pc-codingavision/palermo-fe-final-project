@@ -1,2 +1,3 @@
 <cav-search [landlords]="landlords" (filterEvent)="filterCallBack($event)"></cav-search>
-<cav-landlord-list [landlords]="filteredLandlords"></cav-landlord-list>
+<cav-landlord-list [landlords]="filteredLandlords" (removeEvent)="removeCallBack($event)">
+</cav-landlord-list>

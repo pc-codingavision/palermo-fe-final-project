@@ -14,6 +14,10 @@ export class LandlordContainerComponent implements OnInit {
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  private getAll(): void {
     this.landlordService.getAll().subscribe((landlords) => {
       this.landlords = landlords
       this.filteredLandlords = landlords
@@ -22,5 +26,10 @@ export class LandlordContainerComponent implements OnInit {
 
   filterCallBack(landlords: Landlord[]): void {
     this.filteredLandlords = landlords
+  }
+
+  removeCallBack(id: number): void {
+    this.landlordService.delete(id)
+    this.getAll()
   }
 }

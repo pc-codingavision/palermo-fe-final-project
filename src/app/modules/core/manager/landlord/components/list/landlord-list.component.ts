@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 
@@ -29,14 +29,9 @@ export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
   @Input() landlords: Landlord[]
+  @Output() removeEvent = new EventEmitter<number>()
 
   constructor(private landlordService: LandlordService) {}
 
   ngOnInit(): void {}
-
-  remove(id: number): void {
-    this.landlordService.delete(id).subscribe((landlords) => {
-      this.landlords = landlords
-    })
-  }
 }

@@ -12,12 +12,11 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators'
 export class SearchComponent implements OnInit {
   @Input() landlords: Landlord[]
   @Output() filterEvent = new EventEmitter<Landlord[]>()
-  formControl = new FormControl()
 
-  filteredId = ''
+  filteredId = new FormControl('')
   filteredFullName = ''
-  filteredEmail = ''
-  filteredPhone = ''
+  filteredEmail = new FormControl('')
+  filteredPhone = new FormControl('')
 
   constructor() {}
 
@@ -36,12 +35,14 @@ export class SearchComponent implements OnInit {
             landlord.fullName
               .toLowerCase()
               .includes(this.filteredFullName.toLowerCase()) &&
-            landlord.id.toString().includes(this.filteredId) &&
-            landlord.mail.toLowerCase().includes(this.filteredEmail.toLowerCase()) &&
+            landlord.id.toString().includes(this.filteredId.value) &&
+            landlord.mail
+              .toLowerCase()
+              .includes(this.filteredEmail.value.toLowerCase()) &&
             landlord.phone
               .map((phone) => phone.digits)
               .toString()
-              .includes(this.filteredPhone)
+              .includes(this.filteredPhone.value)
           )
         })
         this.filterEvent.emit(filtered)
