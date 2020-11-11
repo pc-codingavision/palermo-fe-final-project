@@ -5,7 +5,8 @@
       <span class="material-icons" (click)="goBehind()">navigate_before</span>
     </button>
 
-    <cav-latest-mini-card *ngFor="let property of latest | async" [latest]="property">
+    <cav-latest-mini-card *ngFor="let property of latest | async"
+      [latest]="property.property">
     </cav-latest-mini-card>
 
     <button class="arrow-button">

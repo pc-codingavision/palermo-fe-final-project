@@ -1,26 +1,110 @@
 import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
-import { IAdvertisement } from '@shared/models/advertisement'
 import { Landlord } from '@shared/models/landlord'
-import { Manager } from '@shared/models/manager'
-import { Property } from '@shared/models/property'
-import { IReservation } from '@shared/models/reservation'
-import { Tenant } from '@shared/models/tenant'
-
-export const ADVERTISEMENTS_MOCK_DATA: IAdvertisement[] = [
+import { IProperty } from '@shared/models/property'
+import { IName } from '@shared/models/users'
+export interface IMockTenant {
+  id: number
+  name: IName
+}
+export interface IMockReview {
+  title: string
+  tenant: IMockTenant
+  description: string
+  vote: number
+}
+export interface IMockAdvertisement {
+  id: number
+  landlord: Landlord
+  property: IProperty
+  reviews: IMockReview[]
+  price: number
+}
+export class MockAdvertisement implements IMockAdvertisement {
+  private constructor(
+    public id = null,
+    public landlord = null,
+    public property = null,
+    public reviews = [],
+    public price = null
+  ) {}
+  static Build(mockAdvertisement?: IMockAdvertisement): MockAdvertisement {
+    if (!mockAdvertisement) {
+      return new MockAdvertisement()
+    }
+    return new this(
+      mockAdvertisement.id,
+      mockAdvertisement.landlord,
+      mockAdvertisement.property,
+      mockAdvertisement.reviews,
+      mockAdvertisement.price
+    )
+  }
+}
+export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
   {
     id: 1,
-    landlordId: 1,
-    propertyId: 1,
+    landlord: {
+      id: 1,
+      name: { firstName: 'Piero', surname: 'Cascio' },
+      phone: [{ id: 1, type: PhoneType.Mobile, digits: '3454545' }],
+      mail: 'piero-landlord@test.com',
+      picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
+      username: 'landlord1',
+      password: 'password',
+      status: true,
+      dateOfBirth: new Date(1980, 10, 10),
+      role: Role.Landlord,
+      address: {
+        line1: 'Via delle Magnolie',
+        city: 'Palermo',
+        state: 'italia',
+        postCode: '90100',
+      },
+      fullName: '',
+    },
+    property: {
+      id: 1,
+      landlordId: 1,
+      address: {
+        line1: 'Via Roma',
+        city: 'Palermo',
+        state: 'italia',
+        postCode: '90100',
+      },
+      title: 'Splendido monovano',
+      category: Category.Apartment,
+      rooms: [{ name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
+      numberOfToilet: 1,
+      description:
+        "Perfetto per immergersi a pieno nella vita dello storico e caratteristico Mercato del Capo. La palazzina si trova nel cuore della città antica, all'interno del Mercato; zona ben fornita di mezzi pubblici e servizi. L'edificio è composto da 4 appartamenti ciascuno dei quali è così suddiviso: ingresso, cucina abitabile totalmente arredata, camera da letto, bagno con doccia ed antibagno",
+      facilities: {
+        tv: true,
+        wifi: true,
+        breakfastIncluded: false,
+        parking: false,
+        kitchen: false,
+        shower: true,
+        bath: false,
+      },
+      imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+      status: Status.Open,
+    },
     reviews: [
       {
         title: 'Fantastic vacation',
-        tenantId: 1,
+        tenant: {
+          id: 1,
+          name: { firstName: 'Ugo', surname: 'Fantozzi' },
+        },
         description: 'Fantastic vacation. Perfect house',
         vote: 4.5,
       },
       {
         title: 'Good',
-        tenantId: 2,
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
         description: 'Nice house, very very clean',
         vote: 4,
       },
@@ -29,12 +113,63 @@ export const ADVERTISEMENTS_MOCK_DATA: IAdvertisement[] = [
   },
   {
     id: 2,
-    landlordId: 2,
-    propertyId: 2,
+    landlord: {
+      id: 2,
+      name: { firstName: 'Cosimo', surname: 'Nigrelli' },
+      phone: [{ id: 2, type: PhoneType.Home, digits: '213455' }],
+      mail: 'cosimo-landlord@test.com',
+      picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
+      username: 'landlord2',
+      password: 'password',
+      status: true,
+      dateOfBirth: new Date(1982, 10, 10),
+      role: Role.Landlord,
+      address: {
+        line1: 'Via Roma',
+        city: 'Messina',
+        state: 'italia',
+        postCode: '90100',
+      },
+      fullName: '',
+    },
+    property: {
+      id: 2,
+      landlordId: 2,
+      address: {
+        line1: 'Via Roma',
+        city: 'Palermo',
+        state: 'italia',
+        postCode: '90100',
+      },
+      title: 'Splendido appartamento',
+      category: Category.Apartment,
+      rooms: [
+        { name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
+        { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+        { name: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
+      ],
+      numberOfToilet: 1,
+      description:
+        "Luminoso attico nel centro di Palermo, posizione ideale per tutte le principali attrazioni turistiche del Centro Storico antico (5 min a piedi dalla Cattedrale). Questo attico di design si trova all'ultimo 7 ° piano (con ascensore) e offre una vista mozzafiato sulle montagne circostanti e sul centro storico della città. Il parcheggio è gratuito nella strada sottostante.",
+      facilities: {
+        tv: true,
+        wifi: true,
+        breakfastIncluded: true,
+        parking: false,
+        kitchen: true,
+        shower: true,
+        bath: false,
+      },
+      imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+      status: Status.Open,
+    },
     reviews: [
       {
         title: 'Good',
-        tenantId: 2,
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
         description: 'Very spacious and accessible house',
         vote: 4.5,
       },
@@ -43,308 +178,77 @@ export const ADVERTISEMENTS_MOCK_DATA: IAdvertisement[] = [
   },
   {
     id: 3,
-    landlordId: 3,
-    propertyId: 3,
+    landlord: {
+      id: 3,
+      name: { firstName: 'Vito', surname: 'Rizzo' },
+      phone: [{ id: 3, type: PhoneType.Work, digits: '142354' }],
+      mail: 'vito-landlord@test.com',
+      picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
+      username: 'landlord3',
+      password: 'password',
+      status: true,
+      dateOfBirth: new Date(1984, 10, 1),
+      role: Role.Landlord,
+      address: {
+        line1: 'Via dei Cappuccini',
+        city: 'Ragusa',
+        state: 'italia',
+        postCode: '90100',
+      },
+      fullName: '',
+    },
+    property: {
+      id: 3,
+      landlordId: 2,
+      address: {
+        line1: 'Via Roma',
+        city: 'Palermo',
+        state: 'italia',
+        postCode: '90100',
+      },
+      title: 'Splendido attico con vista',
+      category: Category.Apartment,
+      rooms: [
+        { name: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
+        { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      ],
+      numberOfToilet: 1,
+      description:
+        'Situata nel cuore del Centro Storico di Palermo, La Boucherie vi da il benvenuto in una delle città più belle della Sicilia. Bellissimo appartamento nel quartiere della Vucciria, vicino alle vie più centrali della città, la Boucherie è dotato di Wi-Fi senza limiti, aria condizionata, finestre in vetro-camera, cucina attrezzata, lavatrice e due balconi. Ben collegato. Pulito e tranquillo.',
+      facilities: {
+        tv: true,
+        wifi: true,
+        breakfastIncluded: true,
+        parking: true,
+        kitchen: true,
+        shower: true,
+        bath: true,
+      },
+      imagesPath: [
+        'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+      ],
+      status: Status.Open,
+    },
     reviews: [
       {
         title: 'Not great',
-        tenantId: 1,
+        tenant: {
+          id: 1,
+          name: { firstName: 'Ugo', surname: 'Fantozzi' },
+        },
         description: 'The hostel was very very chaotic',
         vote: 1.5,
       },
       {
         title: 'Terrible',
-        tenantId: 2,
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
         description: 'Very busy and people without masks',
         vote: 2,
       },
     ],
     price: 20,
-  },
-]
-export const LANDLORDS_MOCK_DATA: Landlord[] = [
-  {
-    id: 1,
-    name: { firstName: 'Piero', surname: 'Cascio' },
-    phone: [{ id: 1, type: PhoneType.Mobile, digits: '3454545' }],
-    mail: 'piero-landlord@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'landlord1',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1980, 10, 10),
-    role: Role.Landlord,
-    address: {
-      line1: 'Via delle Magnolie',
-      city: 'Palermo',
-      state: 'italia',
-      postCode: '90100',
-    },
-    fullName: '',
-  },
-  {
-    id: 2,
-    name: { firstName: 'Cosimo', surname: 'Nigrelli' },
-    phone: [{ id: 2, type: PhoneType.Home, digits: '213455' }],
-    mail: 'cosimo-landlord@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'landlord2',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1982, 10, 10),
-    role: Role.Landlord,
-    address: {
-      line1: 'Via Roma',
-      city: 'Messina',
-      state: 'italia',
-      postCode: '90100',
-    },
-    fullName: '',
-  },
-  {
-    id: 3,
-    name: { firstName: 'Vito', surname: 'Rizzo' },
-    phone: [{ id: 3, type: PhoneType.Work, digits: '142354' }],
-    mail: 'vito-landlord@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'landlord3',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1984, 10, 1),
-    role: Role.Landlord,
-    address: {
-      line1: 'Via dei Cappuccini',
-      city: 'Ragusa',
-      state: 'italia',
-      postCode: '90100',
-    },
-    fullName: '',
-  },
-]
-export const MANAGERS_MOCK_DATA: Manager[] = [
-  {
-    id: 1,
-    name: { firstName: 'Piero', surname: 'Cascio' },
-    phone: [
-      {
-        id: 1,
-        type: PhoneType.Home,
-        digits: '0911113333',
-      },
-      {
-        id: 2,
-        type: PhoneType.Mobile,
-        digits: '3333333333',
-      },
-      {
-        id: 3,
-        type: PhoneType.Work,
-        digits: '3216549871',
-      },
-    ],
-    mail: 'piero-manager@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'manager1',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1990, 10, 20),
-    role: Role.Manager,
-    fullName: '',
-    address: { line1: 'Via Roma', city: 'Palermo', state: 'italia', postCode: '90100' },
-  },
-  {
-    id: 2,
-    name: { firstName: 'Cosimo', surname: 'Nigrelli' },
-    phone: [
-      {
-        id: 1,
-        type: PhoneType.Work,
-        digits: '3216549871',
-      },
-      {
-        id: 2,
-        type: PhoneType.Mobile,
-        digits: '369258147',
-      },
-    ],
-    mail: 'cosimo-manager@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'manager2',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1980, 5, 10),
-    role: Role.Manager,
-    fullName: '',
-    address: { line1: 'Via Roma', city: 'Palermo', state: 'italia', postCode: '90100' },
-  },
-  {
-    id: 3,
-    name: { firstName: 'Mario', surname: 'Rossi' },
-    phone: [
-      {
-        id: 1,
-        type: PhoneType.Mobile,
-        digits: '3571594862',
-      },
-    ],
-    mail: 'mario-manager@test.com',
-    picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
-    username: 'manager3',
-    password: 'password',
-    status: true,
-    dateOfBirth: new Date(1992, 2, 15),
-    role: Role.Manager,
-    fullName: '',
-    address: {
-      line1: 'Via della Libertà',
-      city: 'Palermo',
-      state: 'italia',
-      postCode: '90100',
-    },
-  },
-]
-export const PROPERTIES_MOCK_DATA: Property[] = [
-  {
-    id: 1,
-    landlordId: 1,
-    address: {
-      line1: 'Via Roma',
-      city: 'Palermo',
-      country: 'italia',
-      postalCode: '90100',
-    },
-    title: 'Splendido monovano',
-    category: Category.Apartment,
-    rooms: [{ roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
-    numberOfToilet: 1,
-    description:
-      "Non si intrometta! No, aspetti, mi porga l'indice; ecco lo alzi così... guardi, guardi, guardi; lo vede il dito? Lo vede che stuzzica, che prematura anche. E lei.. cosa si sente? Professore, non le dico. Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra.",
-    facilities: {
-      tv: true,
-      wifi: true,
-      breakfastIncluded: false,
-      parking: false,
-      kitchen: false,
-      shower: true,
-      bath: false,
-    },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
-    status: Status.Open,
-  },
-  {
-    id: 2,
-    landlordId: 2,
-    address: {
-      line1: 'Via Roma',
-      city: 'Palermo',
-      country: 'italia',
-      postalCode: '90100',
-    },
-    title: 'Splendido appartamento',
-    category: Category.Apartment,
-    rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
-    ],
-    numberOfToilet: 1,
-    description:
-      'Si, ma la sbiriguda della sbrindellona come se fosse antani come faceva? Prego? Ho provato con la supercazzola con scappelamento paraplegico a sinistra, ma non funzionava. E lei.. cosa si sente? Professore, non le dico.',
-    facilities: {
-      tv: true,
-      wifi: true,
-      breakfastIncluded: true,
-      parking: false,
-      kitchen: true,
-      shower: true,
-      bath: false,
-    },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
-    status: Status.Open,
-  },
-  {
-    id: 3,
-    landlordId: 2,
-    address: {
-      line1: 'Via Roma',
-      city: 'Palermo',
-      country: 'italia',
-      postalCode: '90100',
-    },
-    title: 'Splendido attico con vista',
-    category: Category.Apartment,
-    rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
-    ],
-    numberOfToilet: 1,
-    description:
-      "Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra. Guardi, le ho ritagliato quell'articolo sul Casentino. Ma lei se la blinda la supercazzola prematurata come se fosse anche un po' di Casentino che perdura anche come cappotto;",
-    facilities: {
-      tv: true,
-      wifi: true,
-      breakfastIncluded: true,
-      parking: true,
-      kitchen: true,
-      shower: true,
-      bath: true,
-    },
-    imagesPath: [
-      'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
-    ],
-    status: Status.Open,
-  },
-]
-export const RESERVATIONS_MOCK_DATA: IReservation[] = [
-  {
-    id: 1,
-    tenantId: 1,
-    propertyId: 1,
-    guestNumber: 3,
-    checkIn: '24/10/2020',
-    checkOut: '30/10/2020',
-    specialRequest: '',
-  },
-  {
-    id: 2,
-    tenantId: 2,
-    propertyId: 2,
-    guestNumber: 3,
-    checkIn: '26/11/2020',
-    checkOut: '30/11/2020',
-    specialRequest: 'I would like to do the check-in in early morning.',
-  },
-]
-export const TENANTS_MOCK_DATA: Tenant[] = [
-  {
-    id: 1,
-    name: { firstName: 'Ugo', surname: 'Fantozzi' },
-    phone: [{ id: 1, type: PhoneType.Mobile, digits: '321456789' }],
-    mail: 'rag-fantozzi@test.com',
-    picture: 'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
-    username: 'ragUgo',
-    password: '4321',
-    status: true,
-    dateOfBirth: new Date(1960, 1, 1),
-    role: Role.Tenant,
-    address: { line1: 'Via Pina', city: 'Roma', state: 'Italia', postCode: '90000' },
-    fullName: '',
-  },
-  {
-    id: 2,
-    name: { firstName: 'Gigi', surname: 'Filini' },
-    phone: [
-      { id: 1, type: PhoneType.Home, digits: '0900256248' },
-      { id: 2, type: PhoneType.Mobile, digits: '355847229' },
-    ],
-    mail: 'geom-filini@test.com',
-    picture: 'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
-    username: 'geomFilini',
-    password: '1234',
-    status: true,
-    dateOfBirth: new Date(1960, 2, 2),
-    role: Role.Tenant,
-    address: { line1: 'Via Abruzzo', city: 'Roma', state: 'Italia', postCode: '90000' },
-    fullName: '',
   },
 ]

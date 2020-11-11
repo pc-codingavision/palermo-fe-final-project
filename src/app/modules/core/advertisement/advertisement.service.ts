@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core'
-import { IAdvertisement } from '@shared/models/advertisement'
+import { MOCKADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable, of } from 'rxjs'
 
-import {
-  ADVERTISEMENTS_MOCK_DATA,
-  PROPERTIES_MOCK_DATA,
-} from './../../../shared/models/mock-data/data'
+import { IMockAdvertisement } from './../../../shared/models/mock-data/data'
 
 @Injectable({
   providedIn: 'root',
@@ -13,21 +10,15 @@ import {
 export class AdvertisementService {
   constructor() {}
 
-  findAll(): Observable<IAdvertisement[]> {
-    return of(ADVERTISEMENTS_MOCK_DATA)
+  findAll(): Observable<IMockAdvertisement[]> {
+    return of(MOCKADVERTISEMENTS_MOCK_DATA)
   }
 
-  findById(id: number): Observable<IAdvertisement> {
-    return of(ADVERTISEMENTS_MOCK_DATA.find((advert) => (advert.id = id)))
+  findById(id: number): Observable<IMockAdvertisement> {
+    return of(MOCKADVERTISEMENTS_MOCK_DATA.find((advert) => advert.id === id))
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<any[]> {
-    return of(
-      ADVERTISEMENTS_MOCK_DATA.map((adv, i) => {
-        if (adv.propertyId === PROPERTIES_MOCK_DATA[i].id) {
-          return Object.assign({}, adv, PROPERTIES_MOCK_DATA[i])
-        }
-      }).slice(start, end)
-    )
+    return of(MOCKADVERTISEMENTS_MOCK_DATA.slice(start, end))
   }
 }
