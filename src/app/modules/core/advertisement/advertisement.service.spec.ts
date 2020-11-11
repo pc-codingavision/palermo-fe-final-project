@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing'
-
-import { ADVERTISEMENTS_MOCK_DATA } from './../../../shared/models/mock-data/data'
-import { AdvertisementService } from './advertisement.service'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
