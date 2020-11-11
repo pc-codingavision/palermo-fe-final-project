@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-
-import { MOCKADVERTISEMENTS_MOCK_DATA } from '../../mock-advertisement/mock-advertisement'
+import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -8,7 +7,7 @@ import { MOCKADVERTISEMENTS_MOCK_DATA } from '../../mock-advertisement/mock-adve
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  advertisement = MOCKADVERTISEMENTS_MOCK_DATA
+  advertisements = MOCKADVERTISEMENTS_MOCK_DATA
   constructor() {}
 
   ngOnInit(): void {}
