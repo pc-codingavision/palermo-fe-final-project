@@ -35,11 +35,8 @@ export class AdvertisementService {
     return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
       map((sourceArray: IMockAdvertisement[]) => {
         sourceArray.forEach((advertisement) => {
-          const lenght = advertisement.reviews.length
-          const score = advertisement.reviews
-            .map((review) => review.vote)
-            .reduce((a, b) => Math.round((a + b) / lenght))
-          if (score >= filter) {
+          const score = _.mean(advertisement.reviews.map((rev) => rev.vote))
+          if (_.round(score) >= filter) {
             filteredArray.push(advertisement)
           }
         })
