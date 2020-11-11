@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 
-import { AdvertisementService } from './../../../../advertisement.service'
+import { AdvertisementService } from './../../../advertisement.service'
 
 @Component({
   selector: 'cav-latest-mini-card',

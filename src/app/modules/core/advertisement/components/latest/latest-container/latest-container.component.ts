@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 
-import { AdvertisementService } from './../../../../advertisement.service'
+import { AdvertisementService } from './../../../advertisement.service'
 
 @Component({
   selector: 'cav-latest-container',
