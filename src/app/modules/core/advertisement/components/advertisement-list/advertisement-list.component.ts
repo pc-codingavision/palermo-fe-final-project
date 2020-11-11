@@ -7,6 +7,5 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AdvertisementListComponent implements OnInit {
   constructor() {}
-
   ngOnInit(): void {}
 }
