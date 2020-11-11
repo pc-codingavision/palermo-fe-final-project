@@ -29,7 +29,7 @@ export interface Elements {
 })
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
-  expandedElement: any | null
+  expandedElement: Landlord | null
 
   constructor(private route: ActivatedRoute) {}
 

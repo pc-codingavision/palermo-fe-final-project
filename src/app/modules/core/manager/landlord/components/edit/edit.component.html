@@ -40,8 +40,7 @@
           Username: {{landlord?.username}}
         </h2>
       </div>
-
-      <form [formGroup]="form">
+      <form [formGroup]="landlordForm">
         <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
           <mat-card>
             <div fxLayout="column" fxLayoutAlign="space-between">
@@ -157,7 +156,7 @@
             <span class="material-icons">check_circle</span>Save
           </button>
           <button id="buttons-reset-password" mat-raised-button color="accent"
-            (click)="openResetPasswordContainer()">
+            (click)="toggleResetPasswordContainer = !toggleResetPasswordContainer">
             <span class="material-icons">vpn_key</span>Reset Password
           </button>
           <button id="buttons-cancel" mat-raised-button (click)="goBack()" color="warn">
@@ -190,10 +189,6 @@
                 </mat-icon>
               </button>
             </mat-form-field>
-            <!--<br>
-            <button mat-button color="primary"
-              (click)="checkPassword = true"
-              [disabled]="password.value !== confirmPassword.value || !password.value">Confirm</button>-->
           </div>
         </div>
       </div>

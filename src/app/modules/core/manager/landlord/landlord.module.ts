@@ -2,14 +2,10 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MaterialModule } from '@modules/shared/material.module'
 
-import { MaterialModule } from './../../../shared/material.module'
 import { LandlordContainerComponent } from './components/container/landlord-container.component'
-import { AddressDetailsComponent } from './components/edit/components/address-details/address-details.component'
-import { ButtonsContainerComponent } from './components/edit/components/buttons-container/buttons-container.component'
-import { ContactDetailsComponent } from './components/edit/components/contact-details/contact-details.component'
-import { EditContainerComponent } from './components/edit/components/container/edit-container.component'
-import { PersonalDetailsComponent } from './components/edit/components/personal-details/personal-details.component'
+import { EditComponent } from './components/edit/edit.component'
 import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
@@ -33,12 +29,8 @@ const landlordComponents = [
   ContactComponent,
   SearchComponent,
   ConfirmDialogComponent,
-  EditContainerComponent,
+  EditComponent,
   ButtonContainerComponent,
-  PersonalDetailsComponent,
-  AddressDetailsComponent,
-  ContactDetailsComponent,
-  ButtonsContainerComponent,
 ]
 
 @NgModule({

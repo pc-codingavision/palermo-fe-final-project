@@ -3,15 +3,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { PhoneType } from '@shared/enum/enums'
+import { Landlord } from '@shared/models/landlord'
 import { Subscription } from 'rxjs'
-import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
   selector: 'cav-edit-container',
-  templateUrl: './edit-container.component.html',
-  styleUrls: ['./edit-container.component.scss'],
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
 })
-export class EditContainerComponent implements OnInit, OnDestroy {
+export class EditComponent implements OnInit, OnDestroy {
   isEdit: boolean
   togglePictureContainer = false
   toggleResetPasswordContainer = false
@@ -20,7 +20,7 @@ export class EditContainerComponent implements OnInit, OnDestroy {
   maxDate = new Date()
   landlord: Landlord
   landlord$: Subscription
-  form: FormGroup
+  landlordForm: FormGroup
   password: FormControl
   confirmPassword: FormControl
   picture: FormControl
@@ -34,17 +34,18 @@ export class EditContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isEdit = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
-    if (this.isEdit) {
-      this.getLandlord()
-    } else {
-      this.landlord = Landlord.Build()
-      this.togglePictureContainer = true
-    }
+    this.getLandlord()
     this.setForm()
   }
 
+  ngOnDestroy(): void {
+    if (this.isEdit) {
+      this.landlord$.unsubscribe()
+    }
+  }
+
   setForm(): void {
-    this.form = this.formBuilder.group({
+    this.landlordForm = this.formBuilder.group({
       firstName: [
         this.landlord?.name.firstName,
         [Validators.required, Validators.minLength(2)],
@@ -82,50 +83,50 @@ export class EditContainerComponent implements OnInit, OnDestroy {
     this.picture = new FormControl(this.landlord.picture)
   }
 
-  ngOnDestroy(): void {
-    if (this.isEdit) {
-      this.landlord$.unsubscribe()
-    }
-  }
-
   getLandlord(): void {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.landlord$ = this.landlordService
-      .getById(id)
-      .subscribe((landlord) => (this.landlord = landlord))
+    if (this.isEdit) {
+      const id = +this.activatedRoute.snapshot.paramMap.get('id')
+      this.landlord$ = this.landlordService
+        .getById(id)
+        .subscribe((landlord) => (this.landlord = landlord))
+    } else {
+      this.landlord = Landlord.Build()
+      this.togglePictureContainer = true
+      this.toggleResetPasswordContainer = true
+    }
   }
 
   updateLandlord(): void {
     const newLandlord: Landlord = {
       id: this.landlord.id,
       name: {
-        firstName: this.form.value.firstName,
-        surname: this.form.value.lastName,
+        firstName: this.landlordForm.value.firstName,
+        surname: this.landlordForm.value.lastName,
       },
       phone: [
         {
           id: 1,
           type: PhoneType.Mobile,
-          digits: this.form.value.mobile,
+          digits: this.landlordForm.value.mobile,
         },
         {
           id: 2,
           type: PhoneType.Home,
-          digits: this.form.value.phone,
+          digits: this.landlordForm.value.phone,
         },
       ],
-      mail: this.form.value.email,
+      mail: this.landlordForm.value.email,
       picture: this.picture.value,
       username: this.landlord.username,
       password: this.password.value,
       status: this.landlord.status,
-      dateOfBirth: this.form.value.dateOfBirth,
+      dateOfBirth: this.landlordForm.value.dateOfBirth,
       role: this.landlord.role,
       address: {
-        line1: this.form.value.line1,
-        city: this.form.value.city,
-        state: this.form.value.state,
-        postCode: this.form.value.zipCode,
+        line1: this.landlordForm.value.line1,
+        city: this.landlordForm.value.city,
+        state: this.landlordForm.value.state,
+        postCode: this.landlordForm.value.zipCode,
       },
       fullName: '',
     }
@@ -135,18 +136,14 @@ export class EditContainerComponent implements OnInit, OnDestroy {
       : this.landlordService.add(newLandlord)
   }
 
-  openResetPasswordContainer(): void {
-    this.toggleResetPasswordContainer = !this.toggleResetPasswordContainer
-  }
-
   goBack(): void {
     const navigationExtras = {
-      queryParams: { landlordId: this.landlord.id },
+      queryParams: { id: this.landlord.id },
     }
     this.router.navigate(['/manager/landlord'], navigationExtras)
   }
 
   validateForm(): boolean {
-    return this.form.valid && this.password.value === this.confirmPassword.value
+    return this.landlordForm.valid && this.password.value === this.confirmPassword.value
   }
 }

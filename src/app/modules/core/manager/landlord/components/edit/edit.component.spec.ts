@@ -1,21 +1,22 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 
-import { ButtonsContainerComponent } from './buttons-container.component'
+import { EditComponent } from './edit.component'
 
-describe('ButtonsContainerComponent', () => {
-  let component: ButtonsContainerComponent
-  let fixture: ComponentFixture<ButtonsContainerComponent>
+describe('EditContainerComponent', () => {
+  let component: EditComponent
+  let fixture: ComponentFixture<EditComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ButtonsContainerComponent],
+      declarations: [EditComponent],
+      imports: [RouterTestingModule, ReactiveFormsModule],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonsContainerComponent)
+    fixture = TestBed.createComponent(EditComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
