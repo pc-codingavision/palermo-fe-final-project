@@ -12,7 +12,7 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onClick(rating: number): void {
+  handleClick(rating: number): void {
     this.ratingValue.emit(rating)
   }
 }
