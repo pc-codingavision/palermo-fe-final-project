@@ -6,7 +6,13 @@
 
       <cav-photogallery [photo]="advertisement?.property?.imagesPath[0]">
       </cav-photogallery>
-      <cav-facilities-container></cav-facilities-container>
+
+      <div fxLayout="column">
+        <cav-facility
+          *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
+          [facility]="facility">
+        </cav-facility>
+      </div>
 
       <mat-card-actions>
         <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
