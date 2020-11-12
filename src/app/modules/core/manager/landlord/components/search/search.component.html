@@ -20,7 +20,7 @@
     <div id="i-style">
       <form id="i-form">
         <input type="text" placeholder="Name" [matAutocomplete]="name" id="input"
-          [(ngModel)]="filteredFullName" (keyup)="searchFilter($event)">
+          [formControl]="filteredFullName" (keyup)="searchFilter($event)">
         <mat-autocomplete #name="matAutocomplete">
           <mat-option>
 

@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<Landlord[]>()
 
   filteredId = new FormControl('')
-  filteredFullName = ''
+  filteredFullName = new FormControl('')
   filteredEmail = new FormControl('')
   filteredPhone = new FormControl('')
 
@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
           return (
             landlord.fullName
               .toLowerCase()
-              .includes(this.filteredFullName.toLowerCase()) &&
+              .includes(this.filteredFullName.value.toLowerCase()) &&
             landlord.id.toString().includes(this.filteredId.value) &&
             landlord.mail
               .toLowerCase()
