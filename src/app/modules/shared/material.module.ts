@@ -41,6 +41,12 @@ const modules = [
   MatTabsModule,
   MatToolbarModule,
   MatGridListModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatSnackBarModule,
+  MatSliderModule,
+  MatIconModule,
+  MatToolbarModule,
   MatSidenavModule,
   MatListModule,
 ]
