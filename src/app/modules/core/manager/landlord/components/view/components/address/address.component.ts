@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { IAddress } from './../../../../../../../../shared/models/users'
+import { IAddress } from '@shared/models/users'
 
 @Component({
   selector: 'cav-address',

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
+import { Landlord } from '@shared/models/landlord'
+import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable } from 'rxjs'
-
-import { Landlord } from './../../../../../../shared/models/landlord'
-import { LANDLORDS_MOCK_DATA } from './../../../../../../shared/models/mock-data/data'
 
 @Component({
   selector: 'cav-search',
@@ -39,8 +38,8 @@ export class SearchComponent implements OnInit {
 
   private _filterFullName(value: string): string[] {
     const filterValue = this._normalizeValue(value)
-    const landlordsUsername = this.landlords.map((landlord) => landlord.fullName)
-    return landlordsUsername.filter((landlord) =>
+    const landlordsFullName = this.landlords.map((landlord) => landlord.fullName)
+    return landlordsFullName.filter((landlord) =>
       this._normalizeValue(landlord).includes(filterValue)
     )
   }

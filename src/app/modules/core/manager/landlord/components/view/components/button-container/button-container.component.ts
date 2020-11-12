@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Landlord } from '@shared/models/landlord'
 import { DialogService } from '@shared/services/dialog.service'
-import { Landlord } from 'src/app/shared/models/landlord'
 
 @Component({
   selector: 'cav-button-container',
