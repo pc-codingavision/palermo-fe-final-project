@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing'
+import { PROPERTIES_MOCK_DATA } from '@shared/models/mock-data/data'
 
-import { PROPERTIES_MOCK_DATA } from './../../../../shared/models/mock-data/data'
 import { PropertyService } from './property.service'
 
 describe('PropertyService', () => {

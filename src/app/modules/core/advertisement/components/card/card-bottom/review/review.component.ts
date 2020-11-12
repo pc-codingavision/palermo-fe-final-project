@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { MockAdvertisement } from './../../../../../mock-advertisement/mock-advertisement'
+import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-review',
@@ -8,7 +7,7 @@ import { MockAdvertisement } from './../../../../../mock-advertisement/mock-adve
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() advertisement: MockAdvertisement
+  @Input() review: IMockReview
   constructor() {}
 
   ngOnInit(): void {}

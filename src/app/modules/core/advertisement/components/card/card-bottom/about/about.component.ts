@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { MockAdvertisement } from './../../../../../mock-advertisement/mock-advertisement'
+import { IProperty } from '@shared/models/property'
 
 @Component({
   selector: 'cav-about',
@@ -8,7 +7,7 @@ import { MockAdvertisement } from './../../../../../mock-advertisement/mock-adve
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  @Input() advertisement: MockAdvertisement
+  @Input() property: IProperty
   constructor() {}
 
   ngOnInit(): void {}

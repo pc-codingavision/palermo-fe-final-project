@@ -1,1 +1,3 @@
-<cav-card-container [advertisement]="advertisement"></cav-card-container>
+<cav-card-main-container *ngFor="let advertisement of advertisements"
+  [advertisement]="advertisement">
+</cav-card-main-container>

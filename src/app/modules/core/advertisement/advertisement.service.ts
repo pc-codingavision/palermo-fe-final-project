@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { IAdvertisement } from 'src/app/shared/models/advertisement'
-
-import { ADVERTISEMENTS_MOCK_DATA } from '../../../shared/models/mock-data/data'
 
 @Injectable({
   providedIn: 'root',

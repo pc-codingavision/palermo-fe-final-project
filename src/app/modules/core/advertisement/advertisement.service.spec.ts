@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing'
-
-import { ADVERTISEMENTS_MOCK_DATA } from './../../../shared/models/mock-data/data'
-import { AdvertisementService } from './advertisement.service'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
@@ -27,7 +26,6 @@ describe('AdvertisementService', () => {
       price: 20,
     },
   ]
-
   const mockFindById = {
     id: 1,
     landlordId: 1,
@@ -48,20 +46,15 @@ describe('AdvertisementService', () => {
     ],
     price: 40,
   }
-
   const mockMaxPrice = 40
-
   const mockMinPrice = 20
-
   beforeEach(() => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(AdvertisementService)
   })
-
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
-
   it('should return all advertisements', () => {
     expect(
       service
@@ -71,7 +64,6 @@ describe('AdvertisementService', () => {
         )
     )
   })
-
   xit('should return specific advertisement based on the passed id', () => {
     expect(
       service
@@ -79,7 +71,6 @@ describe('AdvertisementService', () => {
         .subscribe((advertisement) => expect(advertisement).toEqual(mockFindById))
     )
   })
-
   xit('should return filtered advertisements', () => {
     expect(
       service
@@ -89,7 +80,6 @@ describe('AdvertisementService', () => {
         )
     )
   })
-
   it('should return the highest price between advertisements', () => {
     expect(
       service
@@ -99,7 +89,6 @@ describe('AdvertisementService', () => {
         )
     )
   })
-
   it('should return the lowest price between advertisements', () => {
     expect(
       service

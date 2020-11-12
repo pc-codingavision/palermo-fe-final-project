@@ -1,0 +1,13 @@
+<div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
+  fxLayoutWrap="wrap">
+
+  <div class="side" fxFlex="49%">
+    <div fxLayout="row" *ngFor="let facility of facilities | keyvalue">
+      <i [ngStyle]="{'color': facility.value ? 'green' : 'red'}" class="material-icons">
+        {{facility.value ? 'done' : 'clear'}} </i>
+      <p>{{facility.key}}
+      </p>
+    </div>
+  </div>
+
+</div>
