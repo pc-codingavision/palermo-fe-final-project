@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
+import { DialogService } from '@shared/services/dialog.service'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -17,6 +18,7 @@ export class EditComponent implements OnInit, OnDestroy {
   toggleResetPasswordContainer = false
   hidePassword = true
   hideConfirmPassword = true
+  isSavedForm = false
   maxDate = new Date()
   landlord: Landlord
   landlord$: Subscription
@@ -27,7 +29,8 @@ export class EditComponent implements OnInit, OnDestroy {
     private landlordService: LandlordService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBarService: SnackBarService,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +55,7 @@ export class EditComponent implements OnInit, OnDestroy {
       this.landlord = Landlord.Build()
       this.togglePictureContainer = true
       this.toggleResetPasswordContainer = true
+      this.landlord.status = true
     }
   }
 
@@ -98,11 +102,13 @@ export class EditComponent implements OnInit, OnDestroy {
   validateForm(): boolean {
     return (
       this.landlordForm.valid &&
+      this.landlordForm.value.password &&
       this.landlordForm.value.password === this.landlordForm.value.confirmPassword
     )
   }
 
   updateLandlord(): void {
+    this.isSavedForm = true
     const newLandlord: Landlord = {
       id: this.landlord.id,
       name: {
@@ -141,11 +147,7 @@ export class EditComponent implements OnInit, OnDestroy {
       ? this.landlordService.update(newLandlord)
       : this.landlordService.add(newLandlord)
 
-    this.openSnackBar()
-  }
-
-  openSnackBar(): void {
-    this.snackBar.open('The landlord was saved', 'Cancel', { duration: 2000 })
+    this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }
 
   goBack(): void {
@@ -153,5 +155,11 @@ export class EditComponent implements OnInit, OnDestroy {
       queryParams: { id: this.landlord.id },
     }
     this.router.navigate(['/manager/landlord'], navigationExtras)
+  }
+
+  canExit(): boolean {
+    if (this.landlordForm.touched && !this.isSavedForm) {
+      return !confirm('The data will not be saved')
+    }
   }
 }
