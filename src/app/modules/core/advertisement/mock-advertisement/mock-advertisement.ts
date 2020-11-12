@@ -2,6 +2,7 @@ import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
 import { Landlord } from '@shared/models/landlord'
 import { IProperty } from '@shared/models/property'
 import { IName } from '@shared/models/users'
+
 export interface IMockTenant {
   id: number
   name: IName
