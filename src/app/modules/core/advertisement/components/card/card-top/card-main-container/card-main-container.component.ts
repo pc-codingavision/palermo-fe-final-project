@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-
+import * as _ from 'lodash'
 @Component({
   selector: 'cav-card-main-container',
   templateUrl: './card-main-container.component.html',
@@ -8,14 +8,14 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 })
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-  @Output() ratingValue = new EventEmitter<number>()
   score: number
-
   show = false
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.score = _.round(_.mean(this.advertisement?.reviews.map((review) => review.vote)))
+  }
 
   changeStatus(): void {
     this.show = !this.show
@@ -23,8 +23,5 @@ export class CardMainContainerComponent implements OnInit {
 
   isFavourite(favourite: boolean): void {
     console.log('favourite: ', favourite)
-  }
-  onClick(rating: number): void {
-    this.ratingValue.emit(rating)
   }
 }

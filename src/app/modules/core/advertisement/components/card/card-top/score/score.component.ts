@@ -1,9 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
-import {
-  IMockAdvertisement,
-  IMockReview,
-} from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import * as _ from 'lodash'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-score',
@@ -11,13 +6,13 @@ import * as _ from 'lodash'
   styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
-  @Input() advertisement: IMockAdvertisement
-  @Input() reviews: IMockReview[]
-  score: number
-
+  @Input() score: number
+  @Output() ratingValue = new EventEmitter<number>()
   constructor() {}
 
-  ngOnInit(): void {
-    this.score = _.round(_.mean(this.reviews.map((review) => review.vote)))
+  ngOnInit(): void {}
+
+  onClick(rating: number): void {
+    this.ratingValue.emit(rating)
   }
 }
