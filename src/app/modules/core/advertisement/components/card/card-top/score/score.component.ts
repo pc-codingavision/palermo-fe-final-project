@@ -6,15 +6,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
   styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
-  @Input() rating = 2
-  @Input() itemId: number
-  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>()
-
-  inputName: string
+  @Input() score: number
+  @Output() ratingValue = new EventEmitter<number>()
   constructor() {}
 
-  ngOnInit(): void {
-    this.inputName = this.itemId + '_rating'
+  ngOnInit(): void {}
+
+  onClick(rating: number): void {
+    this.ratingValue.emit(rating)
   }
-  onClick(rating: number): void {}
 }

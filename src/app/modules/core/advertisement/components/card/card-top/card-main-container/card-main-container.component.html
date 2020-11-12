@@ -16,8 +16,10 @@
 
       <mat-card-actions>
         <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-        <cav-score></cav-score>
-        <cav-check-in-check-out></cav-check-in-check-out>
+        <cav-score [score]="score"></cav-score>
+        <cav-check-in-check-out>
+
+        </cav-check-in-check-out>
       </mat-card-actions>
 
       <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
