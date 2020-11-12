@@ -6,7 +6,6 @@ import { MaterialModule } from '@modules/shared/material.module'
 
 import { LandlordContainerComponent } from './components/container/landlord-container.component'
 import { EditComponent } from './components/edit/edit.component'
-import { LandlordListComponent } from './components/list/landlord-list.component'
 import { LandlordNewComponent } from './components/new/landlord-new.component'
 import { SearchComponent } from './components/search/search.component'
 import { AddressComponent } from './components/view/components/address/address.component'
@@ -19,7 +18,6 @@ import { StatusComponent } from './components/view/components/status/status.comp
 import { LandlordRoutingModule } from './landlord-routing.module'
 
 const landlordComponents = [
-  LandlordListComponent,
   LandlordNewComponent,
   LandlordContainerComponent,
   ViewContainerComponent,

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
-import { PhoneType } from '@shared/enum/enums'
 import { Landlord } from '@shared/models/landlord'
 import { Subscription } from 'rxjs'
 
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs'
   styleUrls: ['./edit.component.scss'],
 })
 export class EditComponent implements OnInit, OnDestroy {
-  isEdit: boolean
+  isEditLandlord: boolean
   togglePictureContainer = false
   toggleResetPasswordContainer = false
   hidePassword = true
@@ -21,26 +21,37 @@ export class EditComponent implements OnInit, OnDestroy {
   landlord: Landlord
   landlord$: Subscription
   landlordForm: FormGroup
-  password: FormControl
-  confirmPassword: FormControl
-  picture: FormControl
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private landlordService: LandlordService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.isEdit = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
+    this.isEditLandlord = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
     this.getLandlord()
     this.setForm()
   }
 
   ngOnDestroy(): void {
-    if (this.isEdit) {
+    if (this.isEditLandlord) {
       this.landlord$.unsubscribe()
+    }
+  }
+
+  getLandlord(): void {
+    if (this.isEditLandlord) {
+      const id = +this.activatedRoute.snapshot.paramMap.get('id')
+      this.landlord$ = this.landlordService
+        .getById(id)
+        .subscribe((landlord) => (this.landlord = landlord))
+    } else {
+      this.landlord = Landlord.Build()
+      this.togglePictureContainer = true
+      this.toggleResetPasswordContainer = true
     }
   }
 
@@ -70,30 +81,25 @@ export class EditComponent implements OnInit, OnDestroy {
         [Validators.required, Validators.minLength(5), Validators.maxLength(5)],
       ],
       dateOfBirth: [this.landlord?.dateOfBirth],
-      mobile: [
-        this.landlord?.phone[1]?.digits,
-        [Validators.required, Validators.minLength(8)],
+      phone1: [
+        this.landlord?.phone[0]?.digits,
+        [Validators.required, Validators.minLength(6)],
       ],
-      phone: [this.landlord?.phone[0]?.digits],
+      phone2: [this.landlord?.phone[1]?.digits],
+      phoneType1: [this.landlord?.phone[0]?.type],
+      phoneType2: [this.landlord?.phone[1]?.type],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
       picture: [this.landlord?.picture],
+      password: [this.landlord?.password],
+      confirmPassword: [this.landlord?.password],
     })
-    this.password = new FormControl(this.landlord.password)
-    this.confirmPassword = new FormControl(this.landlord.password)
-    this.picture = new FormControl(this.landlord.picture)
   }
 
-  getLandlord(): void {
-    if (this.isEdit) {
-      const id = +this.activatedRoute.snapshot.paramMap.get('id')
-      this.landlord$ = this.landlordService
-        .getById(id)
-        .subscribe((landlord) => (this.landlord = landlord))
-    } else {
-      this.landlord = Landlord.Build()
-      this.togglePictureContainer = true
-      this.toggleResetPasswordContainer = true
-    }
+  validateForm(): boolean {
+    return (
+      this.landlordForm.valid &&
+      this.landlordForm.value.password === this.landlordForm.value.confirmPassword
+    )
   }
 
   updateLandlord(): void {
@@ -106,19 +112,19 @@ export class EditComponent implements OnInit, OnDestroy {
       phone: [
         {
           id: 1,
-          type: PhoneType.Mobile,
-          digits: this.landlordForm.value.mobile,
+          type: this.landlordForm?.value?.phoneType1,
+          digits: this.landlordForm?.value?.phone1,
         },
         {
           id: 2,
-          type: PhoneType.Home,
-          digits: this.landlordForm.value.phone,
+          type: this.landlordForm?.value?.phoneType2,
+          digits: this.landlordForm?.value?.phone2,
         },
       ],
       mail: this.landlordForm.value.email,
-      picture: this.picture.value,
-      username: this.landlord.username,
-      password: this.password.value,
+      picture: this.landlordForm.value.picture,
+      username: this.landlordForm.value.username,
+      password: this.landlordForm.value.password,
       status: this.landlord.status,
       dateOfBirth: this.landlordForm.value.dateOfBirth,
       role: this.landlord.role,
@@ -131,9 +137,15 @@ export class EditComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    this.isEdit
+    this.isEditLandlord
       ? this.landlordService.update(newLandlord)
       : this.landlordService.add(newLandlord)
+
+    this.openSnackBar()
+  }
+
+  openSnackBar(): void {
+    this.snackBar.open('The landlord was saved', 'Cancel', { duration: 2000 })
   }
 
   goBack(): void {
@@ -141,9 +153,5 @@ export class EditComponent implements OnInit, OnDestroy {
       queryParams: { id: this.landlord.id },
     }
     this.router.navigate(['/manager/landlord'], navigationExtras)
-  }
-
-  validateForm(): boolean {
-    return this.landlordForm.valid && this.password.value === this.confirmPassword.value
   }
 }
