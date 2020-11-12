@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { CardMainContainerComponent } from './card-main-container.component'
 
-describe('CardMainViewComponent', () => {
+describe('CardMainContainerComponent', () => {
   let component: CardMainContainerComponent
   let fixture: ComponentFixture<CardMainContainerComponent>
 

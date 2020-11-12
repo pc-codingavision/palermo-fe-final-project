@@ -4,37 +4,20 @@
 
 .price-card {
   width: 200px;
-  background-color: #f5f5f5;
 }
 
 #price-card-title {
   font-size: 14pt;
-  color: black;
 }
 
 #price-divider {
-  border-top-color: black;
   margin-bottom: 12%;
 }
 
-:host ::ng-deep #price-slider .mat-slider-thumb {
-  background-color: grey;
-}
-
-:host ::ng-deep #price-slider .mat-slider-track-fill {
-  background-color: grey;
-}
-
-:host ::ng-deep #price-slider .mat-slider-track-wrapper {
-  background-color: rgb(194, 193, 193);
-}
-
 #price-min {
-  color: black;
   float: left;
 }
 
 #price-max {
-  color: black;
   float: right;
 }

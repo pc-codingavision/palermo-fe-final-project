@@ -9,7 +9,6 @@ import { IFacilities } from '@shared/models/property'
 })
 export class FacilitiesComponent implements OnInit {
   @Input() facilities: IFacilities
-
   constructor() {}
 
   ngOnInit(): void {}
