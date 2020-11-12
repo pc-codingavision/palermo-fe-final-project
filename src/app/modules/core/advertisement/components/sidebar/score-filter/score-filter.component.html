@@ -1,0 +1,24 @@
+<div class="score-filter">
+  <mat-card class="score-card" fxLayout="column">
+    <mat-card-title id="score-card-title" fxLayoutAlign="start center">
+      Review score
+    </mat-card-title>
+    <mat-card-content>
+      <mat-divider id="score-divider" [inset]="true"></mat-divider>
+      <div class="score-checkbox-container">
+        <mat-radio-group>
+          <mat-radio-button (change)="emitScoreFilter($event.value)" value="5">Superb: 5+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitScoreFilter($event.value)" value="4">Very good:
+            4+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitScoreFilter($event.value)" value="3">Good: 3+
+          </mat-radio-button>
+          <mat-radio-button (change)="emitScoreFilter($event.value)" value="2">Pleasant:
+            2+
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

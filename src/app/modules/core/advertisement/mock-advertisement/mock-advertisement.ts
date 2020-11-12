@@ -220,7 +220,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         tv: true,
         wifi: true,
         breakfastIncluded: true,
-        parking: true,
+        parking: false,
         kitchen: true,
         shower: true,
         bath: true,
