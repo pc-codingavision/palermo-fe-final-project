@@ -12,7 +12,7 @@ export class CheckInCheckOutComponent implements OnInit {
   minCheckInDate: Date
   minCheckOutDate: Date
 
-  data: FormGroup = this.fb.group({
+  date: FormGroup = this.fb.group({
     picker1: ['', [Validators.required]],
     picker2: ['', [Validators.required]],
   })

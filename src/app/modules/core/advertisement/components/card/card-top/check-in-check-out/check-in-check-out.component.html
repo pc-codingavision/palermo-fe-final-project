@@ -1,4 +1,4 @@
-<div [formGroup]="data">
+<div [formGroup]="date">
 
   <mat-form-field appearance="fill">
     <mat-label>Check-in</mat-label>
@@ -7,7 +7,7 @@
       [matDatepicker]="picker1" required>
     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
-    <mat-error *ngIf="data.get('picker1').hasError('required')">
+    <mat-error *ngIf="date.get('picker1').hasError('required')">
       Please enter a valid date
     </mat-error>
   </mat-form-field>
@@ -19,12 +19,12 @@
     <mat-datepicker-toggle matSuffix [for]="picker2">
     </mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
-    <mat-error *ngIf="data.get('picker2').hasError('required')">
+    <mat-error *ngIf="date.get('picker2').hasError('required')">
       Please enter a valid date
     </mat-error>
   </mat-form-field>
 
-  <button type="submit" [disabled]="data.invalid" mat-raised-button
+  <button type="submit" [disabled]="date.invalid" mat-raised-button
     class="button">Book</button>
 
 </div>

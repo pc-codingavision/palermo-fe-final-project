@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { FormBuilder } from '@angular/forms'
-
-import { CheckInCheckOutComponent } from './check-in-check-out.component'
+import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
 
 describe('CheckInCheckOutComponent', () => {
   let component: CheckInCheckOutComponent
