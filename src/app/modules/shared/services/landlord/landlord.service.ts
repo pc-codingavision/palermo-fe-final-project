@@ -26,7 +26,7 @@ export class LandlordService {
     if (id !== null) {
       const landlordById = this.landlords.find((landlord) => landlord.id === id)
       if (landlordById !== undefined) {
-        return of(landlordById)
+        return of(Landlord.Build(landlordById))
       }
     }
     return of(null)
