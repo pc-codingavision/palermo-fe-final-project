@@ -8,7 +8,9 @@ import * as _ from 'lodash'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AdvertisementService {
   constructor() {}
 
