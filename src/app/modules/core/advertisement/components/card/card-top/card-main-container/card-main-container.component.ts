@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
@@ -8,6 +8,9 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 })
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
+  @Output() ratingValue = new EventEmitter<number>()
+  score: number
+
   show = false
 
   constructor() {}
@@ -20,5 +23,8 @@ export class CardMainContainerComponent implements OnInit {
 
   isFavourite(favourite: boolean): void {
     console.log('favourite: ', favourite)
+  }
+  onClick(rating: number): void {
+    this.ratingValue.emit(rating)
   }
 }
