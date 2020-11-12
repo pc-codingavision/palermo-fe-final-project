@@ -10,7 +10,7 @@
 
       <mat-card-actions>
         <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-        <cav-score></cav-score>
+        <cav-score [reviews]="advertisement.reviews"></cav-score>
         <cav-check-in-check-out></cav-check-in-check-out>
       </mat-card-actions>
 
