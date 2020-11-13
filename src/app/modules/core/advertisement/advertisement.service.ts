@@ -22,6 +22,10 @@ export class AdvertisementService {
     return of(MOCKADVERTISEMENTS_MOCK_DATA.find((advert) => advert.id === id))
   }
 
+  getLatestAdv(start: number = 0, end: number = 2): Observable<IMockAdvertisement[]> {
+    return of(MOCKADVERTISEMENTS_MOCK_DATA.slice(start, end))
+  }
+
   returnPriceFilteredAdvertisements(filter: number): Observable<IMockAdvertisement[]> {
     return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
       map((filteredAdvertisements: IMockAdvertisement[]) => {
