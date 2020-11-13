@@ -1,195 +1,177 @@
-<div id="primary-container">
-  <div>
-    <mat-toolbar>
-      <span>{{isEditLandlord ? 'Edit' : 'Add'}} Landlord</span>
-    </mat-toolbar>
-  </div>
-  <form [formGroup]="landlordForm">
-    <div fxLayout="row" fxLayoutAlign="center start" id="secondary-container">
-      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
-        id="picture-container">
-        <div>
-          <img [src]="landlord?.picture">
-        </div>
+<mat-toolbar>
+  <span>{{isEditLandlord ? 'Edit' : 'Add'}} Landlord</span>
+</mat-toolbar>
 
-        <div>
-          <button mat-button
-            (click)="togglePictureContainer = !togglePictureContainer">Change</button>
-        </div>
+<form [formGroup]="landlordForm">
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
+      id="picture-container">
+      <img [src]="landlord?.picture">
+      <button mat-button
+        (click)="togglePictureContainer = !togglePictureContainer">Change</button>
 
-        <div>
-          <div id="select-picture" *ngIf="togglePictureContainer" fxLayout="column"
-            fxLayoutAlign="center">
-            <mat-form-field>
-              <mat-label>Insert a new picture</mat-label>
-              <input matInput placeholder="New picture" formControlName="picture">
-            </mat-form-field>
-            <button mat-button color="primary"
-              (click)="landlord.picture = landlordForm.value.picture">Confirm</button>
-          </div>
-        </div>
+      <div id="select-picture" *ngIf="togglePictureContainer" fxLayout="column"
+        fxLayoutAlign="center">
+        <mat-form-field>
+          <mat-label>Insert a new picture</mat-label>
+          <input matInput placeholder="New picture" formControlName="picture">
+        </mat-form-field>
+        <button mat-button color="primary"
+          (click)="landlord.picture = landlordForm.value.picture">Confirm</button>
+      </div>
+    </div>
+
+    <div>
+      <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">
+        <h2>
+          {{landlord?.fullName}}
+        </h2>
+        <h2>
+          Username: {{landlord?.username}}
+        </h2>
       </div>
 
-      <div>
-        <div fxLayout="row" fxLayoutAlign="space-between" id="name-container">
-          <h2>
-            {{landlord?.fullName}}
-          </h2>
-          <h2>
-            Username: {{landlord?.username}}
-          </h2>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
-          <mat-card>
-            <div fxLayout="column" fxLayoutAlign="space-between">
-              <mat-form-field class="example-form-field">
-                <mat-label>FirstName</mat-label>
-                <input matInput type="text" formControlName="firstName">
-              </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="50px">
+        <mat-card fxLayout="column" fxLayoutAlign="space-between">
+          <mat-form-field class="example-form-field">
+            <mat-label>FirstName</mat-label>
+            <input matInput type="text" formControlName="firstName">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>MiddleName</mat-label>
-                <input matInput type="text" formControlName="middleName">
-              </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>MiddleName</mat-label>
+            <input matInput type="text" formControlName="middleName">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>LastName</mat-label>
-                <input matInput type="text" formControlName="lastName">
-              </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>LastName</mat-label>
+            <input matInput type="text" formControlName="lastName">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>Date Of Birth</mat-label>
-                <input matInput [matDatepicker]="picker" [max]="maxDate"
-                  formControlName="dateOfBirth">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-
-            </div>
-          </mat-card>
+          <mat-form-field class="example-form-field">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate"
+              formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-card>
 
 
-          <mat-card>
-            <div fxLayout="column" fxLayoutAlign="space-between">
-              <mat-form-field class="example-form-field">
-                <mat-label>Line 1</mat-label>
-                <input matInput type="text" formControlName="line1">
-              </mat-form-field>
+        <mat-card fxLayout="column" fxLayoutAlign="space-between">
+          <mat-form-field class="example-form-field">
+            <mat-label>Line 1</mat-label>
+            <input matInput type="text" formControlName="line1">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>Line 2</mat-label>
-                <input matInput type="text" formControlName="line2">
-              </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>Line 2</mat-label>
+            <input matInput type="text" formControlName="line2">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>City</mat-label>
-                <input matInput type="text" formControlName="city">
-              </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName="city">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>State</mat-label>
-                <input matInput type="text" formControlName="state">
-              </mat-form-field>
+          <mat-form-field class="example-form-field">
+            <mat-label>State</mat-label>
+            <input matInput type="text" formControlName="state">
+          </mat-form-field>
 
-              <mat-form-field class="example-form-field">
-                <mat-label>Zip Code</mat-label>
-                <input matInput type="text" formControlName="zipCode">
-              </mat-form-field>
-
-            </div>
-          </mat-card>
+          <mat-form-field class="example-form-field">
+            <mat-label>Zip Code</mat-label>
+            <input matInput type="text" formControlName="zipCode">
+          </mat-form-field>
+        </mat-card>
 
 
-          <mat-card>
-            <div fxLayout="column" fxLayoutAlign="space-between">
+        <mat-card fxLayout="column" fxLayoutAlign="space-between">
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <mat-form-field appearance="fill" class="select-container">
+              <mat-label>Select</mat-label>
+              <mat-select formControlName="phoneType1">
+                <mat-option value="home">Home</mat-option>
+                <mat-option value="mobile">Mobile</mat-option>
+                <mat-option value="work">Work</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-              <div fxLayout="row" fxLayoutAlign="space-between">
-                <mat-form-field appearance="fill" class="select-container">
-                  <mat-label>Select</mat-label>
-                  <mat-select formControlName="phoneType1">
-                    <mat-option value="home">Home</mat-option>
-                    <mat-option value="mobile">Mobile</mat-option>
-                    <mat-option value="work">Work</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field class="example-form-field">
-                  <mat-label>Phone 1</mat-label>
-                  <input matInput type="text" formControlName="phone1">
-                </mat-form-field>
-              </div>
-
-              <div fxLayout="row" fxLayoutAlign="space-between">
-                <mat-form-field appearance="fill" class="select-container">
-                  <mat-label>Select</mat-label>
-                  <mat-select formControlName="phoneType2">
-                    <mat-option value="home">Home</mat-option>
-                    <mat-option value="mobile">Mobile</mat-option>
-                    <mat-option value="work">Work</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field class="example-form-field">
-                  <mat-label>Phone 2</mat-label>
-                  <input matInput type="text" formControlName="phone2">
-                </mat-form-field>
-              </div>
-
-              <div fxLayout="row" fxLayoutAlign="space-between">
-                <mat-icon id="mail-icon">mail</mat-icon>
-                <mat-form-field class="example-form-field">
-                  <mat-label>Mail</mat-label>
-                  <input matInput type="text" formControlName="email">
-                </mat-form-field>
-              </div>
-            </div>
-          </mat-card>
-        </div>
-
-        <div id="cav-buttons-container">
-          <div id="buttons-container" fxLayout="row" fxLayoutAlign="end">
-            <button id="buttons-save" mat-raised-button [disabled]="!validateForm()"
-              (click)="updateLandlord()" color="primary">
-              <span class="material-icons">check_circle</span>Save
-            </button>
-            <button id="buttons-reset-password" mat-raised-button color="accent"
-              (click)="toggleResetPasswordContainer = !toggleResetPasswordContainer">
-              <span class="material-icons">vpn_key</span>Reset Password
-            </button>
-            <button id="buttons-cancel" mat-raised-button (click)="goBack()" color="warn">
-              <span class=" material-icons">clear</span>Cancel
-            </button>
+            <mat-form-field class="example-form-field">
+              <mat-label>Phone 1</mat-label>
+              <input matInput type="text" formControlName="phone1">
+            </mat-form-field>
           </div>
-          <div fxLayoutAlign="end">
-            <div id="reset-password-container" fxLayout="column"
-              *ngIf="toggleResetPasswordContainer">
-              <h2>Change Password</h2>
-              <mat-form-field appearance="fill">
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hidePassword ? 'password' : 'text'"
-                  formControlName="password">
-                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
-                  <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-              <br>
-              <mat-form-field appearance="fill">
-                <mat-label>Confirm password</mat-label>
-                <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
-                  formControlName="confirmPassword">
-                <button mat-icon-button matSuffix
-                  (click)="hideConfirmPassword = !hideConfirmPassword"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hideConfirmPassword">
-                  <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}
-                  </mat-icon>
-                </button>
-              </mat-form-field>
-            </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <mat-form-field appearance="fill" class="select-container">
+              <mat-label>Select</mat-label>
+              <mat-select formControlName="phoneType2">
+                <mat-option value="home">Home</mat-option>
+                <mat-option value="mobile">Mobile</mat-option>
+                <mat-option value="work">Work</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+              <mat-label>Phone 2</mat-label>
+              <input matInput type="text" formControlName="phone2">
+            </mat-form-field>
           </div>
+
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <mat-icon id="mail-icon">mail</mat-icon>
+            <mat-form-field class="example-form-field">
+              <mat-label>Mail</mat-label>
+              <input matInput type="text" formControlName="email">
+            </mat-form-field>
+          </div>
+        </mat-card>
+      </div>
+
+      <div id="buttons-container" fxLayout="row" fxLayoutAlign="end">
+        <button id="buttons-save" mat-raised-button [disabled]="!validateForm()"
+          (click)="updateLandlord()" color="primary">
+          <span class="material-icons">check_circle</span> Save
+        </button>
+        <button id="buttons-reset-password" mat-raised-button color="accent"
+          (click)="toggleResetPasswordContainer = !toggleResetPasswordContainer">
+          <span class="material-icons">vpn_key</span>
+          {{isEditLandlord ? 'Reset ' : 'Add '}} Password
+        </button>
+        <button id="buttons-cancel" mat-raised-button (click)="goBack()" color="warn">
+          <span class=" material-icons">clear</span> Cancel
+        </button>
+      </div>
+
+      <div fxLayoutAlign="end">
+        <div id="reset-password-container" fxLayout="column"
+          *ngIf="toggleResetPasswordContainer">
+          <h2>Change Password</h2>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hidePassword ? 'password' : 'text'"
+              formControlName="password">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm password</mat-label>
+            <input matInput [type]="hideConfirmPassword ? 'password' : 'text'"
+              formControlName="confirmPassword">
+            <button mat-icon-button matSuffix
+              (click)="hideConfirmPassword = !hideConfirmPassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hideConfirmPassword">
+              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+            </button>
+          </mat-form-field>
         </div>
       </div>
     </div>
-  </form>
-</div>
+  </div>
+</form>

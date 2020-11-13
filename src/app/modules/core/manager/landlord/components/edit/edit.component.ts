@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { DialogService } from '@shared/services/dialog.service'
 import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Subscription } from 'rxjs'
 
@@ -29,8 +28,7 @@ export class EditComponent implements OnInit, OnDestroy {
     private landlordService: LandlordService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private snackBarService: SnackBarService,
-    private dialogService: DialogService
+    private snackBarService: SnackBarService
   ) {}
 
   ngOnInit(): void {
@@ -94,8 +92,11 @@ export class EditComponent implements OnInit, OnDestroy {
       phoneType2: [this.landlord?.phone[1]?.type],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
       picture: [this.landlord?.picture],
-      password: [this.landlord?.password],
-      confirmPassword: [this.landlord?.password],
+      password: [this.landlord?.password, [Validators.required, Validators.minLength(5)]],
+      confirmPassword: [
+        this.landlord?.password,
+        [Validators.required, Validators.minLength(5)],
+      ],
     })
   }
 
@@ -158,7 +159,7 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   canExit(): boolean {
-    if (this.landlordForm.touched && !this.isSavedForm) {
+    if (this.landlordForm.dirty && !this.isSavedForm) {
       return !confirm('The data will not be saved')
     }
   }
