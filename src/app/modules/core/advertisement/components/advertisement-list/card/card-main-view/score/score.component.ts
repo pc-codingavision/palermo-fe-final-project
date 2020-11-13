@@ -11,8 +11,6 @@ import { Component, OnInit } from '@angular/core'
     `
       .hidden {
         border: none;
-        color: black;
-        background-color: transparent;
         outline: none;
         cursor: pointer;
       }
