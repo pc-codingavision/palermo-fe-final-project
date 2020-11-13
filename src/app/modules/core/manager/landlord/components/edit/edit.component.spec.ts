@@ -2,7 +2,9 @@ import { Overlay } from '@angular/cdk/overlay'
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterTestingModule } from '@angular/router/testing'
+import { MaterialModule } from '@modules/shared/material.module'
 
 import { EditComponent } from './edit.component'
 
@@ -13,7 +15,12 @@ describe('EditContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [EditComponent],
-      imports: [RouterTestingModule, ReactiveFormsModule],
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+      ],
       providers: [MatSnackBar, Overlay],
     }).compileComponents()
   }))
@@ -24,7 +31,7 @@ describe('EditContainerComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })
