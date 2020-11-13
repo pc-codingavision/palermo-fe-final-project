@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Observable } from 'rxjs'
 
 import { SearchService } from '../../services/search.service'
 
@@ -11,12 +10,13 @@ import { SearchService } from '../../services/search.service'
 export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService) {}
   fullName = ''
-  filteredFullName: Observable<string[]>
+  email = ''
+  phone = ''
 
   ngOnInit(): void {
     this.onChange()
   }
   onChange(): void {
-    this.searchService.search(this.fullName).subscribe()
+    this.searchService.search(this.fullName, this.email, this.phone).subscribe()
   }
 }

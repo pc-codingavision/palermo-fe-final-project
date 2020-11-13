@@ -15,12 +15,20 @@ export class SearchService {
     return this.filteredLandlords$.asObservable()
   }
 
-  search(searchTerms: string): Observable<void> {
+  search(fullName: string, email: string, phone: string): Observable<void> {
     return this.landlordService.getAll().pipe(
       tap((landlords: Landlord[]) => {
-        landlords = landlords.filter((landlord) =>
-          landlord.fullName.toLowerCase().includes(searchTerms)
-        )
+        landlords = landlords.filter((landlord) => {
+          return (
+            landlord.fullName.toLowerCase().includes(fullName) &&
+            landlord.mail.toLocaleLowerCase().includes(email) &&
+            landlord.phone
+              // tslint:disable-next-line:no-shadowed-variable
+              .map((phone) => phone.digits)
+              .toString()
+              .includes(phone)
+          )
+        })
         this.filteredLandlords$.next(landlords)
       }),
       map(() => void 0)

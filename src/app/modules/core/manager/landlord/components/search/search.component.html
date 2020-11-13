@@ -16,27 +16,28 @@
         </mat-autocomplete> -->
       </form>
     </div>
-    <!-- <div id="i-style">
+    <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Email" [formControl]="formControl"
-          [matAutocomplete]="email" id="input">
-        <mat-autocomplete #email="matAutocomplete">
-          <mat-option *ngFor="let emails of filteredEmail | async" [value]="emails">
-            {{emails}}
-          </mat-option>
-        </mat-autocomplete>
+        <input type="text" placeholder="Email" [(ngModel)]="email" name="email"
+          (ngModelChange)="onChange()" id="input">
+        <!--               [matAutocomplete]="email" id="input">-->
+        <!--        <mat-autocomplete #email="matAutocomplete">-->
+        <!--          <mat-option *ngFor="let emails of filteredEmail | async" [value]="emails">-->
+        <!--            {{emails}}-->
+        <!--          </mat-option>-->
+        <!--        </mat-autocomplete>-->
       </form>
     </div>
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Phone" [formControl]="formControl"
-          [matAutocomplete]="phone" id="input">
-        <mat-autocomplete #phone="matAutocomplete">
-          <mat-option *ngFor="let option of filteredPhone | async" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
+        <input type="text" placeholder="Phone" [(ngModel)]="phone" name="phone"
+          (ngModelChange)="onChange()" id="input">
+        <!--        <mat-autocomplete #phone="matAutocomplete">-->
+        <!--          <mat-option *ngFor="let option of filteredPhone | async" [value]="option">-->
+        <!--            {{option}}-->
+        <!--          </mat-option>-->
+        <!--        </mat-autocomplete>-->
       </form>
-    </div> -->
+    </div>
   </div>
 </div>
