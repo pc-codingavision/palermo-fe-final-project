@@ -18,6 +18,7 @@ export class EditComponent implements OnInit, OnDestroy {
   hidePassword = true
   hideConfirmPassword = true
   isSavedForm = false
+  defaultPicture = 'https://www.flaticon.com/svg/static/icons/svg/149/149071.svg'
   maxDate = new Date()
   landlord: Landlord
   landlord$: Subscription
@@ -91,7 +92,7 @@ export class EditComponent implements OnInit, OnDestroy {
       phoneType1: [this.landlord?.phone[0]?.type],
       phoneType2: [this.landlord?.phone[1]?.type],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
-      picture: [this.landlord?.picture],
+      picture: [this.landlord?.picture ? this.landlord.picture : this.defaultPicture],
       password: [this.landlord?.password, [Validators.required, Validators.minLength(5)]],
       confirmPassword: [
         this.landlord?.password,

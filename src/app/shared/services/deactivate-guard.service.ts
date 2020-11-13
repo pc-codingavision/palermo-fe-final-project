@@ -9,7 +9,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class DeactivateGuard implements CanDeactivate<any> {
+export class DeactivateGuard implements CanDeactivate<boolean> {
   constructor() {}
 
   canDeactivate(

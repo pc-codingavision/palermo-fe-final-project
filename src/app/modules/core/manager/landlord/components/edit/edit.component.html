@@ -4,9 +4,8 @@
 
 <form [formGroup]="landlordForm">
   <div fxLayout="row" fxLayoutAlign="center start">
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px"
-      id="picture-container">
-      <img [src]="landlord?.picture">
+    <div fxLayout="column" fxLayoutAlign="center center" id="picture-container">
+      <img [src]="landlordForm.value.picture">
       <button mat-button
         (click)="togglePictureContainer = !togglePictureContainer">Change</button>
 
@@ -16,8 +15,6 @@
           <mat-label>Insert a new picture</mat-label>
           <input matInput placeholder="New picture" formControlName="picture">
         </mat-form-field>
-        <button mat-button color="primary"
-          (click)="landlord.picture = landlordForm.value.picture">Confirm</button>
       </div>
     </div>
 
@@ -134,11 +131,13 @@
           (click)="updateLandlord()" color="primary">
           <span class="material-icons">check_circle</span> Save
         </button>
+
         <button id="buttons-reset-password" mat-raised-button color="accent"
           (click)="toggleResetPasswordContainer = !toggleResetPasswordContainer">
           <span class="material-icons">vpn_key</span>
           {{isEditLandlord ? 'Reset ' : 'Add '}} Password
         </button>
+
         <button id="buttons-cancel" mat-raised-button (click)="goBack()" color="warn">
           <span class=" material-icons">clear</span> Cancel
         </button>
