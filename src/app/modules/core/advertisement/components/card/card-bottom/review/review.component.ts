@@ -7,8 +7,12 @@ import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() review: IMockReview
   constructor() {}
+  @Input() review: IMockReview
 
-  ngOnInit(): void {}
+  score: number
+
+  ngOnInit(): void {
+    this.score = Math.round(this.review?.vote)
+  }
 }

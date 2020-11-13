@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core'
 import { PROPERTIES_MOCK_DATA } from '@shared/models/mock-data/data'
-import { Observable, of } from 'rxjs'
-
 import { Property } from '@shared/models/property'
+import { Observable, of } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
