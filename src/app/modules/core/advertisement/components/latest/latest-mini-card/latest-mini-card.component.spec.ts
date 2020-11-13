@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { LatestMiniCardComponent } from './latest-mini-card.component'
 
-xdescribe('LatestMiniCardComponent', () => {
+describe('LatestMiniCardComponent', () => {
   let component: LatestMiniCardComponent
   let fixture: ComponentFixture<LatestMiniCardComponent>
 

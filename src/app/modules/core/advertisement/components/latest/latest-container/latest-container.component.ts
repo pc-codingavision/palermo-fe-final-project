@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable } from 'rxjs'
-
-import { AdvertisementService } from './../../../advertisement.service'
 
 @Component({
   selector: 'cav-latest-container',
@@ -10,24 +10,23 @@ import { AdvertisementService } from './../../../advertisement.service'
 })
 export class LatestContainerComponent implements OnInit {
   constructor(private advService: AdvertisementService) {}
+  latestAdvertisements: Observable<IMockAdvertisement[]>
   start = 0
   end = 2
 
-  latest: Observable<any[]>
-
   ngOnInit(): void {
-    this.latest = this.advService.getLatestAdv()
+    this.latestAdvertisements = this.advService.getLatestAdv()
   }
 
   goForward(): void {
     if (this.end !== 3) {
       this.start++
       this.end++
-      this.latest = this.advService.getLatestAdv(this.start, this.end)
+      this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
     } else if (this.end === 3) {
       this.start = 0
       this.end = 2
-      this.latest = this.advService.getLatestAdv()
+      this.latestAdvertisements = this.advService.getLatestAdv()
     }
   }
 
@@ -35,7 +34,7 @@ export class LatestContainerComponent implements OnInit {
     if (this.start !== 0) {
       this.start--
       this.end--
-      this.latest = this.advService.getLatestAdv(this.start, this.end)
+      this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
     }
   }
 }
