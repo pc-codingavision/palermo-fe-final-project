@@ -21,7 +21,7 @@ export class SearchService {
         landlords = landlords.filter((landlord) => {
           return (
             landlord.fullName.toLowerCase().includes(fullName) &&
-            landlord.mail.toLocaleLowerCase().includes(email) &&
+            landlord.mail.toLowerCase().includes(email) &&
             landlord.phone
               // tslint:disable-next-line:no-shadowed-variable
               .map((phone) => phone.digits)

@@ -8,7 +8,7 @@ import { SearchService } from '../../services/search.service'
 
 export interface Elements {
   id: number
-  fullname: string
+  fullName: string
   mail: string
   phone_number: string
 }
@@ -31,17 +31,22 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  landlords$: Observable<Landlord[]> = this.searchLandlord.getSearchResult()
+  landlords$: Observable<Landlord[]>
 
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService
   ) {}
 
-  ngOnInit(): void {}
+  getAll(): void {
+    this.landlords$ = this.searchLandlord.getSearchResult()
+  }
+
+  ngOnInit(): void {
+    this.getAll()
+  }
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id)
-    this.landlordService.getAll()
   }
 }
