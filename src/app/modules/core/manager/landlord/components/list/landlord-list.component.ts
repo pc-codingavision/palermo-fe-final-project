@@ -4,6 +4,8 @@ import { LandlordService } from '@modules/shared/services/landlord/landlord.serv
 import { Landlord } from '@shared/models/landlord'
 import { Observable } from 'rxjs'
 
+import { SearchService } from '../../services/search.service'
+
 export interface Elements {
   id: number
   fullname: string
@@ -29,20 +31,17 @@ export interface Elements {
 export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  landlords$: Observable<Landlord[]>
+  landlords$: Observable<Landlord[]> = this.searchLandlord.getSearchResult()
 
-  constructor(private landlordService: LandlordService) {}
+  constructor(
+    private landlordService: LandlordService,
+    private searchLandlord: SearchService
+  ) {}
 
-  ngOnInit(): void {
-    this.getAll()
-  }
-
-  getAll(): void {
-    this.landlords$ = this.landlordService.getAll()
-  }
+  ngOnInit(): void {}
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id)
-    this.getAll()
+    this.landlordService.getAll()
   }
 }

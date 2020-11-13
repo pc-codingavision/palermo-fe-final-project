@@ -7,16 +7,16 @@
   <div class="inputs" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
     <div id="i-style">
       <form id="i-form">
-        <input type="text" placeholder="Name" [formControl]="formControl"
-          [matAutocomplete]="auto" id="input">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let names of filteredFullName | async" [value]="names">
+        <input type="text" placeholder="Name" [(ngModel)]="fullName" name="fullName"
+          (ngModelChange)="onChange()" id="input">
+        <!-- <mat-autocomplete #auto="matAutocomplete"> -->
+        <!-- mat-option *ngFor="let names of filteredFullName | async" [value]="names">
             {{names}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-autocomplete> -->
       </form>
     </div>
-    <div id="i-style">
+    <!-- <div id="i-style">
       <form id="i-form">
         <input type="text" placeholder="Email" [formControl]="formControl"
           [matAutocomplete]="email" id="input">
@@ -37,6 +37,6 @@
           </mat-option>
         </mat-autocomplete>
       </form>
-    </div>
+    </div> -->
   </div>
 </div>

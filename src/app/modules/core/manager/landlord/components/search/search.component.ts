@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { FormControl } from '@angular/forms'
-import { Landlord } from '@shared/models/landlord'
-import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Observable } from 'rxjs'
-import { map, startWith } from 'rxjs/operators'
+
+import { SearchService } from '../../services/search.service'
 
 @Component({
   selector: 'cav-search',
@@ -11,57 +9,14 @@ import { map, startWith } from 'rxjs/operators'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  landlords: Landlord[] = []
-  formControl = new FormControl()
+  constructor(private searchService: SearchService) {}
+  fullName = ''
   filteredFullName: Observable<string[]>
-  filteredEmail: Observable<string[]>
-  filteredPhone: Observable<string[]>
-  constructor() {}
 
   ngOnInit(): void {
-    LANDLORDS_MOCK_DATA.forEach((v) => {
-      this.landlords.push(Landlord.Build(v))
-    })
-
-    this.filteredFullName = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterFullName(value))
-    )
-    this.filteredEmail = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterEmail(value))
-    )
-    this.filteredPhone = this.formControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filterPhone(value))
-    )
+    this.onChange()
   }
-
-  private _filterFullName(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsFullName = this.landlords.map((landlord) => landlord.fullName)
-    return landlordsFullName.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _filterEmail(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsEmail = this.landlords.map((landlord) => landlord.mail)
-    return landlordsEmail.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _filterPhone(value: string): string[] {
-    const filterValue = this._normalizeValue(value)
-    const landlordsPhone = this.landlords.map((landlord) => landlord.phone[0].digits)
-    return landlordsPhone.filter((landlord) =>
-      this._normalizeValue(landlord).includes(filterValue)
-    )
-  }
-
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '')
+  onChange(): void {
+    this.searchService.search(this.fullName).subscribe()
   }
 }
