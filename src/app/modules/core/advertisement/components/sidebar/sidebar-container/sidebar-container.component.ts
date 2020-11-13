@@ -28,14 +28,14 @@ export class SidebarContainerComponent implements OnInit {
   }
 
   applyPriceFilter(filter: number): void {
-    this.advertisementService.returnPriceFilteredAdvertisements(filter)
+    this.advertisementService.getAdvertisementsFilteredByPrice(filter)
   }
 
   applyFacilityFilter(filter: IFacilities): void {
-    this.advertisementService.returnFacilitiesFilteredAdvertisements(filter)
+    this.advertisementService.getAdvertisementsFilteredByFacilities(filter)
   }
 
   applyScoreFilter(filter: number): void {
-    this.advertisementService.returnScoreFilteredAdvertisements(filter)
+    this.advertisementService.getAdvertisementsFilteredByScore(filter)
   }
 }

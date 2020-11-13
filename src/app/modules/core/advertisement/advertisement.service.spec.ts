@@ -42,10 +42,10 @@ describe('AdvertisementService', () => {
     })
   })
 
-  describe('#returnPriceFilteredAdvertisements', () => {
+  describe('#getAdvertisementsFilteredByPrice', () => {
     it('should return an array of advertisements that match price filter criteria', () => {
       service
-        .returnPriceFilteredAdvertisements(20)
+        .getAdvertisementsFilteredByPrice(20)
         .subscribe((filteredAdvertisements) =>
           expect(filteredAdvertisements).toContain(mockData[2])
         )
@@ -53,15 +53,15 @@ describe('AdvertisementService', () => {
 
     it('should return an empty array if no advertisement match filter criteria', () => {
       service
-        .returnPriceFilteredAdvertisements(10)
+        .getAdvertisementsFilteredByPrice(10)
         .subscribe((filteredAdvertisements) => expect(filteredAdvertisements).toEqual([]))
     })
   })
 
-  describe('#returnScoreFilteredAdvertisements', () => {
+  describe('#getdvertisementsFilteredByScore', () => {
     it('should return an array of advertisements that match score filter criteria', () => {
       service
-        .returnScoreFilteredAdvertisements(4)
+        .getAdvertisementsFilteredByScore(4)
         .subscribe((filteredAdvertisements) =>
           expect(filteredAdvertisements).toEqual(mockData.slice(0, 2))
         )
@@ -69,12 +69,12 @@ describe('AdvertisementService', () => {
 
     it('should return an empty array if no advertisement match filter criteria', () => {
       service
-        .returnScoreFilteredAdvertisements(8)
+        .getAdvertisementsFilteredByScore(8)
         .subscribe((filteredAdvertisements) => expect(filteredAdvertisements).toEqual([]))
     })
   })
 
-  describe('#returnFacilitiesFilteredAdvertisements', () => {
+  describe('#getAdvertisementsFilteredByFacilities', () => {
     const mockFacilitiesObj1 = {
       tv: true,
       wifi: false,
@@ -97,7 +97,7 @@ describe('AdvertisementService', () => {
 
     it('should return an array of advertisements that match facilities filter criteria', () => {
       service
-        .returnFacilitiesFilteredAdvertisements(mockFacilitiesObj1)
+        .getAdvertisementsFilteredByFacilities(mockFacilitiesObj1)
         .subscribe((filteredAdvertisements) =>
           expect(filteredAdvertisements).toEqual(mockData)
         )
@@ -105,7 +105,7 @@ describe('AdvertisementService', () => {
 
     it('should return an empty array if no advertisement facilities filter criteria', () => {
       service
-        .returnFacilitiesFilteredAdvertisements(mockFacilitiesObj2)
+        .getAdvertisementsFilteredByFacilities(mockFacilitiesObj2)
         .subscribe((filteredAdvertisements) => expect(filteredAdvertisements).toEqual([]))
     })
   })

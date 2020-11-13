@@ -22,47 +22,47 @@ export class AdvertisementService {
     return of(MOCKADVERTISEMENTS_MOCK_DATA.find((advert) => advert.id === id))
   }
 
-  returnPriceFilteredAdvertisements(filter: number): Observable<IMockAdvertisement[]> {
+  getAdvertisementsFilteredByPrice(filter: number): Observable<IMockAdvertisement[]> {
     return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((filteredAdvertisements: IMockAdvertisement[]) => {
-        return filteredAdvertisements.filter((x) => x.price <= filter)
+      map((advertisements: IMockAdvertisement[]) => {
+        return advertisements.filter((advertisement) => advertisement.price <= filter)
       })
     )
   }
 
-  returnScoreFilteredAdvertisements(filter: number): Observable<IMockAdvertisement[]> {
-    const filteredArray: IMockAdvertisement[] = []
+  getAdvertisementsFilteredByScore(filter: number): Observable<IMockAdvertisement[]> {
+    const filteredAdvertisements: IMockAdvertisement[] = []
     return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IMockAdvertisement[]) => {
-        sourceArray.forEach((advertisement) => {
-          const score = _.mean(advertisement.reviews.map((rev) => rev.vote))
+      map((advertisements: IMockAdvertisement[]) => {
+        advertisements.forEach((advertisement) => {
+          const score = _.mean(advertisement.reviews.map((review) => review.vote))
           if (_.round(score) >= filter) {
-            filteredArray.push(advertisement)
+            filteredAdvertisements.push(advertisement)
           }
         })
-        return filteredArray
+        return filteredAdvertisements
       })
     )
   }
 
-  returnFacilitiesFilteredAdvertisements(
+  getAdvertisementsFilteredByFacilities(
     filter: IFacilities
   ): Observable<IMockAdvertisement[]> {
-    const filteredArray: IMockAdvertisement[] = []
-    const filterFacilities = Object.keys(_.pickBy(filter))
+    const filteredAdvertisements: IMockAdvertisement[] = []
+    const filterActiveFacilities = Object.keys(_.pickBy(filter))
     return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IMockAdvertisement[]) => {
-        sourceArray.forEach((advertisement) => {
-          const propertyFacilities = _.pickBy(advertisement.property.facilities)
+      map((advertisements: IMockAdvertisement[]) => {
+        advertisements.forEach((advertisement) => {
+          const propertyActiveFacilities = _.pickBy(advertisement.property.facilities)
           if (
-            filterFacilities.every((facility) =>
-              propertyFacilities.hasOwnProperty(facility)
+            filterActiveFacilities.every((facility) =>
+              propertyActiveFacilities.hasOwnProperty(facility)
             )
           ) {
-            filteredArray.push(advertisement)
+            filteredAdvertisements.push(advertisement)
           }
         })
-        return filteredArray
+        return filteredAdvertisements
       })
     )
   }
