@@ -19,7 +19,7 @@ export class PriceFilterComponent implements OnInit {
     return formatCurrency(value, 'en', '€', '', '.0')
   }
 
-  emitFilter(value: number): void {
+  emitPriceFilter(value: number): void {
     this.filter.emit(value)
   }
 }
