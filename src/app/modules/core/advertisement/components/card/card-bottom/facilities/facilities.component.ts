@@ -8,8 +8,18 @@ import { IFacilities } from '@shared/models/property'
   styleUrls: ['./facilities.component.scss'],
 })
 export class FacilitiesComponent implements OnInit {
-  @Input() facilities: IFacilities
+  @Input() facilities: { [key: string]: string }
   constructor() {}
 
   ngOnInit(): void {}
+
+  facilityName: { [key: string]: string } = {
+    tv: 'TV',
+    wifi: 'Free Wi-Fi',
+    breakfastIncluded: 'Breakfast included',
+    parking: 'Free parking',
+    kitchen: 'Kitchen',
+    shower: 'Shower',
+    bath: 'Bathtub',
+  }
 }
