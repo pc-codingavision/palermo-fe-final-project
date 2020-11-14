@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 
 import { SearchService } from '../../services/search.service'
 
@@ -28,25 +28,31 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit {
+export class LandlordListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
+  private subscription: Subscription
 
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService
   ) {}
 
-  getAll(): void {
-    this.landlords$ = this.searchLandlord.getSearchResult()
-  }
-
   ngOnInit(): void {
     this.getAll()
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
+
+  getAll(): void {
+    this.landlords$ = this.searchLandlord.getSearchResult()
+  }
+
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id)
+    this.subscription = this.searchLandlord.search('', '', '').subscribe()
   }
 }
