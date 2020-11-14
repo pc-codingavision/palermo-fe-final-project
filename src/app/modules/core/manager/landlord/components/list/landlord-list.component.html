@@ -26,7 +26,11 @@
 
   <ng-container matColumnDef="phone_number">
     <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.phone[0].digits}} </td>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let phone of element.phone">
+        {{phone.digits}}<br>
+      </ng-container>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="expandedDetail">

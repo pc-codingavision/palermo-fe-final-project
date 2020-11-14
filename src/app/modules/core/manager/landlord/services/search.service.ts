@@ -20,12 +20,12 @@ export class SearchService {
       tap((landlords: Landlord[]) => {
         landlords = landlords.filter((landlord) => {
           return (
-            landlord.fullName.toLowerCase().includes(fullName.toLowerCase()) &&
-            landlord.mail.toLowerCase().includes(email) &&
+            landlord.fullName.toLowerCase().includes(fullName.trim().toLowerCase()) &&
+            landlord.mail.toLowerCase().includes(email.trim().toLowerCase()) &&
             landlord.phone
               .map((phone) => phone.digits)
               .toString()
-              .includes(digits)
+              .includes(digits.trim())
           )
         })
         this.filteredLandlords$.next(landlords)
