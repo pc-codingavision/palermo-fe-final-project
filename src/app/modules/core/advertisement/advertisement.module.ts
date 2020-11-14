@@ -6,18 +6,17 @@ import { AdvertisementService } from '@modules/core/advertisement/advertisement.
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
 import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
 import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
-import { CardContainerComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-container/card-container.component'
-import { AboutComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/about/about.component'
-import { CardExtraComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/card-extra.component'
-import { FacilitiesComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/facilities/facilities.component'
-import { ReviewComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-extra/review/review.component'
-import { CardMainViewComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
-import { FacilitiesContainerComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
-import { FacilityComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
-import { FavouriteComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
-import { PhotogalleryComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/photogallery/photogallery.component'
-import { ScoreComponent } from '@modules/core/advertisement/components/advertisement-list/card/card-main-view/score/score.component'
+import { AboutComponent } from '@modules/core/advertisement/components/card/card-bottom/about/about.component'
+import { CardExtraComponent } from '@modules/core/advertisement/components/card/card-bottom/card-extra/card-extra.component'
+import { FacilitiesComponent } from '@modules/core/advertisement/components/card/card-bottom/facilities/facilities.component'
+import { ReviewComponent } from '@modules/core/advertisement/components/card/card-bottom/review/review.component'
+import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
+import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
+import { FacilitiesContainerComponent } from '@modules/core/advertisement/components/card/card-top/facilities-container/facilities-container.component'
+import { FacilityComponent } from '@modules/core/advertisement/components/card/card-top/facility/facility.component'
+import { FavouriteComponent } from '@modules/core/advertisement/components/card/card-top/favourite/favourite.component'
+import { PhotogalleryComponent } from '@modules/core/advertisement/components/card/card-top/photogallery/photogallery.component'
+import { ScoreComponent } from '@modules/core/advertisement/components/card/card-top/score/score.component'
 import { LatestContainerComponent } from '@modules/core/advertisement/components/latest/latest-container/latest-container.component'
 import { LatestMiniCardComponent } from '@modules/core/advertisement/components/latest/latest-mini-card/latest-mini-card.component'
 import { FacilityFilterComponent } from '@modules/core/advertisement/components/sidebar/facility-filter/facility-filter.component'
@@ -34,8 +33,7 @@ const advertisementsComponent = [
   ReviewComponent,
   AboutComponent,
   FacilitiesComponent,
-  CardContainerComponent,
-  CardMainViewComponent,
+  CardMainContainerComponent,
   PhotogalleryComponent,
   FacilitiesContainerComponent,
   FacilityComponent,
