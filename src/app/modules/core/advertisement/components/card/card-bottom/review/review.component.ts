@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-review',
@@ -6,22 +7,12 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  reviews = [
-    {
-      title: 'Good',
-      tenantId: 3,
-      description: 'Very spacious and accessible house',
-      vote: 4.5,
-    },
-    {
-      title: 'Not great',
-      tenantId: 4,
-      description: 'The hostel was very very chaotic ',
-      vote: 1.5,
-    },
-  ]
-
   constructor() {}
+  @Input() review: IMockReview
 
-  ngOnInit(): void {}
+  score: number
+
+  ngOnInit(): void {
+    this.score = Math.round(this.review?.vote)
+  }
 }

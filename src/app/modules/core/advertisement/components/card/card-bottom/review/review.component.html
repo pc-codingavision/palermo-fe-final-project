@@ -1,9 +1,8 @@
-<div *ngFor='let review of reviews'>
-  <h3>{{review.title}}</h3>
-  <p>{{review.description}}</p>
-  <i class="material-icons">grade grade grade</i>
-  <i class="material-icons">star_half</i>
-  <i class="material-icons">star_outline</i>
-  <br>
+<div>
+  <h3>{{review?.title}}</h3>
+  <p>{{review?.description}}</p>
+  <i
+    class="material-icons">{{'grade '.repeat(score) + 'star_outline '.repeat(5 - score)}}</i>
 
+  <br>
 </div>

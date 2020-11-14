@@ -1,36 +1,13 @@
 <div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
   fxLayoutWrap="wrap">
+
   <div class="side" fxFlex="49%">
-    <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
-      <p>TV</p>
-    </div>
-    <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
-      <p>WIFI</p>
-    </div>
-    <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
-      <p>Breakfast included</p>
-    </div>
-    <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
-      <p>Parking</p>
+    <div fxLayout="row" *ngFor="let facility of facilities | keyvalue">
+      <i [ngStyle]="{'color': facility.value ? 'green' : 'red'}" class="material-icons">
+        {{facility.value ? 'done' : 'clear'}} </i>
+      <p>{{facilityName[facility?.key]}}
+      </p>
     </div>
   </div>
 
-  <div class="aside" fxFlex="49%">
-    <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
-      <p>Kitchen</p>
-    </div>
-    <div fxLayout="row">
-      <i id="done" class="material-icons">done</i>
-      <p>Shower</p>
-    </div>
-    <div fxLayout="row">
-      <i id="clear" class="material-icons">clear</i>
-      <p>Bath</p>
-    </div>
-  </div>
 </div>

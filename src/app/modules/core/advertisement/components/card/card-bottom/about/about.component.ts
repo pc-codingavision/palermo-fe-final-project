@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { IProperty } from '@shared/models/property'
 
 @Component({
   selector: 'cav-about',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-  description =
-    "L'appartamento è situato nel pieno centro di Palermo, immerso nella zona più dinamica della città, tutti i principali monumenti ed attrazioni sono raggiungibili a piedi Adatto per vivere il fascino di Palermo Consigliato ad avventurieri singoli, coppie, famiglie e piccoli gruppi di amici"
+  @Input() property: IProperty
   constructor() {}
 
   ngOnInit(): void {}

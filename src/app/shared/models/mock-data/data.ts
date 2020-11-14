@@ -219,7 +219,7 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      state: 'italia',
+      country: 'italia',
       postCode: '90100',
     },
     title: 'Splendido monovano',
@@ -227,7 +227,7 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     rooms: [{ name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
     numberOfToilet: 1,
     description:
-      "Non si intrometta! No, aspetti, mi porga l'indice; ecco lo alzi così... guardi, guardi, guardi; lo vede il dito? Lo vede che stuzzica, che prematura anche. E lei.. cosa si sente? Professore, non le dico. Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra.",
+      "Perfetto per immergersi a pieno nella vita dello storico e caratteristico Mercato del Capo. La palazzina si trova nel cuore della città antica, all'interno del Mercato; zona ben fornita di mezzi pubblici e servizi. L'edificio è composto da 4 appartamenti ciascuno dei quali è così suddiviso: ingresso, cucina abitabile totalmente arredata, camera da letto, bagno con doccia ed antibagno",
     facilities: {
       tv: true,
       wifi: true,
@@ -258,7 +258,7 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     ],
     numberOfToilet: 1,
     description:
-      'Si, ma la sbiriguda della sbrindellona come se fosse antani come faceva? Prego? Ho provato con la supercazzola con scappelamento paraplegico a sinistra, ma non funzionava. E lei.. cosa si sente? Professore, non le dico.',
+      "Luminoso attico nel centro di Palermo, posizione ideale per tutte le principali attrazioni turistiche del Centro Storico antico (5 min a piedi dalla Cattedrale).Questo attico di design si trova all'ultimo 7 ° piano (con ascensore) e offre una vista mozzafiato sulle montagne circostanti e sul centro storico della città. Il parcheggio è gratuito nella strada sottostante.",
     facilities: {
       tv: true,
       wifi: true,
@@ -288,7 +288,7 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     ],
     numberOfToilet: 1,
     description:
-      "Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra. Guardi, le ho ritagliato quell'articolo sul Casentino. Ma lei se la blinda la supercazzola prematurata come se fosse anche un po' di Casentino che perdura anche come cappotto;",
+      'Situata nel cuore del Centro Storico di Palermo, La Boucherie vi da il benvenuto in una delle città più belle della Sicilia. Bellissimo appartamento nel quartiere della Vucciria, vicino alle vie più centrali della città, la Boucherie è dotato di Wi-Fi senza limiti, aria condizionata, finestre in vetro-camera, cucina attrezzata, lavatrice e due balconi. Ben collegato. Pulito e tranquillo.',
     facilities: {
       tv: true,
       wifi: true,

@@ -1,17 +1,24 @@
-<div class="container-more-info" fxLayout fxLayout.xs="column"
-  fxLayoutAlign="space-between" fxLayoutWrap="wrap">
+<mat-card id="card-extra">
 
-  <mat-card class="side" fxFlex="38%">
-    <h2>Most recent reviews</h2>
-    <cav-review></cav-review>
-  </mat-card>
+  <div class="container-more-info" fxLayout fxLayout.xs="column"
+    fxLayoutAlign="space-between" fxLayoutWrap="wrap">
 
-  <mat-card class="aside" fxFlex="48%">
-    <h2>About this property</h2>
-    <cav-about></cav-about>
-    <h4>Facilities</h4>
-    <mat-divider [inset]="true"></mat-divider>
-    <cav-facilities></cav-facilities>
-  </mat-card>
+    <mat-card class="side" fxFlex="38%">
+      <h2>Most recent reviews</h2>
+      <cav-review *ngFor="let review of advertisement?.reviews" [review]="review">
+      </cav-review>
+    </mat-card>
 
-</div>
+    <mat-card class="aside" fxFlex="48%">
+      <h2>About this property</h2>
+      <cav-about [property]="advertisement?.property"></cav-about>
+      <h4>Facilities</h4>
+      <mat-divider [inset]="true"></mat-divider>
+
+      <cav-facilities [facilities]="advertisement?.property?.facilities">
+
+      </cav-facilities>
+    </mat-card>
+
+  </div>
+</mat-card>

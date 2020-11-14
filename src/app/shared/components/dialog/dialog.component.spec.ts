@@ -4,7 +4,7 @@ import { SharedModule } from '@modules/shared/shared.module'
 
 import { DialogComponent } from './dialog.component'
 
-describe('DialogComponent', (): void => {
+describe('DialogComponent', () => {
   let component: DialogComponent
   let fixture: ComponentFixture<DialogComponent>
 
