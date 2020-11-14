@@ -45,7 +45,6 @@
     "@angular/platform-browser": "~10.1.6",
     "@angular/platform-browser-dynamic": "~10.1.6",
     "@angular/router": "~10.1.6",
-    "fake-jwt-sign": "^1.1.1",
     "jwt-decode": "^3.0.0",
     "rxjs": "~6.6.3",
     "subsink": "^1.0.1",
@@ -53,7 +52,7 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.3",
+    "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/cli": "~10.1.7",
     "@angular/compiler-cli": "~10.1.6",
     "@types/jasmine": "~3.5.0",
@@ -64,6 +63,7 @@
     "codelyzer": "^6.0.0",
     "cross-conf-env": "^1.2.1",
     "dev-norms": "^1.7.1",
+    "fake-jwt-sign": "^1.1.1",
     "husky": "^4.3.0",
     "import-sort": "^6.0.0",
     "import-sort-cli": "^6.0.0",
