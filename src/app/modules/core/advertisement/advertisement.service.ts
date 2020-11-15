@@ -67,11 +67,15 @@ export class AdvertisementService {
     )
   }
 
-  findAdvertisementsHighestPrice(): Observable<number> {
-    return of(_.max(MOCKADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
+  findAdvertisementsHighestPrice(
+    advertisements: Observable<IMockAdvertisement[]>
+  ): Observable<number> {
+    return advertisements.pipe(map((advArr) => _.max(advArr.map((adv) => adv.price))))
   }
 
-  findAdvertisementsLowestPrice(): Observable<number> {
-    return of(_.min(MOCKADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
+  findAdvertisementsLowestPrice(
+    advertisements: Observable<IMockAdvertisement[]>
+  ): Observable<number> {
+    return advertisements.pipe(map((advArr) => _.min(advArr.map((adv) => adv.price))))
   }
 }

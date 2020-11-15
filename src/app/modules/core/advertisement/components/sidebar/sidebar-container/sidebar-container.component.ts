@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { IFacilities } from '@shared/models/property'
-import { Observable } from 'rxjs'
 
 @Component({
   selector: 'cav-sidebar-container',
@@ -9,23 +8,12 @@ import { Observable } from 'rxjs'
   styleUrls: ['./sidebar-container.component.scss'],
 })
 export class SidebarContainerComponent implements OnInit {
+  @Input() maxPrice: number
+  @Input() minPrice: number
+
   constructor(private advertisementService: AdvertisementService) {}
 
-  maxPrice: Observable<number>
-  minPrice: Observable<number>
-
-  ngOnInit(): void {
-    this.maxPrice = this.getMaxPrice()
-    this.minPrice = this.getMinPrice()
-  }
-
-  getMaxPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsHighestPrice()
-  }
-
-  getMinPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsLowestPrice()
-  }
+  ngOnInit(): void {}
 
   applyPriceFilter(filter: number): void {
     this.advertisementService.getAdvertisementsFilteredByPrice(filter)

@@ -5,6 +5,7 @@ import {
   MOCKADVERTISEMENTS_MOCK_DATA,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import * as _ from 'lodash'
+import { of } from 'rxjs'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
@@ -110,19 +111,19 @@ describe('AdvertisementService', () => {
   })
 
   describe('#findAdvertisementsHighestPrice', () => {
-    it('should return the highest price between advertisements', () => {
+    it('should return the highest price between the passed advertisements array', () => {
       const mockMaxPrice = _.max(mockData.map((adv) => adv.price))
       service
-        .findAdvertisementsHighestPrice()
+        .findAdvertisementsHighestPrice(of(mockData))
         .subscribe((maxPrice) => expect(maxPrice).toEqual(mockMaxPrice))
     })
   })
 
   describe('#findAdvertisementsLowestPrice', () => {
-    it('shouldreturn the lowest price between advertisements', () => {
+    it('shouldreturn the lowest price between the passed advertisements array', () => {
       const mockMinPrice = _.min(mockData.map((adv) => adv.price))
       service
-        .findAdvertisementsLowestPrice()
+        .findAdvertisementsLowestPrice(of(mockData))
         .subscribe((minPrice) => expect(minPrice).toEqual(mockMinPrice))
     })
   })

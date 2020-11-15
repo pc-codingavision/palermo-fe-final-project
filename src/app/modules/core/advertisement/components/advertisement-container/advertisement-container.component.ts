@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -7,8 +9,23 @@ import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-a
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  advertisements = MOCKADVERTISEMENTS_MOCK_DATA
-  constructor() {}
+  advertisements: Observable<IMockAdvertisement[]>
+  minPrice: Observable<number>
+  maxPrice: Observable<number>
 
-  ngOnInit(): void {}
+  constructor(private advertisementService: AdvertisementService) {}
+
+  ngOnInit(): void {
+    this.advertisements = this.advertisementService.findAll()
+    this.minPrice = this.getMinPrice()
+    this.maxPrice = this.getMaxPrice()
+  }
+
+  getMinPrice(): Observable<number> {
+    return this.advertisementService.findAdvertisementsLowestPrice(this.advertisements)
+  }
+
+  getMaxPrice(): Observable<number> {
+    return this.advertisementService.findAdvertisementsHighestPrice(this.advertisements)
+  }
 }
