@@ -8,8 +8,8 @@ import { map, tap } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class SearchService {
-  private filteredLandlords$: Subject<Landlord[]> = new ReplaySubject<Landlord[]>(1)
   constructor(private landlordService: LandlordService) {}
+  private filteredLandlords$: Subject<Landlord[]> = new ReplaySubject<Landlord[]>(1)
 
   getSearchResult(): Observable<Landlord[]> {
     return this.filteredLandlords$.asObservable()
@@ -20,17 +20,29 @@ export class SearchService {
       tap((landlords: Landlord[]) => {
         landlords = landlords.filter((landlord) => {
           return (
-            landlord.fullName.toLowerCase().includes(fullName.trim().toLowerCase()) &&
-            landlord.mail.toLowerCase().includes(email.trim().toLowerCase()) &&
-            landlord.phone
-              .map((phone) => phone.digits)
-              .toString()
-              .includes(digits.trim())
+            this.fullNameSearch(landlord, fullName) &&
+            this.mailSearch(landlord, email) &&
+            this.phoneSearch(landlord, digits)
           )
         })
         this.filteredLandlords$.next(landlords)
       }),
       map(() => void 0)
     )
+  }
+
+  private phoneSearch(landlord: Landlord, digits: string): any {
+    return landlord.phone
+      .map((x) => x.digits)
+      .toString()
+      .includes(digits)
+  }
+
+  private mailSearch(landlord: Landlord, email: string): any {
+    return landlord.mail.toLowerCase().includes(email.trim().toLowerCase())
+  }
+
+  private fullNameSearch(landlord: Landlord, fullName: string): any {
+    return landlord.fullName.toLowerCase().includes(fullName.trim().toLowerCase())
   }
 }
