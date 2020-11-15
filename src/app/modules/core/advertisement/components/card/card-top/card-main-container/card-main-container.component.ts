@@ -10,7 +10,7 @@ import * as _ from 'lodash'
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
   score: number
-  show = false
+  showCardExtra = false
 
   constructor() {}
 
@@ -19,7 +19,7 @@ export class CardMainContainerComponent implements OnInit {
   }
 
   changeStatus(): void {
-    this.show = !this.show
+    this.showCardExtra = !this.showCardExtra
   }
 
   isFavourite(favourite: boolean): void {
