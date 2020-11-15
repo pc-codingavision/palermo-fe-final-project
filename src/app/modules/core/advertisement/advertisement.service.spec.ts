@@ -15,7 +15,6 @@ describe('AdvertisementService', () => {
     service = TestBed.inject(AdvertisementService)
     mockData = MOCKADVERTISEMENTS_MOCK_DATA.map((a) => ({ ...a }))
   })
-
   it('should be created', () => {
     expect(service).toBeTruthy()
   })

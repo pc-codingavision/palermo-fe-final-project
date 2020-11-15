@@ -1,4 +1,4 @@
-export interface IReviews {
+export interface IReview {
   title: string
   tenantId: number
   description: string
@@ -9,7 +9,7 @@ export interface IAdvertisement {
   id: number
   landlordId: number
   propertyId: number
-  reviews: IReviews[]
+  reviews: IReview[]
   price: number
 }
 
