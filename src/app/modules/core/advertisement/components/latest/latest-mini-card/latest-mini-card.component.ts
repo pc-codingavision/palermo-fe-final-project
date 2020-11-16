@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { IProperty } from '@shared/models/property'
+import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-latest-mini-card',
@@ -7,9 +7,9 @@ import { IProperty } from '@shared/models/property'
   styleUrls: ['./latest-mini-card.component.scss'],
 })
 export class LatestMiniCardComponent implements OnInit {
-  constructor() {}
+  @Input() advertisement: IMockAdvertisement
 
-  @Input() property: IProperty
+  constructor() {}
 
   ngOnInit(): void {}
 }

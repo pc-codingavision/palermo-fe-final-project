@@ -1,8 +1,9 @@
-<mat-card class="mini-card">
-  <img mat-card-image src="{{ property?.imagesPath[0] }}">
+<mat-card routerLink="{{advertisement?.id}}" class="mini-card">
+  <img mat-card-image src="{{ advertisement?.property?.imagesPath[0] }}">
   <mat-card-content>
     <mat-card-title>
-      <h3> {{property?.title }} a {{ property?.address?.city }} </h3>
+      <h3> {{advertisement?.property?.title }} a
+        {{ advertisement?.property?.address?.city }} </h3>
     </mat-card-title>
   </mat-card-content>
 </mat-card>

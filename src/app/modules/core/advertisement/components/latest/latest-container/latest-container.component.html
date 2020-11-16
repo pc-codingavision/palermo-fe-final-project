@@ -6,7 +6,7 @@
     </button>
 
     <cav-latest-mini-card *ngFor="let advertisement of latestAdvertisements | async"
-      [property]="advertisement.property">
+      [advertisement]="advertisement">
     </cav-latest-mini-card>
 
     <button class="arrow-button">
