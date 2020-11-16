@@ -8,8 +8,9 @@ import { map, tap } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class SearchService {
-  constructor(private landlordService: LandlordService) {}
   private filteredLandlords$: Subject<Landlord[]> = new ReplaySubject<Landlord[]>(1)
+
+  constructor(private landlordService: LandlordService) {}
 
   getSearchResult(): Observable<Landlord[]> {
     return this.filteredLandlords$.asObservable()
@@ -31,18 +32,18 @@ export class SearchService {
     )
   }
 
-  private phoneSearch(landlord: Landlord, digits: string): any {
+  private phoneSearch(landlord: Landlord, digits: string): boolean {
     return landlord.phone
       .map((x) => x.digits)
       .toString()
       .includes(digits)
   }
 
-  private mailSearch(landlord: Landlord, email: string): any {
+  private mailSearch(landlord: Landlord, email: string): boolean {
     return landlord.mail.toLowerCase().includes(email.trim().toLowerCase())
   }
 
-  private fullNameSearch(landlord: Landlord, fullName: string): any {
+  private fullNameSearch(landlord: Landlord, fullName: string): boolean {
     return landlord.fullName.toLowerCase().includes(fullName.trim().toLowerCase())
   }
 }

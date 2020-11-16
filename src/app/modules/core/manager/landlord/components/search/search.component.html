@@ -39,12 +39,9 @@
           (ngModelChange)="onChange()" id="input" [matAutocomplete]="telephone">
         <mat-autocomplete #telephone="matAutocomplete">
           <div *ngIf="phone.length > 1">
-            <div *ngFor="let landlord of landlords$ | async">
-              <mat-option *ngFor="let phone of landlord.phone" [value]="phone.digits">
-                {{phone.digits}}
-              </mat-option>
-
-            </div>
+            <mat-option *ngFor="let phone of phoneMatch$ | async" [value]="phone">
+              {{phone}}
+            </mat-option>
           </div>
         </mat-autocomplete>
       </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Landlord } from '@shared/models/landlord'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 import { SearchService } from '../../services/search.service'
 
@@ -10,13 +11,25 @@ import { SearchService } from '../../services/search.service'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  landlords$: Observable<Landlord[]> = this.searchService.getSearchResult()
-  constructor(private searchService: SearchService) {}
+  landlords$: Observable<Landlord[]>
+  phoneMatch$: Observable<string[]>
   fullName = ''
   email = ''
   phone = ''
 
+  constructor(private searchService: SearchService) {}
+
   ngOnInit(): void {
+    this.landlords$ = this.searchService.getSearchResult()
+    this.landlords$
+      .pipe(
+        map((landlords) => landlords.flatMap((l) => l.phone)),
+        map((phones) => phones.map((p) => p.digits))
+      )
+      .subscribe(
+        (phones) =>
+          (this.phoneMatch$ = of(phones.filter((phone) => phone.includes(this.phone))))
+      )
     this.onChange()
   }
   onChange(): void {
