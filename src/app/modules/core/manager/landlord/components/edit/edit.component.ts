@@ -161,7 +161,8 @@ export class EditComponent implements OnInit, OnDestroy {
 
   canExit(): boolean {
     if (this.landlordForm.dirty && !this.isSavedForm) {
-      return !confirm('The data will not be saved')
+      return confirm('The data will not be saved')
     }
+    return true
   }
 }
