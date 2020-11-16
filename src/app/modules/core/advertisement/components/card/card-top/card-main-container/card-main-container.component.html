@@ -4,7 +4,7 @@
     <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
       fxLayoutWrap="wrap">
 
-      <cav-photogallery [photo]="advertisement?.property?.imagesPath[0]">
+      <cav-photogallery [photo]="advertisement?.property?.imagesPath">
       </cav-photogallery>
 
       <div fxLayout="column">
@@ -14,20 +14,19 @@
         </cav-facility>
       </div>
 
-      <mat-card-actions>
-        <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-        <cav-score [score]="score"></cav-score>
-        <cav-check-in-check-out>
-
-        </cav-check-in-check-out>
-      </mat-card-actions>
+      <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
+      <cav-score [score]="advertisement?.score()"></cav-score>
+      <cav-check-in-check-out></cav-check-in-check-out>
 
       <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
     </mat-card-content>
 
-    <button mat-raised-button color="accent" (click)="changeStatus()">More Info
-      <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
-    </button>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
+        <mat-icon>{{!showCardExtra ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}
+        </mat-icon>
+      </button>
+    </mat-card-actions>
 
     <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement">
     </cav-card-extra>

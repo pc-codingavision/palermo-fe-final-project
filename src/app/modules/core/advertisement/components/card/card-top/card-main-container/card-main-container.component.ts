@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import * as _ from 'lodash'
 
 @Component({
   selector: 'cav-card-main-container',
@@ -9,16 +8,13 @@ import * as _ from 'lodash'
 })
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-  score: number
   showCardExtra = false
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.score = _.round(_.mean(this.advertisement?.reviews.map((review) => review.vote)))
-  }
+  ngOnInit(): void {}
 
-  changeStatus(): void {
+  expandCardExtra(): void {
     this.showCardExtra = !this.showCardExtra
   }
 
