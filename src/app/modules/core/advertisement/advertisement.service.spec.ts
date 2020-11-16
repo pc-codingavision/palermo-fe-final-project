@@ -16,23 +16,29 @@ describe('AdvertisementService', () => {
     mockData = MOCKADVERTISEMENTS_MOCK_DATA.map((a) => ({ ...a }))
   })
 
-  it('#getLatestAdv always should return an array of adv with lenght of two', () => {
-    service.getLatestAdv().subscribe((arr) => {
-      expect(arr.length).toBe(2)
-    })
+  it('should be created', () => {
+    expect(service).toBeTruthy()
   })
 
-  it('#getLatestAdv should return adv with id=1, id=2, for first', () => {
-    service.getLatestAdv().subscribe((arr) => {
-      expect(arr[0].id).toBe(1)
-      expect(arr[1].id).toBe(2)
+  describe('#getLatestAdv', () => {
+    it('Should always return an array of adv with lenght of two', () => {
+      service.getLatestAdv().subscribe((arr) => {
+        expect(arr.length).toBe(2)
+      })
     })
-  })
 
-  it('#getLatestAdv should return adv with id=2, id=3, if the user goes forward', () => {
-    service.getLatestAdv(1, 2).subscribe((arr) => {
-      expect(arr[0].id).toBe(2)
-      expect(arr[1].id).toBe(3)
+    it('Should return adv with id=1, id=2, for first', () => {
+      service.getLatestAdv().subscribe((arr) => {
+        expect(arr[0].id).toBe(1)
+        expect(arr[1].id).toBe(2)
+      })
+    })
+
+    it('Should return adv with id=2, id=3, if the user goes forward', () => {
+      service.getLatestAdv(1, 2).subscribe((arr) => {
+        expect(arr[0].id).toBe(2)
+        expect(arr[1].id).toBe(3)
+      })
     })
   })
 

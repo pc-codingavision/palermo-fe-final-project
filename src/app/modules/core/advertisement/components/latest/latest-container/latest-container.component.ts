@@ -9,10 +9,11 @@ import { Observable } from 'rxjs'
   styleUrls: ['./latest-container.component.scss'],
 })
 export class LatestContainerComponent implements OnInit {
-  constructor(private advService: AdvertisementService) {}
   latestAdvertisements: Observable<IMockAdvertisement[]>
   start = 0
   end = 2
+
+  constructor(private advService: AdvertisementService) {}
 
   ngOnInit(): void {
     this.latestAdvertisements = this.advService.getLatestAdv()
