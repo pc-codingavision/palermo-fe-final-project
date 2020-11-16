@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Observable } from 'rxjs'
+
+import { AdvertisementService } from '../../advertisement.service'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -7,8 +10,10 @@ import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-a
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  advertisements = MOCKADVERTISEMENTS_MOCK_DATA
-  constructor() {}
+  advertisements$: Observable<IMockAdvertisement[]>
+  constructor(private advertisementService: AdvertisementService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.advertisements$ = this.advertisementService.findAll()
+  }
 }

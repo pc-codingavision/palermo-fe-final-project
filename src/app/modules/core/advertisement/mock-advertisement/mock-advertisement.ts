@@ -2,6 +2,7 @@ import { Category, PhoneType, Role, Status, Toilet } from '@shared/enum/enums'
 import { Landlord } from '@shared/models/landlord'
 import { IProperty } from '@shared/models/property'
 import { IName } from '@shared/models/users'
+import * as _ from 'lodash'
 
 export interface IMockTenant {
   id: number
@@ -19,6 +20,7 @@ export interface IMockAdvertisement {
   property: IProperty
   reviews: IMockReview[]
   price: number
+  score(): number
 }
 export class MockAdvertisement implements IMockAdvertisement {
   private constructor(
@@ -26,7 +28,8 @@ export class MockAdvertisement implements IMockAdvertisement {
     public landlord = null,
     public property = null,
     public reviews = [],
-    public price = null
+    public price = null,
+    public score = null
   ) {}
   static Build(mockAdvertisement?: IMockAdvertisement): MockAdvertisement {
     if (!mockAdvertisement) {
@@ -37,7 +40,8 @@ export class MockAdvertisement implements IMockAdvertisement {
       mockAdvertisement.landlord,
       mockAdvertisement.property,
       mockAdvertisement.reviews,
-      mockAdvertisement.price
+      mockAdvertisement.price,
+      mockAdvertisement.score
     )
   }
 }
@@ -111,6 +115,9 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 40,
+    score(): number {
+      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
+    },
   },
 
   {
@@ -177,6 +184,9 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 30,
+    score(): number {
+      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
+    },
   },
   {
     id: 3,
@@ -252,5 +262,8 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 20,
+    score(): number {
+      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
+    },
   },
 ]
