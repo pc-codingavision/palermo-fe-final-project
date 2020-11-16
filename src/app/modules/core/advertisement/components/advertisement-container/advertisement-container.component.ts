@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable } from 'rxjs'
-
-import { AdvertisementService } from '../../advertisement.service'
 
 @Component({
   selector: 'cav-advertisement-container',
