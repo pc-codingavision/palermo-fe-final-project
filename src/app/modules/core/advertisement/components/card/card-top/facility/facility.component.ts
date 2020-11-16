@@ -8,24 +8,35 @@ import { Component, Input, OnInit } from '@angular/core'
 export class FacilityComponent implements OnInit {
   @Input() facility: { [key: string]: string }
 
-  facilityIcon: { [key: string]: string } = {
-    tv: 'tv',
-    wifi: 'wifi',
-    breakfastIncluded: 'free_breakfast',
-    parking: 'local_parking',
-    kitchen: 'kitchen',
-    shower: 'shower',
-    bath: 'bathtub',
-  }
-
-  facilityName: { [key: string]: string } = {
-    tv: 'TV',
-    wifi: 'Free Wi-Fi',
-    breakfastIncluded: 'Breakfast included',
-    parking: 'Free parking',
-    kitchen: 'Kitchen',
-    shower: 'Shower',
-    bath: 'Bathtub',
+  facilityData: { [key: string]: { icon: string; description: string } } = {
+    tv: {
+      icon: 'tv',
+      description: 'TV',
+    },
+    wifi: {
+      icon: 'wifi',
+      description: 'Free Wi-Fi',
+    },
+    breakfastIncluded: {
+      icon: 'free_breakfast',
+      description: 'Breakfast included',
+    },
+    parking: {
+      icon: 'local_parking',
+      description: 'Free parking',
+    },
+    kitchen: {
+      icon: 'kitchen',
+      description: 'Kitchen',
+    },
+    shower: {
+      icon: 'shower',
+      description: 'Shower',
+    },
+    bath: {
+      icon: 'bathtub',
+      description: 'Bathtub',
+    },
   }
 
   ngOnInit(): void {}
