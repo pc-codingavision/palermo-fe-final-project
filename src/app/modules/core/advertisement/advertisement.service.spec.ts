@@ -6,7 +6,7 @@ import {
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import * as _ from 'lodash'
 
-fdescribe('AdvertisementService', () => {
+describe('AdvertisementService', () => {
   let service: AdvertisementService
   let mockData: IMockAdvertisement[]
 
