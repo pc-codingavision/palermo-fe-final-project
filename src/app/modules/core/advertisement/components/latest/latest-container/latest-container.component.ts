@@ -23,19 +23,21 @@ export class LatestContainerComponent implements OnInit {
     if (this.end !== 3) {
       this.start++
       this.end++
-      this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
     } else if (this.end === 3) {
       this.start = 0
       this.end = 2
-      this.latestAdvertisements = this.advService.getLatestAdv()
     }
+    this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
   }
 
   goBehind(): void {
     if (this.start !== 0) {
       this.start--
       this.end--
-      this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
+    } else if (this.start === 0) {
+      this.start = 1
+      this.end = 3
     }
+    this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
   }
 }
