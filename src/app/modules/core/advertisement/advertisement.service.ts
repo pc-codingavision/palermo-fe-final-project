@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import {
-  IMockAdvertisement,
   MOCKADVERTISEMENTS_MOCK_DATA,
+  MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { IFacilities } from '@shared/models/property'
 import * as _ from 'lodash'
@@ -12,35 +12,38 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class AdvertisementService {
+  advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
+    MockAdvertisement.Build(advertisement)
+  )
+
   constructor() {}
 
-  findAll(): Observable<IMockAdvertisement[]> {
-    return of(MOCKADVERTISEMENTS_MOCK_DATA)
+  findAll(): Observable<MockAdvertisement[]> {
+    return of(this.advertisements)
   }
 
-  findById(id: number): Observable<IMockAdvertisement> {
-    return of(MOCKADVERTISEMENTS_MOCK_DATA.find((advert) => advert.id === id))
+  findById(id: number): Observable<MockAdvertisement> {
+    return of(this.advertisements.find((advert) => advert.id === id))
   }
 
-  getLatestAdv(start: number = 0, end: number = 2): Observable<IMockAdvertisement[]> {
-    return of(MOCKADVERTISEMENTS_MOCK_DATA.slice(start, end))
+  getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {
+    return of(this.advertisements.slice(start, end))
   }
 
-  returnPriceFilteredAdvertisements(filter: number): Observable<IMockAdvertisement[]> {
-    return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((filteredAdvertisements: IMockAdvertisement[]) => {
+  returnPriceFilteredAdvertisements(filter: number): Observable<MockAdvertisement[]> {
+    return of(this.advertisements).pipe(
+      map((filteredAdvertisements: MockAdvertisement[]) => {
         return filteredAdvertisements.filter((x) => x.price <= filter)
       })
     )
   }
 
-  returnScoreFilteredAdvertisements(filter: number): Observable<IMockAdvertisement[]> {
-    const filteredArray: IMockAdvertisement[] = []
-    return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IMockAdvertisement[]) => {
+  returnScoreFilteredAdvertisements(filter: number): Observable<MockAdvertisement[]> {
+    const filteredArray: MockAdvertisement[] = []
+    return of(this.advertisements).pipe(
+      map((sourceArray: MockAdvertisement[]) => {
         sourceArray.forEach((advertisement) => {
-          const score = _.mean(advertisement.reviews.map((rev) => rev.vote))
-          if (_.round(score) >= filter) {
+          if (advertisement.score >= filter) {
             filteredArray.push(advertisement)
           }
         })
@@ -51,11 +54,11 @@ export class AdvertisementService {
 
   returnFacilitiesFilteredAdvertisements(
     filter: IFacilities
-  ): Observable<IMockAdvertisement[]> {
-    const filteredArray: IMockAdvertisement[] = []
+  ): Observable<MockAdvertisement[]> {
+    const filteredArray: MockAdvertisement[] = []
     const filterFacilities = Object.keys(_.pickBy(filter))
-    return of(MOCKADVERTISEMENTS_MOCK_DATA).pipe(
-      map((sourceArray: IMockAdvertisement[]) => {
+    return of(this.advertisements).pipe(
+      map((sourceArray: MockAdvertisement[]) => {
         sourceArray.forEach((advertisement) => {
           const propertyFacilities = _.pickBy(advertisement.property.facilities)
           if (
@@ -72,10 +75,10 @@ export class AdvertisementService {
   }
 
   findAdvertisementsHighestPrice(): Observable<number> {
-    return of(_.max(MOCKADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
+    return of(_.max(this.advertisements.map((adv) => adv.price)))
   }
 
   findAdvertisementsLowestPrice(): Observable<number> {
-    return of(_.min(MOCKADVERTISEMENTS_MOCK_DATA.map((adv) => adv.price)))
+    return of(_.min(this.advertisements.map((adv) => adv.price)))
   }
 }
