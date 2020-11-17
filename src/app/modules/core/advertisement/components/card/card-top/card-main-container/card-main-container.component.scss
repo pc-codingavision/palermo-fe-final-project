@@ -2,17 +2,16 @@ mat-card {
   width: 100%;
 }
 
-mat-card-actions {
-  max-width: 250px;
+mat-card-content {
+  max-width: 100%;
 }
 
 mat-card-title {
-  margin-left: 11px;
+  margin: 10px;
 }
 
 .button {
   margin: 2px;
   width: 100px;
-
   float: right;
 }

@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list'
 import { MatRadioModule } from '@angular/material/radio'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatSliderModule } from '@angular/material/slider'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatTableModule } from '@angular/material/table'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -38,6 +39,7 @@ const modules = [
   MatGridListModule,
   MatNativeDateModule,
   MatRadioModule,
+  MatSnackBarModule,
   MatSliderModule,
   MatIconModule,
   MatToolbarModule,

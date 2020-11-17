@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { PROPERTIES_MOCK_DATA } from '@shared/models/mock-data/data'
+import { Component, Input, OnInit } from '@angular/core'
+import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-latest-mini-card',
@@ -7,9 +7,9 @@ import { PROPERTIES_MOCK_DATA } from '@shared/models/mock-data/data'
   styleUrls: ['./latest-mini-card.component.scss'],
 })
 export class LatestMiniCardComponent implements OnInit {
-  constructor() {}
+  @Input() advertisement: IMockAdvertisement
 
-  properties = PROPERTIES_MOCK_DATA
+  constructor() {}
 
   ngOnInit(): void {}
 }
