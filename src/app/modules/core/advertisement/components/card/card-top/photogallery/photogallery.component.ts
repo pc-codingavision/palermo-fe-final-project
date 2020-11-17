@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 @Component({
   selector: 'cav-photogallery',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./photogallery.component.scss'],
 })
 export class PhotogalleryComponent implements OnInit {
+  @Input() photo: string
   constructor() {}
 
   ngOnInit(): void {}

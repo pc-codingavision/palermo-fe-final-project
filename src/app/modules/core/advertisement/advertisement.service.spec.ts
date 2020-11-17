@@ -1,19 +1,21 @@
 import { TestBed } from '@angular/core/testing'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import {
-  IMockAdvertisement,
   MOCKADVERTISEMENTS_MOCK_DATA,
+  MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import * as _ from 'lodash'
 
 describe('AdvertisementService', () => {
   let service: AdvertisementService
-  let mockData: IMockAdvertisement[]
+  let mockData: MockAdvertisement[]
 
   beforeEach(() => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(AdvertisementService)
-    mockData = MOCKADVERTISEMENTS_MOCK_DATA.map((a) => ({ ...a }))
+    mockData = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
+      MockAdvertisement.Build(advertisement)
+    )
   })
 
   it('should be created', () => {

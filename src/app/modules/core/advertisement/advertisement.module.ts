@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { NgModule } from '@angular/core'
-import { LOCALE_ID } from '@angular/core'
+import { LOCALE_ID, NgModule } from '@angular/core'
 import { AdvertisementRoutingModule } from '@modules/core/advertisement/advertisement-routing.module'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
@@ -12,7 +11,6 @@ import { FacilitiesComponent } from '@modules/core/advertisement/components/card
 import { ReviewComponent } from '@modules/core/advertisement/components/card/card-bottom/review/review.component'
 import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
 import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
-import { FacilitiesContainerComponent } from '@modules/core/advertisement/components/card/card-top/facilities-container/facilities-container.component'
 import { FacilityComponent } from '@modules/core/advertisement/components/card/card-top/facility/facility.component'
 import { FavouriteComponent } from '@modules/core/advertisement/components/card/card-top/favourite/favourite.component'
 import { PhotogalleryComponent } from '@modules/core/advertisement/components/card/card-top/photogallery/photogallery.component'
@@ -32,20 +30,19 @@ const advertisementsComponent = [
   CardExtraComponent,
   ReviewComponent,
   AboutComponent,
-  FacilitiesComponent,
   CardMainContainerComponent,
   PhotogalleryComponent,
-  FacilitiesContainerComponent,
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
   CheckInCheckOutComponent,
   SidebarContainerComponent,
-  PriceFilterComponent,
-  FacilityFilterComponent,
   ScoreFilterComponent,
+  FacilityFilterComponent,
   LatestContainerComponent,
   LatestMiniCardComponent,
+  PriceFilterComponent,
+  FacilitiesComponent,
 ]
 
 @NgModule({

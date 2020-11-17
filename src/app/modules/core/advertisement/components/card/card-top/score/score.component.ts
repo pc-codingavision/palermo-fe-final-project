@@ -1,24 +1,18 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'cav-score',
-  template: `<div>
-    <button mat-icon-button class="hidden">
-      <mat-icon>star</mat-icon>
-    </button>
-  </div> `,
-  styles: [
-    `
-      .hidden {
-        border: none;
-        outline: none;
-        cursor: pointer;
-      }
-    `,
-  ],
+  templateUrl: './score.component.html',
+  styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
+  @Input() score: number
+  @Output() ratingValue = new EventEmitter<number>()
   constructor() {}
 
   ngOnInit(): void {}
+
+  handleClick(rating: number): void {
+    this.ratingValue.emit(rating)
+  }
 }
