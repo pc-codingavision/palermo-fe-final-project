@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
-import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -9,23 +9,23 @@ import { Observable } from 'rxjs'
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  advertisements: Observable<IMockAdvertisement[]>
   minPrice: Observable<number>
   maxPrice: Observable<number>
+  advertisements$: Observable<MockAdvertisement[]>
 
   constructor(private advertisementService: AdvertisementService) {}
 
   ngOnInit(): void {
-    this.advertisements = this.advertisementService.findAll()
+    this.advertisements$ = this.advertisementService.findAll()
     this.minPrice = this.getMinPrice()
     this.maxPrice = this.getMaxPrice()
   }
 
   getMinPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsLowestPrice(this.advertisements)
+    return this.advertisementService.findAdvertisementsLowestPrice(this.advertisements$)
   }
 
   getMaxPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsHighestPrice(this.advertisements)
+    return this.advertisementService.findAdvertisementsHighestPrice(this.advertisements$)
   }
 }

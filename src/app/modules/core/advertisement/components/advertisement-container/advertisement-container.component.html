@@ -3,6 +3,6 @@
   <cav-sidebar-container [minPrice]="minPrice | async" [maxPrice]="maxPrice | async">
   </cav-sidebar-container>
   <div id="divider"></div>
-  <cav-advertisement-list [advertisements]="advertisements | async">
+  <cav-advertisement-list [advertisements]="advertisements$ | async">
   </cav-advertisement-list>
 </div>
