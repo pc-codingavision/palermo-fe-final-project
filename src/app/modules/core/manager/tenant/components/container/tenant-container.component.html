@@ -1,1 +1,9 @@
 <p>tenant-container works!</p>
+<h1>Get All</h1>
+<pre>{{tenants$ | async | json}}</pre>
+<h1>Get By id</h1>
+<pre>{{tenantService.getById(1) | async | json}}</pre>
+<h1>Get By Status</h1>
+<pre>{{tenantService.getByStatus(true) | async | json}}</pre>
+<h1>Get By FullName</h1>
+<pre>{{tenantService.getByFullName('Gigi Filini') | async | json}}</pre>
