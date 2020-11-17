@@ -93,10 +93,10 @@ export class EditComponent implements OnInit, OnDestroy {
       phoneType2: [this.landlord?.phone[1]?.type],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
       picture: [this.landlord?.picture ? this.landlord.picture : this.defaultPicture],
-      password: [this.landlord?.password, [Validators.required, Validators.minLength(5)]],
+      password: [this.landlord?.password, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [
         this.landlord?.password,
-        [Validators.required, Validators.minLength(5)],
+        [Validators.required, Validators.minLength(8)],
       ],
     })
   }
