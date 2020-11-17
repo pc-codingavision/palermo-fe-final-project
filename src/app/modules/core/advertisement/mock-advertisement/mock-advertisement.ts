@@ -20,7 +20,7 @@ export interface IMockAdvertisement {
   property: IProperty
   reviews: IMockReview[]
   price: number
-  score(): number
+  score?: number
 }
 export class MockAdvertisement implements IMockAdvertisement {
   private constructor(
@@ -28,8 +28,7 @@ export class MockAdvertisement implements IMockAdvertisement {
     public landlord = null,
     public property = null,
     public reviews = [],
-    public price = null,
-    public score = null
+    public price = null
   ) {}
   static Build(mockAdvertisement?: IMockAdvertisement): MockAdvertisement {
     if (!mockAdvertisement) {
@@ -40,9 +39,12 @@ export class MockAdvertisement implements IMockAdvertisement {
       mockAdvertisement.landlord,
       mockAdvertisement.property,
       mockAdvertisement.reviews,
-      mockAdvertisement.price,
-      mockAdvertisement.score
+      mockAdvertisement.price
     )
+  }
+
+  public get score(): number {
+    return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
   }
 }
 export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
@@ -115,11 +117,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 40,
-    score(): number {
-      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
-    },
   },
-
   {
     id: 2,
     landlord: {
@@ -184,9 +182,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 30,
-    score(): number {
-      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
-    },
   },
   {
     id: 3,
@@ -262,8 +257,5 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 20,
-    score(): number {
-      return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
-    },
   },
 ]

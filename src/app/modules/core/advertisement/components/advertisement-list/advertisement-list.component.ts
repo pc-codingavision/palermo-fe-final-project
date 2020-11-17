@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-advertisement-list',
@@ -7,7 +7,7 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
   styleUrls: ['./advertisement-list.component.scss'],
 })
 export class AdvertisementListComponent implements OnInit {
-  @Input() advertisements: IMockAdvertisement[]
+  @Input() advertisements: MockAdvertisement[]
   constructor() {}
   ngOnInit(): void {}
 }

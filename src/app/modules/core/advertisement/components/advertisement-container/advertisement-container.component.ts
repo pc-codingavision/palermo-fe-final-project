@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
-import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable } from 'rxjs'
 
 @Component({
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs'
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  advertisements$: Observable<IMockAdvertisement[]>
+  advertisements$: Observable<MockAdvertisement[]>
+
   constructor(private advertisementService: AdvertisementService) {}
 
   ngOnInit(): void {
