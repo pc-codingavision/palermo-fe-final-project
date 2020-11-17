@@ -1,0 +1,17 @@
+<mat-card class="container">
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+
+    <button class="arrow-button">
+      <span class="material-icons" (click)="goBehind()">navigate_before</span>
+    </button>
+
+    <cav-latest-mini-card *ngFor="let advertisement of latestAdvertisements | async"
+      [advertisement]="advertisement">
+    </cav-latest-mini-card>
+
+    <button class="arrow-button">
+      <span class="material-icons" (click)="goForward()">navigate_next</span>
+    </button>
+
+  </mat-card-content>
+</mat-card>
