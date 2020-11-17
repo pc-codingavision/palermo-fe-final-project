@@ -86,9 +86,12 @@ export class EditComponent implements OnInit, OnDestroy {
       dateOfBirth: [this.landlord?.dateOfBirth],
       phone1: [
         this.landlord?.phone[0]?.digits,
-        [Validators.required, Validators.minLength(6)],
+        [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9]*$')],
       ],
-      phone2: [this.landlord?.phone[1]?.digits],
+      phone2: [
+        this.landlord?.phone[1]?.digits,
+        [Validators.minLength(6), Validators.pattern('^[0-9]*$')],
+      ],
       phoneType1: [this.landlord?.phone[0]?.type],
       phoneType2: [this.landlord?.phone[1]?.type],
       email: [this.landlord?.mail, [Validators.required, Validators.email]],
