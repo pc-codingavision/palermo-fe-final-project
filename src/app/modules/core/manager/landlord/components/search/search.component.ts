@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
-
-import { SearchService } from '../../services/search.service'
 
 @Component({
   selector: 'cav-search',

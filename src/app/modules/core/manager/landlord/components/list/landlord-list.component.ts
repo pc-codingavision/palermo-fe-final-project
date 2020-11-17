@@ -1,10 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, Subscription } from 'rxjs'
-
-import { SearchService } from '../../services/search.service'
 
 export interface Elements {
   id: number
