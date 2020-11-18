@@ -32,18 +32,18 @@ export class SearchService {
     )
   }
 
-  private phoneSearch(landlord: Landlord, digits: string): boolean {
+  phoneSearch(landlord: Landlord, digits: string): boolean {
     return landlord.phone
       .map((x) => x.digits)
       .toString()
       .includes(digits)
   }
 
-  private mailSearch(landlord: Landlord, email: string): boolean {
+  mailSearch(landlord: Landlord, email: string): boolean {
     return landlord.mail.toLowerCase().includes(email.trim().toLowerCase())
   }
 
-  private fullNameSearch(landlord: Landlord, fullName: string): boolean {
+  fullNameSearch(landlord: Landlord, fullName: string): boolean {
     return landlord.fullName.toLowerCase().includes(fullName.trim().toLowerCase())
   }
 }
