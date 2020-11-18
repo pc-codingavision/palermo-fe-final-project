@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
@@ -9,8 +8,6 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
 })
 export class AdvertisementListComponent implements OnInit {
   @Input() advertisements: MockAdvertisement[]
-  constructor(private activatedRoute: ActivatedRoute) {}
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data) => (this.advertisements = data.result))
-  }
+  constructor() {}
+  ngOnInit(): void {}
 }
