@@ -44,6 +44,12 @@ describe('SearchService', () => {
     expect(service).toBeTruthy()
   })
 
+  it('#search should return a filtered landlord', () => {
+    service
+      .search('Piero Cascio', 'piero-landlord@test.com', '3454545')
+      .subscribe((land) => expect(land).toBe(void 0))
+  })
+
   it('#getSearchResult should return all landlords', () => {
     service
       .getSearchResult()
