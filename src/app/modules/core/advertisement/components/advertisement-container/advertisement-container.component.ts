@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -11,9 +11,9 @@ import { Observable } from 'rxjs'
 export class AdvertisementContainerComponent implements OnInit {
   advertisements$: Observable<MockAdvertisement[]>
 
-  constructor(private advertisementService: AdvertisementService) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.advertisements$ = this.advertisementService.findAll()
+    this.activatedRoute.data.subscribe((data) => (this.advertisements$ = of(data.result)))
   }
 }
