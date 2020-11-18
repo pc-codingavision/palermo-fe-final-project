@@ -7,12 +7,12 @@ import { DataResolver } from '@modules/core/advertisement/services/data-resolver
 
 export const advertisementRoutes: Routes = [
   { path: '', redirectTo: 'advertisement', pathMatch: 'full' },
-  { path: 'advertisement', component: AdvertisementContainerComponent },
   {
-    path: 'advertisement/list',
-    component: AdvertisementListComponent,
+    path: 'advertisement',
+    component: AdvertisementContainerComponent,
     resolve: { result: DataResolver },
   },
+  { path: 'advertisement/list', component: AdvertisementListComponent },
   { path: 'advertisement/details/:id', component: AdvertisementDetailsComponent },
 ]
 
