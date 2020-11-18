@@ -10,7 +10,7 @@ export const advertisementRoutes: Routes = [
   {
     path: 'advertisement',
     component: AdvertisementContainerComponent,
-    resolve: { result: DataResolver },
+    resolve: { advertisements: DataResolver },
   },
   { path: 'advertisement/list', component: AdvertisementListComponent },
   { path: 'advertisement/details/:id', component: AdvertisementDetailsComponent },

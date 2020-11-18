@@ -14,6 +14,8 @@ export class AdvertisementContainerComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data) => (this.advertisements$ = of(data.result)))
+    this.activatedRoute.data.subscribe(
+      (data) => (this.advertisements$ = of(data.advertisements))
+    )
   }
 }
