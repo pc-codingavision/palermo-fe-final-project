@@ -57,14 +57,14 @@ describe('SearchService', () => {
   })
 
   it('#phoneSearch should return true', () => {
-    expect(service.phoneSearch(landlord, '3454545')).toBe(true)
+    expect(service.phoneSearch(landlord, '3454545')).toBeTrue()
   })
 
   it('#mailSearch should return true', () => {
-    expect(service.mailSearch(landlord, 'piero-landlord@test.com')).toBe(true)
+    expect(service.mailSearch(landlord, 'piero-landlord@test.com')).toBeTrue()
   })
 
   it('#fullNameSearch should return true', () => {
-    expect(service.fullNameSearch(landlord, 'Piero Cascio')).toBe(true)
+    expect(service.fullNameSearch(landlord, 'Piero Cascio')).toBeTrue()
   })
 })
