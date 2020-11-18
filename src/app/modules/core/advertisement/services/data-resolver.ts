@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core'
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement.ts'
 import { Observable } from 'rxjs'
-
-import { MockAdvertisement } from '../mock-advertisement/mock-advertisement'
 
 @Injectable({
   providedIn: 'root',
