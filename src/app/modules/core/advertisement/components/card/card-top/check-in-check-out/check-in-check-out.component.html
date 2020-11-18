@@ -1,16 +1,30 @@
-<div>
+<div [formGroup]="date">
+
   <mat-form-field appearance="fill">
     <mat-label>Check-in</mat-label>
-    <input matInput matNativeControl [matDatepicker]="picker1">
+    <input matInput matNativeControl [min]="minCheckInDate"
+      (dateChange)="updateMinCheckOutDate($event.value)" formControlName="picker1"
+      [matDatepicker]="picker1" required>
     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
+    <mat-error *ngIf="date.get('picker1').hasError('required')">
+      Please enter a valid date
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Check-out</mat-label>
-    <input matInput matNativeControl [matDatepicker]="picker2">
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <input matInput matNativeControl [min]="minCheckOutDate" formControlName="picker2"
+      [matDatepicker]="picker2" required>
+    <mat-datepicker-toggle matSuffix [for]="picker2">
+    </mat-datepicker-toggle>
     <mat-datepicker #picker2></mat-datepicker>
+    <mat-error *ngIf="date.get('picker2').hasError('required')">
+      Please enter a valid date
+    </mat-error>
   </mat-form-field>
+
+  <button type="submit" [disabled]="date.invalid" mat-raised-button
+    class="button">Book</button>
 
 </div>

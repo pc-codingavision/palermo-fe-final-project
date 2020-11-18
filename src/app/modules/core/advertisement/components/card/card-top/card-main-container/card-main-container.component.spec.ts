@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-
-import { CardMainContainerComponent } from './card-main-container.component'
+import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
 
 describe('CardMainContainerComponent', () => {
   let component: CardMainContainerComponent

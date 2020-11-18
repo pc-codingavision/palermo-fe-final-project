@@ -71,7 +71,7 @@ describe('LandlordService', () => {
   it('#getById should return landlord by id', (done: DoneFn) => {
     service
       .getById(1)
-      .subscribe((landlord) => expect(landlord).toEqual(service.landlords[0]))
+      .subscribe((landlord) => expect(landlord).toEqual(buildLandlords[0]))
     done()
   })
 
