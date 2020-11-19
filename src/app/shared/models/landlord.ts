@@ -22,7 +22,7 @@ export class Landlord implements IUser {
     } as IAddress
   ) {}
 
-  static Build(landlord: IUser): Landlord {
+  static Build(landlord?: IUser): Landlord {
     if (!landlord) {
       return new Landlord()
     }
