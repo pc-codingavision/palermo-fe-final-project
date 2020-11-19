@@ -1,8 +1,7 @@
-import { IGenericUserDao } from '@modules/shared/interfaces/IGenericUserDao'
-import { TENANTS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { IGenericUserService } from '@modules/shared/interfaces/i-generic-user-service'
 import { Observable, of } from 'rxjs'
 
-export abstract class GenericUserService<T> implements IGenericUserDao<T> {
+export abstract class GenericUserService<T> implements IGenericUserService<T> {
   abstract getMockedData(): T[]
   abstract builtMockData(user: T): T
 
@@ -24,33 +23,26 @@ export abstract class GenericUserService<T> implements IGenericUserDao<T> {
         return of(this.builtMockData(userById))
       }
     }
+    return of(null)
   }
 
   getByStatus(status: boolean): Observable<T[]> {
     // @ts-ignore
-    const usersByStatus = this.getMockedData().filter((user: T) => user.status === status)
-    if (usersByStatus.length) {
-      return of(usersByStatus.map((user) => this.builtMockData(user)))
-    }
+    return of(this.getMockedData().filter((user) => user.status === status))
   }
 
   getByFullName(fullName: string): Observable<T[]> {
     const buildUsers = this.getMockedData().map((user) => this.builtMockData(user))
     // @ts-ignore
-    const users = buildUsers.filter((user: T) => fullName === user.fullName)
-    if (users.length) {
-      return of(users.map((user) => this.builtMockData(user)))
-    }
+    return of(buildUsers.filter((user) => fullName === user.fullName))
   }
 
-  // da sistemare
   add(user: T): void {
     if (user !== null) {
       this.getMockedData().push(user)
-      console.log(TENANTS_MOCK_DATA)
     }
   }
-  // da sistemare
+
   update(user: T): Observable<T | null> {
     if (user !== null) {
       // @ts-ignore
@@ -59,8 +51,9 @@ export abstract class GenericUserService<T> implements IGenericUserDao<T> {
         return of((this.getMockedData()[index] = user))
       }
     }
+    return of(null)
   }
-  // da sistemare
+
   delete(id: number): void {
     if (this.getArrayIndexById(id) !== null) {
       this.getMockedData().splice(this.getArrayIndexById(id), 1)

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs'
 
-export interface IGenericUserDao<T> {
+export interface IGenericUserService<T> {
   getMockedData(): T[]
 
   getAll(): Observable<T[]>
