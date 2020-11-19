@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 
 import { DialogService } from './dialog.service'
 
@@ -9,6 +9,10 @@ describe('DialogService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [MatDialogModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
     })
     service = TestBed.inject(DialogService)
   })
