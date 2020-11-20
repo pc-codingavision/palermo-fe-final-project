@@ -38,8 +38,20 @@ tr.element-row:not(.expanded-row):active {
   height: auto;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (min-width: 300px) and (max-width: 480px) {
   .element-diagram {
     height: 140vh;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .element-diagram {
+    height: 130vh;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 970px) {
+  .element-diagram {
+    height: 110vh;
   }
 }
