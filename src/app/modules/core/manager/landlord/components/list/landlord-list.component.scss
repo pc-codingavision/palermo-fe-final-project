@@ -33,3 +33,13 @@ tr.element-row:not(.expanded-row):active {
 #add-button {
   padding: 8px;
 }
+
+.detail {
+  height: auto;
+}
+
+@media screen and (max-width: 420px) {
+  .element-diagram {
+    height: 140vh;
+  }
+}
