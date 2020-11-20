@@ -32,7 +32,7 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
 
-  constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
+  constructor(private landlordService: LandlordService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getAll()
@@ -40,7 +40,6 @@ export class LandlordListComponent implements OnInit {
 
   getAll(): void {
     this.landlords$ = this.route.snapshot.data.list
-
   }
 
   remove(landlord: Landlord): void {
