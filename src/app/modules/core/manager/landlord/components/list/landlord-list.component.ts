@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable } from 'rxjs'
@@ -31,14 +32,15 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
 
-  constructor(private landlordService: LandlordService) {}
+  constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAll()
   }
 
   getAll(): void {
-    this.landlords$ = this.landlordService.getAll()
+    this.landlords$ = this.route.snapshot.data.list
+
   }
 
   remove(landlord: Landlord): void {
