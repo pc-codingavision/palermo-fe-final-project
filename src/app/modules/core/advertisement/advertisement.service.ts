@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {
   IMockAdvertisement,
@@ -6,13 +7,15 @@ import {
 import { IFacilities } from '@shared/models/property'
 import * as _ from 'lodash'
 import { Observable, of } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { map, tap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdvertisementService {
-  constructor() {}
+  private advertisementsUrl = 'api/advertisements'
+
+  constructor(private http: HttpClient) {}
 
   findAll(): Observable<IMockAdvertisement[]> {
     return of(MOCKADVERTISEMENTS_MOCK_DATA)

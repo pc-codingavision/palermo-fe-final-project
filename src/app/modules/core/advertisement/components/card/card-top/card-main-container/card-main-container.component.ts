@@ -9,6 +9,8 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
 
+  adv: IMockAdvertisement[]
+
   constructor() {}
 
   ngOnInit(): void {}
