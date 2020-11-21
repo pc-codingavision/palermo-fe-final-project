@@ -38,19 +38,18 @@ tr.element-row:not(.expanded-row):active {
   height: auto;
 }
 
-@media screen and (min-width: 300px) and (max-width: 480px) {
+.mat-card {
+  padding: 5%;
+  border: 1px solid whitesmoke;
+}
+
+@media screen and (max-width: 319px) {
   .element-diagram {
-    height: 140vh;
+    height: 110vh;
   }
 }
 
-@media screen and (min-width: 480px) and (max-width: 767px) {
-  .element-diagram {
-    height: 130vh;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 970px) {
+@media screen and (min-width: 320px) and (max-width: 960px) {
   .element-diagram {
     height: 110vh;
   }

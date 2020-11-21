@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable } from 'rxjs'
@@ -31,7 +32,7 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
 
-  constructor(private landlordService: LandlordService) {}
+  constructor(private landlordService: LandlordService, public media: MediaObserver) {}
 
   ngOnInit(): void {
     this.getAll()
