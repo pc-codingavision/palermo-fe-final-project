@@ -5,16 +5,17 @@ import { BehaviorSubject } from 'rxjs'
   providedIn: 'root',
 })
 export class SpinnerService {
-  visibility: BehaviorSubject<boolean>
+  spinnerStatus: BehaviorSubject<boolean>
+
   constructor() {
-    this.visibility = new BehaviorSubject(false)
+    this.spinnerStatus = new BehaviorSubject(false)
   }
 
   showSpinner(): void {
-    this.visibility.next(true)
+    this.spinnerStatus.next(true)
   }
 
   hideSpinner(): void {
-    this.visibility.next(false)
+    this.spinnerStatus.next(false)
   }
 }
