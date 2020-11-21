@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { SpinnerService } from '@shared/services/spinner.service'
 
 @Component({
   selector: 'cav-spinner',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./spinner.component.scss'],
 })
 export class SpinnerComponent implements OnInit {
-  constructor() {}
+  constructor(public spinnerService: SpinnerService) {}
 
   ngOnInit(): void {}
 }

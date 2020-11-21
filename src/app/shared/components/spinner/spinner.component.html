@@ -1,4 +1,4 @@
-<div class="overlay">
+<div class="overlay" *ngIf="spinnerService.visibility | async">
   <div class="center">
     <mat-spinner diameter="100"></mat-spinner>
   </div>
