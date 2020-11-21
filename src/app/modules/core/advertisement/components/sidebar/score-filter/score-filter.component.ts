@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import * as _ from 'lodash'
 
 @Component({
   selector: 'cav-score-filter',
@@ -12,7 +13,7 @@ export class ScoreFilterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  emitScoreFilter(value: number): void {
-    this.filter.emit(value)
+  emitScoreFilter(value: string): void {
+    this.filter.emit(_.toNumber(value))
   }
 }

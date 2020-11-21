@@ -5,7 +5,7 @@ import {
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { IFacilities } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Observable, of } from 'rxjs'
+import { Observable, Subject, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 @Injectable({
@@ -15,6 +15,7 @@ export class AdvertisementService {
   advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
     MockAdvertisement.Build(advertisement)
   )
+  sidebarFilter = new Subject<any>()
 
   constructor() {}
 

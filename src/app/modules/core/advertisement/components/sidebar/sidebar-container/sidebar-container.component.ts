@@ -15,15 +15,7 @@ export class SidebarContainerComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  applyPriceFilter(filter: number): void {
-    this.advertisementService.getAdvertisementsFilteredByPrice(filter)
-  }
-
-  applyFacilityFilter(filter: IFacilities): void {
-    this.advertisementService.getAdvertisementsFilteredByFacilities(filter)
-  }
-
-  applyScoreFilter(filter: number): void {
-    this.advertisementService.getAdvertisementsFilteredByScore(filter)
+  applyFilter(filter: number | IFacilities): void {
+    this.advertisementService.sidebarFilter.next(filter)
   }
 }

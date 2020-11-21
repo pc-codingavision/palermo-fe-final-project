@@ -1,6 +1,6 @@
 <cav-price-filter [maxPrice]="maxPrice" [minPrice]="minPrice"
-  (filter)="applyPriceFilter($event)"></cav-price-filter>
+  (filter)="applyFilter($event)"></cav-price-filter>
 <div class="divider"></div>
-<cav-facility-filter (filter)="applyFacilityFilter($event)"></cav-facility-filter>
+<cav-facility-filter (filter)="applyFilter($event)"></cav-facility-filter>
 <div class="divider"></div>
-<cav-score-filter (filter)="applyScoreFilter($event)"></cav-score-filter>
+<cav-score-filter (filter)="applyFilter($event)"></cav-score-filter>
