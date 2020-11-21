@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
 
 export interface Elements {
   id: number
@@ -32,14 +32,16 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
 
-  constructor(private landlordService: LandlordService, private route: ActivatedRoute) {}
+  constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAll()
   }
 
   getAll(): void {
-    this.landlords$ = this.route.snapshot.data.list
+    this.route.data.subscribe((data) => {
+      this.landlords$ = of(data.list)
+    })
   }
 
   remove(landlord: Landlord): void {

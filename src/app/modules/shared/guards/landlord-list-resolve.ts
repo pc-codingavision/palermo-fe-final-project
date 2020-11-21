@@ -3,15 +3,16 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable } from 'rxjs'
+import { delay } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
 export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
-  constructor(public landlordService: LandlordService) {}
+  constructor(public landlordService: LandlordService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Landlord[]> {
-    return this.landlordService.getAll()
+    return this.landlordService.getAll().pipe(delay(2000))
   }
 }
