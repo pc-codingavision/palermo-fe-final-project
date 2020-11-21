@@ -9,7 +9,7 @@ export interface Elements {
   id: number
   fullName: string
   mail: string
-  phone_number: string
+  phoneNumber: string
 }
 
 @Component({
@@ -28,7 +28,7 @@ export interface Elements {
   ],
 })
 export class LandlordListComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
+  displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
   private subscription: Subscription
