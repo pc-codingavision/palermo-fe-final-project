@@ -1,0 +1,38 @@
+.facility-filter {
+  margin-left: 2%;
+}
+
+.facility-card {
+  width: 200px;
+}
+
+#facility-card-title {
+  font-size: 14pt;
+}
+
+#facility-divider {
+  margin-bottom: 8%;
+}
+
+:host ::ng-deep .facility-checkbox .mat-checkbox-frame {
+  border-radius: 20%;
+}
+
+.facility-checkbox {
+  font-size: 12pt;
+  margin-top: 5%;
+}
+
+#facility-more {
+  margin-top: 10%;
+  font-size: 12pt;
+
+  cursor: pointer;
+}
+
+#facility-less {
+  margin-top: 10%;
+  font-size: 12pt;
+
+  cursor: pointer;
+}

@@ -71,7 +71,7 @@ describe('LandlordService', () => {
   it('#getById should return landlord by id', (done: DoneFn) => {
     service
       .getById(1)
-      .subscribe((landlord) => expect(landlord).toEqual(service.landlords[0]))
+      .subscribe((landlord) => expect(landlord).toEqual(buildLandlords[0]))
     done()
   })
 
@@ -127,5 +127,11 @@ describe('LandlordService', () => {
       .toggleStatus(1)
       .subscribe(() => expect(service.landlords[0].status).not.toEqual(status))
     done()
+  })
+
+  it('#genId should generate a new id', () => {
+    expect(service.genId()).toEqual(4)
+    service.landlords = []
+    expect(service.genId()).toEqual(1)
   })
 })

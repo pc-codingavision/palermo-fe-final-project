@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 import { SharedModule } from '@modules/shared/shared.module'
 
 import { DialogComponent } from './dialog.component'
@@ -11,6 +12,10 @@ describe('DialogComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DialogComponent],
       imports: [SharedModule],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ],
     }).compileComponents()
   }))
 
@@ -20,7 +25,7 @@ describe('DialogComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

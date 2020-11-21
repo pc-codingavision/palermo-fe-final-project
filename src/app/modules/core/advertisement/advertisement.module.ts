@@ -1,30 +1,27 @@
 import { CommonModule } from '@angular/common'
-import { NgModule } from '@angular/core'
-import { FlexLayoutModule } from '@angular/flex-layout'
-
-import { MaterialModule } from '../../shared/material.module'
-import { AdvertisementContainerComponent } from '../advertisement/components/advertisement-container/advertisement-container.component'
-import { AdvertisementDetailsComponent } from '../advertisement/components/advertisement-details/advertisement-details.component'
-import { CardContainerComponent } from '../advertisement/components/advertisement-list/card/card-container/card-container.component'
-import { CardExtraComponent } from '../advertisement/components/advertisement-list/card/card-extra/card-extra.component'
-import { ReviewComponent } from '../advertisement/components/advertisement-list/card/card-extra/review/review.component'
-import { CardMainViewComponent } from '../advertisement/components/advertisement-list/card/card-main-view/card-main-view.component'
-import { FacilitiesContainerComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facilities-container.component'
-import { FacilityComponent } from '../advertisement/components/advertisement-list/card/card-main-view/facilities-container/facility/facility.component'
-import { FavouriteComponent } from '../advertisement/components/advertisement-list/card/card-main-view/favourite/favourite.component'
-import { ScoreComponent } from '../advertisement/components/advertisement-list/card/card-main-view/score/score.component'
-import { LatestContainerComponent } from '../advertisement/components/advertisement-list/latest/latest-container/latest-container.component'
-import { LatestMiniCardComponent } from '../advertisement/components/advertisement-list/latest/latest-mini-card/latest-mini-card.component'
-import { AdvertisementRoutingModule } from './advertisement-routing.module'
-import { AdvertisementListComponent } from './components/advertisement-list/advertisement-list.component'
-import { AboutComponent } from './components/advertisement-list/card/card-extra/about/about.component'
-import { FacilitiesComponent } from './components/advertisement-list/card/card-extra/facilities/facilities.component'
-import { CheckInCheckOutComponent } from './components/advertisement-list/card/card-main-view/check-in-check-out/check-in-check-out.component'
-import { PhotogalleryComponent } from './components/advertisement-list/card/card-main-view/photogallery/photogallery.component'
-import { FacilityFilterComponent } from './components/advertisement-list/sidebar/facility-filter/facility-filter.component'
-import { PriceFilterComponent } from './components/advertisement-list/sidebar/price-filter/price-filter.component'
-import { ScoreFilterComponent } from './components/advertisement-list/sidebar/score-filter/score-filter.component'
-import { SidebarContainerComponent } from './components/advertisement-list/sidebar/sidebar-container/sidebar-container.component'
+import { LOCALE_ID, NgModule } from '@angular/core'
+import { AdvertisementRoutingModule } from '@modules/core/advertisement/advertisement-routing.module'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
+import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
+import { AdvertisementListComponent } from '@modules/core/advertisement/components/advertisement-list/advertisement-list.component'
+import { AboutComponent } from '@modules/core/advertisement/components/card/card-bottom/about/about.component'
+import { CardExtraComponent } from '@modules/core/advertisement/components/card/card-bottom/card-extra/card-extra.component'
+import { FacilitiesComponent } from '@modules/core/advertisement/components/card/card-bottom/facilities/facilities.component'
+import { ReviewComponent } from '@modules/core/advertisement/components/card/card-bottom/review/review.component'
+import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
+import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
+import { FacilityComponent } from '@modules/core/advertisement/components/card/card-top/facility/facility.component'
+import { FavouriteComponent } from '@modules/core/advertisement/components/card/card-top/favourite/favourite.component'
+import { PhotogalleryComponent } from '@modules/core/advertisement/components/card/card-top/photogallery/photogallery.component'
+import { ScoreComponent } from '@modules/core/advertisement/components/card/card-top/score/score.component'
+import { LatestContainerComponent } from '@modules/core/advertisement/components/latest/latest-container/latest-container.component'
+import { LatestMiniCardComponent } from '@modules/core/advertisement/components/latest/latest-mini-card/latest-mini-card.component'
+import { FacilityFilterComponent } from '@modules/core/advertisement/components/sidebar/facility-filter/facility-filter.component'
+import { PriceFilterComponent } from '@modules/core/advertisement/components/sidebar/price-filter/price-filter.component'
+import { ScoreFilterComponent } from '@modules/core/advertisement/components/sidebar/score-filter/score-filter.component'
+import { SidebarContainerComponent } from '@modules/core/advertisement/components/sidebar/sidebar-container/sidebar-container.component'
+import { SharedModule } from '@modules/shared/shared.module'
 
 const advertisementsComponent = [
   AdvertisementListComponent,
@@ -33,26 +30,24 @@ const advertisementsComponent = [
   CardExtraComponent,
   ReviewComponent,
   AboutComponent,
-  FacilitiesComponent,
-  CardContainerComponent,
-  CardMainViewComponent,
+  CardMainContainerComponent,
   PhotogalleryComponent,
-  FacilitiesContainerComponent,
   FacilityComponent,
   FavouriteComponent,
   ScoreComponent,
   CheckInCheckOutComponent,
   SidebarContainerComponent,
-  PriceFilterComponent,
-  FacilityFilterComponent,
   ScoreFilterComponent,
+  FacilityFilterComponent,
   LatestContainerComponent,
   LatestMiniCardComponent,
+  PriceFilterComponent,
+  FacilitiesComponent,
 ]
 
 @NgModule({
   declarations: [...advertisementsComponent],
-
-  imports: [CommonModule, AdvertisementRoutingModule, MaterialModule, FlexLayoutModule],
+  imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
+  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
 export class AdvertisementModule {}

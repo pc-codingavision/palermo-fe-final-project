@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit {
-  constructor() {}
+  advertisements$: Observable<MockAdvertisement[]>
 
-  ngOnInit(): void {}
+  constructor(private advertisementService: AdvertisementService) {}
+
+  ngOnInit(): void {
+    this.advertisements$ = this.advertisementService.findAll()
+  }
 }

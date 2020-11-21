@@ -1,11 +1,11 @@
 import { Role } from '@shared/enum/enums'
-import { IAddress, IName, IUser } from '@shared/models/users'
+import { IAddress, IName, IPhone, IUser } from '@shared/models/users'
 
 export class Landlord implements IUser {
   private constructor(
     public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
-    public phone = [],
+    public phone = [] as IPhone[],
     public mail = '',
     public picture = '',
     public username = '',
@@ -22,7 +22,7 @@ export class Landlord implements IUser {
     } as IAddress
   ) {}
 
-  static Build(landlord: IUser): Landlord {
+  static Build(landlord?: IUser): Landlord {
     if (!landlord) {
       return new Landlord()
     }

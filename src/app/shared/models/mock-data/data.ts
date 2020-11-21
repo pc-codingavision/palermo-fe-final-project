@@ -66,7 +66,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
-    phone: [{ id: 1, type: PhoneType.Mobile, digits: '3454545' }],
+    phone: [
+      { id: 1, type: PhoneType.Mobile, digits: '3454545' },
+      { id: 2, type: PhoneType.Home, digits: '09252525' },
+    ],
     mail: 'piero-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord1',
@@ -85,7 +88,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 2,
     name: { firstName: 'Cosimo', surname: 'Nigrelli' },
-    phone: [{ id: 2, type: PhoneType.Home, digits: '213455' }],
+    phone: [
+      { id: 1, type: PhoneType.Home, digits: '213455' },
+      { id: 2, type: PhoneType.Mobile, digits: '0251628' },
+    ],
     mail: 'cosimo-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
@@ -104,7 +110,10 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
   {
     id: 3,
     name: { firstName: 'Vito', surname: 'Rizzo' },
-    phone: [{ id: 3, type: PhoneType.Work, digits: '142354' }],
+    phone: [
+      { id: 1, type: PhoneType.Work, digits: '142354' },
+      { id: 2, type: PhoneType.Mobile, digits: '252152' },
+    ],
     mail: 'vito-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord3',
@@ -211,14 +220,14 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       line1: 'Via Roma',
       city: 'Palermo',
       country: 'italia',
-      postalCode: '90100',
+      postCode: '90100',
     },
     title: 'Splendido monovano',
     category: Category.Apartment,
-    rooms: [{ roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
+    rooms: [{ name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 }],
     numberOfToilet: 1,
     description:
-      "Non si intrometta! No, aspetti, mi porga l'indice; ecco lo alzi così... guardi, guardi, guardi; lo vede il dito? Lo vede che stuzzica, che prematura anche. E lei.. cosa si sente? Professore, non le dico. Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra.",
+      "Perfetto per immergersi a pieno nella vita dello storico e caratteristico Mercato del Capo. La palazzina si trova nel cuore della città antica, all'interno del Mercato; zona ben fornita di mezzi pubblici e servizi. L'edificio è composto da 4 appartamenti ciascuno dei quali è così suddiviso: ingresso, cucina abitabile totalmente arredata, camera da letto, bagno con doccia ed antibagno",
     facilities: {
       tv: true,
       wifi: true,
@@ -237,19 +246,19 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      country: 'italia',
-      postalCode: '90100',
+      state: 'italia',
+      postCode: '90100',
     },
     title: 'Splendido appartamento',
     category: Category.Apartment,
     rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 1', beds: 1, toilet: Toilet.Inside, mq: 25 },
+      { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 3', beds: 1, toilet: Toilet.Outside, mq: 25 },
     ],
     numberOfToilet: 1,
     description:
-      'Si, ma la sbiriguda della sbrindellona come se fosse antani come faceva? Prego? Ho provato con la supercazzola con scappelamento paraplegico a sinistra, ma non funzionava. E lei.. cosa si sente? Professore, non le dico.',
+      "Luminoso attico nel centro di Palermo, posizione ideale per tutte le principali attrazioni turistiche del Centro Storico antico (5 min a piedi dalla Cattedrale).Questo attico di design si trova all'ultimo 7 ° piano (con ascensore) e offre una vista mozzafiato sulle montagne circostanti e sul centro storico della città. Il parcheggio è gratuito nella strada sottostante.",
     facilities: {
       tv: true,
       wifi: true,
@@ -268,18 +277,18 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
     address: {
       line1: 'Via Roma',
       city: 'Palermo',
-      country: 'italia',
-      postalCode: '90100',
+      state: 'italia',
+      postCode: '90100',
     },
     title: 'Splendido attico con vista',
     category: Category.Apartment,
     rooms: [
-      { roomName: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
-      { roomName: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 1', beds: 1, toilet: Toilet.Outside, mq: 25 },
+      { name: 'room 2', beds: 2, toilet: Toilet.Outside, mq: 25 },
     ],
     numberOfToilet: 1,
     description:
-      "Antani come trazione per due anche se fosse supercazzola bitumata, ha lo scappellamento a destra. Guardi, le ho ritagliato quell'articolo sul Casentino. Ma lei se la blinda la supercazzola prematurata come se fosse anche un po' di Casentino che perdura anche come cappotto;",
+      'Situata nel cuore del Centro Storico di Palermo, La Boucherie vi da il benvenuto in una delle città più belle della Sicilia. Bellissimo appartamento nel quartiere della Vucciria, vicino alle vie più centrali della città, la Boucherie è dotato di Wi-Fi senza limiti, aria condizionata, finestre in vetro-camera, cucina attrezzata, lavatrice e due balconi. Ben collegato. Pulito e tranquillo.',
     facilities: {
       tv: true,
       wifi: true,

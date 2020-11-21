@@ -3,5 +3,6 @@
 <div fxLayout="row" fxLayoutAlign="center none" id="body">
   <cav-sidebar-container></cav-sidebar-container>
   <div id="divider"></div>
-  <cav-advertisement-list></cav-advertisement-list>
+  <cav-advertisement-list [advertisements]="advertisements$ | async">
+  </cav-advertisement-list>
 </div>
