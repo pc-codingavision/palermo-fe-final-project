@@ -128,4 +128,10 @@ describe('LandlordService', () => {
       .subscribe(() => expect(service.landlords[0].status).not.toEqual(status))
     done()
   })
+
+  it('#genId should generate a new id', () => {
+    expect(service.genId()).toEqual(4)
+    service.landlords = []
+    expect(service.genId()).toEqual(1)
+  })
 })

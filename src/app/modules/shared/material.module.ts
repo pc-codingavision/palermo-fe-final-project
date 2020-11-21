@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatInputModule } from '@angular/material/input'
 import { MatListModule } from '@angular/material/list'
 import { MatRadioModule } from '@angular/material/radio'
+import { MatSelectModule } from '@angular/material/select'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatSliderModule } from '@angular/material/slider'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
@@ -24,18 +25,21 @@ const modules = [
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatNativeDateModule,
   MatIconModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatDialogModule,
   MatDividerModule,
   MatFormFieldModule,
-  MatIconModule,
   MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSnackBarModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatCheckboxModule,
   MatGridListModule,
   MatNativeDateModule,
   MatRadioModule,

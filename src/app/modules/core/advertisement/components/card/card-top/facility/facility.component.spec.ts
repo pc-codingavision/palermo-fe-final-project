@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-
-import { FacilityComponent } from './facility.component'
+import { FacilityComponent } from '@modules/core/advertisement/components/card/card-top/facility/facility.component'
 
 describe('FacilityComponent', () => {
   let component: FacilityComponent

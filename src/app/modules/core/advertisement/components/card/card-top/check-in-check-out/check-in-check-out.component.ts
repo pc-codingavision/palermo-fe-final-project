@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import moment from 'moment'
 
 @Component({
   selector: 'cav-check-in-check-out',
@@ -6,7 +8,21 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./check-in-check-out.component.scss'],
 })
 export class CheckInCheckOutComponent implements OnInit {
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
+  minCheckInDate: Date
+  minCheckOutDate: Date
 
-  ngOnInit(): void {}
+  date: FormGroup = this.fb.group({
+    picker1: ['', [Validators.required]],
+    picker2: ['', [Validators.required]],
+  })
+
+  ngOnInit(): void {
+    this.minCheckInDate = moment().toDate()
+    this.minCheckOutDate = moment().toDate()
+  }
+
+  updateMinCheckOutDate(value: Date): void {
+    this.minCheckOutDate = value
+  }
 }
