@@ -6,7 +6,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api'
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
+  createDb(): any {
     const advertisements = [
       {
         id: 1,
