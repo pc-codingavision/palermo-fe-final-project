@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {
   MOCKADVERTISEMENTS_MOCK_DATA,
@@ -19,7 +18,7 @@ export class AdvertisementService {
     MockAdvertisement.Build(advertisement)
   )
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   findAll(): Observable<MockAdvertisement[]> {
     return of(this.advertisements)
