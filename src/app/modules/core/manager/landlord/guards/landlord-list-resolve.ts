@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Resolve } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable, of, throwError } from 'rxjs'
+import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
@@ -27,7 +27,6 @@ export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
     }
 
     alert(errorMessage)
-    throwError(errorMessage)
-    return of(Landlord.Build())
+    return throwError(errorMessage)
   }
 }
