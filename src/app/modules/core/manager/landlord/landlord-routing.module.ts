@@ -21,4 +21,4 @@ const landlordRoutes: Routes = [
   imports: [RouterModule.forChild(landlordRoutes)],
   exports: [RouterModule],
 })
-export class LandlordRoutingModule { }
+export class LandlordRoutingModule {}

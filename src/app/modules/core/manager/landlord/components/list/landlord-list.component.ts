@@ -31,7 +31,7 @@ export class LandlordListComponent implements OnInit {
   expandedElement: Elements | null
   landlords: Landlord[]
 
-  constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
+  constructor(private landlordService: LandlordService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getAll()
