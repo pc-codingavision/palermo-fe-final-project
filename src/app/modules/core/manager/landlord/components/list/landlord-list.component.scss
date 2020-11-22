@@ -45,12 +45,12 @@ tr.element-row:not(.expanded-row):active {
 
 @media screen and (max-width: 319px) {
   .element-diagram {
-    height: 110vh;
+    height: 105%;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 960px) {
   .element-diagram {
-    height: 110vh;
+    height: 105%;
   }
 }

@@ -6,7 +6,7 @@
     </mat-icon>
   </button>
 </div>
-<div *ngIf="!this.media.isActive('xs'); else elseBlock">
+<div *ngIf="!this.media.isActive('xs'); else mobileView">
   <table mat-table [dataSource]="landlords$ | async" multiTemplateDataRows
     class="mat-elevation-z8">
     <ng-container matColumnDef="id">
@@ -52,7 +52,7 @@
 
   </table>
 </div>
-<ng-template #elseBlock>
+<ng-template #mobileView>
   <mat-card *ngFor="let element of ( landlords$ | async)">
     <a (click)="expandedElement = expandedElement === element ? null : element"
       class="element-row" [class.expanded-row]="expandedElement === element"

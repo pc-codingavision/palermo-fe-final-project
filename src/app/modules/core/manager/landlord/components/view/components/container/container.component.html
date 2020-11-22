@@ -3,7 +3,8 @@
     <h1 md-display-4>{{landlord?.fullName}} details</h1>
   </div>
 
-  <div id="cav-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="stretch">
+  <div id="cav-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="stretch"
+    fxLayoutGap="1%">
     <cav-status fxFlex="15" fxFlex.lt-sm="20%" [landlord]="landlord">
     </cav-status>
     <cav-contact fxFlex="30" fxFlex.lt-sm="20%" id="contact-cav" [landlord]="landlord">
@@ -15,7 +16,8 @@
     </cav-address>
   </div>
 
-  <cav-button-container [landlord]="landlord" (toggleStatus)="toggleStatus($event)">
+  <cav-button-container id="button" [landlord]="landlord"
+    (toggleStatus)="toggleStatus($event)">
   </cav-button-container>
 
 </div>
