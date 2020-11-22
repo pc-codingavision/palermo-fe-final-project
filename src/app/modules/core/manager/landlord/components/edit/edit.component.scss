@@ -1,0 +1,58 @@
+img {
+  width: 160px;
+  height: 160px;
+  display: block;
+}
+
+#name-container,
+#buttons-container {
+  margin-top: 20px;
+}
+
+#picture-container {
+  padding: 24px;
+}
+
+#select-picture {
+  background-color: #fff;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  width: 100%;
+}
+
+.mat-input-element {
+  color: black;
+}
+
+mat-card div {
+  height: 100%;
+}
+
+.select-container {
+  width: 100px;
+  margin-right: 15px;
+  padding: 0px;
+}
+
+button {
+  padding: 10px 25px;
+  text-align: center;
+  vertical-align: auto;
+  margin-right: 4%;
+  min-width: auto;
+}
+
+#reset-password-container {
+  background-color: #fff;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  width: 500px;
+}
+
+mat-form-field {
+  padding: 10px;
+}
