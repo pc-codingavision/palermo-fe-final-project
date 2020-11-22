@@ -6,7 +6,7 @@ import { Observable } from 'rxjs'
 
 @Injectable({ providedIn: 'root' })
 export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
-  constructor(public landlordService: LandlordService) {}
+  constructor(private landlordService: LandlordService) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
