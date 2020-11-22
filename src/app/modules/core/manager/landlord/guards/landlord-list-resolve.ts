@@ -3,30 +3,33 @@ import { Resolve } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, throwError } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
 export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
   constructor(private landlordService: LandlordService) {}
 
-  resolve(): Observable<Landlord[]> {
+  resolve(): Observable<Landlord[]> | any {
     return this.landlordService.getAll().pipe(
+      map((response) => response),
       catchError((err) => {
         console.log(err)
-        return this.handleError
+        return this.handleError(err)
       })
     )
   }
 
-  handleError(error): any {
+  handleError(err): any {
     let errorMessage = ''
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`
+    const errorGroup = `Error Code: ${err.status}'\n' Error: ${err.error.message} '\n' Message: ${err.message}`
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${err.error.message}`
     } else {
-      errorMessage = `Error Code: ${error.status} Message: ${error.message}`
+      errorMessage = errorGroup
     }
 
-    alert(errorMessage)
-    return throwError(errorMessage)
+    alert(`Sorry,something went wrong. '\n' ${errorGroup}`)
+
+    return throwError(`${errorMessage}`)
   }
 }
