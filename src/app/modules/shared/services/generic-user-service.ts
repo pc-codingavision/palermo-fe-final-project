@@ -1,12 +1,13 @@
 import { IGenericUserService } from '@modules/shared/interfaces/i-generic-user-service'
+import { IUser } from '@shared/models/users'
 import { Observable, of } from 'rxjs'
 
-export abstract class GenericUserService<T> implements IGenericUserService<T> {
+export abstract class GenericUserService<T extends IUser>
+  implements IGenericUserService<T> {
   abstract getMockedData(): T[]
-  abstract builtMockData(user: T): T
+  protected abstract builtMockData(user: T): T
 
   private getArrayIndexById(id: number): number | null {
-    // @ts-ignore
     const index = this.getMockedData().findIndex((user) => user.id === id)
     return index === -1 ? null : index
   }
@@ -17,24 +18,12 @@ export abstract class GenericUserService<T> implements IGenericUserService<T> {
 
   getById(id: number): Observable<T> {
     if (id !== null) {
-      // @ts-ignore
       const userById = this.getMockedData().find((user: T) => user.id === id)
       if (userById !== undefined) {
         return of(this.builtMockData(userById))
       }
     }
     return of(null)
-  }
-
-  getByStatus(status: boolean): Observable<T[]> {
-    // @ts-ignore
-    return of(this.getMockedData().filter((user) => user.status === status))
-  }
-
-  getByFullName(fullName: string): Observable<T[]> {
-    const buildUsers = this.getMockedData().map((user) => this.builtMockData(user))
-    // @ts-ignore
-    return of(buildUsers.filter((user) => fullName === user.fullName))
   }
 
   add(user: T): void {
