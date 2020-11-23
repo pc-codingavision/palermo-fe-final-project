@@ -30,7 +30,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     )
     this.updateSidebarPrice()
     this.subscriptions.push(
-      this.sidebarService.sidebarFilter.subscribe((filter: any) => {
+      this.sidebarService.sidebarFilter.subscribe((filter: number | IFacilities) => {
         if (_.isObject(filter)) {
           this.advertisements = this.getAdvertisementsFilteredByFacilities(filter)
           this.updateSidebarPrice()
