@@ -7,7 +7,6 @@ import { SearchService } from './search.service'
 
 describe('SearchService', () => {
   let service: SearchService
-  let buildLandlords: Landlord[]
   const landlord: Landlord = {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
@@ -34,10 +33,6 @@ describe('SearchService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({})
     service = TestBed.inject(SearchService)
-    // tslint:disable-next-line: no-shadowed-variable
-    buildLandlords = LANDLORDS_MOCK_DATA.map((landlord) =>
-      Landlord.Build(landlord)
-    ) as Landlord[]
   })
 
   it('should be created', () => {
@@ -53,7 +48,7 @@ describe('SearchService', () => {
   it('#getSearchResult should return all landlords', () => {
     service
       .getSearchResult()
-      .subscribe((landlords) => expect(landlords).toEqual(buildLandlords))
+      .subscribe((landlords) => expect(landlords).toEqual(LANDLORDS_MOCK_DATA))
   })
 
   it('#phoneSearch should return true', () => {

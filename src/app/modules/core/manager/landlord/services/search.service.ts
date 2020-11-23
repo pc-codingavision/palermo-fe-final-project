@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable, ReplaySubject, Subject } from 'rxjs'
+import { BehaviorSubject, Observable, Subject } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  private filteredLandlords$: Subject<Landlord[]> = new ReplaySubject<Landlord[]>(1)
+  private filteredLandlords$: Subject<Landlord[]> = new BehaviorSubject<Landlord[]>(
+    this.landlordService.landlords
+  )
 
   constructor(private landlordService: LandlordService) {}
 
