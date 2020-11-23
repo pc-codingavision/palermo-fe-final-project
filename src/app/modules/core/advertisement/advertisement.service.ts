@@ -3,7 +3,6 @@ import {
   MOCKADVERTISEMENTS_MOCK_DATA,
   MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import * as _ from 'lodash'
 import { Observable, of } from 'rxjs'
 
 @Injectable({
