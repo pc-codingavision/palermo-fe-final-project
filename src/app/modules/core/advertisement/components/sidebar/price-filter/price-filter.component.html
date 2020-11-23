@@ -6,12 +6,16 @@
     <mat-card-content>
       <mat-divider id="price-divider" [inset]="true">
       </mat-divider>
-      <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
-        min="{{ minPrice }}" max="{{ maxPrice }}" step="10" fxLayoutAlign="center center"
-        (change)="emitPriceFilter($event.value)">
-      </mat-slider>
-      <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
-      <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
+      <ng-container *ngIf="minPrice || maxPrice; else noPrice">
+        <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
+          min="{{ minPrice }}" max="{{ maxPrice }}" step="10"
+          fxLayoutAlign="center center" (change)="emitPriceFilter($event.value)">
+        </mat-slider>
+        <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
+        <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
+      </ng-container>
+      <ng-template id="errorMessage" #noPrice>Nessun
+        prezzo disponibile</ng-template>
     </mat-card-content>
   </mat-card>
 </div>

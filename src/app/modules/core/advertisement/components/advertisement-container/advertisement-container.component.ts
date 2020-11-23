@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacilities } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -11,48 +12,79 @@ import { Observable, Subscription } from 'rxjs'
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit, OnDestroy {
-  minPrice$: Observable<number>
-  maxPrice$: Observable<number>
-  advertisements$: Observable<MockAdvertisement[]>
-  subscription: Subscription
+  advertisements: MockAdvertisement[]
+  sidebarMinPrice: number
+  sidebarMaxPrice: number
+  subscriptions: Subscription[] = []
 
-  constructor(private advertisementService: AdvertisementService) {}
+  constructor(
+    private advertisementService: AdvertisementService,
+    private sidebarService: SidebarService
+  ) {}
 
   ngOnInit(): void {
-    this.advertisements$ = this.advertisementService.findAll()
-    this.minPrice$ = this.getMinPrice()
-    this.maxPrice$ = this.getMaxPrice()
-    this.subscription = this.advertisementService.sidebarFilter.subscribe(
-      (filter: number | IFacilities) => {
+    this.subscriptions.push(
+      this.advertisementService
+        .findAll()
+        .subscribe((advertisements) => (this.advertisements = advertisements))
+    )
+    this.updateSidebarPrice()
+    this.subscriptions.push(
+      this.sidebarService.sidebarFilter.subscribe((filter: any) => {
         if (_.isObject(filter)) {
-          this.advertisements$ = this.advertisementService.getAdvertisementsFilteredByFacilities(
-            filter
-          )
+          this.advertisements = this.getAdvertisementsFilteredByFacilities(filter)
+          this.updateSidebarPrice()
         }
         if (_.isNumber(filter)) {
           if (filter <= 5) {
-            this.advertisements$ = this.advertisementService.getAdvertisementsFilteredByScore(
-              filter
-            )
+            this.advertisements = this.getAdvertisementsFilteredByScore(filter)
+            this.updateSidebarPrice()
           } else {
-            this.advertisements$ = this.advertisementService.getAdvertisementsFilteredByPrice(
-              filter
-            )
+            this.advertisements = this.getAdvertisementsFilteredByPrice(filter)
           }
         }
-      }
+      })
     )
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    this.subscriptions.forEach((sub) => sub.unsubscribe())
   }
 
-  getMinPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsLowestPrice(this.advertisements$)
+  updateSidebarPrice(): void {
+    this.sidebarService.sidebarPrice.next({
+      minPrice: _.min(this.advertisements.map((adv) => adv.price)),
+      maxPrice: _.max(this.advertisements.map((adv) => adv.price)),
+    })
   }
 
-  getMaxPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsHighestPrice(this.advertisements$)
+  getAdvertisementsFilteredByPrice(filter: number): MockAdvertisement[] {
+    return this.advertisements.filter((advertisement) => advertisement.price <= filter)
+  }
+
+  getAdvertisementsFilteredByScore(filter: number): MockAdvertisement[] {
+    const filteredAdvertisements: MockAdvertisement[] = []
+    this.advertisements.forEach((advertisement) => {
+      if (advertisement.score >= filter) {
+        filteredAdvertisements.push(advertisement)
+      }
+    })
+    return filteredAdvertisements
+  }
+
+  getAdvertisementsFilteredByFacilities(filter: IFacilities): MockAdvertisement[] {
+    const filteredAdvertisements: MockAdvertisement[] = []
+    const filterActiveFacilities = Object.keys(_.pickBy(filter))
+    this.advertisements.forEach((advertisement) => {
+      const propertyActiveFacilities = _.pickBy(advertisement.property.facilities)
+      if (
+        filterActiveFacilities.every((facility) =>
+          propertyActiveFacilities.hasOwnProperty(facility)
+        )
+      ) {
+        filteredAdvertisements.push(advertisement)
+      }
+    })
+    return filteredAdvertisements
   }
 }

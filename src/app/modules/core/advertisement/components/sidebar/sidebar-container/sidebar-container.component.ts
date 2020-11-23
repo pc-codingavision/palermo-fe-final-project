@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { Component, OnInit } from '@angular/core'
+import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacilities } from '@shared/models/property'
 
 @Component({
@@ -8,14 +8,19 @@ import { IFacilities } from '@shared/models/property'
   styleUrls: ['./sidebar-container.component.scss'],
 })
 export class SidebarContainerComponent implements OnInit {
-  @Input() maxPrice: number
-  @Input() minPrice: number
+  maxPrice: number
+  minPrice: number
 
-  constructor(private advertisementService: AdvertisementService) {}
+  constructor(private sidebarService: SidebarService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sidebarService.sidebarPrice.subscribe((result) => {
+      this.minPrice = result.minPrice
+      this.maxPrice = result.maxPrice
+    })
+  }
 
   applyFilter(filter: number | IFacilities): void {
-    this.advertisementService.sidebarFilter.next(filter)
+    this.sidebarService.sidebarFilter.next(filter)
   }
 }

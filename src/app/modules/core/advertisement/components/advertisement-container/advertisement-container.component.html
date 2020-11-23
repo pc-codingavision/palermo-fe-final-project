@@ -1,8 +1,11 @@
 <cav-latest-container></cav-latest-container>
 <div fxLayout="row" fxLayoutAlign="center none" id="body">
-  <cav-sidebar-container [minPrice]="minPrice$ | async" [maxPrice]="maxPrice$ | async">
+  <cav-sidebar-container>
   </cav-sidebar-container>
   <div id="divider"></div>
-  <cav-advertisement-list [advertisements]="advertisements$ | async">
+  <cav-advertisement-list [advertisements]="advertisements">
   </cav-advertisement-list>
+  <div *ngIf="advertisements.length === 0">Nessun annuncio corrisponde ai criteri di
+    ricerca
+  </div>
 </div>
