@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
 import { IFacility } from '@shared/models/property'
+import { BehaviorSubject } from 'rxjs'
 
 export type priceRange = {
   minPrice: null
