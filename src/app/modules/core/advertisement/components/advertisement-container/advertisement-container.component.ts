@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import { Observable, of } from 'rxjs'
+import { Observable, Subscription, of } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
   templateUrl: './advertisement-container.component.html',
   styleUrls: ['./advertisement-container.component.scss'],
 })
-export class AdvertisementContainerComponent implements OnInit {
+export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements$: Observable<MockAdvertisement[]>
+
+  subsription: Subscription
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(
+    this.subsription = this.activatedRoute.data.subscribe(
       (data) => (this.advertisements$ = of(data.advertisements))
     )
+  }
+
+  ngOnDestroy(): void {
+    this.subsription.unsubscribe()
   }
 }
