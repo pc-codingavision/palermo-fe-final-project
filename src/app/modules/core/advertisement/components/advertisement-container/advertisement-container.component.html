@@ -6,3 +6,6 @@
   <cav-advertisement-list [advertisements]="advertisements$ | async">
   </cav-advertisement-list>
 </div>
+
+<cav-review [review]="review"
+  [config]="{writable: true, minScore: 1, maxScore: 5, scoreSymbol: 'star'}"></cav-review>

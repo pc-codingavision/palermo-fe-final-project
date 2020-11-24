@@ -1,8 +1,24 @@
 <div>
-  <h3>{{review?.title}}</h3>
-  <p>{{review?.description}}</p>
+  <h3><input matInput placeholder="Title" [value]="review?.title"></h3>
+  <p><input matInput placeholder="description" [value]="review?.description"></p>
   <i
     class="material-icons">{{'grade '.repeat(score) + 'star_outline '.repeat(5 - score)}}</i>
-
   <br>
+
+  <mat-icon *ngFor="let s of counter(score); let i = index">
+    grade
+  </mat-icon>
+
+  <mat-icon *ngFor="let s of counter(config?.maxScore - score); let i = index"
+    (click)="getValue(i+1)">
+    star_outline
+  </mat-icon>
+</div>
+
+<h1>Config</h1>
+<div>
+  <p>{{config.writable}}</p>
+  <p>{{config.minScore}}</p>
+  <p>{{config.maxScore}}</p>
+  <p>{{config.scoreSymbol}}</p>
 </div>
