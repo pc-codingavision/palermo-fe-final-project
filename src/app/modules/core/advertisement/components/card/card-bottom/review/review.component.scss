@@ -1,16 +1,21 @@
-p {
-  color: black;
-}
-
-.material-icons {
-  margin-bottom: 13%;
-  color: darkgray;
-}
-
 h3 {
   color: black;
+  margin-bottom: 0px;
 }
 
 mat-icon {
   cursor: pointer;
+}
+
+div.form-field {
+  margin-bottom: 16px;
+}
+
+.mat-input-element:disabled {
+  color: black;
+}
+
+.disabled mat-icon {
+  cursor: not-allowed;
+  color: darkgray;
 }

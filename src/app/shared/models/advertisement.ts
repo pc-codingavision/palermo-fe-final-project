@@ -5,6 +5,13 @@ export interface IReview {
   vote: number
 }
 
+export interface IReviewConfig {
+  writable: boolean
+  minScore: number
+  maxScore: number
+  scoreSymbol: string
+}
+
 export interface IAdvertisement {
   id: number
   landlordId: number

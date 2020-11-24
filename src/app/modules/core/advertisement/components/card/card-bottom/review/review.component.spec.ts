@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { ReviewComponent } from './review.component'
+import { RouterTestingModule } from '@angular/router/testing'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MaterialModule } from '@modules/shared/material.module'
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent
@@ -10,6 +13,7 @@ describe('ReviewComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ReviewComponent],
+        imports: [ReactiveFormsModule, MaterialModule],
       }).compileComponents()
     })
   )
@@ -20,7 +24,7 @@ describe('ReviewComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })

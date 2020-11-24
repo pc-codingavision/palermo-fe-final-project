@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { FormControl } from '@angular/forms'
-import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Component, Input, OnInit, Output } from '@angular/core'
+import { EventEmitter } from '@angular/core'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { IReview, IReviewConfig } from '@shared/models/advertisement'
 
 @Component({
   selector: 'cav-review',
@@ -8,30 +9,46 @@ import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  @Input() review: IMockReview
+  @Input() review: IReview
   @Input() config: IReviewConfig
+  @Output() newReview = new EventEmitter<IReview>()
   score: number
-  title = new FormControl(this.review?.title)
-  description = new FormControl(this.review?.description)
+  reviewForm: FormGroup
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.score = Math.round(this.review?.vote)
+    this.reviewForm = this.fb.group({
+      title: [
+        { value: this.review?.title, disabled: !this.config?.writable },
+        [Validators.required, Validators.minLength(5)],
+      ],
+      description: [
+        { value: this.review?.description, disabled: !this.config?.writable },
+        [Validators.required, Validators.minLength(10)],
+      ],
+    })
   }
 
   counter(i: number): number[] {
-    return new Array(i)
+    if (i) {
+      return new Array(i)
+    }
   }
 
-  getValue(value: number): void {
-    this.score = value
+  setScore(score: number): void {
+    if (this.config?.writable) {
+      this.score = score
+    }
   }
-}
 
-export interface IReviewConfig {
-  writable: boolean
-  minScore: number
-  maxScore: number
-  scoreSymbol: string
+  save(): void {
+    this.newReview.emit({
+      title: this.reviewForm.value.title,
+      description: this.reviewForm.value.description,
+      vote: this.score,
+      tenantId: this.review.tenantId,
+    })
+  }
 }
