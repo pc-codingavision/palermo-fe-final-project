@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'
 @Injectable({
   providedIn: 'root',
 })
-export class DataResolver implements Resolve<MockAdvertisement[]> {
+export class AdvertisementResolver implements Resolve<MockAdvertisement[]> {
   constructor(private advertisementService: AdvertisementService) {}
 
   resolve(
