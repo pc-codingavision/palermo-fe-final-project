@@ -12,8 +12,6 @@ import { map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class AdvertisementService {
-  private advertisementsUrl = 'api/advertisements'
-
   advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
     MockAdvertisement.Build(advertisement)
   )
