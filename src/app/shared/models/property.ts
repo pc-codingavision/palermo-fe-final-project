@@ -18,10 +18,10 @@ export interface IRoom {
   mq: number
 }
 
-export interface IImage {
+export interface IPicture {
   image: string
   thumbImage: string
-  title: string
+  title?: string
   alt: string
 }
 
@@ -35,7 +35,7 @@ export interface IProperty {
   numberOfToilet: number
   description: string
   facilities: IFacilities
-  images: IImage[]
+  images: IPicture[]
   status: Status
 }
 

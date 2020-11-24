@@ -241,7 +241,6 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       {
         image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
         thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-        title: 'Splendido monovano',
         alt: 'Salotto',
       },
     ],
@@ -279,7 +278,6 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       {
         image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
         thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-        title: 'Splendido appartamento',
         alt: 'Salotto',
       },
     ],
@@ -318,7 +316,6 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
           'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
         thumbImage:
           'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
-        title: 'Splendido attico con vista',
         alt: 'Terrazza',
       },
     ],

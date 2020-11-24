@@ -97,13 +97,12 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         {
           image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
           thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          title: 'Splendido monovano',
           alt: 'Salotto',
         },
         {
-          image: 'https://cdn.pixabay.com/photo/2014/08/11/21/40/wall-416062_960_720.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          title: 'Splendido monovano',
+          image: 'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
+          thumbImage:
+            'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
           alt: 'Camera da letto',
         },
       ],
@@ -184,7 +183,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         {
           image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
           thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          title: 'Splendido appartamento',
           alt: 'Salotto',
         },
       ],
@@ -257,7 +255,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
             'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
           thumbImage:
             'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
-          title: 'Splendido attico con vista',
           alt: 'Terrazza',
         },
       ],
