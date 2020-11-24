@@ -7,7 +7,7 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
   styleUrls: ['./advertisement-list.component.scss'],
 })
 export class AdvertisementListComponent implements OnInit {
-  @Input() advertisements: MockAdvertisement[]
+  @Input() advertisements: Set<MockAdvertisement>
   constructor() {}
   ngOnInit(): void {}
 }

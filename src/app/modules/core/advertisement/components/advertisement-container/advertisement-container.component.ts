@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
-import { IFacilities } from '@shared/models/property'
+import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Subscription } from 'rxjs'
+import { combineLatest, Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -13,37 +13,32 @@ import { Subscription } from 'rxjs'
 })
 export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
-  sidebarMinPrice: number
-  sidebarMaxPrice: number
+  filteredAdvertisements: Set<MockAdvertisement>
+
   subscriptions: Subscription[] = []
 
   constructor(
     private advertisementService: AdvertisementService,
     private sidebarService: SidebarService
-  ) {}
+  ) {
+    this.filteredAdvertisements = new Set<MockAdvertisement>()
+  }
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.advertisementService
-        .findAll()
-        .subscribe((advertisements) => (this.advertisements = advertisements))
-    )
-    this.updateSidebarPrice()
-    this.subscriptions.push(
-      this.sidebarService.sidebarFilter.subscribe((filter: number | IFacilities) => {
-        if (_.isObject(filter)) {
-          this.advertisements = this.getAdvertisementsFilteredByFacilities(filter)
-          this.updateSidebarPrice()
-        }
-        if (_.isNumber(filter)) {
-          if (filter <= 5) {
-            this.advertisements = this.getAdvertisementsFilteredByScore(filter)
-            this.updateSidebarPrice()
-          } else {
-            this.advertisements = this.getAdvertisementsFilteredByPrice(filter)
-          }
-        }
+      this.advertisementService.findAll().subscribe((advertisements) => {
+        this.advertisements = advertisements
+        advertisements.forEach((adv) => this.filteredAdvertisements.add(adv))
+        this.emitPriceUpdate()
       })
+    )
+
+    combineLatest([
+      this.sidebarService.price$,
+      this.sidebarService.facility$,
+      this.sidebarService.score$,
+    ]).subscribe(([price, facility, score]) =>
+      this.getFilteredAdvertisements(price, score, facility)
     )
   }
 
@@ -51,40 +46,39 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe())
   }
 
-  updateSidebarPrice(): void {
-    this.sidebarService.sidebarPrice.next({
-      minPrice: _.min(this.advertisements.map((adv) => adv.price)),
-      maxPrice: _.max(this.advertisements.map((adv) => adv.price)),
-    })
-  }
+  private getFilteredAdvertisements(price: number, score: number, facility: IFacility) {
+    let tmpAdvertisement: MockAdvertisement[] = this.advertisements
+    this.filteredAdvertisements.clear()
 
-  getAdvertisementsFilteredByPrice(filter: number): MockAdvertisement[] {
-    return this.advertisements.filter((advertisement) => advertisement.price <= filter)
-  }
-
-  getAdvertisementsFilteredByScore(filter: number): MockAdvertisement[] {
-    const filteredAdvertisements: MockAdvertisement[] = []
-    this.advertisements.forEach((advertisement) => {
-      if (advertisement.score >= filter) {
-        filteredAdvertisements.push(advertisement)
-      }
-    })
-    return filteredAdvertisements
-  }
-
-  getAdvertisementsFilteredByFacilities(filter: IFacilities): MockAdvertisement[] {
-    const filteredAdvertisements: MockAdvertisement[] = []
-    const filterActiveFacilities = Object.keys(_.pickBy(filter))
-    this.advertisements.forEach((advertisement) => {
-      const propertyActiveFacilities = _.pickBy(advertisement.property.facilities)
-      if (
-        filterActiveFacilities.every((facility) =>
-          propertyActiveFacilities.hasOwnProperty(facility)
+    if (price == null && score == null && facility == null) {
+      this.advertisements.forEach((adv) => this.filteredAdvertisements.add(adv))
+    } else {
+      if (price != null) {
+        tmpAdvertisement = tmpAdvertisement.filter(
+          (advertisement) => advertisement.price <= price
         )
-      ) {
-        filteredAdvertisements.push(advertisement)
       }
+      if (score != null) {
+        tmpAdvertisement = tmpAdvertisement.filter((adv) => adv.score >= score)
+      }
+      if (facility != null) {
+        const filterActiveFacilities = Object.keys(_.pickBy(facility))
+        tmpAdvertisement = tmpAdvertisement.filter((advertisement) => {
+          const propertyActiveFacilities = _.pickBy(advertisement.property.facilities)
+          return filterActiveFacilities.every((facility) =>
+            propertyActiveFacilities.hasOwnProperty(facility)
+          )
+        })
+      }
+      tmpAdvertisement.map((adv) => this.filteredAdvertisements.add(adv))
+      this.emitPriceUpdate()
+    }
+  }
+
+  private emitPriceUpdate() {
+    this.sidebarService.priceRangeChanged$.next({
+      minPrice: _.min(Array.from(this.filteredAdvertisements).map((adv) => adv.price)),
+      maxPrice: _.max(Array.from(this.filteredAdvertisements).map((adv) => adv.price)),
     })
-    return filteredAdvertisements
   }
 }

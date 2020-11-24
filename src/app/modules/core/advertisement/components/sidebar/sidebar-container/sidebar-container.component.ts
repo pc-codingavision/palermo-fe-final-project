@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
-import { IFacilities } from '@shared/models/property'
+import { IFacility } from '@shared/models/property'
 
 @Component({
   selector: 'cav-sidebar-container',
@@ -14,13 +14,23 @@ export class SidebarContainerComponent implements OnInit {
   constructor(private sidebarService: SidebarService) {}
 
   ngOnInit(): void {
-    this.sidebarService.sidebarPrice.subscribe((result) => {
-      this.minPrice = result.minPrice
-      this.maxPrice = result.maxPrice
+    this.sidebarService.priceRangeChanged$.subscribe((result) => {
+      if (result != null) {
+        this.minPrice = result.minPrice
+        this.maxPrice = result.maxPrice
+      }
     })
   }
 
-  applyFilter(filter: number | IFacilities): void {
-    this.sidebarService.sidebarFilter.next(filter)
+  onPriceSelected(price: number) {
+    this.sidebarService.price$.next(price)
+  }
+
+  onFacilitySelected(facility: IFacility) {
+    this.sidebarService.facility$.next(facility)
+  }
+
+  onScoreSelected(score: number) {
+    this.sidebarService.score$.next(score)
   }
 }

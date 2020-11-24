@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Subject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
+import { IFacility } from '@shared/models/property'
+
+export type priceRange = {
+  minPrice: null
+  maxPrice: null
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class SidebarService {
-  sidebarFilter = new Subject<any>()
-  sidebarPrice = new BehaviorSubject<any>({
-    minPrice: null,
-    maxPrice: null,
-  })
+  price$ = new BehaviorSubject<number>(null)
+  priceRangeChanged$ = new BehaviorSubject<priceRange>(null)
+  facility$ = new BehaviorSubject<IFacility>(null)
+  score$ = new BehaviorSubject<number>(null)
 
   constructor() {}
 }

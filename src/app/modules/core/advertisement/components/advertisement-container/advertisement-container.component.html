@@ -3,9 +3,9 @@
   <cav-sidebar-container>
   </cav-sidebar-container>
   <div id="divider"></div>
-  <cav-advertisement-list [advertisements]="advertisements">
+  <cav-advertisement-list [advertisements]="filteredAdvertisements">
   </cav-advertisement-list>
-  <div *ngIf="advertisements.length === 0">Nessun annuncio corrisponde ai criteri di
+  <div *ngIf="filteredAdvertisements.size === 0">Nessun annuncio corrisponde ai criteri di
     ricerca
   </div>
 </div>
