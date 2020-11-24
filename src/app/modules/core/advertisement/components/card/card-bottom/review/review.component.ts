@@ -25,7 +25,7 @@ export class ReviewComponent implements OnInit {
     this.reviewForm = this.fb.group({
       title: [
         { value: this.review?.title, disabled: !this.config?.writable },
-        [Validators.required, Validators.minLength(5)],
+        [Validators.required, Validators.minLength(4)],
       ],
       description: [
         { value: this.review?.description, disabled: !this.config?.writable },
