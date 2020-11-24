@@ -8,6 +8,7 @@ import * as _ from 'lodash'
 })
 export class ScoreFilterComponent implements OnInit {
   @Output() filter = new EventEmitter<number>()
+  selectedScore: number
 
   constructor() {}
 
@@ -15,5 +16,10 @@ export class ScoreFilterComponent implements OnInit {
 
   emitScoreFilter(value: string): void {
     this.filter.emit(_.toNumber(value))
+  }
+
+  resetFilter(): void {
+    this.selectedScore = null
+    this.filter.emit(null)
   }
 }

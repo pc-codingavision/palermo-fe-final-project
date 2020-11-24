@@ -5,7 +5,8 @@
   <div id="divider"></div>
   <cav-advertisement-list [advertisements]="filteredAdvertisements">
   </cav-advertisement-list>
-  <div *ngIf="filteredAdvertisements.size === 0">Nessun annuncio corrisponde ai criteri di
+  <h1 id="emptylist" fxLayoutAlign="center center"
+    *ngIf="filteredAdvertisements.length === 0"> Nessun annuncio corrisponde ai criteri di
     ricerca
-  </div>
+  </h1>
 </div>

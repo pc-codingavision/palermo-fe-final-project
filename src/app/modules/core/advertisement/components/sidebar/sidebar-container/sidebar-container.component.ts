@@ -22,15 +22,15 @@ export class SidebarContainerComponent implements OnInit {
     })
   }
 
-  onPriceSelected(price: number) {
+  onPriceSelected(price: number): void {
     this.sidebarService.price$.next(price)
   }
 
-  onFacilitySelected(facility: IFacility) {
+  onFacilitySelected(facility: IFacility): void {
     this.sidebarService.facility$.next(facility)
   }
 
-  onScoreSelected(score: number) {
+  onScoreSelected(score: number): void {
     this.sidebarService.score$.next(score)
   }
 }
