@@ -7,6 +7,5 @@
   </cav-advertisement-list>
 </div>
 
-<cav-review [review]="review"
-  [config]="{writable: false, minScore: 1, maxScore: 5, scoreSymbol: 'star'}">
+<cav-review [review]="review" [config]="config" (newReview)="stampa($event)">
 </cav-review>

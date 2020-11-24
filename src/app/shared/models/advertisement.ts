@@ -1,3 +1,5 @@
+import { Icon } from '@shared/enum/enums'
+
 export interface IReview {
   title: string
   tenantId: number
@@ -9,7 +11,7 @@ export interface IReviewConfig {
   writable: boolean
   minScore: number
   maxScore: number
-  scoreSymbol: string
+  scoreIcon: Icon
 }
 
 export interface IAdvertisement {

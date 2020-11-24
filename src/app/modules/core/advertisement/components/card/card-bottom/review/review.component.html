@@ -21,11 +21,11 @@
 
   <div>
     <mat-icon *ngFor="let s of counter(score); let i = index" (click)="setScore(i+1)">
-      grade
+      {{iconFill}}
     </mat-icon>
     <mat-icon *ngFor="let s of counter(config?.maxScore - score); let i = index"
       (click)="setScore(i+1+score)">
-      star_outline
+      {{iconOutline}}
     </mat-icon>
   </div>
 

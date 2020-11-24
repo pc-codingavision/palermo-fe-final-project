@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core'
 import { EventEmitter } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Icon } from '@shared/enum/enums'
 import { IReview, IReviewConfig } from '@shared/models/advertisement'
 
 @Component({
@@ -14,6 +15,8 @@ export class ReviewComponent implements OnInit {
   @Output() newReview = new EventEmitter<IReview>()
   score: number
   reviewForm: FormGroup
+  iconFill: string
+  iconOutline: string
 
   constructor(private fb: FormBuilder) {}
 
@@ -29,6 +32,31 @@ export class ReviewComponent implements OnInit {
         [Validators.required, Validators.minLength(10)],
       ],
     })
+    this.setIcon()
+  }
+
+  setIcon(): void {
+    switch (this.config?.scoreIcon) {
+      case Icon.CheckBox:
+        this.iconFill = 'check_box'
+        this.iconOutline = 'check_box_outline_blank'
+        break
+      case Icon.Circle:
+        this.iconFill = 'lens'
+        this.iconOutline = 'panorama_fish_eye'
+        break
+      case Icon.Heart:
+        this.iconFill = 'favorite'
+        this.iconOutline = 'favorite_border'
+        break
+      case Icon.Radio:
+        this.iconFill = 'radio_button_checked'
+        this.iconOutline = 'radio_button_unchecked'
+        break
+      default:
+        this.iconFill = 'star'
+        this.iconOutline = 'star_outline'
+    }
   }
 
   counter(i: number): number[] {
