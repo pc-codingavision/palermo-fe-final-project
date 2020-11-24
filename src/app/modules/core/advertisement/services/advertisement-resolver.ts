@@ -20,6 +20,7 @@ export class AdvertisementResolver implements Resolve<MockAdvertisement[]> {
       .pipe(catchError(this.handleError('resolve', [])))
   }
 
+  // tslint:disable-next-line: typedef
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error('error')
