@@ -1,9 +1,7 @@
 {
   "debug.openExplorerOnEnd": true,
   "editor.tabSize": 2,
-  "editor.rulers": [
-    90
-  ],
+  "editor.rulers": [90],
   "editor.autoIndent": "full",
   "editor.cursorBlinking": "solid",
   "editor.formatOnType": false,
@@ -20,7 +18,7 @@
   },
   "explorer.openEditors.visible": 0,
   "files.trimTrailingWhitespace": true,
-  "files.autoSave": "off",
+  "files.autoSave": "onFocusChange",
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "npm.enableScriptExplorer": true,
