@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core'
   styleUrls: ['./photogallery.component.scss'],
 })
 export class PhotogalleryComponent implements OnInit {
-  @Input() photo: string
+  @Input() imageObject: Array<object>
   constructor() {}
 
   ngOnInit(): void {}

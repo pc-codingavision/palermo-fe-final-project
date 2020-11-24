@@ -100,6 +100,12 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
           title: 'Splendido monovano',
           alt: 'Salotto',
         },
+        {
+          image: 'https://cdn.pixabay.com/photo/2014/08/11/21/40/wall-416062_960_720.jpg',
+          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+          title: 'Splendido monovano',
+          alt: 'Camera da letto',
+        },
       ],
       status: Status.Open,
     },
