@@ -50,6 +50,7 @@
     "jwt-decode": "^3.0.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
+    "ng-image-slider": "^2.6.4",
     "rxjs": "~6.6.3",
     "subsink": "^1.0.1",
     "tslib": "^2.0.0",
