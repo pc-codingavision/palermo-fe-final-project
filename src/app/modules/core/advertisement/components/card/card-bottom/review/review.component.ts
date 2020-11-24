@@ -25,7 +25,7 @@ export class ReviewComponent implements OnInit {
   }
 
   getValue(value: number): void {
-    console.log(value)
+    this.score = value
   }
 }
 
