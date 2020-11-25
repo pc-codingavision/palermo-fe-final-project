@@ -13,15 +13,20 @@ export class ReviewComponent implements OnInit {
   @Input() review: IReview
   @Input() config: IReviewConfig
   @Output() newReview = new EventEmitter<IReview>()
-  score: number
   reviewForm: FormGroup
+  score: number
   iconFill: string
   iconOutline: string
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.score = Math.round(this.review?.vote)
+    this.score = this.review?.vote ? Math.round(this.review?.vote) : this.config?.minScore
+    this.setForm()
+    this.setIcon()
+  }
+
+  setForm(): void {
     this.reviewForm = this.fb.group({
       title: [
         { value: this.review?.title, disabled: !this.config?.writable },
@@ -32,7 +37,6 @@ export class ReviewComponent implements OnInit {
         [Validators.required, Validators.minLength(10)],
       ],
     })
-    this.setIcon()
   }
 
   setIcon(): void {
@@ -60,8 +64,11 @@ export class ReviewComponent implements OnInit {
   }
 
   counter(i: number): number[] {
-    if (i) {
+    if (i >= 0) {
       return new Array(i)
+    } else {
+      this.score = this.config?.minScore
+      return new Array(0)
     }
   }
 

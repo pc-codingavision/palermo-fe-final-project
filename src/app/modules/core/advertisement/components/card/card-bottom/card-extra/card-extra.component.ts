@@ -10,9 +10,9 @@ import { IReviewConfig } from '@shared/models/advertisement'
 })
 export class CardExtraComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-  config: IReviewConfig = {
-    writable: false,
-    minScore: 1,
+  reviewConfig: IReviewConfig = {
+    writable: true,
+    minScore: 0,
     maxScore: 5,
     scoreIcon: Icon.Star,
   }

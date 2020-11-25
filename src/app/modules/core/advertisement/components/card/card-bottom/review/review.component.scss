@@ -1,5 +1,5 @@
 form {
-  padding-top: 15%;
+  padding-bottom: 15%;
 }
 
 h3 {
@@ -17,6 +17,10 @@ div.form-field {
 
 .mat-input-element:disabled {
   color: black;
+}
+
+.disabled textarea {
+  resize: none;
 }
 
 .disabled mat-icon {

@@ -20,7 +20,8 @@
   </div>
 
   <div>
-    <mat-icon *ngFor="let s of counter(score); let i = index" (click)="setScore(i+1)">
+    <mat-icon *ngFor="let s of counter(score - config?.minScore); let i = index"
+      (click)="setScore(i + config.minScore)">
       {{iconFill}}
     </mat-icon>
     <mat-icon *ngFor="let s of counter(config?.maxScore - score); let i = index"
@@ -31,4 +32,5 @@
 
   <button *ngIf="config?.writable" type="submit" mat-raised-button
     color="primary">Save</button>
+  <hr>
 </form>
