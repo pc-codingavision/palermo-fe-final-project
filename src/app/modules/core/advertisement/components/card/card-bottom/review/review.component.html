@@ -1,4 +1,4 @@
-<form [formGroup]="reviewForm" (submit)="save()" [class.disabled]="!config?.writable">
+<form [formGroup]="reviewForm" (submit)="save()" [class.disabled]="!isWritable">
   <div class="form-field">
     <h3><input matInput placeholder="Title" formControlName="title"></h3>
     <mat-error *ngIf="reviewForm.get('title')?.hasError('required')">
@@ -19,18 +19,7 @@
     </mat-error>
   </div>
 
-  <div>
-    <mat-icon *ngFor="let s of counter(score - config?.minScore); let i = index"
-      (click)="setScore(i + config.minScore)">
-      {{iconFill}}
-    </mat-icon>
-    <mat-icon *ngFor="let s of counter(config?.maxScore - score); let i = index"
-      (click)="setScore(i+1+score)">
-      {{iconOutline}}
-    </mat-icon>
-  </div>
+  <cav-score [config]="scoreConfig" (scoreValue)="review.vote = $event"></cav-score>
 
-  <button *ngIf="config?.writable" type="submit" mat-raised-button
-    color="primary">Save</button>
-  <hr>
+  <button *ngIf="isWritable" type="submit" mat-raised-button color="primary">Save</button>
 </form>

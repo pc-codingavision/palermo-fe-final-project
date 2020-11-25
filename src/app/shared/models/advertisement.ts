@@ -7,11 +7,12 @@ export interface IReview {
   vote: number
 }
 
-export interface IReviewConfig {
+export interface IScoreConfig {
   writable: boolean
   minScore: number
   maxScore: number
   scoreIcon: Icon
+  score: number
 }
 
 export interface IAdvertisement {
