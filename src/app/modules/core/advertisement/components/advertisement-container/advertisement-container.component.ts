@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import { Observable, Subscription, of } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
