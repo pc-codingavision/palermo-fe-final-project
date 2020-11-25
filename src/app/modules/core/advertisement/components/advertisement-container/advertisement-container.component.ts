@@ -9,7 +9,7 @@ import { Observable, Subscription, of } from 'rxjs'
   styleUrls: ['./advertisement-container.component.scss'],
 })
 export class AdvertisementContainerComponent implements OnInit, OnDestroy {
-  advertisements$: Observable<MockAdvertisement[]>
+  advertisements: MockAdvertisement[]
 
   subsription: Subscription
 
@@ -17,7 +17,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subsription = this.activatedRoute.data.subscribe(
-      (data) => (this.advertisements$ = of(data.advertisements))
+      (data) => (this.advertisements = data.advertisements)
     )
   }
 
