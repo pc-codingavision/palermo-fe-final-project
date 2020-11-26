@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core'
-import { IFacilities } from '@shared/models/property'
+import { IFacility } from '@shared/models/property'
 
 @Component({
   selector: 'cav-facility-filter',
@@ -7,9 +7,9 @@ import { IFacilities } from '@shared/models/property'
   styleUrls: ['./facility-filter.component.scss'],
 })
 export class FacilityFilterComponent implements OnInit {
-  @Output() filter = new EventEmitter<IFacilities>()
+  @Output() filter = new EventEmitter<IFacility>()
   expanded = false
-  filterObj: IFacilities = {
+  filterObj: IFacility = {
     tv: false,
     wifi: false,
     breakfastIncluded: false,
