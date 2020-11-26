@@ -7,37 +7,39 @@
   </button>
 </div>
 <div *ngIf="!this.media.isActive('xs'); else mobileView">
-  <table mat-table [dataSource]="landlords$ | async" multiTemplateDataRows
-    class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+<table mat-table [dataSource]="landlords$ | async" multiTemplateDataRows
+  class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef> FullName </th>
-      <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
-    </ng-container>
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef> FullName </th>
+    <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="mail">
-      <th mat-header-cell *matHeaderCellDef> Mail </th>
-      <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
-    </ng-container>
+  <ng-container matColumnDef="mail">
+    <th mat-header-cell *matHeaderCellDef> Mail </th>
+    <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
+  </ng-container>
 
-    <ng-container matColumnDef="phone_number">
-      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-      <td mat-cell *matCellDef="let element"> {{element.phone[0].digits}} </td>
-    </ng-container>
+  <ng-container matColumnDef="phoneNumber">
+    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let phone of element.phone">
+        {{phone.digits}}<br>
+      </ng-container>
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length"
-        class="detail">
-        <div class="element-detail"
-          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-          <div class="element-diagram">
-            <cav-view-container [landlord]="element" (remove)="remove($event)">
-            </cav-view-container>
-          </div>
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="element-diagram">
+          <cav-view-container [landlord]="element" (remove)="remove($event)">
+          </cav-view-container>
         </div>
       </td>
     </ng-container>
