@@ -38,11 +38,12 @@ export class LandlordListComponent implements OnInit {
   }
 
   getAll(): void {
-    this.landlords = this.route.snapshot.data.list
+    this.route.data.subscribe((response) => (this.landlords = response.list))
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id)
-    this.getAll()
+    this.landlordService.delete(landlord.id).subscribe((response) => {
+      this.landlords = response
+    })
   }
 }
