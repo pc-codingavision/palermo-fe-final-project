@@ -15,7 +15,7 @@ export class ReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.scoreConfig = {
-      writable: false,
+      writable: true,
       minScore: 0,
       maxScore: 5,
       scoreIcon: Icon.Star,
