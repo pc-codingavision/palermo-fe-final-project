@@ -8,11 +8,11 @@ export interface IReview {
 }
 
 export interface IScoreConfig {
-  writable: boolean
-  minScore: number
-  maxScore: number
-  scoreIcon: Icon
-  score: number
+  writable?: boolean
+  minScore?: number
+  maxScore?: number
+  scoreIcon?: Icon
+  score?: number
 }
 
 export interface IAdvertisement {

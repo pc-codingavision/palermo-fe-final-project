@@ -1,25 +1,6 @@
-<form [formGroup]="reviewForm" (submit)="save()" [class.disabled]="!isWritable">
-  <div class="form-field">
-    <h3><input matInput placeholder="Title" formControlName="title"></h3>
-    <mat-error *ngIf="reviewForm.get('title')?.hasError('required')">
-      Input required
-    </mat-error>
-    <mat-error *ngIf="reviewForm.get('title')?.hasError('minlength')">
-      Invalid Title, need to be at least 5 characters long
-    </mat-error>
-  </div>
-  <br>
-  <div class="form-field">
-    <textarea matInput placeholder="description" formControlName="description"></textarea>
-    <mat-error *ngIf="reviewForm.get('description')?.hasError('required')">
-      Input required
-    </mat-error>
-    <mat-error *ngIf="reviewForm.get('description')?.hasError('minlength')">
-      Invalid Title, need to be at least 10 characters long
-    </mat-error>
-  </div>
+<div>
+  <h3>{{review?.title}}</h3>
+  <p>{{review?.description}}</p>
 
   <cav-score [config]="scoreConfig" (scoreValue)="review.vote = $event"></cav-score>
-
-  <button *ngIf="isWritable" type="submit" mat-raised-button color="primary">Save</button>
-</form>
+</div>

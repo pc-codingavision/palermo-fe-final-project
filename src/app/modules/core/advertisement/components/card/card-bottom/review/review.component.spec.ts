@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
-import { ReactiveFormsModule } from '@angular/forms'
 import { MaterialModule } from '@modules/shared/material.module'
 
 import { ReviewComponent } from './review.component'
@@ -12,7 +11,7 @@ describe('ReviewComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ReviewComponent],
-        imports: [ReactiveFormsModule, MaterialModule],
+        imports: [MaterialModule],
       }).compileComponents()
     })
   )

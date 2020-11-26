@@ -5,8 +5,7 @@
 
     <mat-card class="side" fxFlex="38%">
       <h2>Most recent reviews</h2>
-      <cav-review *ngFor="let review of advertisement?.reviews" [review]="review"
-        [isWritable]="false">
+      <cav-review *ngFor="let review of advertisement?.reviews" [review]="review">
       </cav-review>
     </mat-card>
 
