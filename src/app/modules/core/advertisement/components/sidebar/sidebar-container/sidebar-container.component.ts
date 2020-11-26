@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
-import { IFacilities } from '@shared/models/property'
-import { Observable } from 'rxjs'
+import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
+import { IFacility } from '@shared/models/property'
 
 @Component({
   selector: 'cav-sidebar-container',
@@ -9,33 +8,29 @@ import { Observable } from 'rxjs'
   styleUrls: ['./sidebar-container.component.scss'],
 })
 export class SidebarContainerComponent implements OnInit {
-  constructor(private advertisementService: AdvertisementService) {}
+  maxPrice: number
+  minPrice: number
 
-  maxPrice: Observable<number>
-  minPrice: Observable<number>
+  constructor(private sidebarService: SidebarService) {}
 
   ngOnInit(): void {
-    this.maxPrice = this.getMaxPrice()
-    this.minPrice = this.getMinPrice()
+    this.sidebarService.priceRangeChanged$.subscribe((result) => {
+      if (result != null) {
+        this.minPrice = result.minPrice
+        this.maxPrice = result.maxPrice
+      }
+    })
   }
 
-  getMaxPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsHighestPrice()
+  onPriceSelected(price: number): void {
+    this.sidebarService.price$.next(price)
   }
 
-  getMinPrice(): Observable<number> {
-    return this.advertisementService.findAdvertisementsLowestPrice()
+  onFacilitySelected(facility: IFacility): void {
+    this.sidebarService.facility$.next(facility)
   }
 
-  applyPriceFilter(filter: number): void {
-    this.advertisementService.returnPriceFilteredAdvertisements(filter)
-  }
-
-  applyFacilityFilter(filter: IFacilities): void {
-    this.advertisementService.returnFacilitiesFilteredAdvertisements(filter)
-  }
-
-  applyScoreFilter(filter: number): void {
-    this.advertisementService.returnScoreFilteredAdvertisements(filter)
+  onScoreSelected(score: number): void {
+    this.sidebarService.score$.next(score)
   }
 }
