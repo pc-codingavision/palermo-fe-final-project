@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, throwError } from 'rxjs'
-import { catchError, map } from 'rxjs/operators'
+import { catchError } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
 export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
@@ -11,9 +11,7 @@ export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
 
   resolve(): Observable<Landlord[]> | any {
     return this.landlordService.getAll().pipe(
-      map((response) => response),
       catchError((err) => {
-        console.log(err)
         return this.handleError(err)
       })
     )
@@ -28,7 +26,7 @@ export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
       errorMessage = errorGroup
     }
 
-    alert(`Sorry,something went wrong. '\n' ${errorGroup}`)
+    alert(`Sorry,something went wrong. '\n' ${errorGroup}`) // use a snackbar insetad of alert
 
     return throwError(`${errorMessage}`)
   }
