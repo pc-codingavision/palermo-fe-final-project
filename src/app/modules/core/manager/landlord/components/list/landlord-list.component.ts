@@ -36,7 +36,7 @@ export class LandlordListComponent implements OnInit {
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getAll()

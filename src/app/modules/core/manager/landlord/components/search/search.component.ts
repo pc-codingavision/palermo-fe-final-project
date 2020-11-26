@@ -3,7 +3,6 @@ import { SearchService } from '@modules/core/manager/landlord/services/search.se
 import { Landlord } from '@shared/models/landlord'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { flatMap } from 'tslint/lib'
 
 @Component({
   selector: 'cav-search',
@@ -17,7 +16,7 @@ export class SearchComponent implements OnInit {
   email = ''
   phone = ''
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
     this.landlords$ = this.searchService.getSearchResult()
