@@ -32,10 +32,11 @@ export class LandlordService {
     return of(null)
   }
 
-  delete(id: number): void {
+  delete(id: number): Observable<Landlord[]> {
     if (this.getArrayIndexById(id) !== null) {
       this.landlords.splice(this.getArrayIndexById(id), 1)
     }
+    return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
   }
 
   add(landlord: Landlord): void {

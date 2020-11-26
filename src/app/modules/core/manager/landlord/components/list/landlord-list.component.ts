@@ -1,9 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Observable, of } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 export interface Elements {
   id: number
@@ -27,11 +27,11 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit {
+export class LandlordListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
   expandedElement: Elements | null
-  landlords$: Observable<Landlord[]>
-
+  landlords: Landlord[]
+  removeSubscription: Subscription
   constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -39,13 +39,18 @@ export class LandlordListComponent implements OnInit {
   }
 
   getAll(): void {
-    this.route.data.subscribe((data) => {
-      this.landlords$ = of(data.list)
-    })
+    this.landlords = this.route.snapshot.data.list
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id)
-    this.getAll()
+    this.removeSubscription = this.landlordService
+      .delete(landlord.id)
+      .subscribe((response) => {
+        this.landlords = response
+      })
+  }
+
+  ngOnDestroy(): void {
+    this.removeSubscription.unsubscribe()
   }
 }
