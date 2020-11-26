@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -13,6 +13,8 @@ import { NavigationMenuComponent } from '@shared/components/navigation-menu/navi
 import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component'
 import { SidenavComponent } from '@shared/components/sidenav/sidenav.component'
 import { ToolbarComponent } from '@shared/components/toolbar/toolbar.component'
+import { InMemoryDataService } from '@shared/services/in-memory-data.service'
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
@@ -33,6 +35,11 @@ const appModules = [
   BrowserAnimationsModule,
   AdvertisementModule,
   SharedModule,
+  HttpClientModule,
+  HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+    delay: 1000,
+    dataEncapsulation: false,
+  }),
 ]
 
 @NgModule({
