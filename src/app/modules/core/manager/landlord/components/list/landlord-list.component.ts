@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
@@ -35,13 +36,12 @@ export class LandlordListComponent implements OnInit {
 
   constructor(
     private landlordService: LandlordService,
-    private searchLandlord: SearchService
+    private searchLandlord: SearchService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.getAll()
-  }
-  getAll(): void {
+    this.landlords$ = this.route.snapshot.data.list
     this.landlords$ = this.searchLandlord.getSearchResult()
   }
 
