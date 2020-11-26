@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnInit } from '@angular/core'
-import { MediaObserver } from '@angular/flex-layout'
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
@@ -35,13 +34,11 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   landlords$: Observable<Landlord[]>
   private subscription: Subscription
 
-
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService,
     public media: MediaObserver
   ) {}
-
 
   ngOnInit(): void {
     this.getAll()
