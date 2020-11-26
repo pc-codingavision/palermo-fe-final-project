@@ -69,6 +69,7 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
     phone: [
       { id: 1, type: PhoneType.Mobile, digits: '3454545' },
       { id: 2, type: PhoneType.Home, digits: '09252525' },
+      { id: 3, type: PhoneType.Home, digits: '02552525' },
     ],
     mail: 'piero-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
@@ -92,7 +93,7 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
       { id: 1, type: PhoneType.Home, digits: '213455' },
       { id: 2, type: PhoneType.Mobile, digits: '0251628' },
     ],
-    mail: 'cosimo-landlord@test.com',
+    mail: 'piero-landlord@test.it',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
     password: 'password',

@@ -7,7 +7,8 @@
   </button>
 </div>
 
-<table mat-table [dataSource]="landlords " multiTemplateDataRows class="mat-elevation-z8">
+<table mat-table [dataSource]="landlords$ " multiTemplateDataRows
+  class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -23,9 +24,13 @@
     <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="phone_number">
+  <ng-container matColumnDef="phoneNumber">
     <th mat-header-cell *matHeaderCellDef> Phone Number </th>
-    <td mat-cell *matCellDef="let element"> {{element.phone[0].digits}} </td>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let phone of element.phone">
+        {{phone.digits}}<br>
+      </ng-container>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="expandedDetail">

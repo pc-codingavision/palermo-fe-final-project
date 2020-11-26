@@ -1,15 +1,15 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
-import { Subscription } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 
 export interface Elements {
   id: number
-  fullname: string
+  fullName: string
   mail: string
-  phone_number: string
+  phoneNumber: string
 }
 
 @Component({
@@ -27,30 +27,26 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'fullName', 'mail', 'phone_number']
+export class LandlordListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
-  landlords: Landlord[]
-  removeSubscription: Subscription
-  constructor(private landlordService: LandlordService, private route: ActivatedRoute) { }
+  landlords$: Observable<Landlord[]>
+  private subscription: Subscription
+
+  constructor(
+    private landlordService: LandlordService,
+    private searchLandlord: SearchService
+  ) { }
 
   ngOnInit(): void {
     this.getAll()
   }
-
   getAll(): void {
-    this.landlords = this.route.snapshot.data.list
+    this.landlords$ = this.searchLandlord.getSearchResult()
   }
 
   remove(landlord: Landlord): void {
-    this.removeSubscription = this.landlordService
-      .delete(landlord.id)
-      .subscribe((response) => {
-        this.landlords = response
-      })
-  }
-
-  ngOnDestroy(): void {
-    this.removeSubscription.unsubscribe()
+    this.landlordService.delete(landlord.id)
+    this.subscription = this.searchLandlord.search('', '', '').subscribe()
   }
 }
