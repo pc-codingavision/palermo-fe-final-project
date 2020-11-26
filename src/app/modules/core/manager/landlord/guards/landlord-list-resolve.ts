@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core'
 import { Resolve } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
 export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
-  constructor(private landlordService: LandlordService) {}
+  constructor(
+    private landlordService: LandlordService,
+    private snackBar: SnackBarService
+  ) {}
 
   resolve(): Observable<Landlord[]> | any {
     return this.landlordService.getAll().pipe(
@@ -26,7 +30,7 @@ export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
       errorMessage = errorGroup
     }
 
-    alert(`Sorry,something went wrong. '\n' ${errorGroup}`) // use a snackbar insetad of alert
+    this.snackBar.openSnackBar(`Sorry,something went wrong. ${errorGroup}`, 'Close', 5000)
 
     return throwError(`${errorMessage}`)
   }
