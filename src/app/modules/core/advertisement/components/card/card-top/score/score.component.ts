@@ -8,7 +8,13 @@ import { IScoreConfig } from '@shared/models/advertisement'
   styleUrls: ['./score.component.scss'],
 })
 export class ScoreComponent implements OnInit {
-  @Input() config: IScoreConfig
+  @Input() config: IScoreConfig = {
+    writable: false,
+    minScore: 0,
+    maxScore: 0,
+    scoreIcon: Icon.Star,
+    score: 0,
+  }
   @Output() scoreValue = new EventEmitter<number>()
   score: number
   iconFill: string
