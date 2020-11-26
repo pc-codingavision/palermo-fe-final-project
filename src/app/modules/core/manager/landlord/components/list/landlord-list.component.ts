@@ -32,7 +32,7 @@ export class LandlordListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
-  private subscription: Subscription
+  subscription: Subscription
 
   constructor(
     private landlordService: LandlordService,
