@@ -11,5 +11,17 @@ export class LatestMiniCardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (
+      this.advertisement !== undefined &&
+      !this.advertisement?.property?.images?.length
+    ) {
+      this.advertisement.property.images[0] = {
+        image: 'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
+        thumbImage:
+          'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
+        alt: 'No image',
+      }
+    }
+  }
 }
