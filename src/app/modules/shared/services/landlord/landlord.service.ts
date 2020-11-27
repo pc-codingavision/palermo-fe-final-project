@@ -40,6 +40,7 @@ export class LandlordService {
 
   add(landlord: Landlord): void {
     if (landlord !== null) {
+      landlord.id = this.genId()
       this.landlords.push(landlord)
     }
   }
@@ -61,5 +62,11 @@ export class LandlordService {
       return of(this.landlords[index])
     }
     return of(null)
+  }
+
+  genId(): number {
+    return this.landlords.length
+      ? Math.max(...this.landlords.map((landlord) => landlord.id)) + 1
+      : 1
   }
 }

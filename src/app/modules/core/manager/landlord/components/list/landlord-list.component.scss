@@ -33,3 +33,24 @@ tr.element-row:not(.expanded-row):active {
 #add-button {
   padding: 8px;
 }
+
+.detail {
+  height: auto;
+}
+
+.mat-card {
+  padding: 5%;
+  border: 1px solid whitesmoke;
+}
+
+@media screen and (max-width: 319px) {
+  .element-diagram {
+    height: 105%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 960px) {
+  .element-diagram {
+    height: 105%;
+  }
+}
