@@ -10,3 +10,14 @@ h1 {
   font-weight: 500;
   color: #000;
 }
+
+#button {
+  padding: 1%;
+}
+
+@media screen and (max-width: 960px) {
+  #container {
+    background-color: whitesmoke;
+    height: 100%;
+  }
+}
