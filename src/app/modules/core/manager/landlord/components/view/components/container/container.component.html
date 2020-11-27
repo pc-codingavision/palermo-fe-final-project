@@ -3,17 +3,21 @@
     <h1 md-display-4>{{landlord?.fullName}} details</h1>
   </div>
 
-  <div id="cav-container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="stretch">
-    <cav-status fxFlex="10" [landlord]="landlord">
+  <div id="cav-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="stretch"
+    fxLayoutGap="1%">
+    <cav-status fxFlex="15" fxFlex.lt-sm="20%" [landlord]="landlord">
     </cav-status>
-    <cav-contact fxFlex="30" id="contact-cav" [landlord]="landlord">
+    <cav-contact fxFlex="30" fxFlex.lt-sm="20%" id="contact-cav" [landlord]="landlord">
     </cav-contact>
-    <cav-phone fxFlex="30" id="phone-cav" [landlord]="landlord"></cav-phone>
-    <cav-address fxFlex="30" id="address-cav" [address]="landlord?.address">
+    <cav-phone fxFlex="30" fxFlex.lt-sm="20%" id="phone-cav" [landlord]="landlord">
+    </cav-phone>
+    <cav-address fxFlex="30" fxFlex.lt-sm="20%" id="address-cav"
+      [address]="landlord?.address">
     </cav-address>
   </div>
 
-  <cav-button-container [landlord]="landlord" (toggleStatus)="toggleStatus($event)">
+  <cav-button-container id="button" [landlord]="landlord"
+    (toggleStatus)="toggleStatus($event)">
   </cav-button-container>
 
 </div>
