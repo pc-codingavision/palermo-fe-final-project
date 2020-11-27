@@ -44,7 +44,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     let tmpAdvertisement: MockAdvertisement[] = this.advertisements
     this.filteredAdvertisements = []
     if (price == null && score == null && facility == null) {
-      this.advertisements.forEach((adv) => this.filteredAdvertisements.push(adv))
+      this.advertisements?.forEach((adv) => this.filteredAdvertisements.push(adv))
       this.emitPriceUpdate()
     } else {
       if (price != null) {
