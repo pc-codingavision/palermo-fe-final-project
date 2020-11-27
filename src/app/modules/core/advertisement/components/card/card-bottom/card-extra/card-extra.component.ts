@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import {
+  IMockAdvertisement,
+  IMockReview,
+} from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
   selector: 'cav-card-extra',
@@ -8,7 +11,17 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 })
 export class CardExtraComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
+  sortedReviews: IMockReview[]
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sortedReviews = this.advertisement?.reviews
+      .map((review) => {
+        review.date = new Date(review.date)
+        return review
+      })
+      // @ts-ignore
+      .sort((a, b) => b.date?.getTime() - a.date?.getTime())
+      .slice(0, 3)
+  }
 }

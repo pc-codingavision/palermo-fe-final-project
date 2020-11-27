@@ -13,6 +13,7 @@ export interface IMockReview {
   tenant: IMockTenant
   description: string
   vote: number
+  date: Date | string
 }
 export interface IMockAdvertisement {
   id: number
@@ -105,6 +106,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Fantastic vacation. Perfect house',
         vote: 4.5,
+        date: new Date(2020, 11, 27),
       },
       {
         title: 'Good',
@@ -114,6 +116,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Nice house, very very clean',
         vote: 4,
+        date: '2020-10-14',
       },
     ],
     price: 40,
@@ -179,6 +182,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Very spacious and accessible house',
         vote: 4.5,
+        date: '2020-08-15',
       },
     ],
     price: 30,
@@ -245,6 +249,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'The hostel was very very chaotic',
         vote: 1.5,
+        date: new Date(2020, 2, 21),
       },
       {
         title: 'Terrible',
@@ -254,6 +259,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Very busy and people without masks',
         vote: 2,
+        date: new Date(2020, 9, 19),
       },
     ],
     price: 20,
