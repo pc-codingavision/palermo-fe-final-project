@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { SharedModule } from '@modules/shared/shared.module'
 
 import { ReviewDialogComponent } from './review-dialog.component'
 
@@ -9,6 +11,8 @@ describe('CustomReviewDialogComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ReviewDialogComponent],
+      imports: [SharedModule],
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: [] }],
     }).compileComponents()
   })
 
