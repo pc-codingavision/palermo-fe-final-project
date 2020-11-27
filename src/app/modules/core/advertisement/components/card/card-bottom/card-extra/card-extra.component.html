@@ -7,6 +7,9 @@
       <h2>Most recent reviews</h2>
       <cav-review *ngFor="let review of sortedReviews" [review]="review">
       </cav-review>
+
+      <button mat-raised-button color="primary" (click)="showAllReviews()">Show all
+        Reviews</button>
     </mat-card>
 
     <mat-card class="aside" fxFlex="48%">
