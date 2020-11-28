@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
 
 describe('AdvertismentContainerComponent', () => {
@@ -9,6 +10,7 @@ describe('AdvertismentContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [AdvertisementContainerComponent],
+        imports: [RouterTestingModule],
       }).compileComponents()
     })
   )
