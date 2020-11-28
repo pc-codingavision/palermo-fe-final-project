@@ -106,7 +106,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Fantastic vacation. Perfect house',
         vote: 4.5,
-        date: new Date(2020, 11, 27),
+        date: new Date(2020, 10, 27),
       },
       {
         title: 'Good',

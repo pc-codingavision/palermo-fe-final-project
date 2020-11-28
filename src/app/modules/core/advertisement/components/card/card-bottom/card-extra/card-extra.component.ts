@@ -17,6 +17,17 @@ export class CardExtraComponent implements OnInit {
   constructor(private dialogService: DialogService) {}
 
   ngOnInit(): void {
+    this.sortReviews()
+  }
+
+  showAllReviews(): void {
+    this.dialogService.openCustomDialog(
+      ReviewDialogComponent,
+      this.advertisement?.reviews
+    )
+  }
+
+  sortReviews(): void {
     this.sortedReviews = this.advertisement?.reviews
       .map((review) => {
         review.date = new Date(review.date)
@@ -24,10 +35,5 @@ export class CardExtraComponent implements OnInit {
       })
       // @ts-ignore
       .sort((a, b) => b.date?.getTime() - a.date?.getTime())
-      .slice(0, 3)
-  }
-
-  showAllReviews(): void {
-    this.dialogService.openCustomDialog(ReviewDialogComponent, this.advertisement.reviews)
   }
 }

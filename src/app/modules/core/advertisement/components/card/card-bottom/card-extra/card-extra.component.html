@@ -5,7 +5,8 @@
 
     <mat-card class="side" fxFlex="38%">
       <h2>Most recent reviews</h2>
-      <cav-review *ngFor="let review of sortedReviews" [review]="review">
+      <cav-review *ngFor="let review of advertisement?.reviews.slice(0, 3)"
+        [review]="review">
       </cav-review>
 
       <button mat-raised-button color="primary" (click)="showAllReviews()"
