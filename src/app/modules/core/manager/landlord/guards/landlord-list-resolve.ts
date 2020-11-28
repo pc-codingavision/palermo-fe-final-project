@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
 @Injectable({ providedIn: 'root' })
-export class LandlordListResolver implements Resolve<Observable<Landlord[]>> {
+export class LandlordListResolver implements Resolve<Landlord[]> {
   constructor(
     private landlordService: LandlordService,
     private snackBar: SnackBarService
