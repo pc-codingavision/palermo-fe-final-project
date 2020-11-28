@@ -24,7 +24,7 @@ export class InMemoryAuthService extends AuthService {
   tenants$ = from(TENANTS_MOCK_DATA.map((tenant) => Tenant.Build(tenant)))
   currentUser: IUser
 
-  mockUsers = concat(this.landlords$, this.managers$, this.tenants$)
+  mockUsers$ = concat(this.landlords$, this.managers$, this.tenants$)
 
   constructor() {
     super()
@@ -40,7 +40,7 @@ export class InMemoryAuthService extends AuthService {
     email = email.toLowerCase()
     let authUser: IAuthStatus
 
-    this.mockUsers
+    this.mockUsers$
       .pipe(
         find((user) => user.mail === email && user.password === password),
         catchError((err) => of(err))

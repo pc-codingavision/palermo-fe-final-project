@@ -36,7 +36,6 @@ export interface IUser {
 
 export class User implements IUser {
   constructor(
-    // tslint:disable-next-line:variable-name
     public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
     public phone = [] as IPhone[],
