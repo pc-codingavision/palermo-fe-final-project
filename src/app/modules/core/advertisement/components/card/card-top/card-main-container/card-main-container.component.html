@@ -14,12 +14,18 @@
         </cav-facility>
       </div>
 
-      <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-      <cav-score [config]="scoreConfig"></cav-score>
-      <cav-check-in-check-out></cav-check-in-check-out>
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
+          <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
+        </div>
+        <cav-score [config]="scoreConfig"></cav-score>
+        <cav-check-in-check-out></cav-check-in-check-out>
 
-      <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
+
+      </div>
     </mat-card-content>
+
 
     <mat-card-actions>
       <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
