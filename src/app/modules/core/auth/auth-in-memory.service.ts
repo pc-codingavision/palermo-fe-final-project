@@ -4,42 +4,27 @@ import {
   IAuthStatus,
   IServerAuthResponse,
 } from '@modules/core/auth/auth.service'
-import { PhoneType, User } from '@modules/core/auth/models/user'
-import { Role } from '@shared/enum/enums'
+import { Landlord } from '@shared/models/landlord'
+import { Manager } from '@shared/models/manager'
+import {
+  LANDLORDS_MOCK_DATA,
+  MANAGERS_MOCK_DATA,
+  TENANTS_MOCK_DATA,
+} from '@shared/models/mock-data/data'
+import { Tenant } from '@shared/models/tenant'
+import { IUser } from '@shared/models/users'
 import { sign } from 'fake-jwt-sign'
-import { Observable, of, throwError } from 'rxjs'
+import { Observable, concat, from, of, throwError } from 'rxjs'
+import { catchError, find } from 'rxjs/operators'
 
 @Injectable()
 export class InMemoryAuthService extends AuthService {
-  private defaultUser = User.Build({
-    _id: '1da1986538vdfg2245zz',
-    email: 'pierocascio@codingavision.com',
-    name: { first: 'Piero', last: 'Cascio' },
-    picture:
-      'https://en.gravatar.com/userimage/24135551/b0e4fc2c138254516709e353642e24f0.jpg?size=200',
-    role: Role.Manager,
-    dateOfBirth: new Date(1975, 7, 31),
-    userStatus: true,
-    address: {
-      line1: 'Via dei Ciclamini',
-      city: 'Palermo',
-      state: 'Italia',
-      zip: '90121',
-    },
-    level: 2,
-    phones: [
-      {
-        id: 0,
-        type: PhoneType.Home,
-        digits: '091987654321',
-      },
-      {
-        id: 1,
-        type: PhoneType.Mobile,
-        digits: '339123456789',
-      },
-    ],
-  })
+  landlords$ = from(LANDLORDS_MOCK_DATA.map((landlord) => Landlord.Build(landlord)))
+  managers$ = from(MANAGERS_MOCK_DATA.map((manager) => Manager.Build(manager)))
+  tenants$ = from(TENANTS_MOCK_DATA.map((tenant) => Tenant.Build(tenant)))
+  currentUser: IUser
+
+  mockUsers = concat(this.landlords$, this.managers$, this.tenants$)
 
   constructor() {
     super()
@@ -53,35 +38,40 @@ export class InMemoryAuthService extends AuthService {
     password: string
   ): Observable<IServerAuthResponse> {
     email = email.toLowerCase()
-    if (!email.endsWith('@test.com')) {
-      return throwError('Failed to login! Email needs to end with @test.com.')
+    let authUser: IAuthStatus
+
+    this.mockUsers
+      .pipe(
+        find((user) => user.mail === email && user.password === password),
+        catchError((err) => of(err))
+      )
+      .subscribe((user: IUser) => {
+        if (user) {
+          authUser = {
+            isAuthenticated: true,
+            userId: user.id,
+            userRole: user.role,
+          }
+          this.currentUser = user
+        }
+      })
+
+    if (!authUser) {
+      return throwError('Login failed email or password incorrect')
     }
-    const authStatus = {
-      isAuthenticated: true,
-      userId: this.defaultUser._id,
-      userRole: email.includes('tenant')
-        ? Role.Tenant
-        : email.includes('landlord')
-        ? Role.Landlord
-        : email.includes('manager')
-        ? Role.Manager
-        : Role.None,
-    } as IAuthStatus
-    this.defaultUser.role = authStatus.userRole
+
     const authResponse = {
-      accessToken: sign(authStatus, 'secret', {
+      accessToken: sign(authUser, 'secret', {
         expiresIn: '1h',
         algorithm: 'none',
       }),
     } as IServerAuthResponse
-
     return of(authResponse)
   }
 
-  protected getCurrentUser(): Observable<User> {
-    return of(this.defaultUser)
+  protected getCurrentUser(): Observable<IUser> {
+    return of(this.currentUser)
   }
-
   protected transformJwtToken(token: IAuthStatus): IAuthStatus {
     return token
   }

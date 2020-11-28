@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { CacheService } from '@modules/core/auth/cache.service'
-import { IUser, User } from '@modules/core/auth/models/user'
 import { transformError } from '@shared/common'
 import { Role } from '@shared/enum/enums'
+import { IUser, User } from '@shared/models/users'
 import jwt_decode from 'jwt-decode'
 import { BehaviorSubject, Observable, pipe, throwError } from 'rxjs'
 import { catchError, filter, map, mergeMap, tap } from 'rxjs/operators'
@@ -11,7 +11,7 @@ import { catchError, filter, map, mergeMap, tap } from 'rxjs/operators'
 export interface IAuthStatus {
   isAuthenticated: boolean
   userRole: Role
-  userId: string
+  userId: number
 }
 
 export interface IServerAuthResponse {
@@ -21,7 +21,7 @@ export interface IServerAuthResponse {
 export const defaultAuthStatus: IAuthStatus = {
   isAuthenticated: false,
   userRole: Role.None,
-  userId: '',
+  userId: null,
 }
 
 export interface IAuthService {
@@ -75,7 +75,7 @@ export abstract class AuthService extends CacheService implements IAuthService {
 
   protected abstract transformJwtToken(token: unknown): IAuthStatus
 
-  protected abstract getCurrentUser(): Observable<User>
+  protected abstract getCurrentUser(): Observable<IUser>
 
   protected setToken(jwt: string): void {
     this.setItem(this.JWT_KEY, jwt)
