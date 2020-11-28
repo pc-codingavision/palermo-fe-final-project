@@ -23,8 +23,11 @@ export class CheckInCheckOutComponent implements OnInit {
     this.minCheckOutDate = moment().toDate()
   }
 
-  updateDate(value: Date): void {
+  updateMinCheckOutDate(value: Date): void {
     this.minCheckOutDate = value
+  }
+
+  updateMaxCheckInDate(value: Date): void {
     this.maxCheckInDate = value
   }
 }
