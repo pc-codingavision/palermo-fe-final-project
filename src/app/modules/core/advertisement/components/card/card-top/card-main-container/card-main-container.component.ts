@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { MediaObserver } from '@angular/flex-layout';
+import { MediaObserver } from '@angular/flex-layout'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Icon } from '@shared/enum/enums'
 import { IScoreConfig } from '@shared/models/advertisement'
