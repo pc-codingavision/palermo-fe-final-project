@@ -1,41 +1,86 @@
-<div class="content" fxLayout="row" fxLayoutAlign="space-between end">
-  <mat-card>
+<div *ngIf="!this.media.isActive('xs'); else mobileView">
+  <div class="content" fxLayout="row" fxLayoutAlign="space-between end">
+    <mat-card>
 
-    <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
-      fxLayoutWrap="wrap">
+      <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
+        fxLayoutWrap="wrap">
 
-      <cav-photogallery [photo]="advertisement?.property?.imagesPath">
-      </cav-photogallery>
+        <cav-photogallery [photo]="advertisement?.property?.imagesPath">
+        </cav-photogallery>
 
-      <div fxLayout="column">
-        <cav-facility
-          *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
-          [facility]="facility">
-        </cav-facility>
-      </div>
-
-      <div fxLayout="column" id="thirdColumn">
-        <div fxLayout="row">
-          <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-          <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
+        <div fxLayout="column">
+          <cav-facility
+            *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
+            [facility]="facility">
+          </cav-facility>
         </div>
-        <cav-score [config]="scoreConfig"></cav-score>
-        <cav-check-in-check-out></cav-check-in-check-out>
+
+        <div fxLayout="column" id="thirdColumn">
+          <div fxLayout="row">
+            <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
+            <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
+          </div>
+          <cav-score [config]="scoreConfig"></cav-score>
+          <cav-check-in-check-out></cav-check-in-check-out>
 
 
-      </div>
-    </mat-card-content>
+        </div>
+      </mat-card-content>
 
 
-    <mat-card-actions>
-      <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
-        <mat-icon>{{!showCardExtra ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}
-        </mat-icon>
-      </button>
-    </mat-card-actions>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
+          <mat-icon>{{!showCardExtra ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}
+          </mat-icon>
+        </button>
+      </mat-card-actions>
 
-    <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement">
-    </cav-card-extra>
-  </mat-card>
+      <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement">
+      </cav-card-extra>
+    </mat-card>
 
+  </div>
 </div>
+<ng-template #mobileView>
+  <div class="content" fxLayout="row" fxLayoutAlign="space-between end">
+    <mat-card>
+
+      <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
+        fxLayoutWrap="wrap">
+
+        <cav-photogallery [photo]="advertisement?.property?.imagesPath">
+        </cav-photogallery>
+
+        <div fxLayout="column">
+          <cav-facility
+            *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
+            [facility]="facility">
+          </cav-facility>
+        </div>
+
+        <div fxLayout="column" id="thirdColumn">
+          <div fxLayout="row">
+            <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
+            <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
+          </div>
+          <cav-score [config]="scoreConfig"></cav-score>
+          <cav-check-in-check-out></cav-check-in-check-out>
+
+
+        </div>
+      </mat-card-content>
+
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
+          <mat-icon>{{!showCardExtra ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}
+          </mat-icon>
+        </button>
+      </mat-card-actions>
+
+      <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement">
+      </cav-card-extra>
+    </mat-card>
+
+  </div>
+</ng-template>
