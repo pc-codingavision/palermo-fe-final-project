@@ -10,6 +10,7 @@ export class PriceFilterComponent implements OnInit {
   @Input() maxPrice: number
   @Input() minPrice: number
   @Output() filter = new EventEmitter<number>()
+  selectedPrice: number
 
   constructor() {}
 
@@ -21,5 +22,10 @@ export class PriceFilterComponent implements OnInit {
 
   emitPriceFilter(value: number): void {
     this.filter.emit(value)
+  }
+
+  resetFilter(): void {
+    this.selectedPrice = null
+    this.filter.emit(null)
   }
 }
