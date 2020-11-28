@@ -45,10 +45,11 @@ const advertisementsComponent = [
   LatestMiniCardComponent,
   PriceFilterComponent,
   FacilitiesComponent,
+  ReviewDialogComponent,
 ]
 
 @NgModule({
-  declarations: [...advertisementsComponent, ReviewDialogComponent],
+  declarations: [...advertisementsComponent],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
   providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
