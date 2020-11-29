@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { IPicture } from '@shared/models/property'
 
 @Component({
   selector: 'cav-latest-mini-card',
@@ -8,20 +9,20 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 })
 export class LatestMiniCardComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-
+  @Input() images: IPicture[]
   constructor() {}
 
   ngOnInit(): void {
-    if (
-      this.advertisement !== undefined &&
-      !this.advertisement?.property?.images?.length
-    ) {
-      this.advertisement.property.images[0] = {
-        image: 'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
-        thumbImage:
-          'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
-        alt: 'No image',
-      }
+    if (!this.images?.length) {
+      this.images = [
+        {
+          image:
+            'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
+          thumbImage:
+            'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
+          alt: 'No image',
+        },
+      ]
     }
   }
 }
