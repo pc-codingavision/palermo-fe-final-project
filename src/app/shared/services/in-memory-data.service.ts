@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core'
 import { IAdvertisement } from '@shared/models/advertisement'
+import { Advertisement } from '@shared/models/advertisement'
+import { Landlord } from '@shared/models/landlord'
 import {
   ADVERTISEMENTS_MOCK_DATA,
   LANDLORDS_MOCK_DATA,
@@ -12,8 +14,10 @@ import { InMemoryDbService } from 'angular-in-memory-web-api'
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb(): any {
-    const advertisements = ADVERTISEMENTS_MOCK_DATA
-    const landlords = LANDLORDS_MOCK_DATA
+    const advertisements = ADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
+      Advertisement.Build(advertisement)
+    )
+    const landlords = LANDLORDS_MOCK_DATA.map((landlord) => Landlord.Build(landlord))
     return { advertisements, landlords }
   }
 

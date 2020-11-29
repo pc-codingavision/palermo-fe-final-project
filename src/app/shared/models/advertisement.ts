@@ -1,4 +1,5 @@
 import { Icon } from '@shared/enum/enums'
+import * as _ from 'lodash'
 
 export interface IReview {
   title: string
@@ -21,8 +22,8 @@ export interface IAdvertisement {
   propertyId: number
   reviews: IReview[]
   price: number
+  score?: number
 }
-
 export class Advertisement implements IAdvertisement {
   private constructor(
     public id = null,
@@ -43,5 +44,9 @@ export class Advertisement implements IAdvertisement {
       advertisement.reviews,
       advertisement.price
     )
+  }
+
+  public get score(): number {
+    return _.round(_.mean(this.reviews.map((rev) => rev.vote)))
   }
 }
