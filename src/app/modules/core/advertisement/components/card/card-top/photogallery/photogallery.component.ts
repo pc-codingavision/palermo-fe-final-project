@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-
-import { IPicture } from './../../../../../../../shared/models/property'
+import { IPicture } from '@shared/models/property'
 
 @Component({
   selector: 'cav-photogallery',
