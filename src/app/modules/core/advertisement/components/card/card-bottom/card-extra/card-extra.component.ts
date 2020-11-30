@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ReviewDialogComponent } from '@modules/core/advertisement/components/card/card-bottom/review-dialog/review-dialog.component'
 import {
-  IMockAdvertisement,
-  IMockReview,
+  MockAdvertisement,
+  MockReview,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { DialogService } from '@shared/services/dialog.service'
 
@@ -12,8 +12,8 @@ import { DialogService } from '@shared/services/dialog.service'
   styleUrls: ['./card-extra.component.scss'],
 })
 export class CardExtraComponent implements OnInit {
-  @Input() advertisement: IMockAdvertisement
-  sortedReviews: IMockReview[]
+  @Input() advertisement: MockAdvertisement
+  sortedReviews: MockReview[]
   constructor(private dialogService: DialogService) {}
 
   ngOnInit(): void {
@@ -28,12 +28,8 @@ export class CardExtraComponent implements OnInit {
   }
 
   sortReviews(): void {
-    this.sortedReviews = this.advertisement?.reviews
-      .map((review) => {
-        review.date = new Date(review.date)
-        return review
-      })
-      // @ts-ignore
-      .sort((a, b) => b.date?.getTime() - a.date?.getTime())
+    this.sortedReviews = this.advertisement?.reviews.sort(
+      (a, b) => b.date.getTime() - a.date.getTime()
+    )
   }
 }
