@@ -9,12 +9,15 @@ import { IPicture } from '@shared/models/property'
 })
 export class LatestMiniCardComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-  @Input() images: IPicture[]
+  // tslint:disable-next-line: variable-name
+  private _images: IPicture[]
   constructor() {}
 
-  ngOnInit(): void {
-    if (!this.images?.length) {
-      this.images = [
+  ngOnInit(): void {}
+
+  @Input() set images(images: IPicture[]) {
+    if (!images?.length) {
+      this._images = [
         {
           image:
             'https://cdn.pixabay.com/photo/2017/03/20/20/59/home-2160318_960_720.png',
@@ -23,6 +26,12 @@ export class LatestMiniCardComponent implements OnInit {
           alt: 'No image',
         },
       ]
+    } else {
+      this._images = images
     }
+  }
+
+  get images(): IPicture[] {
+    return this._images
   }
 }
