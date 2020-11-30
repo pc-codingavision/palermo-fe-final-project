@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { InMemoryDataService } from '@shared/services/in-memory-data.service'
-
-import { ADVERTISEMENTS_MOCK_DATA } from './../models/mock-data/data'
 
 describe('InMemoryDataService', () => {
   let service: InMemoryDataService
