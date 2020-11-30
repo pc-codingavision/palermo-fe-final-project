@@ -35,7 +35,6 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isEditLandlord = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
     this.getLandlord()
-    this.setForm()
   }
 
   ngOnDestroy(): void {
@@ -45,11 +44,12 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   getLandlord(): void {
+    this.setForm()
     if (this.isEditLandlord) {
       const id = +this.activatedRoute.snapshot.paramMap.get('id')
-      this.landlord$ = this.landlordService
-        .getById(id)
-        .subscribe((landlord) => (this.landlord = landlord))
+      this.landlord$ = this.landlordService.getById(id).subscribe((landlord) => {
+        this.landlord = landlord
+      })
     } else {
       this.landlord = Landlord.Build()
       this.togglePictureContainer = true
