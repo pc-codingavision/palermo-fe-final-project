@@ -7,25 +7,25 @@
   </button>
 </div>
 <div *ngIf="!this.media.isActive('xs'); else mobileView">
-  <table mat-table [dataSource]="landlords$ | async" multiTemplateDataRows
-    class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows
+    class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fullName">
-      <th mat-header-cell *matHeaderCellDef> FullName </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> FullName </th>
       <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="mail">
-      <th mat-header-cell *matHeaderCellDef> Mail </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mail </th>
       <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
     </ng-container>
 
     <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
       <td mat-cell *matCellDef="let element">
         <ng-container *ngFor="let phone of element.phone">
           {{phone.digits}}<br>
@@ -54,6 +54,8 @@
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
 
   </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 <ng-template #mobileView>
   <mat-card *ngFor="let element of ( landlords$ | async)">

@@ -1,6 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { MediaObserver } from '@angular/flex-layout'
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort'
+import { MatTableDataSource } from '@angular/material/table'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
@@ -28,11 +31,14 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit, OnDestroy {
+export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator
+  @ViewChild(MatSort) sort: MatSort
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
   private subscription: Subscription
+  dataSource: MatTableDataSource<Landlord>
 
   constructor(
     private landlordService: LandlordService,
@@ -44,12 +50,21 @@ export class LandlordListComponent implements OnInit, OnDestroy {
     this.getAll()
   }
 
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
 
   getAll(): void {
-    this.landlords$ = this.searchLandlord.getSearchResult()
+    this.searchLandlord
+      .getSearchResult()
+      .subscribe(
+        (landlords) => (this.dataSource = new MatTableDataSource<Landlord>(landlords))
+      )
   }
 
   remove(landlord: Landlord): void {
