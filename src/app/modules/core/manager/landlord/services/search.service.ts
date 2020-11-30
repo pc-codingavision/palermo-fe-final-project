@@ -8,9 +8,8 @@ import { map, tap } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class SearchService {
-  private filteredLandlords$: Subject<Landlord[]> = new BehaviorSubject<Landlord[]>(
-    this.landlordService.landlords
-  )
+  private filteredLandlords$: Subject<Landlord[]> = new BehaviorSubject<Landlord[]>(null)
+  // this.landlordService.landlords
 
   constructor(private landlordService: LandlordService) {}
 
