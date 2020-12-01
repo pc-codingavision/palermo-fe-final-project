@@ -37,7 +37,7 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
-  private subscription: Subscription
+  private subscriptions: Subscription[] = []
   dataSource: MatTableDataSource<Landlord>
 
   constructor(
@@ -56,19 +56,23 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    if (this.subscriptions.length) {
+      this.subscriptions.forEach((subscription) => subscription.unsubscribe())
+    }
   }
 
   getAll(): void {
-    this.searchLandlord
-      .getSearchResult()
-      .subscribe(
-        (landlords) => (this.dataSource = new MatTableDataSource<Landlord>(landlords))
-      )
+    this.subscriptions.push(
+      this.searchLandlord
+        .getSearchResult()
+        .subscribe(
+          (landlords) => (this.dataSource = new MatTableDataSource<Landlord>(landlords))
+        )
+    )
   }
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id)
-    this.subscription = this.searchLandlord.search('', '', '').subscribe()
+    this.subscriptions.push(this.searchLandlord.search('', '', '').subscribe())
   }
 }
