@@ -6,6 +6,7 @@ import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
 import { Subscription } from 'rxjs'
 import { combineLatest } from 'rxjs'
+
 @Component({
   selector: 'cav-advertisement-container',
   templateUrl: './advertisement-container.component.html',
