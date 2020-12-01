@@ -56,3 +56,7 @@ button {
 mat-form-field {
   padding: 10px;
 }
+
+.mat-button.no-hover ::ng-deep .mat-button-focus-overlay {
+  background: none;
+}
