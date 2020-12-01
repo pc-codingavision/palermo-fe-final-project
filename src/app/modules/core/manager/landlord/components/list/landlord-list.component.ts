@@ -45,7 +45,7 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
+    // this.subscription.unsubscribe()
   }
 
   getAll(): void {
@@ -53,7 +53,7 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id)
+    this.landlordService.delete(landlord.id).subscribe()
     this.subscription = this.searchLandlord.search('', '', '').subscribe()
   }
 }

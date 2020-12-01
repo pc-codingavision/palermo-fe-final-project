@@ -44,11 +44,11 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   getLandlord(): void {
-    this.setForm()
     if (this.isEditLandlord) {
       const id = +this.activatedRoute.snapshot.paramMap.get('id')
       this.landlord$ = this.landlordService.getById(id).subscribe((landlord) => {
         this.landlord = landlord
+        this.setForm()
       })
     } else {
       this.landlord = Landlord.Build()
