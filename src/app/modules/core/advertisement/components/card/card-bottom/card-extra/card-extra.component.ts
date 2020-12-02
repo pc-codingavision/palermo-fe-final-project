@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
@@ -8,7 +9,8 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
 })
 export class CardExtraComponent implements OnInit {
   @Input() advertisement: IMockAdvertisement
-  constructor() {}
+
+  constructor(public media: MediaObserver) {}
 
   ngOnInit(): void {}
 }
