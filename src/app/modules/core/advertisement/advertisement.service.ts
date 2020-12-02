@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import {
   MOCKADVERTISEMENTS_MOCK_DATA,
   MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable, of } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +14,49 @@ export class AdvertisementService {
   advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
     MockAdvertisement.Build(advertisement)
   )
+  private advertisementsUrl = 'api/advertisements'
 
-  constructor() {}
+  private handleError<T>(
+    operation = 'operation',
+    result?: T
+  ): (error: any) => Observable<T> {
+    return (error: any): Observable<T> => {
+      console.error(error)
+
+      console.log(`AdvertisementService ${operation} failed ${error.message}`)
+
+      return of(result as T)
+    }
+  }
+
+  constructor(private http: HttpClient) {}
 
   findAll(): Observable<MockAdvertisement[]> {
-    return of(this.advertisements)
+    return this.http
+      .get<MockAdvertisement[]>(this.advertisementsUrl)
+      .pipe(
+        map(this.mapAdvsArrayToAdvsArrayBuild()),
+        catchError(this.handleError<MockAdvertisement[]>('findAll', []))
+      )
   }
 
   findById(id: number): Observable<MockAdvertisement> {
-    return of(this.advertisements.find((advert) => advert.id === id))
+    return this.http
+      .get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`)
+      .pipe(
+        map(this.mapAdvsToAdvsBuild()),
+        catchError(this.handleError<MockAdvertisement>('findById'))
+      )
+  }
+
+  // tslint:disable-next-line:typedef
+  private mapAdvsArrayToAdvsArrayBuild() {
+    return (advertisements) => advertisements.map(this.mapAdvsToAdvsBuild())
+  }
+
+  // tslint:disable-next-line:typedef
+  private mapAdvsToAdvsBuild() {
+    return (advertisements) => MockAdvertisement.Build(advertisements)
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {

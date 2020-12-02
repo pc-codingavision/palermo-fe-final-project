@@ -27,15 +27,14 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       this.advertisementService.findAll().subscribe((advertisements) => {
         this.advertisements = advertisements
         advertisements.forEach((adv) => this.filteredAdvertisements.push(adv))
+        combineLatest([
+          this.sidebarService.price$,
+          this.sidebarService.facility$,
+          this.sidebarService.score$,
+        ]).subscribe(([price, facility, score]) =>
+          this.getFilteredAdvertisements(price, score, facility)
+        )
       })
-    )
-
-    combineLatest([
-      this.sidebarService.price$,
-      this.sidebarService.facility$,
-      this.sidebarService.score$,
-    ]).subscribe(([price, facility, score]) =>
-      this.getFilteredAdvertisements(price, score, facility)
     )
   }
 
