@@ -40,7 +40,7 @@ export abstract class AuthService extends CacheService implements IAuthService {
   private readonly JWT_KEY = 'jwt'
 
   readonly authStatus$ = new BehaviorSubject<IAuthStatus>(defaultAuthStatus)
-  readonly currentUser$ = new BehaviorSubject<IUser>(new User())
+  readonly currentUser$ = new BehaviorSubject<IUser>(User.Build({} as IUser))
 
   protected constructor() {
     super()
@@ -76,6 +76,8 @@ export abstract class AuthService extends CacheService implements IAuthService {
   protected abstract transformJwtToken(token: unknown): IAuthStatus
 
   protected abstract getCurrentUser(): Observable<IUser>
+
+  protected abstract removeCurrentUser(): void
 
   protected setToken(jwt: string): void {
     this.setItem(this.JWT_KEY, jwt)
@@ -129,6 +131,7 @@ export abstract class AuthService extends CacheService implements IAuthService {
     if (clearToken) {
       this.clearToken()
     }
+    this.removeCurrentUser()
     // Note the use of setTimeout, which allows us to avoid timing
     // issues when core elements of the application are all changing statuses at once.
     setTimeout(() => this.authStatus$.next(defaultAuthStatus), 0)
