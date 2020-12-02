@@ -1,12 +1,11 @@
-<div id="add-button">
-  <button mat-mini-fab color="primary" routerLink="/manager/landlord/new/"
-    alt="Button for add new Landlord" title="Add Landlord">
-    <mat-icon>
-      add
-    </mat-icon>
-  </button>
-</div>
 <div *ngIf="!this.media.isActive('xs'); else mobileView">
+  <div id="button">
+    <button id="add-button" mat-raised-button color="primary"
+      routerLink="/manager/landlord/new/" alt="Button for add new Landlord"
+      title="Add Landlord">New
+    </button>
+  </div>
+
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows
     class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="id">
@@ -57,7 +56,17 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+
 <ng-template #mobileView>
+  <div id="button">
+    <button id="add-button" mat-mini-fab color="primary"
+      routerLink="/manager/landlord/new/" alt="Button for add new Landlord"
+      title="Add Landlord">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button>
+  </div>
   <mat-card *ngFor="let element of ( landlords$ | async)">
     <a (click)="expandedElement = expandedElement === element ? null : element"
       class="element-row" [class.expanded-row]="expandedElement === element"
