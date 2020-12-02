@@ -118,4 +118,18 @@ describe('ReservationService', () => {
       request.flush(mockAddReservationResult)
     })
   })
+
+  describe('#delete', () => {
+    it('should delete the reservation matching the passed id/reservation', () => {
+      service.delete(1).subscribe()
+      service
+        .getAll()
+        .subscribe((result) => expect(result).toEqual(RESERVATIONS_MOCK_DATA.slice(1)))
+
+      const deleteReq = httpTestingController.expectOne('api/reservations/1')
+      expect(deleteReq.request.method).toEqual('DELETE')
+      const getReq = httpTestingController.expectOne('api/reservations')
+      getReq.flush(RESERVATIONS_MOCK_DATA.slice(1))
+    })
+  })
 })

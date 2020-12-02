@@ -40,6 +40,14 @@ export class ReservationService {
       .pipe(catchError(this.handleError<IReservation>('add')))
   }
 
+  delete(reservation: IReservation | number): Observable<IReservation> {
+    const id = typeof reservation === 'number' ? reservation : reservation.id
+
+    return this.http
+      .delete<IReservation>(`${this.apiUrl}/${id}`, this.httpOptions)
+      .pipe(catchError(this.handleError<IReservation>('delete')))
+  }
+
   private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${JSON.stringify(error)}`)
