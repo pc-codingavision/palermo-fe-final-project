@@ -243,7 +243,13 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: false,
     },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+    images: [
+      {
+        image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        alt: 'Salotto',
+      },
+    ],
     status: Status.Open,
   },
   {
@@ -274,7 +280,13 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: false,
     },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+    images: [
+      {
+        image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        alt: 'Salotto',
+      },
+    ],
     status: Status.Open,
   },
   {
@@ -304,8 +316,14 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: true,
     },
-    imagesPath: [
-      'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+    images: [
+      {
+        image:
+          'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+        thumbImage:
+          'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+        alt: 'Terrazza',
+      },
     ],
     status: Status.Open,
   },
