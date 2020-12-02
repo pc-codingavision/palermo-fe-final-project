@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Icon } from '@shared/enum/enums'
+import { IScoreConfig } from '@shared/models/advertisement'
 
 @Component({
   selector: 'cav-card-main-container',
@@ -9,10 +11,19 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
 export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: MockAdvertisement
   showCardExtra = false
+  scoreConfig: IScoreConfig
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.scoreConfig = {
+      writable: false,
+      minScore: 0,
+      maxScore: 5,
+      score: this.advertisement?.score,
+      scoreIcon: Icon.Star,
+    }
+  }
 
   expandCardExtra(): void {
     this.showCardExtra = !this.showCardExtra

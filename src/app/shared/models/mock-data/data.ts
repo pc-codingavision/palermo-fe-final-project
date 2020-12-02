@@ -69,6 +69,7 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
     phone: [
       { id: 1, type: PhoneType.Mobile, digits: '3454545' },
       { id: 2, type: PhoneType.Home, digits: '09252525' },
+      { id: 3, type: PhoneType.Home, digits: '02552525' },
     ],
     mail: 'piero-landlord@test.com',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
@@ -92,7 +93,7 @@ export const LANDLORDS_MOCK_DATA: Landlord[] = [
       { id: 1, type: PhoneType.Home, digits: '213455' },
       { id: 2, type: PhoneType.Mobile, digits: '0251628' },
     ],
-    mail: 'cosimo-landlord@test.com',
+    mail: 'piero-landlord@test.it',
     picture: 'https://www.flaticon.com/svg/static/icons/svg/3135/3135715.svg',
     username: 'landlord2',
     password: 'password',
@@ -237,7 +238,13 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: false,
     },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+    images: [
+      {
+        image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        alt: 'Salotto',
+      },
+    ],
     status: Status.Open,
   },
   {
@@ -268,7 +275,13 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: false,
     },
-    imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+    images: [
+      {
+        image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
+        alt: 'Salotto',
+      },
+    ],
     status: Status.Open,
   },
   {
@@ -298,8 +311,14 @@ export const PROPERTIES_MOCK_DATA: Property[] = [
       shower: true,
       bath: true,
     },
-    imagesPath: [
-      'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+    images: [
+      {
+        image:
+          'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+        thumbImage:
+          'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+        alt: 'Terrazza',
+      },
     ],
     status: Status.Open,
   },

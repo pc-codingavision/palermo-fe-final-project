@@ -1,7 +1,7 @@
 import { Category, Status, Toilet } from '@shared/enum/enums'
 import { IAddress } from '@shared/models/users'
 
-export interface IFacilities {
+export interface IFacility {
   tv: boolean
   wifi: boolean
   breakfastIncluded: boolean
@@ -18,6 +18,13 @@ export interface IRoom {
   mq: number
 }
 
+export interface IPicture {
+  image: string
+  thumbImage: string
+  title?: string
+  alt: string
+}
+
 export interface IProperty {
   id: number
   landlordId: number
@@ -27,8 +34,8 @@ export interface IProperty {
   rooms: IRoom[]
   numberOfToilet: number
   description: string
-  facilities: IFacilities
-  imagesPath: string[]
+  facilities: IFacility
+  images: IPicture[]
   status: Status
 }
 
@@ -43,7 +50,7 @@ export class Property implements IProperty {
     public numberOfToilet = null,
     public description = null,
     public facilities = null,
-    public imagesPath = null,
+    public images = null,
     public status = null
   ) {}
 
@@ -61,7 +68,7 @@ export class Property implements IProperty {
       property.numberOfToilet,
       property.description,
       property.facilities,
-      property.imagesPath,
+      property.images,
       property.status
     )
   }
