@@ -35,7 +35,7 @@ export interface IUser {
 }
 
 export class User implements IUser {
-  constructor(
+  private constructor(
     public id = null,
     public name = { firstName: '', middleName: '', surname: '' } as IName,
     public phone = [] as IPhone[],
