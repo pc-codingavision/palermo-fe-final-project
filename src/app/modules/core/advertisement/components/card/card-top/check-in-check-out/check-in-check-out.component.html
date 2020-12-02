@@ -23,8 +23,18 @@
       Please enter a valid date
     </mat-error>
   </mat-form-field>
+  <div *ngIf="!this.media.isActive('xs'); else mobileView">
+    <button type="submit" [disabled]="date.invalid" mat-raised-button
+      class="button">Book</button>
 
-  <button type="submit" [disabled]="date.invalid" mat-raised-button
-    class="button">Book</button>
-
+  </div>
 </div>
+
+<ng-template #mobileView>
+  <div [formGroup]="date">
+
+    <button type="submit" [disabled]="date.invalid" mat-raised-button class="button"
+      fxFlex="100%">Book</button>
+
+  </div>
+</ng-template>
