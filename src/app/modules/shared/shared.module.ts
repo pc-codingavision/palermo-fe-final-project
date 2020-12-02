@@ -6,12 +6,15 @@ import { FormsModule } from '@angular/forms'
 import { MaterialModule } from '@modules/shared/material.module'
 import { DialogComponent } from '@shared/components/dialog/dialog.component'
 import { SpinnerComponent } from '@shared/components/spinner/spinner.component'
+import { NgImageSliderModule } from 'ng-image-slider'
 
 const sharedComponents = [DialogComponent, SpinnerComponent]
+
 const sharedModules = [
   FlexLayoutModule,
   MaterialModule,
   ReactiveFormsModule,
+  NgImageSliderModule,
   CommonModule,
   FormsModule,
 ]
