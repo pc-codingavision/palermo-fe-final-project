@@ -52,6 +52,7 @@
         </cav-photogallery>
 
         <div fxLayout="column">
+          <br>
           <cav-facility
             *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
             [facility]="facility">
@@ -59,10 +60,13 @@
         </div>
 
         <div fxLayout="column">
+          <br>
           <div fxLayout="row">
+
             <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
             <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
           </div>
+          <br>
           <cav-score [config]="scoreConfig"></cav-score>
           <cav-check-in-check-out></cav-check-in-check-out>
 
