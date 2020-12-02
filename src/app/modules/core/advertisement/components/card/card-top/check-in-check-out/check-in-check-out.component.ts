@@ -12,6 +12,7 @@ export class CheckInCheckOutComponent implements OnInit {
   constructor(private fb: FormBuilder, public media: MediaObserver) {}
   minCheckInDate: Date
   minCheckOutDate: Date
+  maxCheckInDate: Date
 
   date: FormGroup = this.fb.group({
     picker1: ['', [Validators.required]],
@@ -25,5 +26,9 @@ export class CheckInCheckOutComponent implements OnInit {
 
   updateMinCheckOutDate(value: Date): void {
     this.minCheckOutDate = value
+  }
+
+  updateMaxCheckInDate(value: Date): void {
+    this.maxCheckInDate = value
   }
 }
