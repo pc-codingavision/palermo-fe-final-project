@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class ReservationService {
-  private apiUrl = 'api/reservation'
+  private apiUrl = 'api/reservations'
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   }
