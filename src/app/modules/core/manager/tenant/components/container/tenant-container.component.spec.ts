@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { TenantContainerComponent } from '@modules/core/manager/tenant/components/container/tenant-container.component'
 
@@ -9,6 +10,7 @@ describe('TenantContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [TenantContainerComponent],
+        imports: [HttpClientTestingModule],
       }).compileComponents()
     })
   )
