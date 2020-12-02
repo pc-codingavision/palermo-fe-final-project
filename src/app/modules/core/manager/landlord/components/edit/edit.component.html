@@ -11,9 +11,14 @@
 
       <div id="select-picture" *ngIf="togglePictureContainer" fxLayout="column"
         fxLayoutAlign="center">
-        <mat-form-field>
+        <mat-form-field id="input-image">
           <mat-label>Insert a new picture</mat-label>
           <input matInput placeholder="New picture" formControlName="picture">
+          <button mat-button *ngIf="landlordForm.get('picture')?.value" matSuffix
+            mat-icon-button aria-label="Clear" class="sidenav-toggle no-hover"
+            (click)="landlordForm.get('picture')?.reset()">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-form-field>
       </div>
     </div>
@@ -161,7 +166,7 @@
         </mat-card>
 
 
-        <mat-card fxLayout="column" fxLayoutAlign="space-between">
+        <mat-card fxLayout="column" fxLayoutAlign="space-between" id="phone-card">
           <div fxLayout="row" fxLayoutAlign="space-between">
             <mat-form-field appearance="fill" class="select-container">
               <mat-label>Select</mat-label>
@@ -174,7 +179,7 @@
 
             <mat-form-field>
               <mat-label>Phone 1</mat-label>
-              <input matInput type="text" formControlName="phone1">
+              <input matInput type="text" formControlName="phone1" class="input-phone">
               <button mat-button *ngIf="landlordForm.get('phone1')?.value" matSuffix
                 mat-icon-button aria-label="Clear" class="sidenav-toggle no-hover"
                 (click)="landlordForm.get('phone1')?.reset()">
