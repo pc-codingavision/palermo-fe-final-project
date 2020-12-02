@@ -12,7 +12,8 @@ import {
   TENANTS_MOCK_DATA,
 } from '@shared/models/mock-data/data'
 import { Tenant } from '@shared/models/tenant'
-import { IUser } from '@shared/models/users'
+import { IUser, User } from '@shared/models/users'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { sign } from 'fake-jwt-sign'
 import { Observable, concat, from, of, throwError } from 'rxjs'
 import { catchError, find } from 'rxjs/operators'
@@ -26,7 +27,7 @@ export class InMemoryAuthService extends AuthService {
 
   mockUsers$ = concat(this.landlords$, this.managers$, this.tenants$)
 
-  constructor() {
+  constructor(private snackBarService: SnackBarService) {
     super()
     console.warn(
       "You're using the InMemoryAuthService. Do not use this service in production."
@@ -49,14 +50,19 @@ export class InMemoryAuthService extends AuthService {
         if (user) {
           authUser = {
             isAuthenticated: true,
-            userId: user.id,
             userRole: user.role,
+            userId: user.id,
           }
           this.currentUser = user
         }
       })
 
     if (!authUser) {
+      this.snackBarService.openSnackBar(
+        'Login failed email or password incorrect',
+        'Close',
+        5000
+      )
       return throwError('Login failed email or password incorrect')
     }
 
@@ -71,6 +77,11 @@ export class InMemoryAuthService extends AuthService {
 
   protected getCurrentUser(): Observable<IUser> {
     return of(this.currentUser)
+  }
+
+  protected removeCurrentUser(): void {
+    this.currentUser = User.Build({} as IUser)
+    this.currentUser$.next(this.currentUser)
   }
   protected transformJwtToken(token: IAuthStatus): IAuthStatus {
     return token
