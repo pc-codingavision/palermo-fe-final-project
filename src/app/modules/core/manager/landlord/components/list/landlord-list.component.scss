@@ -30,6 +30,37 @@ tr.element-row:not(.expanded-row):active {
   height: 450px;
 }
 
-#add-button {
+#button {
   padding: 8px;
+  width: 100%;
+}
+#add-button {
+  width: 5%;
+}
+
+.detail {
+  height: auto;
+}
+
+.mat-card {
+  padding: 5%;
+  border: 1px solid whitesmoke;
+}
+
+@media screen and (max-width: 319px) {
+  .element-diagram {
+    height: 105%;
+  }
+  #add-button {
+    width: 10%;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 960px) {
+  .element-diagram {
+    height: 105%;
+  }
+  #add-button {
+    width: 8%;
+  }
 }

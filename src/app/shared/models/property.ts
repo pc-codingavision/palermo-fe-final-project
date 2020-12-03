@@ -18,6 +18,13 @@ export interface IRoom {
   mq: number
 }
 
+export interface IPicture {
+  image: string
+  thumbImage: string
+  title?: string
+  alt: string
+}
+
 export interface IProperty {
   id: number
   landlordId: number
@@ -28,7 +35,7 @@ export interface IProperty {
   numberOfToilet: number
   description: string
   facilities: IFacility
-  imagesPath: string[]
+  images: IPicture[]
   status: Status
 }
 
@@ -43,7 +50,7 @@ export class Property implements IProperty {
     public numberOfToilet = null,
     public description = null,
     public facilities = null,
-    public imagesPath = null,
+    public images = null,
     public status = null
   ) {}
 
@@ -61,7 +68,7 @@ export class Property implements IProperty {
       property.numberOfToilet,
       property.description,
       property.facilities,
-      property.imagesPath,
+      property.images,
       property.status
     )
   }

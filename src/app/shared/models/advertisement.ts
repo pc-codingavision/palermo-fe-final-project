@@ -1,8 +1,19 @@
+import { Icon } from '@shared/enum/enums'
+
 export interface IReview {
   title: string
   tenantId: number
   description: string
   vote: number
+  date: Date | string
+}
+
+export interface IScoreConfig {
+  writable: boolean
+  minScore: number
+  maxScore: number
+  scoreIcon: Icon
+  score: number
 }
 
 export interface IAdvertisement {
