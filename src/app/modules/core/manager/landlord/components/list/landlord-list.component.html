@@ -54,8 +54,10 @@
 
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+    (page)="paginatorInput($event)" [length]="getLength() | async"></mat-paginator>
 </div>
+
 
 <ng-template #mobileView>
   <div id="button">

@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { MediaObserver } from '@angular/flex-layout'
-import { MatPaginator } from '@angular/material/paginator'
+import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
@@ -36,8 +36,7 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
-  landlords$: Observable<Landlord[]>
-  private subscriptions: Subscription[] = []
+  subscriptions: Subscription[] = []
   dataSource: MatTableDataSource<Landlord>
 
   constructor(
@@ -47,11 +46,10 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAll()
+    this.getLandlords(5, 0)
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
   }
 
@@ -61,14 +59,29 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  getAll(): void {
+  getLandlords(length: number, start: number = 0): void {
     this.subscriptions.push(
       this.searchLandlord
-        .getSearchResult()
+        .getSearchResult(length, start)
         .subscribe(
           (landlords) => (this.dataSource = new MatTableDataSource<Landlord>(landlords))
         )
     )
+  }
+
+  getLength(): Observable<number> {
+    return this.landlordService.getLength()
+  }
+
+  paginatorInput(pageEvent: PageEvent): void {
+    if (pageEvent.previousPageIndex !== pageEvent.pageIndex) {
+      this.getLandlords(
+        (pageEvent.pageIndex + 1) * pageEvent.pageSize,
+        pageEvent.pageIndex * pageEvent.pageSize
+      )
+    } else {
+      this.getLandlords(pageEvent.pageSize)
+    }
   }
 
   remove(landlord: Landlord): void {
