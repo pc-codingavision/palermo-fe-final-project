@@ -27,7 +27,6 @@ export class InMemoryDataService implements InMemoryDbService {
   /* https://github.com/angular/in-memory-web-api , https://github.com/angular/in-memory-web-api/blob/master/src/app/hero-in-mem-data-override.service.ts
    */
   get(reqInfo: RequestInfo): Observable<any> {
-    // console.log(reqInfo)
     const collectionName = reqInfo.collectionName
     /* creo metodi custom */
     if (collectionName === 'tenants' && reqInfo.query.has('name')) {
@@ -48,7 +47,9 @@ export class InMemoryDataService implements InMemoryDbService {
       const name = reqInfo.query.get('name')[0]
 
       const data = name.trim()
-        ? collection.filter((item) => item.name.firstName === name)
+        ? collection.filter(
+            (item) => item.name.firstName.toLowerCase() === name.toLowerCase()
+          )
         : []
 
       const options: ResponseOptions = data
