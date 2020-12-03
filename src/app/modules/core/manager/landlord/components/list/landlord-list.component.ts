@@ -5,6 +5,7 @@ import { SearchService } from '@modules/core/manager/landlord/services/search.se
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, Subscription } from 'rxjs'
+import { MediaObserver } from '@angular/flex-layout' 
 
 export interface Elements {
   id: number
@@ -37,7 +38,8 @@ export class LandlordListComponent implements OnInit {
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public media: MediaObserver
   ) {}
 
   ngOnInit(): void {
