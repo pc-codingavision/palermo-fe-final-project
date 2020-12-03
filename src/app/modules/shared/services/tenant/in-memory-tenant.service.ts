@@ -41,9 +41,6 @@ export class InMemoryTenantService {
 
   getByStatus(status: boolean): Observable<Tenant[]> {
     const statusUrl = `${this.tenantsUrl}?status=${status}`
-    if (!status) {
-      return of([])
-    }
     return this.http.get<Tenant[]>(statusUrl)
   }
 

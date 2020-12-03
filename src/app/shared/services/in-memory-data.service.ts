@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
   /* https://github.com/angular/in-memory-web-api , https://github.com/angular/in-memory-web-api/blob/master/src/app/hero-in-mem-data-override.service.ts
    */
   get(reqInfo: RequestInfo): Observable<any> {
-    console.log(reqInfo)
+    // console.log(reqInfo)
     const collectionName = reqInfo.collectionName
     /* creo metodi custom */
     if (collectionName === 'tenants' && reqInfo.query.has('name')) {
