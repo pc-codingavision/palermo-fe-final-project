@@ -1,12 +1,8 @@
 <mat-card routerLink="{{advertisement?.id}}" class="mini-card">
   <div *ngIf="images && images[0]">
-    <img mat-card-image src="{{ images[0]?.image }}">
+    <img mat-card-image alt="{{images[0]?.alt}}" src="{{ images[0]?.image }}">
   </div>
   <mat-card-content>
-    <mat-card-title>
-      <h3> {{advertisement?.property?.title }} a
-        {{ advertisement?.property?.address?.city }}
-      </h3>
-    </mat-card-title>
+    <mat-card-title>{{advertisement?.property?.title }} a {{ advertisement?.property?.address?.city }}</mat-card-title>
   </mat-card-content>
 </mat-card>

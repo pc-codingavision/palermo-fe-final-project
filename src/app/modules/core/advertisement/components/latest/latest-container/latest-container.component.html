@@ -1,17 +1,19 @@
-<mat-card class="container">
-  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+<div class='container'>
+  <mat-card fxShow.lt-lg="false">
+    <mat-card-content fxLayout='row' fxLayoutAlign='space-between center'>
 
-    <button class="arrow-button">
-      <span class="material-icons" (click)="goBehind()">navigate_before</span>
-    </button>
+      <div class='icons'>
+        <mat-icon [inline]="true" (click)='goBehind()'>chevron_left</mat-icon>
+      </div>
 
-    <cav-latest-mini-card *ngFor="let advertisement of latestAdvertisements | async"
-      [advertisement]="advertisement" [images]="advertisement?.property?.images">
-    </cav-latest-mini-card>
+      <cav-latest-mini-card *ngFor='let advertisement of latestAdvertisements | async'
+                            [advertisement]='advertisement' [images]='advertisement?.property?.images'>
+      </cav-latest-mini-card>
 
-    <button class="arrow-button">
-      <span class="material-icons" (click)="goForward()">navigate_next</span>
-    </button>
+      <div class='icons'>
+        <mat-icon [inline]="true" (click)='goForward()'>chevron_right</mat-icon>
+      </div>
 
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

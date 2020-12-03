@@ -1,26 +1,25 @@
-<div class="price-filter">
-  <mat-card class="price-card" fxLayout="column">
-    <mat-card-title id="price-card-title" fxLayoutAlign="start center">
-      Price per night
-    </mat-card-title>
-    <mat-card-content>
-      <mat-divider id="price-divider" [inset]="true">
-      </mat-divider>
-      <ng-container *ngIf="minPrice || maxPrice; else noPrice">
-        <mat-slider id="price-slider" thumbLabel [displayWith]="formatLabel"
-          min="{{ minPrice }}" max="{{ maxPrice }}" step="10"
-          fxLayoutAlign="center center" (change)="emitPriceFilter($event.value)"
-          [(ngModel)]="selectedPrice">
-        </mat-slider>
-        <p id="price-min">{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
-        <p id="price-max">{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
-      </ng-container>
-      <ng-template #noPrice>
-        <p fxLayoutAlign="center center">Nessun prezzo disponibile</p>
-      </ng-template>
-    </mat-card-content>
-    <mat-card-actions *ngIf="selectedPrice" fxLayoutAlign="center center">
-      <button mat-raised-button (click)="resetFilter()">Reset filter</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card class='price-card' fxLayout='column'>
+  <mat-card-title id='price-card-title' fxLayoutAlign='start center'>
+    Price per night
+  </mat-card-title>
+  <mat-card-content>
+    <mat-divider id='price-divider' [inset]='true'>
+    </mat-divider>
+    <ng-container *ngIf='minPrice && maxPrice; else noPrice'>
+      <mat-slider id='price-slider' thumbLabel [displayWith]='formatLabel'
+                  min='{{ minPrice }}' max='{{ maxPrice }}' step='10'
+                  fxLayoutAlign='center center' (change)='emitPriceFilter($event.value)'
+                  [(ngModel)]='selectedPrice'>
+      </mat-slider>
+      <p id='price-min'>{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
+      <p id='price-max'>{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
+    </ng-container>
+    <ng-template #noPrice>
+      <p fxLayoutAlign='center center'>Nessun prezzo disponibile</p>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions *ngIf='minPrice && maxPrice && selectedPrice' fxLayoutAlign='center center'>
+    <button mat-raised-button (click)='resetFilter()'>Reset filter</button>
+  </mat-card-actions>
+</mat-card>
+

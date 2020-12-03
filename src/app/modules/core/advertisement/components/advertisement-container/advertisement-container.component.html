@@ -1,12 +1,16 @@
 <cav-latest-container></cav-latest-container>
-<div fxLayout="row" fxLayoutAlign="center none" id="body">
-  <cav-sidebar-container class="sidebar">
-  </cav-sidebar-container>
-  <div id="divider"></div>
-  <cav-advertisement-list [advertisements]="filteredAdvertisements">
-  </cav-advertisement-list>
-  <h1 id="emptylist" fxLayoutAlign="center center"
-    *ngIf="filteredAdvertisements.length === 0"> Nessun annuncio corrisponde ai criteri di
-    ricerca
-  </h1>
+<div fxLayout='row' fxLayoutAlign='center start' fxLayout.xs='column' fxLayoutAlign.xs='center center' id='body'>
+  <cav-sidebar-container></cav-sidebar-container>
+  <ng-container *ngIf='filteredAdvertisements.length > 0 else emptyBlock'>
+    <div style='margin-left: 80px'></div>
+    <cav-advertisement-list [advertisements]='filteredAdvertisements'>
+    </cav-advertisement-list>
+  </ng-container>
+  <ng-template #emptyBlock>
+    <h1 id='emptylist' fxLayoutAlign='center center'> Nessun annuncio corrisponde ai criteri di
+      ricerca
+    </h1>
+  </ng-template>
 </div>
+
+
