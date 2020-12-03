@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MediaObserver } from '@angular/flex-layout'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { InMemoryAuthService } from '@modules/core/auth/auth-in-memory.service'
 import { AuthService } from '@modules/core/auth/auth.service'
 import { MediaObserverFake, commonTestingModules } from '@shared/common.testing'
@@ -12,6 +13,7 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MatSnackBarModule],
       declarations: [ToolbarComponent],
       providers: commonTestingModules.concat([
         { provide: AuthService, useClass: InMemoryAuthService },
