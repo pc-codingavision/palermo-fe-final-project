@@ -5,8 +5,7 @@ import {
   MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable, of } from 'rxjs'
-import { catchError, map, skipWhile } from 'rxjs/operators'
-import { flatMap } from 'rxjs/internal/operators'
+import { catchError, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
