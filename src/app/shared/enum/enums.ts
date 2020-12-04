@@ -29,3 +29,11 @@ export enum Toilet {
   Shared = 'shared',
   None = 'none',
 }
+
+export enum Icon {
+  Heart = 'heart',
+  CheckBox = 'checkbox',
+  Radio = 'radio',
+  Star = 'star',
+  Circle = 'circle',
+}

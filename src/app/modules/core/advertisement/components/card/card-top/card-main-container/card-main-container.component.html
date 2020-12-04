@@ -4,7 +4,7 @@
     <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
       fxLayoutWrap="wrap">
 
-      <cav-photogallery [photo]="advertisement?.property?.imagesPath">
+      <cav-photogallery [images]="advertisement?.property?.images">
       </cav-photogallery>
 
       <div fxLayout="column">
@@ -15,7 +15,7 @@
       </div>
 
       <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-      <cav-score [score]="advertisement?.score"></cav-score>
+      <cav-score [config]="scoreConfig"></cav-score>
       <cav-check-in-check-out></cav-check-in-check-out>
 
       <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
@@ -28,7 +28,8 @@
       </button>
     </mat-card-actions>
 
-    <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement">
+    <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement"
+      class="card-extra">
     </cav-card-extra>
   </mat-card>
 

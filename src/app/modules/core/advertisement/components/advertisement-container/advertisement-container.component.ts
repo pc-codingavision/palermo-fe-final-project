@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Subscription, combineLatest } from 'rxjs'
+import { Subscription } from 'rxjs'
+import { combineLatest } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -14,19 +15,17 @@ import { Subscription, combineLatest } from 'rxjs'
 export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
   filteredAdvertisements: MockAdvertisement[] = []
-
   subscriptions: Subscription[] = []
 
   constructor(
-    private advertisementService: AdvertisementService,
-    private sidebarService: SidebarService
+    private sidebarService: SidebarService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.advertisementService.findAll().subscribe((advertisements) => {
-        this.advertisements = advertisements
-        advertisements.forEach((adv) => this.filteredAdvertisements.push(adv))
+      this.activatedRoute.data.subscribe((data) => {
+        this.advertisements = data.advertisements
         combineLatest([
           this.sidebarService.price$,
           this.sidebarService.facility$,
@@ -49,9 +48,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   ): void {
     let tmpAdvertisement: MockAdvertisement[] = this.advertisements
     this.filteredAdvertisements = []
-
     if (price == null && score == null && facility == null) {
-      this.advertisements.forEach((adv) => this.filteredAdvertisements.push(adv))
+      this.advertisements?.forEach((adv) => this.filteredAdvertisements.push(adv))
       this.emitPriceUpdate()
     } else {
       if (price != null) {

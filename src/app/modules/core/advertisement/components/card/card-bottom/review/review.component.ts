@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { Icon } from '@shared/enum/enums'
+import { IReview, IScoreConfig } from '@shared/models/advertisement'
 
 @Component({
   selector: 'cav-review',
@@ -7,12 +8,18 @@ import { IMockReview } from '@modules/core/advertisement/mock-advertisement/mock
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent implements OnInit {
-  constructor() {}
-  @Input() review: IMockReview
+  @Input() review: IReview
+  scoreConfig: IScoreConfig
 
-  score: number
+  constructor() {}
 
   ngOnInit(): void {
-    this.score = Math.round(this.review?.vote)
+    this.scoreConfig = {
+      writable: false,
+      minScore: 0,
+      maxScore: 5,
+      scoreIcon: Icon.Star,
+      score: Math.round(this.review?.vote),
+    }
   }
 }

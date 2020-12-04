@@ -23,6 +23,8 @@ import { ScoreFilterComponent } from '@modules/core/advertisement/components/sid
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/sidebar/sidebar-container/sidebar-container.component'
 import { SharedModule } from '@modules/shared/shared.module'
 
+import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component'
+
 const advertisementsComponent = [
   AdvertisementListComponent,
   AdvertisementContainerComponent,
@@ -43,6 +45,7 @@ const advertisementsComponent = [
   LatestMiniCardComponent,
   PriceFilterComponent,
   FacilitiesComponent,
+  ReviewDialogComponent,
 ]
 
 @NgModule({
