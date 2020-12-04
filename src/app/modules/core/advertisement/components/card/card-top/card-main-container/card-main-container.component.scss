@@ -1,15 +1,9 @@
 #photogallery {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 #facilities {
   width: 150px;
-  margin-right: 20px;
-}
-
-#actions-container {
-  width: 500px;
-  margin-right: 20px;
 }
 
 #title {
@@ -18,4 +12,16 @@
 
 .actions {
   margin-bottom: 5px;
+}
+
+.mobile-spacing {
+  margin-bottom: 15px;
+}
+
+mat-card {
+  margin-bottom: 20px;
+}
+
+cav-check-in-check-out{
+  width: 100%;
 }

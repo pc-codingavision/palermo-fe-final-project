@@ -1,7 +1,5 @@
 <div id="container">
   <h2 mat-dialog-title>All Reviews</h2>
-  <cav-review *ngFor="let review of reviews" [review]="review" mat-dialog-content>
-  </cav-review>
-
-  <button mat-button mat-dialog-close>Close</button>
+  <cav-review *ngFor="let review of reviews" [review]="review" mat-dialog-content></cav-review>
+  <button mat-raised-button color='primary' mat-dialog-close>Close</button>
 </div>

@@ -1,4 +1,4 @@
-<div class="container-more-info" *ngIf="!this.media.isActive('xs'); else mobileView" fxLayout='row' fxLayoutAlign='start'>
+<div class="container-more-info" *ngIf="!this.media.isActive('xs'); else mobileView" fxLayout='row'>
   <mat-card fxFlex='40%'>
     <h2>Most recent reviews</h2>
     <cav-review *ngFor='let review of advertisement?.reviews' [review]='review'>
@@ -19,8 +19,8 @@
 </div>
 
 <ng-template #mobileView>
-  <div style='margin-top: 20px' fxLayout='column' fxLayoutAlign='space-between'>
-    <mat-card>
+  <div class="container-more-info" fxLayout='column'>
+    <mat-card class='mobile-spacing'>
       <h2>Most recent reviews</h2>
       <cav-review *ngFor='let review of advertisement?.reviews' [review]='review'>
       </cav-review>
@@ -30,7 +30,7 @@
       </button>
     </mat-card>
 
-    <mat-card fxFlex='40%'>
+    <mat-card>
       <h2>About this property</h2>
       <cav-about [property]='advertisement?.property'></cav-about>
       <h4>Facilities</h4>

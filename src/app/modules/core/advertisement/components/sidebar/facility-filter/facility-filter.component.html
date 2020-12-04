@@ -21,18 +21,11 @@
         </mat-checkbox>
         <mat-checkbox (change)="emitFacilityFilter('bath',$event.checked)">Bath
         </mat-checkbox>
-        <div id='facility-less' fxLayout='row' fxLayoutAlign='center'
-             (click)='expand()'>
-          <span>Hide</span>
-          <span class='material-icons'> expand_less </span>
-        </div>
       </ng-template>
-    </div>
-    <ng-template [ngIf]='!expanded'>
-      <div id='facility-more' fxLayout='row' fxLayoutAlign='center' (click)='expand()'>
-        <span>Show more</span>
-        <span class='material-icons'> expand_more </span>
+      <div id='facility-less' fxLayout='row' fxLayoutAlign='center' (click)='expanded = !expanded'>
+        <p>{{expanded ? 'Hide' : 'Show more'}}</p>
+        <mat-icon>{{expanded ? 'expand_less' : 'expand_more'}}</mat-icon>
       </div>
-    </ng-template>
+    </div>
   </mat-card-content>
 </mat-card>

@@ -16,6 +16,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
+  showMobileFilters = false
 
   constructor(
     private sidebarService: SidebarService,

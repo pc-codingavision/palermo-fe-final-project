@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { MediaObserver } from '@angular/flex-layout'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import moment from 'moment'
 
@@ -9,7 +8,7 @@ import moment from 'moment'
   styleUrls: ['./check-in-check-out.component.scss'],
 })
 export class CheckInCheckOutComponent implements OnInit {
-  constructor(private fb: FormBuilder, public media: MediaObserver) {}
+  constructor(private fb: FormBuilder) {}
   minCheckInDate: Date
   minCheckOutDate: Date
   maxCheckInDate: Date
