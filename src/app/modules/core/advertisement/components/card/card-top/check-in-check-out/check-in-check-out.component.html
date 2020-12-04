@@ -3,8 +3,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Check-in</mat-label>
       <input matInput matNativeControl [min]="minCheckInDate" [max]="maxCheckInDate"
-             (dateChange)="updateMinCheckOutDate($event.value)" formControlName="picker1"
-             [matDatepicker]="picker1" required>
+        (dateChange)="updateMinCheckOutDate($event.value)" formControlName="picker1"
+        [matDatepicker]="picker1" required>
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
       <mat-error *ngIf="date.get('picker1').hasError('required')">
@@ -15,8 +15,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Check-out</mat-label>
       <input matInput matNativeControl [min]="minCheckOutDate" formControlName="picker2"
-             (dateChange)="updateMaxCheckInDate($event.value)" [matDatepicker]="picker2"
-             required>
+        (dateChange)="updateMaxCheckInDate($event.value)" [matDatepicker]="picker2"
+        required>
       <mat-datepicker-toggle matSuffix [for]="picker2">
       </mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>

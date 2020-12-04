@@ -2,7 +2,8 @@
   <mat-card>
     <mat-card-content>
       <div fxFlex='40%' fxLayout='row wrap'>
-        <cav-photogallery id='photogallery' [images]='advertisement?.property?.images'></cav-photogallery>
+        <cav-photogallery id='photogallery' [images]='advertisement?.property?.images'>
+        </cav-photogallery>
         <div id='facilities' fxLayout='column'>
           <cav-facility
             *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
@@ -18,7 +19,8 @@
           <cav-check-in-check-out class='actions'></cav-check-in-check-out>
         </div>
       </div>
-      <cav-favourite fxFlex='5%' fxLayoutAlign='end' (favouriteEvent)='isFavourite($event)'></cav-favourite>
+      <cav-favourite fxFlex='5%' fxLayoutAlign='end'
+        (favouriteEvent)='isFavourite($event)'></cav-favourite>
     </mat-card-content>
 
     <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
@@ -28,7 +30,8 @@
       </mat-icon>
     </button>
 
-    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'></cav-card-extra>
+    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+    </cav-card-extra>
   </mat-card>
 </div>
 
@@ -42,7 +45,8 @@
 
       <cav-score class='mobile-spacing' [config]='scoreConfig'></cav-score>
 
-      <cav-photogallery class='mobile-spacing' [images]='advertisement?.property?.images'></cav-photogallery>
+      <cav-photogallery class='mobile-spacing' [images]='advertisement?.property?.images'>
+      </cav-photogallery>
 
       <div class='mobile-spacing'>
         <cav-facility
@@ -60,6 +64,7 @@
         </mat-icon>
       </button>
     </mat-card-content>
-    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'></cav-card-extra>
+    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+    </cav-card-extra>
   </mat-card>
 </ng-template>

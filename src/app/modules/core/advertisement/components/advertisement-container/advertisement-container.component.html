@@ -1,12 +1,16 @@
 <cav-latest-container></cav-latest-container>
 
 <div id='body' fxLayout='row' fxLayoutAlign='center' fxLayout.lt-lg='column'>
-  <cav-sidebar-container fxLayout.lt-lg='row wrap' fxLayoutAlign.lt-lg='space-between' fxShow.xs='false'></cav-sidebar-container>
+  <cav-sidebar-container fxLayout.lt-lg='row wrap' fxLayoutAlign.lt-lg='space-between'
+    fxShow.xs='false'></cav-sidebar-container>
 
-  <div fxShow.gt-xs='false' fxShow.xs='true' fxLayout='column' fxLayoutAlign='center center'>
-    <button id='filtersButton' mat-raised-button color='accent' (click)='showMobileFilters = !showMobileFilters'>
+  <div fxShow.gt-xs='false' fxShow.xs='true' fxLayout='column'
+    fxLayoutAlign='center center'>
+    <button id='filtersButton' mat-raised-button color='accent'
+      (click)='showMobileFilters = !showMobileFilters'>
       {{showMobileFilters ? "Hide Filters" : "Show Filters"}}
-      <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+      <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+      </mat-icon>
     </button>
     <cav-sidebar-container *ngIf='showMobileFilters'></cav-sidebar-container>
   </div>
@@ -23,5 +27,3 @@
     </h1>
   </ng-template>
 </div>
-
-

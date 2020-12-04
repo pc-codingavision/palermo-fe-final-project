@@ -7,9 +7,8 @@
     </mat-divider>
     <ng-container *ngIf='minPrice && maxPrice; else noPrice'>
       <mat-slider id='price-slider' thumbLabel [displayWith]='formatLabel'
-                  min='{{ minPrice }}' max='{{ maxPrice }}' step='10'
-                  fxLayoutAlign='center center' (change)='emitPriceFilter($event.value)'
-                  [(ngModel)]='selectedPrice'>
+        min='{{ minPrice }}' max='{{ maxPrice }}' step='10' fxLayoutAlign='center center'
+        (change)='emitPriceFilter($event.value)' [(ngModel)]='selectedPrice'>
       </mat-slider>
       <p id='price-min'>{{ minPrice | currency:'EUR':'symbol':'.0'}}</p>
       <p id='price-max'>{{ maxPrice | currency:'EUR':'symbol':'.0'}}</p>
@@ -18,8 +17,8 @@
       <p fxLayoutAlign='center center'>Nessun prezzo disponibile</p>
     </ng-template>
   </mat-card-content>
-  <mat-card-actions *ngIf='minPrice && maxPrice && selectedPrice' fxLayoutAlign='center center'>
+  <mat-card-actions *ngIf='minPrice && maxPrice && selectedPrice'
+    fxLayoutAlign='center center'>
     <button mat-raised-button (click)='resetFilter()'>Reset filter</button>
   </mat-card-actions>
 </mat-card>
-
