@@ -1,8 +1,8 @@
 <div *ngIf="!this.media.isActive('xs'); else mobileView">
-  <mat-card id="card-extra">
+  <mat-card class="card-extra">
 
     <div class="container-more-info" fxLayout fxLayout.xs="column"
-      fxLayoutAlign="space-between" fxLayoutWrap="wrap">
+      fxLayoutAlign="space-between">
 
 
       <mat-card class="side" fxFlex="42%">
@@ -33,10 +33,10 @@
 </div>
 
 <ng-template #mobileView>
-  <mat-card id="card-extra">
+  <mat-card class="card-extra">
 
     <div class="container-more-info" fxLayout fxLayout.xs="column"
-      fxLayoutAlign="space-between" fxLayoutWrap="wrap">
+      fxLayoutAlign="space-between">
 
       <mat-card>
         <h2>Most recent reviews</h2>
