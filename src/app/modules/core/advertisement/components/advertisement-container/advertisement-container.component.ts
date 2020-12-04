@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Subscription } from 'rxjs'
+import { Subject, Subscription } from 'rxjs'
 import { combineLatest } from 'rxjs'
 
 @Component({
@@ -19,7 +20,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
 
   constructor(
     private sidebarService: SidebarService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private checkInCheckOutService: CheckInCheckOutService
   ) {}
 
   ngOnInit(): void {
@@ -80,5 +82,9 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       minPrice: _.min(this.filteredAdvertisements.map((adv) => adv.price)),
       maxPrice: _.max(this.filteredAdvertisements.map((adv) => adv.price)),
     })
+  }
+
+  getReservationDates(): Subject<{ checkIn: Date; checkOut: Date }> {
+    return this.checkInCheckOutService.reservationDates$
   }
 }
