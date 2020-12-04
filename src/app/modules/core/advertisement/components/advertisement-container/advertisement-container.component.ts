@@ -24,16 +24,16 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.activatedRoute.data.subscribe((data) => {
-        this.advertisements = data.advertisements
-        combineLatest([
-          this.sidebarService.price$,
-          this.sidebarService.facility$,
-          this.sidebarService.score$,
-        ]).subscribe(([price, facility, score]) =>
-          this.getFilteredAdvertisements(price, score, facility)
-        )
-      })
+      this.activatedRoute.data.subscribe(
+        (data) => (this.advertisements = data.advertisements)
+      )
+    )
+    combineLatest([
+      this.sidebarService.price$,
+      this.sidebarService.facility$,
+      this.sidebarService.score$,
+    ]).subscribe(([price, facility, score]) =>
+      this.getFilteredAdvertisements(price, score, facility)
     )
   }
 

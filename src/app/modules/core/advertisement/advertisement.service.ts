@@ -32,17 +32,21 @@ export class AdvertisementService {
   constructor(private http: HttpClient) {}
 
   findAll(): Observable<MockAdvertisement[]> {
-    return this.http.get<MockAdvertisement[]>(this.advertisementsUrl).pipe(
-      // map(this.mapAdvsArrayToAdvsArrayBuild()),
-      catchError(this.handleError<MockAdvertisement[]>('findAll', []))
-    )
+    return this.http
+      .get<MockAdvertisement[]>(this.advertisementsUrl)
+      .pipe(
+        map(this.mapAdvsArrayToAdvsArrayBuild()),
+        catchError(this.handleError<MockAdvertisement[]>('findAll', []))
+      )
   }
 
   findById(id: number): Observable<MockAdvertisement> {
-    return this.http.get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`).pipe(
-      // map(this.mapAdvsToAdvsBuild()),
-      catchError(this.handleError<MockAdvertisement>('findById'))
-    )
+    return this.http
+      .get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`)
+      .pipe(
+        map(this.mapAdvsToAdvsBuild()),
+        catchError(this.handleError<MockAdvertisement>('findById'))
+      )
   }
 
   // tslint:disable-next-line:typedef
