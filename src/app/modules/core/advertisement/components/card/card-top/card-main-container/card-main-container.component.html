@@ -3,8 +3,8 @@
     <mat-card-content>
       <div fxFlex='40%' fxLayout='row wrap'>
         <cav-photogallery id='photogallery' [images]='advertisement?.property?.images'></cav-photogallery>
-        <div fxLayout='column'>
-          <cav-facility id='facilities'
+        <div id='facilities' fxLayout='column'>
+          <cav-facility
             *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
             [facility]='facility'>
           </cav-facility>
@@ -12,7 +12,7 @@
       </div>
 
       <div fxFlex='55%' fxLayout='row wrap'>
-        <div fxLayout='column' id='actions-container'>
+        <div fxLayout='column'>
           <mat-card-title id='title'>{{advertisement?.property?.title}}</mat-card-title>
           <cav-score class='actions' [config]='scoreConfig'></cav-score>
           <cav-check-in-check-out class='actions'></cav-check-in-check-out>
