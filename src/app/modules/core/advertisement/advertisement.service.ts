@@ -5,7 +5,8 @@ import {
   MockAdvertisement,
 } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable, of } from 'rxjs'
-import { catchError, map } from 'rxjs/operators'
+import { catchError, map, skipWhile } from 'rxjs/operators'
+import { flatMap } from 'rxjs/internal/operators'
 
 @Injectable({
   providedIn: 'root',
@@ -32,21 +33,17 @@ export class AdvertisementService {
   constructor(private http: HttpClient) {}
 
   findAll(): Observable<MockAdvertisement[]> {
-    return this.http
-      .get<MockAdvertisement[]>(this.advertisementsUrl)
-      .pipe(
-        map(this.mapAdvsArrayToAdvsArrayBuild()),
-        catchError(this.handleError<MockAdvertisement[]>('findAll', []))
-      )
+    return this.http.get<MockAdvertisement[]>(this.advertisementsUrl).pipe(
+      // map(this.mapAdvsArrayToAdvsArrayBuild()),
+      catchError(this.handleError<MockAdvertisement[]>('findAll', []))
+    )
   }
 
   findById(id: number): Observable<MockAdvertisement> {
-    return this.http
-      .get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`)
-      .pipe(
-        map(this.mapAdvsToAdvsBuild()),
-        catchError(this.handleError<MockAdvertisement>('findById'))
-      )
+    return this.http.get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`).pipe(
+      // map(this.mapAdvsToAdvsBuild()),
+      catchError(this.handleError<MockAdvertisement>('findById'))
+    )
   }
 
   // tslint:disable-next-line:typedef
@@ -60,6 +57,15 @@ export class AdvertisementService {
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {
-    return of(this.advertisements.slice(start, end))
+    // return of(this.advertisements.slice(start, end))
+
+    // return this.findAll().pipe(
+    //   flatMap((val) => of(...val)),
+    //   skipWhile((val, index) => {
+    //     if (index <= 1) {
+    //     }
+    //   })
+    // )
+    return this.findAll().pipe(map((advs) => advs.slice(start, end)))
   }
 }
