@@ -4,7 +4,6 @@ import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { InMemoryDbService } from 'angular-in-memory-web-api'
 
 import { TENANTS_MOCK_DATA } from './../models/mock-data/data'
-import { Tenant } from './../models/tenant'
 import { IUser } from './../models/users'
 
 @Injectable({
@@ -13,7 +12,7 @@ import { IUser } from './../models/users'
 export class InMemoryDataService implements InMemoryDbService {
   createDb(): any {
     const advertisements = ADVERTISEMENTS_MOCK_DATA
-    const tenants = TENANTS_MOCK_DATA.map((tenant) => Tenant.Build(tenant))
+    const tenants = TENANTS_MOCK_DATA
     return { advertisements, tenants }
   }
 
