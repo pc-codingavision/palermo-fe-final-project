@@ -5,6 +5,7 @@ export interface IReview {
   tenantId: number
   description: string
   vote: number
+  date: Date | string
 }
 
 export interface IScoreConfig {

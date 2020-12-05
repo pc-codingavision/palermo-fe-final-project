@@ -16,10 +16,12 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
+
   constructor(
     private sidebarService: SidebarService,
     private activatedRoute: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
     this.subscriptions.push(
       this.activatedRoute.data.subscribe(
@@ -34,9 +36,11 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       this.getFilteredAdvertisements(price, score, facility)
     )
   }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe())
   }
+
   private getFilteredAdvertisements(
     price: number,
     score: number,
@@ -70,6 +74,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       this.emitPriceUpdate()
     }
   }
+
   private emitPriceUpdate(): void {
     this.sidebarService.priceRangeChanged$.next({
       minPrice: _.min(this.filteredAdvertisements.map((adv) => adv.price)),
