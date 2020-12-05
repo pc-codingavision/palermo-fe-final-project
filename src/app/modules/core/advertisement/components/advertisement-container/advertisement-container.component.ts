@@ -83,8 +83,10 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
           adv.reservations.every(
             (res) =>
               !(
-                moment(reservationDate.checkIn).isBetween(res.checkIn, res.checkOut) ||
-                moment(reservationDate.checkOut).isBetween(res.checkIn, res.checkOut)
+                (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
+                  moment(reservationDate.checkOut).isAfter(res.checkOut)) ||
+                (moment(reservationDate.checkIn).isAfter(res.checkIn) &&
+                  moment(reservationDate.checkIn).isBefore(res.checkOut))
               )
           )
         )
