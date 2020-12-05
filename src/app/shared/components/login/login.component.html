@@ -15,6 +15,11 @@
           <mat-form-field fxFlex>
             <input matInput placeholder="E-mail" aria-label="Email"
               formControlName="email">
+            <button mat-button *ngIf="loginForm.get('email')?.value" matSuffix
+              mat-icon-button aria-label="Clear"
+              (click)="loginForm.get('email')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
               E-mail is required
             </mat-error>

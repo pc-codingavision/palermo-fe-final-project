@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core'
 import { IAdvertisement } from '@shared/models/advertisement'
-import { ADVERTISEMENTS_MOCK_DATA } from '@shared/models/mock-data/data'
+import {
+  ADVERTISEMENTS_MOCK_DATA,
+  LANDLORDS_MOCK_DATA,
+  RESERVATIONS_MOCK_DATA,
+  TENANTS_MOCK_DATA,
+} from '@shared/models/mock-data/data'
+import { IReservation } from '@shared/models/reservation'
+import { IUser } from '@shared/models/users'
 import {
   InMemoryDbService,
   RequestInfo,
   ResponseOptions,
 } from 'angular-in-memory-web-api'
 import { Observable } from 'rxjs'
-
-import { TENANTS_MOCK_DATA } from './../models/mock-data/data'
-import { IUser } from './../models/users'
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +22,15 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb(): any {
     const advertisements = ADVERTISEMENTS_MOCK_DATA
     const tenants = TENANTS_MOCK_DATA
-    return { advertisements, tenants }
+    const landlords = LANDLORDS_MOCK_DATA
+    const reservations = RESERVATIONS_MOCK_DATA
+    return { advertisements, tenants, landlords, reservations }
   }
-  // constructor() { }
-  genId<T extends IAdvertisement | IUser>(myTable: T[]): number {
+  genId<T extends IAdvertisement | IUser | IReservation>(myTable: T[]): number {
     return myTable.length > 0 ? Math.max(...myTable.map((t) => t.id)) + 1 : 1
   }
-  /* https://github.com/angular/in-memory-web-api , https://github.com/angular/in-memory-web-api/blob/master/src/app/hero-in-mem-data-override.service.ts
-   */
+  /* https://github.com/angular/in-memory-web-api ,
+   https://github.com/angular/in-memory-web-api/blob/master/src/app/hero-in-mem-data-override.service.ts */
   get(reqInfo: RequestInfo): Observable<any> {
     const collectionName = reqInfo.collectionName
     /* creo metodi custom */
@@ -66,11 +71,8 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   private getTenantsBySurname(reqInfo: RequestInfo): Observable<any> {
-    /*createResponse : metodo interno alla libreria per creare una response uguale a quella utilizzata da InMemory Web Api */
     return reqInfo.utils.createResponse$(() => {
       const collection = reqInfo.collection.slice()
-      /* reqInfo.query : prendo dal Map il valore della chiave 'name' che ritorna un array di stringhe.
-       Essendo chiave/valore mi prendo l'indice zero del'array*/
       const surname = reqInfo.query.get('surname')[0]
 
       const data = surname.trim()
