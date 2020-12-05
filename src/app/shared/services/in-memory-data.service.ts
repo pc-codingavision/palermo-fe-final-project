@@ -74,7 +74,9 @@ export class InMemoryDataService implements InMemoryDbService {
       const surname = reqInfo.query.get('surname')[0]
 
       const data = surname.trim()
-        ? collection.filter((item) => item.name.surname === surname)
+        ? collection.filter(
+            (item) => item.name.surname.toLowerCase() === surname.toLowerCase()
+          )
         : []
 
       const options: ResponseOptions = data

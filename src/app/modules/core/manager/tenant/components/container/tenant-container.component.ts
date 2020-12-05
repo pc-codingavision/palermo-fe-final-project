@@ -22,16 +22,16 @@ export class TenantContainerComponent implements OnInit {
       console.log(response)
     })
     /* must fix getByName for lowercase */
-    this.inmemorytenant.getByName('ugo').subscribe((response) => {
+    this.inmemorytenant.getByName('uGo').subscribe((response) => {
       console.log('GetByName with name "Ugo" ')
       console.log(response)
     })
     /* must fix getBySurname for lowercase */
-    this.inmemorytenant.getBySurname('Fantozzi').subscribe((response) => {
+    this.inmemorytenant.getBySurname('FanTozzi').subscribe((response) => {
       console.log('GetBySurname with surname "Fantozzi" ')
       console.log(response)
     })
-    this.inmemorytenant.getByMail('rag-fantozzi@test.com').subscribe((response) => {
+    this.inmemorytenant.getByMail('rAg-fantOzzi@test.com').subscribe((response) => {
       console.log('GetByMail with mail "rag-fantozzi@test.com" ')
       console.log(response)
     })
