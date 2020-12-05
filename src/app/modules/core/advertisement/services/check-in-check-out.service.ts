@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core'
-import { Subject } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
 })
 export class CheckInCheckOutService {
-  reservationDates$: Subject<{ checkIn: Date; checkOut: Date }> = new Subject<{
+  reservationDates$: BehaviorSubject<{
     checkIn: Date
     checkOut: Date
-  }>()
+  }> = new BehaviorSubject<{
+    checkIn: Date
+    checkOut: Date
+  }>(null)
   constructor() {}
 
   setReservationDates(checkIn: Date, checkOut: Date): void {

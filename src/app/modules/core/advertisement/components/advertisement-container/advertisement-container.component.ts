@@ -4,7 +4,9 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacility } from '@shared/models/property'
+import { IReservation } from '@shared/models/reservation'
 import * as _ from 'lodash'
+import moment from 'moment'
 import { Subject, Subscription } from 'rxjs'
 import { combineLatest } from 'rxjs'
 
@@ -15,6 +17,7 @@ import { combineLatest } from 'rxjs'
 })
 export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
+  reservations: IReservation[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
 
@@ -34,8 +37,9 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       this.sidebarService.price$,
       this.sidebarService.facility$,
       this.sidebarService.score$,
-    ]).subscribe(([price, facility, score]) =>
-      this.getFilteredAdvertisements(price, score, facility)
+      this.checkInCheckOutService.reservationDates$,
+    ]).subscribe(([price, facility, score, reservationDate]) =>
+      this.getFilteredAdvertisements(price, score, facility, reservationDate)
     )
   }
 
@@ -46,11 +50,13 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   private getFilteredAdvertisements(
     price: number,
     score: number,
-    facility: IFacility
+    facility: IFacility,
+    // tslint:disable-next-line: prettier
+    reservationDate: { checkIn: Date; checkOut: Date }
   ): void {
     let tmpAdvertisement: MockAdvertisement[] = this.advertisements
     this.filteredAdvertisements = []
-    if (price == null && score == null && facility == null) {
+    if (price == null && score == null && facility == null && reservationDate == null) {
       this.advertisements?.forEach((adv) => this.filteredAdvertisements.push(adv))
       this.emitPriceUpdate()
     } else {
@@ -71,6 +77,17 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
             propertyActiveFacilities.hasOwnProperty(facility)
           )
         })
+      }
+      if (reservationDate != null) {
+        tmpAdvertisement = tmpAdvertisement.filter((adv) =>
+          adv.reservations.every(
+            (res) =>
+              !(
+                moment(reservationDate.checkIn).isBetween(res.checkIn, res.checkOut) ||
+                moment(reservationDate.checkOut).isBetween(res.checkIn, res.checkOut)
+              )
+          )
+        )
       }
       tmpAdvertisement.map((adv) => this.filteredAdvertisements.push(adv))
       this.emitPriceUpdate()

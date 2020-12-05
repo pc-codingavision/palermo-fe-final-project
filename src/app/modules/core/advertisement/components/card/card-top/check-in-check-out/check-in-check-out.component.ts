@@ -40,8 +40,8 @@ export class CheckInCheckOutComponent implements OnInit {
   toggleDates(): void {
     if (this.date.status === 'VALID') {
       this.checkInCheckoutService.setReservationDates(
-        this.minCheckInDate,
-        this.minCheckOutDate
+        this.date.value.picker1,
+        this.date.value.picker2
       )
     }
   }
