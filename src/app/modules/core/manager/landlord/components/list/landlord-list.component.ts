@@ -35,9 +35,10 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild(MatSort) sort: MatSort
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
-  expandedElement: Elements | null
+  expandedElement: Landlord
   subscriptions: Subscription[] = []
   dataSource: MatTableDataSource<Landlord>
+  landlords: Landlord[]
 
   constructor(
     private landlordService: LandlordService,
@@ -61,11 +62,10 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getLandlords(length: number, start: number = 0): void {
     this.subscriptions.push(
-      this.searchLandlord
-        .getSearchResult(length, start)
-        .subscribe(
-          (landlords) => (this.dataSource = new MatTableDataSource<Landlord>(landlords))
-        )
+      this.searchLandlord.getSearchResult(length, start).subscribe((landlords) => {
+        this.dataSource = new MatTableDataSource<Landlord>(landlords)
+        this.landlords = landlords
+      })
     )
   }
 

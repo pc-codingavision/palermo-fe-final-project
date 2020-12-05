@@ -69,7 +69,7 @@
       </mat-icon>
     </button>
   </div>
-  <mat-card *ngFor="let element of ( landlords$ | async)">
+  <mat-card *ngFor="let element of landlords">
     <a (click)="expandedElement = expandedElement === element ? null : element"
       class="element-row" [class.expanded-row]="expandedElement === element"
       class="detail-row">
