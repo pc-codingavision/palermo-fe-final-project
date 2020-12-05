@@ -4,12 +4,11 @@ import {
   ADVERTISEMENTS_MOCK_DATA,
   LANDLORDS_MOCK_DATA,
   RESERVATIONS_MOCK_DATA,
+  TENANTS_MOCK_DATA,
 } from '@shared/models/mock-data/data'
 import { IReservation } from '@shared/models/reservation'
 import { IUser } from '@shared/models/users'
 import { InMemoryDbService } from 'angular-in-memory-web-api'
-
-import { TENANTS_MOCK_DATA } from './../models/mock-data/data'
 
 @Injectable({
   providedIn: 'root',
