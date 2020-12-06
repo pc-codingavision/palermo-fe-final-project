@@ -80,6 +80,63 @@ describe('InMemoryTenantService', () => {
       req.flush(mockTenants)
       expect(data).toEqual(mockTenants)
     })
+
+    it('should return all tenants...', () => {
+      const response = [
+        {
+          id: 1,
+          name: { firstName: 'Ugo', surname: 'Fantozzi' },
+          phone: [{ id: 1, type: PhoneType.Mobile, digits: '321456789' }],
+          mail: 'rag-fantozzi@test.com',
+          picture:
+            'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
+          username: 'ragUgo',
+          password: 'password',
+          status: true,
+          dateOfBirth: new Date(1960, 1, 1),
+          role: Role.Tenant,
+          address: {
+            line1: 'Via Pina',
+            city: 'Roma',
+            state: 'Italia',
+            postCode: '90000',
+          },
+          fullName: '',
+        },
+        {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+          phone: [
+            { id: 1, type: PhoneType.Home, digits: '0900256248' },
+            { id: 2, type: PhoneType.Mobile, digits: '355847229' },
+          ],
+          mail: 'geom-filini@test.com',
+          picture:
+            'https://cdn.pixabay.com/photo/2012/04/13/21/07/user-33638_960_720.png',
+          username: 'geomFilini',
+          password: 'password',
+          status: true,
+          dateOfBirth: new Date(1960, 2, 2),
+          role: Role.Tenant,
+          address: {
+            line1: 'Via Abruzzo',
+            city: 'Roma',
+            state: 'Italia',
+            postCode: '90000',
+          },
+          fullName: '',
+        },
+      ]
+
+      service.getAll().subscribe((result) => {
+        expect(result.length).toEqual(2)
+        expect(result[0].name.firstName).toEqual('Ugo')
+        expect(result[0].id).toEqual(1)
+        expect(result).toEqual(response)
+      })
+
+      httpTestingController.expectOne('api/tenants').flush(response)
+    })
   })
 
   describe('GetById', () => {
@@ -97,20 +154,36 @@ describe('InMemoryTenantService', () => {
 
     it('should return empty array and throw error for not existing id ', () => {
       let data
-
-      service.getById(3).subscribe((response) => {
-        data = response
-      })
-      // Da rivedere
       const errorResponse: ResponseOptions = {
-        body: { error: `'Tenants' with id=4 not found` },
+        body: { error: `'Tenants' with id=6 not found` },
         status: 404,
       }
 
-      const req = httpTestingController.expectOne('api/tenants/3')
+      service.getById(6).subscribe((response) => {
+        data = response
+      })
+
+      const req = httpTestingController.expectOne('api/tenants/6')
       expect(req.request.method).toEqual('GET')
       req.flush(errorResponse)
       expect(data).toEqual(errorResponse)
+    })
+
+    it('should throw error for not existing id ', () => {
+      service.getById(6).subscribe(
+        (response) => {
+          throw new Error('Not Found')
+        },
+        (error) => {
+          expect(error.status).toEqual(404)
+          expect(error.statusText).toEqual(`Tenants' with id=6 not found`)
+        }
+      )
+
+      httpTestingController.expectOne('api/tenants/6').error(new ErrorEvent(''), {
+        status: 404,
+        statusText: `Tenants' with id=6 not found`,
+      })
     })
   })
 
