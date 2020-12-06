@@ -14,7 +14,7 @@ export class AdvertisementService {
   advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
     MockAdvertisement.Build(advertisement)
   )
-  private advertisementsUrl = 'api/advertisements'
+  advertisementsUrl = 'api/advertisements'
 
   private handleError<T>(
     operation = 'operation',
@@ -60,8 +60,11 @@ export class AdvertisementService {
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {
-    // return of(this.advertisements.slice(start, end))
-
+    return of(this.advertisements.slice(start, end))
+    // return this.http.get<MockAdvertisement[]>(this.advertisementsUrl).pipe(
+    //   map(this.mapAdvsArrayToAdvsArrayBuild()),
+    //   map((advs) => advs.slice(start, end))
+    // )
     // return this.findAll().pipe(
     //   flatMap((val) => of(...val)),
     //   skipWhile((val, index) => {
@@ -69,6 +72,6 @@ export class AdvertisementService {
     //     }
     //   })
     // )
-    return this.findAll().pipe(map((advs) => advs.slice(start, end)))
+    // return this.findAll().pipe(map((advs) => advs.slice(start, end)))
   }
 }
