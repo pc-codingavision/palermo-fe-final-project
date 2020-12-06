@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { LatestContainerComponent } from './latest-container.component'
@@ -10,6 +11,7 @@ describe('LatestContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [LatestContainerComponent],
+        imports: [HttpClientTestingModule],
       }).compileComponents()
     })
   )
@@ -20,7 +22,7 @@ describe('LatestContainerComponent', () => {
     fixture.detectChanges()
   })
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy()
   })
 })
