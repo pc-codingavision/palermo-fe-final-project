@@ -5,7 +5,7 @@
 <form [formGroup]="landlordForm">
   <div fxLayout="row" fxLayoutAlign="center start">
     <div fxLayout="column" fxLayoutAlign="center center" id="picture-container">
-      <img [src]="landlordForm.value.picture">
+      <img [src]="landlordForm?.value?.picture">
       <button mat-button
         (click)="togglePictureContainer = !togglePictureContainer">Change</button>
 
