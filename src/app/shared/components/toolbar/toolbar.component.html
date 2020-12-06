@@ -17,6 +17,8 @@
       [src]="auth?.user?.picture" />
     <mat-icon *ngIf="!auth?.user?.picture">account_circle</mat-icon>
   </button>
+  <mat-label *ngIf="auth?.status?.isAuthenticated">Welcome {{auth?.user?.name?.firstName}}
+  </mat-label>
   <button *ngIf="auth?.status?.isAuthenticated" mat-mini-fab routerLink="/logout"
     matTooltip="Logout" aria-label="Logout">
     <mat-icon class="mat-18">lock_open</mat-icon>

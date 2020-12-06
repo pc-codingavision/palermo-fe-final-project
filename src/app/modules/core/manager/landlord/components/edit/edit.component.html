@@ -11,9 +11,14 @@
 
       <div id="select-picture" *ngIf="togglePictureContainer" fxLayout="column"
         fxLayoutAlign="center">
-        <mat-form-field>
+        <mat-form-field id="input-image">
           <mat-label>Insert a new picture</mat-label>
           <input matInput placeholder="New picture" formControlName="picture">
+          <button mat-button *ngIf="landlordForm.get('picture')?.value" matSuffix
+            mat-icon-button aria-label="Clear" class="no-hover"
+            (click)="landlordForm.get('picture')?.reset()">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-form-field>
       </div>
     </div>
@@ -33,6 +38,11 @@
           <mat-form-field>
             <mat-label>First Name</mat-label>
             <input matInput type="text" formControlName="firstName">
+            <button mat-button *ngIf="landlordForm.get('firstName')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('firstName')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('firstName')?.hasError('required')">
               Input required
             </mat-error>
@@ -44,11 +54,21 @@
           <mat-form-field>
             <mat-label>Middle Name</mat-label>
             <input matInput type="text" formControlName="middleName">
+            <button mat-button *ngIf="landlordForm.get('middleName')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('middleName')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>Last Name</mat-label>
             <input matInput type="text" formControlName="lastName">
+            <button mat-button *ngIf="landlordForm.get('lastName')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('lastName')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('lastName')?.hasError('required')">
               Input required
             </mat-error>
@@ -73,6 +93,11 @@
           <mat-form-field>
             <mat-label>Line 1</mat-label>
             <input matInput type="text" formControlName="line1">
+            <button mat-button *ngIf="landlordForm.get('line1')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('line1')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('line1')?.hasError('required')">
               Input required
             </mat-error>
@@ -84,11 +109,21 @@
           <mat-form-field>
             <mat-label>Line 2</mat-label>
             <input matInput type="text" formControlName="line2">
+            <button mat-button *ngIf="landlordForm.get('line2')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('line2')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>City</mat-label>
             <input matInput type="text" formControlName="city">
+            <button mat-button *ngIf="landlordForm.get('city')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('city')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('city')?.hasError('required')">
               Input required
             </mat-error>
@@ -100,6 +135,11 @@
           <mat-form-field>
             <mat-label>State</mat-label>
             <input matInput type="text" formControlName="state">
+            <button mat-button *ngIf="landlordForm.get('state')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="landlordForm.get('state')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('state')?.hasError('required')">
               Input required
             </mat-error>
@@ -111,6 +151,11 @@
           <mat-form-field>
             <mat-label>Zip Code</mat-label>
             <input matInput type="text" formControlName="zipCode">
+            <button mat-button *ngIf="landlordForm.get('zipCode')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="sidenav-toggle no-hover"
+              (click)="landlordForm.get('zipCode')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
             <mat-error *ngIf="landlordForm.get('zipCode')?.hasError('required')">
               Input required
             </mat-error>
@@ -121,7 +166,7 @@
         </mat-card>
 
 
-        <mat-card fxLayout="column" fxLayoutAlign="space-between">
+        <mat-card fxLayout="column" fxLayoutAlign="space-between" id="phone-card">
           <div fxLayout="row" fxLayoutAlign="space-between">
             <mat-form-field appearance="fill" class="select-container">
               <mat-label>Select</mat-label>
@@ -134,7 +179,12 @@
 
             <mat-form-field>
               <mat-label>Phone 1</mat-label>
-              <input matInput type="text" formControlName="phone1">
+              <input matInput type="text" formControlName="phone1" class="input-phone">
+              <button mat-button *ngIf="landlordForm.get('phone1')?.value" matSuffix
+                mat-icon-button aria-label="Clear" class="no-hover"
+                (click)="landlordForm.get('phone1')?.reset()">
+                <mat-icon>close</mat-icon>
+              </button>
               <mat-error *ngIf="landlordForm.get('phone1')?.hasError('required')">
                 Input required
               </mat-error>
@@ -160,6 +210,11 @@
             <mat-form-field>
               <mat-label>Phone 2</mat-label>
               <input matInput type="text" formControlName="phone2">
+              <button mat-button *ngIf="landlordForm.get('phone2')?.value" matSuffix
+                mat-icon-button aria-label="Clear" class="no-hover"
+                (click)="landlordForm.get('phone2')?.reset()">
+                <mat-icon>close</mat-icon>
+              </button>
               <mat-error *ngIf="landlordForm.get('phone2')?.hasError('minlength')">
                 Invalid Phone number, need to be at least 6 characters long
               </mat-error>
@@ -174,6 +229,11 @@
             <mat-form-field>
               <mat-label>Mail</mat-label>
               <input matInput type="text" formControlName="email">
+              <button mat-button *ngIf="landlordForm.get('email')?.value" matSuffix
+                mat-icon-button aria-label="Clear" class="no-hover"
+                (click)="landlordForm.get('email')?.reset()">
+                <mat-icon>close</mat-icon>
+              </button>
               <mat-error *ngIf="landlordForm.get('email')?.hasError('required')">
                 E-mail is required
               </mat-error>

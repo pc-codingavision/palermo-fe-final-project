@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
+import { AuthService } from '@modules/core/auth/auth.service'
 import { combineLatest } from 'rxjs'
 import { catchError, filter, tap } from 'rxjs/operators'
 import { SubSink } from 'subsink'
-
-import { AuthService } from '../../../modules/core/auth/auth.service'
 
 @Component({
   selector: 'cav-login',
@@ -64,7 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authService.currentUser$,
     ])
       .pipe(
-        filter(([authStatus, user]) => authStatus.isAuthenticated && user?._id !== ''),
+        filter(([authStatus, user]) => authStatus.isAuthenticated && user?.id !== null),
         tap(([authStatus, user]) => {
           this.router.navigate([this.redirectUrl || '/manager'])
         })
