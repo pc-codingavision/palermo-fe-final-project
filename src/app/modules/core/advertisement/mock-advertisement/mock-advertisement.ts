@@ -22,13 +22,6 @@ export interface IMockAdvertisement {
   reviews: IMockReview[]
   price: number
   score?: number
-  reservations: IMockReservation[]
-}
-export interface IMockReservation {
-  id: number
-  propertyId: number
-  checkIn: Date | string
-  checkOut: Date | string
 }
 
 export class MockReview implements IMockReview {
@@ -58,35 +51,6 @@ export class MockReview implements IMockReview {
     )
   }
 }
-export class MockReservation implements IMockReservation {
-  private constructor(
-    public id: number = null,
-    public propertyId: number = null,
-    public checkIn: Date | null = null,
-    public checkOut: Date | null = null
-  ) {}
-
-  static Build(mockReservation?: IMockReservation): MockReservation {
-    if (typeof mockReservation.checkIn === 'string') {
-      mockReservation.checkIn = new Date(mockReservation.checkIn)
-    }
-
-    if (typeof mockReservation.checkOut === 'string') {
-      mockReservation.checkOut = new Date(mockReservation.checkOut)
-    }
-
-    if (!mockReservation) {
-      return new MockReservation()
-    }
-
-    return new MockReservation(
-      mockReservation.id,
-      mockReservation.propertyId,
-      mockReservation.checkIn,
-      mockReservation.checkOut
-    )
-  }
-}
 
 export class MockAdvertisement implements IMockAdvertisement {
   private constructor(
@@ -94,8 +58,7 @@ export class MockAdvertisement implements IMockAdvertisement {
     public landlord = null,
     public property = null,
     public reviews: MockReview[] = [],
-    public price = null,
-    public reservations: MockReservation[] = []
+    public price = null
   ) {}
   static Build(mockAdvertisement?: IMockAdvertisement): MockAdvertisement {
     if (!mockAdvertisement) {
@@ -107,10 +70,7 @@ export class MockAdvertisement implements IMockAdvertisement {
       mockAdvertisement.landlord,
       mockAdvertisement.property,
       mockAdvertisement.reviews.map((review) => MockReview.Build(review)) as MockReview[],
-      mockAdvertisement.price,
-      mockAdvertisement.reservations.map((reservation) =>
-        MockReservation.Build(reservation)
-      ) as MockReservation[]
+      mockAdvertisement.price
     )
   }
 
@@ -232,14 +192,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 40,
-    reservations: [
-      {
-        id: 1,
-        propertyId: 1,
-        checkIn: '12/24/2020',
-        checkOut: '12/30/2020',
-      },
-    ],
   },
 
   {
@@ -313,14 +265,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 30,
-    reservations: [
-      {
-        id: 2,
-        propertyId: 2,
-        checkIn: '1/26/2021',
-        checkOut: '1/30/2021',
-      },
-    ],
   },
   {
     id: 3,
@@ -404,13 +348,5 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
     ],
     price: 20,
-    reservations: [
-      {
-        id: 3,
-        propertyId: 3,
-        checkIn: '12/10/2020',
-        checkOut: '12/12/2020',
-      },
-    ],
   },
 ]

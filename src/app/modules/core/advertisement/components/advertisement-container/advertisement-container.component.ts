@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
+import { ReservationService } from '@modules/shared/services/reservation/reservation.service'
 import { IFacility } from '@shared/models/property'
 import { IReservation } from '@shared/models/reservation'
 import * as _ from 'lodash'
@@ -24,7 +25,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   constructor(
     private sidebarService: SidebarService,
     private activatedRoute: ActivatedRoute,
-    private checkInCheckOutService: CheckInCheckOutService
+    private checkInCheckOutService: CheckInCheckOutService,
+    private reservationService: ReservationService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,9 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
         (data) => (this.advertisements = data.advertisements)
       )
     )
+    this.reservationService
+      .getAll()
+      .subscribe((reservations) => (reservations = this.reservations))
     combineLatest([
       this.sidebarService.price$,
       this.sidebarService.facility$,
@@ -51,7 +56,6 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     price: number,
     score: number,
     facility: IFacility,
-    // tslint:disable-next-line: prettier
     reservationDate: { checkIn: Date; checkOut: Date }
   ): void {
     let tmpAdvertisement: MockAdvertisement[] = this.advertisements
@@ -79,16 +83,17 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
         })
       }
       if (reservationDate != null) {
-        tmpAdvertisement = tmpAdvertisement.filter((adv) =>
-          adv.reservations.every(
-            (res) =>
-              !(
-                (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
-                  moment(reservationDate.checkOut).isAfter(res.checkOut)) ||
-                (moment(reservationDate.checkIn).isAfter(res.checkIn) &&
-                  moment(reservationDate.checkIn).isBefore(res.checkOut))
-              )
-          )
+        const result: IReservation[] = this.reservations.filter(
+          (res) =>
+            !(
+              (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
+                moment(reservationDate.checkOut).isAfter(res.checkOut)) ||
+              (moment(reservationDate.checkIn).isAfter(res.checkIn) &&
+                moment(reservationDate.checkIn).isBefore(res.checkOut))
+            )
+        )
+        tmpAdvertisement = tmpAdvertisement.filter((val) =>
+          result.filter((ccc) => ccc.propertyId === val.property.id)
         )
       }
       tmpAdvertisement.map((adv) => this.filteredAdvertisements.push(adv))
