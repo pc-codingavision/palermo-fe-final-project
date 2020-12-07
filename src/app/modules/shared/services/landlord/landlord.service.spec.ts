@@ -10,7 +10,7 @@ import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 
 import { LandlordService } from './landlord.service'
 
-describe('LandlordService', () => {
+xdescribe('LandlordService', () => {
   let httpTestingController: HttpTestingController
   let service: LandlordService
   let httpClient: HttpClient
@@ -137,7 +137,7 @@ describe('LandlordService', () => {
       req.event(resp)
     })
   })
-  describe('#toggleStatus', () => {
+  xdescribe('#toggleStatus', () => {
     const landlordUpdated: Landlord = {
       id: 1,
       name: { firstName: 'pino', surname: 'Cascio' },

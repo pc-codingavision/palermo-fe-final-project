@@ -59,7 +59,6 @@ export class EditComponent implements OnInit, OnDestroy {
   }
 
   setForm(): void {
-    console.log(this.landlord)
     this.landlordForm = this.formBuilder.group({
       firstName: [
         this.landlord?.name.firstName,
