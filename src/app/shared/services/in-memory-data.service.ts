@@ -4,6 +4,7 @@ import { IAdvertisement } from '@shared/models/advertisement'
 import {
   LANDLORDS_MOCK_DATA,
   RESERVATIONS_MOCK_DATA,
+  TENANTS_MOCK_DATA,
 } from '@shared/models/mock-data/data'
 import { IReservation } from '@shared/models/reservation'
 import { IUser } from '@shared/models/users'
@@ -17,7 +18,8 @@ export class InMemoryDataService implements InMemoryDbService {
     const advertisements = MOCKADVERTISEMENTS_MOCK_DATA
     const landlords = LANDLORDS_MOCK_DATA
     const reservations = RESERVATIONS_MOCK_DATA
-    return { advertisements, landlords, reservations }
+    const tenants = TENANTS_MOCK_DATA
+    return { advertisements, landlords, reservations, tenants }
   }
 
   genId<T extends IAdvertisement | IUser | IReservation>(dataArray: T[]): number {
