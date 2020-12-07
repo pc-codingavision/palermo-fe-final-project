@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'
   providedIn: 'root',
 })
 export class InMemoryTenantService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private tenantsUrl = 'api/tenants'
 
