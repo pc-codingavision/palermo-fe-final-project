@@ -4,7 +4,6 @@ import {
 } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { PhoneType, Role } from '@shared/enum/enums'
-import { InMemoryDataService } from '@shared/services/in-memory-data.service'
 import { ResponseOptions } from 'angular-in-memory-web-api'
 
 import { TENANTS_MOCK_DATA } from './../../../../shared/models/mock-data/data'
@@ -53,7 +52,7 @@ describe('InMemoryTenantService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [InMemoryTenantService, InMemoryDataService],
+      providers: [InMemoryTenantService],
     })
 
     httpTestingController = TestBed.inject(HttpTestingController)

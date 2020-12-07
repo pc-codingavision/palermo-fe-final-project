@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Tenant } from '@shared/models/tenant'
-import { Observable, of } from 'rxjs'
+import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryTenantService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private tenantsUrl = 'api/tenants'
 
@@ -33,9 +33,9 @@ export class InMemoryTenantService {
   getByMail(mail: string): Observable<Tenant[]> {
     /* https://stackoverflow.com/questions/52976948/angular-in-memory-web-api-simple-query-string-not-working-with-character*/
     const mailUrl = `${this.tenantsUrl}?mail=${encodeURIComponent(mail)}`
-    if (!mail.trim) {
-      return of([])
-    }
+    // if (!mail.trim) {
+    //   return of([])
+    // }
     return this.http.get<Tenant[]>(mailUrl)
   }
 
