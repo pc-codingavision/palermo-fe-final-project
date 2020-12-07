@@ -12,15 +12,15 @@ export class LandlordService {
 
   constructor(private http: HttpClient) {}
 
-  private mapLandlordArrayToLandlordArrayBuild() {
+  private mapLandlordArrayToLandlordArrayBuild(): (a: Landlord[]) => Landlord[] {
     return (landlords) => landlords.map(this.mapLandlordToLandlordBuild())
   }
 
-  private mapLandlordToLandlordBuild() {
+  private mapLandlordToLandlordBuild(): (a: Landlord) => Landlord {
     return (landlord) => Landlord.Build(landlord)
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T): (a: any) => Observable<T> {
     return (error: any): Observable<T> => {
       console.error(error)
 
@@ -65,8 +65,8 @@ export class LandlordService {
 
   toggleStatus(landlord: Landlord): Observable<any> {
     return this.http.patch<Landlord>(this.landlordsUrl, landlord).pipe(
-      map((landlord) => {
-        return (landlord.status = !landlord.status), console.log(landlord.status)
+      map((l) => {
+        return (l.status = !l.status)
       }),
       catchError(this.handleError<Landlord>('update'))
     )
