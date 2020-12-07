@@ -33,9 +33,6 @@ export class InMemoryTenantService {
   getByMail(mail: string): Observable<Tenant[]> {
     /* https://stackoverflow.com/questions/52976948/angular-in-memory-web-api-simple-query-string-not-working-with-character*/
     const mailUrl = `${this.tenantsUrl}?mail=${encodeURIComponent(mail)}`
-    // if (!mail.trim) {
-    //   return of([])
-    // }
     return this.http.get<Tenant[]>(mailUrl)
   }
 
@@ -57,17 +54,3 @@ export class InMemoryTenantService {
     return this.http.put<Tenant>(this.tenantsUrl, tenant)
   }
 }
-
-/*
-
-    Retrieve all tenants
-    Retrieve tenant by id
-    Retrieve tenant by name
-    Retrieve tenant by surname
-    Retrieve tenant by email
-    Retrieve tenant by status
-    Add new tenant
-    Update an existing tenant
-    Delete tenant
-
-*/
