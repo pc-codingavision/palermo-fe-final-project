@@ -4,6 +4,7 @@ import { MediaObserver } from '@angular/flex-layout'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { MatSort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
+import { ActivatedRoute } from '@angular/router'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
@@ -35,18 +36,21 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator
   @ViewChild(MatSort) sort: MatSort
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
-  expandedElement: Landlord
   subscriptions: Subscription[] = []
   dataSource: MatTableDataSource<Landlord>
   landlords: Landlord[]
+  expandedElement: Elements | null
+  landlords$: Observable<Landlord[]>
 
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService,
+    private route: ActivatedRoute,
     public media: MediaObserver
   ) {}
 
   ngOnInit(): void {
+    this.landlords$ = this.route.snapshot.data.list
     this.getLandlords(5, 0)
   }
 
