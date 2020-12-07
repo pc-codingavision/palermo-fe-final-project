@@ -1,19 +1,14 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import {
-  MOCKADVERTISEMENTS_MOCK_DATA,
-  MockAdvertisement,
-} from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { Observable, of } from 'rxjs'
-import { catchError, map } from 'rxjs/operators'
+import { flatMap } from 'rxjs/internal/operators'
+import { catchError, map, skipWhile, take, toArray } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdvertisementService {
-  advertisements = MOCKADVERTISEMENTS_MOCK_DATA.map((advertisement) =>
-    MockAdvertisement.Build(advertisement)
-  )
   advertisementsUrl = 'api/advertisements'
 
   private handleError<T>(
@@ -49,29 +44,24 @@ export class AdvertisementService {
       )
   }
 
-  // tslint:disable-next-line:typedef
-  private mapAdvsArrayToAdvsArrayBuild() {
+  private mapAdvsArrayToAdvsArrayBuild(): (advertisements) => any {
     return (advertisements) => advertisements.map(this.mapAdvsToAdvsBuild())
   }
 
-  // tslint:disable-next-line:typedef
-  private mapAdvsToAdvsBuild() {
+  private mapAdvsToAdvsBuild(): (advertisements) => MockAdvertisement {
     return (advertisements) => MockAdvertisement.Build(advertisements)
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {
-    return of(this.advertisements.slice(start, end))
-    // return this.http.get<MockAdvertisement[]>(this.advertisementsUrl).pipe(
-    //   map(this.mapAdvsArrayToAdvsArrayBuild()),
-    //   map((advs) => advs.slice(start, end))
-    // )
-    // return this.findAll().pipe(
-    //   flatMap((val) => of(...val)),
-    //   skipWhile((val, index) => {
-    //     if (index <= 1) {
-    //     }
-    //   })
-    // )
-    // return this.findAll().pipe(map((advs) => advs.slice(start, end)))
+    return this.findAll().pipe(
+      flatMap((val) => of(...val)),
+      skipWhile((val, index) => {
+        if (index < start) {
+          return true
+        }
+      }),
+      take(end),
+      toArray()
+    )
   }
 }
