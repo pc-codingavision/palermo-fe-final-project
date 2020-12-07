@@ -1,29 +1,19 @@
-<cav-latest-container></cav-latest-container>
-
-<div id='body' fxLayout='row' fxLayoutAlign='center' fxLayout.lt-lg='column'>
-  <cav-sidebar-container fxLayout.lt-lg='row wrap' fxLayoutAlign.lt-lg='space-between'
-    fxShow.xs='false'></cav-sidebar-container>
-
-  <div fxShow.gt-xs='false' fxShow.xs='true' fxLayout='column'
-    fxLayoutAlign='center center'>
-    <button id='filtersButton' mat-raised-button color='accent'
-      (click)='showMobileFilters = !showMobileFilters'>
-      {{showMobileFilters ? "Hide Filters" : "Show Filters"}}
-      <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
-      </mat-icon>
-    </button>
-    <cav-sidebar-container *ngIf='showMobileFilters'></cav-sidebar-container>
+<div fxLayout='column' fxLayoutGap='30px' id='body'>
+  <div>
+    <cav-latest-container></cav-latest-container>
   </div>
-
-  <ng-container *ngIf='filteredAdvertisements.length > 0 else emptyList'>
-    <div fxShow.lt-lg='false' style='margin-left: 80px'></div>
-    <cav-advertisement-list [advertisements]='filteredAdvertisements'>
+  <div fxLayout='row' fxLayout.lt-md='column' fxLayoutGap='30px'>
+    <div fxLayout='column' fxLayoutAlign.lt-md='center center' fxLayoutGap='4%'>
+      <button id='filtersButton' mat-raised-button color='accent' fxShow.gt-xs='false'
+        (click)='showMobileFilters = !showMobileFilters'>
+        {{showMobileFilters ? "Hide Filters" : "Show Filters"}}
+        <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+        </mat-icon>
+      </button>
+      <cav-sidebar-container *ngIf="!media.isActive('xs') || showMobileFilters">
+      </cav-sidebar-container>
+    </div>
+    <cav-advertisement-list fxFlex [advertisements]='filteredAdvertisements'>
     </cav-advertisement-list>
-  </ng-container>
-
-  <ng-template #emptyList>
-    <h1 fxFlex='100%' fxLayoutAlign='center start'>
-      Nessun annuncio corrisponde ai criteri di ricerca
-    </h1>
-  </ng-template>
+  </div>
 </div>

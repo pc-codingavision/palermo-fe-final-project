@@ -1,3 +1,6 @@
 <cav-card-main-container *ngFor="let advertisement of advertisements"
   [advertisement]="advertisement">
 </cav-card-main-container>
+<h1 *ngIf='advertisements.length === 0' fxLayoutAlign='center'>
+  Nessun annuncio corrisponde ai criteri di ricerca
+</h1>

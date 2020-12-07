@@ -1,4 +1,6 @@
-<cav-price-filter [maxPrice]="maxPrice" [minPrice]="minPrice"
-  (filter)="onPriceSelected($event)"></cav-price-filter>
-<cav-facility-filter (filter)="onFacilitySelected($event)"></cav-facility-filter>
-<cav-score-filter (filter)="onScoreSelected($event)"></cav-score-filter>
+<div fxLayout.lt-md='row wrap' fxLayout.xs='column' fxLayoutGap='50px'>
+  <cav-price-filter [maxPrice]="maxPrice" [minPrice]="minPrice"
+    (filter)="onPriceSelected($event)"></cav-price-filter>
+  <cav-facility-filter (filter)="onFacilitySelected($event)"></cav-facility-filter>
+  <cav-score-filter (filter)="onScoreSelected($event)"></cav-score-filter>
+</div>
