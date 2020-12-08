@@ -5,7 +5,7 @@
       <span class="material-icons" (click)="goBehind()">navigate_before</span>
     </button>
 
-    <cav-latest-mini-card *ngFor="let advertisement of latestAdvertisements | async"
+    <cav-latest-mini-card *ngFor="let advertisement of advertisements.slice(start,end)"
       [advertisement]="advertisement" [images]="advertisement?.property?.images">
     </cav-latest-mini-card>
 
