@@ -26,29 +26,23 @@ export class InMemoryDataService implements InMemoryDbService {
     const reservations = RESERVATIONS_MOCK_DATA
     return { advertisements, tenants, landlords, reservations }
   }
-  genId<T extends IAdvertisement | IUser | IReservation>(myTable: T[]): number {
-    return myTable.length > 0 ? Math.max(...myTable.map((t) => t.id)) + 1 : 1
+  genId<T extends IAdvertisement | IUser | IReservation>(dataArray: T[]): number {
+    return dataArray.length > 0 ? Math.max(...dataArray.map((t) => t.id)) + 1 : 1
   }
-  /* https://github.com/angular/in-memory-web-api ,
-   https://github.com/angular/in-memory-web-api/blob/master/src/app/hero-in-mem-data-override.service.ts */
+
   get(reqInfo: RequestInfo): Observable<any> {
     const collectionName = reqInfo.collectionName
-    /* creo metodi custom */
     if (collectionName === 'tenants' && reqInfo.query.has('name')) {
       return this.getTenantsByName(reqInfo)
     } else if (collectionName === 'tenants' && reqInfo.query.has('surname')) {
       return this.getTenantsBySurname(reqInfo)
     }
     return undefined
-    /* return undefined utilizza il metodo get di default interno della libreria InMemory */
   }
 
   private getTenantsByName(reqInfo: RequestInfo): Observable<any> {
-    /*createResponse : metodo interno alla libreria per creare una response uguale a quella utilizzata da InMemory Web Api */
     return reqInfo.utils.createResponse$(() => {
       const collection = reqInfo.collection.slice()
-      /* reqInfo.query : prendo dal Map il valore della chiave 'name' che ritorna un array di stringhe.
-       Essendo chiave/valore mi prendo l'indice zero del'array*/
       const name = reqInfo.query.get('name')[0]
 
       const data = name.trim()
@@ -94,7 +88,6 @@ export class InMemoryDataService implements InMemoryDbService {
     })
   }
 
-  /* helper */
   private finishOptions(
     options: ResponseOptions,
     { headers, url }: RequestInfo
