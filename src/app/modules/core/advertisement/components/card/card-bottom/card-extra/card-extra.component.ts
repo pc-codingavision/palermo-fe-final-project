@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { MediaObserver } from '@angular/flex-layout'
 import { ReviewDialogComponent } from '@modules/core/advertisement/components/card/card-bottom/review-dialog/review-dialog.component'
 import {
   MockAdvertisement,
@@ -15,7 +14,7 @@ import { DialogService } from '@shared/services/dialog.service'
 export class CardExtraComponent implements OnInit {
   @Input() advertisement: MockAdvertisement
   sortedReviews: MockReview[]
-  constructor(private dialogService: DialogService, public media: MediaObserver) {}
+  constructor(private dialogService: DialogService) {}
 
   ngOnInit(): void {
     this.sortReviews()

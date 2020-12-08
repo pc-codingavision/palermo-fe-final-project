@@ -4,7 +4,7 @@
   </div>
   <div fxLayout='row' fxLayout.lt-md='column' fxLayoutGap='30px'>
     <div fxLayout='column' fxLayoutAlign.lt-md='center center' fxLayoutGap='4%'>
-      <button id='filtersButton' mat-raised-button color='accent' fxShow.gt-xs='false'
+      <button fxFill mat-raised-button color='accent' fxShow.gt-xs='false'
         (click)='showMobileFilters = !showMobileFilters'>
         {{showMobileFilters ? "Hide Filters" : "Show Filters"}}
         <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}

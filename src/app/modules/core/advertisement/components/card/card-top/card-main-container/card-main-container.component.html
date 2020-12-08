@@ -1,70 +1,49 @@
-<div *ngIf="!this.media.isActive('xs'); else mobileView">
-  <mat-card>
-    <mat-card-content>
-      <div fxFlex='40%' fxLayout='row wrap'>
-        <cav-photogallery id='photogallery' [images]='advertisement?.property?.images'>
-        </cav-photogallery>
-        <div id='facilities' fxLayout='column'>
-          <cav-facility
-            *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
-            [facility]='facility'>
-          </cav-facility>
-        </div>
-      </div>
+<mat-card id='card'>
+  <mat-card-content fxLayout.xs='column'>
 
-      <div fxFlex='55%' fxLayout='row wrap'>
-        <div fxLayout='column'>
-          <mat-card-title id='title'>{{advertisement?.property?.title}}</mat-card-title>
-          <cav-score class='actions' [config]='scoreConfig'></cav-score>
-          <cav-check-in-check-out class='actions'></cav-check-in-check-out>
-        </div>
+    <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
+      fxLayoutAlign.xs='center center' fxLayoutGap='15px'>
+      <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
+      <div fxLayout='column'>
+        <cav-facility
+          *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
+          [facility]='facility'>
+        </cav-facility>
       </div>
-      <cav-favourite fxFlex='5%' fxLayoutAlign='end'
-        (favouriteEvent)='isFavourite($event)'></cav-favourite>
-    </mat-card-content>
+    </div>
 
+    <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
+      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
+      <mat-card-title fxLayoutAlign.xs='center center'>
+        {{advertisement?.property?.title}}
+        <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
+          <!--da rivedere-->
+        </cav-favourite>
+      </mat-card-title>
+      <cav-score [config]='scoreConfig'></cav-score>
+      <cav-check-in-check-out fxShow.xs='false'></cav-check-in-check-out>
+      <!--da rivedere-->
+    </div>
+
+    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'
+      class='mobile-spacing'></cav-check-in-check-out>
+    <!--da rivedere-->
+    <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
+      (favouriteEvent)='isFavourite($event)'>
+      <!--da rivedere-->
+    </cav-favourite>
+
+  </mat-card-content>
+
+  <div fxLayoutAlign.xs='center center'>
     <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
       {{showCardExtra ? "Hide" : "More Info"}}
       <mat-icon>
         {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
       </mat-icon>
     </button>
+  </div>
 
-    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
-    </cav-card-extra>
-  </mat-card>
-</div>
-
-<ng-template #mobileView>
-  <mat-card>
-    <mat-card-content fxLayout='column' fxLayoutAlign='space-between center'>
-      <mat-card-title fxLayoutAlign='center center'>
-        {{advertisement?.property?.title}}
-        <cav-favourite (favouriteEvent)='isFavourite($event)'></cav-favourite>
-      </mat-card-title>
-
-      <cav-score class='mobile-spacing' [config]='scoreConfig'></cav-score>
-
-      <cav-photogallery class='mobile-spacing' [images]='advertisement?.property?.images'>
-      </cav-photogallery>
-
-      <div class='mobile-spacing'>
-        <cav-facility
-          *ngFor='let facility of advertisement?.property?.facilities |keyvalue'
-          [facility]='facility'>
-        </cav-facility>
-      </div>
-
-      <cav-check-in-check-out class='mobile-spacing'></cav-check-in-check-out>
-
-      <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
-        {{showCardExtra ? "Hide" : "More Info"}}
-        <mat-icon>
-          {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
-        </mat-icon>
-      </button>
-    </mat-card-content>
-    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
-    </cav-card-extra>
-  </mat-card>
-</ng-template>
+  <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+  </cav-card-extra>
+</mat-card>
