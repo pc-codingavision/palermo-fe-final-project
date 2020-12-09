@@ -55,6 +55,7 @@ export class EditComponent implements OnInit, OnDestroy {
       this.togglePictureContainer = true
       this.toggleResetPasswordContainer = true
       this.landlord.status = true
+      this.setForm()
     }
   }
 
