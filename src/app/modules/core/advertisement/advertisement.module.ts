@@ -23,7 +23,8 @@ import { ScoreFilterComponent } from '@modules/core/advertisement/components/sid
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/sidebar/sidebar-container/sidebar-container.component'
 import { SharedModule } from '@modules/shared/shared.module'
 
-import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component'
+import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component';
+import { StandUpDirective } from './stand-up.directive'
 
 const advertisementsComponent = [
   AdvertisementListComponent,
@@ -49,7 +50,7 @@ const advertisementsComponent = [
 ]
 
 @NgModule({
-  declarations: [...advertisementsComponent],
+  declarations: [...advertisementsComponent, StandUpDirective],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
   providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
