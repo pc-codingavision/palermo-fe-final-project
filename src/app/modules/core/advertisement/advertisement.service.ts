@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, of } from 'rxjs'
 import { flatMap } from 'rxjs/internal/operators'
 import { catchError, map, skipWhile, take, toArray } from 'rxjs/operators'
@@ -11,27 +12,14 @@ import { catchError, map, skipWhile, take, toArray } from 'rxjs/operators'
 export class AdvertisementService {
   advertisementsUrl = 'api/advertisements'
 
-  private handleError<T>(
-    operation = 'operation',
-    result?: T
-  ): (error: any) => Observable<T> {
-    return (error: any): Observable<T> => {
-      console.error(error)
-
-      console.log(`AdvertisementService ${operation} failed ${error.message}`)
-
-      return of(result as T)
-    }
-  }
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   findAll(): Observable<MockAdvertisement[]> {
     return this.http
       .get<MockAdvertisement[]>(this.advertisementsUrl)
       .pipe(
         map(this.mapAdvsArrayToAdvsArrayBuild()),
-        catchError(this.handleError<MockAdvertisement[]>('findAll', []))
+        catchError(this.handleError<MockAdvertisement[]>('findAll'))
       )
   }
 
@@ -39,17 +27,9 @@ export class AdvertisementService {
     return this.http
       .get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`)
       .pipe(
-        map(this.mapAdvsToAdvsBuild()),
+        map(this.mapAdvToAdvBuild()),
         catchError(this.handleError<MockAdvertisement>('findById'))
       )
-  }
-
-  private mapAdvsArrayToAdvsArrayBuild(): (advertisements) => any {
-    return (advertisements) => advertisements.map(this.mapAdvsToAdvsBuild())
-  }
-
-  private mapAdvsToAdvsBuild(): (advertisements) => MockAdvertisement {
-    return (advertisements) => MockAdvertisement.Build(advertisements)
   }
 
   getLatestAdv(start: number = 0, end: number = 2): Observable<MockAdvertisement[]> {
@@ -63,5 +43,23 @@ export class AdvertisementService {
       take(end),
       toArray()
     )
+  }
+
+  private mapAdvsArrayToAdvsArrayBuild(): (advertisements) => any {
+    return (advertisements) => advertisements.map(this.mapAdvToAdvBuild())
+  }
+
+  private mapAdvToAdvBuild(): (advertisement) => MockAdvertisement {
+    return (advertisement) => MockAdvertisement.Build(advertisement)
+  }
+
+  private handleError<T>(operation = 'operation', result?: T): any {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${JSON.stringify(error)}`)
+
+      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
+
+      return of(result as T)
+    }
   }
 }

@@ -1,5 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay'
 import { HttpClientModule } from '@angular/common/http'
 import { TestBed } from '@angular/core/testing'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { ActivatedRouteSnapshot } from '@angular/router'
 import { AdvertisementResolver } from '@modules/core/advertisement/services/advertisement-resolver.ts'
 import { of } from 'rxjs'
@@ -12,6 +14,7 @@ describe('AdvertisementResolver', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
+      providers: [MatSnackBar, Overlay],
     })
     service = TestBed.inject(AdvertisementResolver)
 
