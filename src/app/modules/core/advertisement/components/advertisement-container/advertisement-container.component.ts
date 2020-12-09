@@ -85,16 +85,18 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       if (reservationDate != null) {
         const filteredReservations: IReservation[] = this.reservations.filter(
           (res) =>
-            !(
-              (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
-                moment(reservationDate.checkOut).isAfter(res.checkOut)) ||
-              (moment(reservationDate.checkIn).isAfter(res.checkIn) &&
-                moment(reservationDate.checkIn).isBefore(res.checkOut))
-            )
+            (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
+              moment(reservationDate.checkOut).isAfter(res.checkOut)) ||
+            (moment(reservationDate.checkIn).isAfter(res.checkIn) &&
+              moment(reservationDate.checkIn).isBefore(res.checkOut))
         )
-        tmpAdvertisement = tmpAdvertisement.filter((adv) =>
-          filteredReservations.some((res) => adv.property.id === res.propertyId)
-        )
+        // tslint:disable-next-line: no-unused-declaration
+        const filtAdv = tmpAdvertisement.map((val) => val.property.id)
+        // tslint:disable-next-line: no-unused-declaration
+        const filt = filteredReservations.map((res) => res.propertyId)
+
+        tmpAdvertisement = tmpAdvertisement
+        /*     filteredReservations.some((res) => adv.property.id === res.propertyId) */
       }
       tmpAdvertisement.map((adv) => this.filteredAdvertisements.push(adv))
       this.emitPriceUpdate()
