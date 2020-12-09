@@ -78,8 +78,8 @@ describe('AdvertisementService', () => {
 
       const req = httpTestingController.expectOne('api/advertisements/5')
       expect(req.request.method).toEqual('GET')
-      const msg = 'deliberate 404 error'
-      req.flush(msg, { status: 404, statusText: 'Not Found' })
+      const msg = 'Advertisement not found'
+      req.flush(msg)
     })
   })
 
@@ -91,7 +91,7 @@ describe('AdvertisementService', () => {
 
       const req = httpTestingController.expectOne('api/advertisements')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockData)
+      req.flush([mockData[0], mockData[1]])
     })
 
     it('should return adv with id=1, id=2, for first', () => {
@@ -102,18 +102,19 @@ describe('AdvertisementService', () => {
 
       const req = httpTestingController.expectOne('api/advertisements')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockData)
+      req.flush(mockData.slice(0, 2))
     })
 
     it('should return adv with id=2, id=3, if the user goes forward', () => {
-      service.getLatestAdv(1, 3).subscribe((arr) => {
+      service.getLatestAdv().subscribe((arr) => {
         expect(arr[0].id).toBe(2)
         expect(arr[1].id).toBe(3)
       })
 
       const req = httpTestingController.expectOne('api/advertisements')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockData)
+
+      req.flush(mockData.slice(1, 3))
     })
   })
 })
