@@ -1,8 +1,9 @@
 <mat-card id='card'>
-  <mat-card-content fxLayout.xs='column'>
+  <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
     <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
-         fxLayoutAlign.xs='center center' fxLayoutGap='15px'>
+      fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
+      fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
       <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
       <div fxLayout='column'>
         <cav-facility
@@ -13,7 +14,7 @@
     </div>
 
     <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
-         fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
+      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
       <mat-card-title fxLayoutAlign.xs='center center'>
         {{advertisement?.property?.title}}
         <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
@@ -23,10 +24,10 @@
       <cav-check-in-check-out fxShow.xs='false'></cav-check-in-check-out>
     </div>
 
-    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'
-                            class='mobile-spacing'></cav-check-in-check-out>
+    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
+    </cav-check-in-check-out>
     <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
-                   (favouriteEvent)='isFavourite($event)'>
+      (favouriteEvent)='isFavourite($event)'>
     </cav-favourite>
 
   </mat-card-content>
