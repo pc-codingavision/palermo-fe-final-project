@@ -37,7 +37,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     )
     this.reservationService
       .getAll()
-      .subscribe((reservations) => (reservations = this.reservations))
+      .subscribe((reservations) => (this.reservations = reservations))
     combineLatest([
       this.sidebarService.price$,
       this.sidebarService.facility$,
@@ -83,7 +83,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
         })
       }
       if (reservationDate != null) {
-        const result: IReservation[] = this.reservations.filter(
+        const filteredReservations: IReservation[] = this.reservations.filter(
           (res) =>
             !(
               (moment(reservationDate.checkIn).isBefore(res.checkIn) &&
@@ -92,8 +92,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
                 moment(reservationDate.checkIn).isBefore(res.checkOut))
             )
         )
-        tmpAdvertisement = tmpAdvertisement.filter((val) =>
-          result.filter((ccc) => ccc.propertyId === val.property.id)
+        tmpAdvertisement = tmpAdvertisement.filter((adv) =>
+          filteredReservations.some((res) => adv.property.id === res.propertyId)
         )
       }
       tmpAdvertisement.map((adv) => this.filteredAdvertisements.push(adv))
