@@ -38,4 +38,8 @@ export class CardMainContainerComponent implements OnInit {
   getReservationDates(): Subject<{ checkIn: Date; checkOut: Date }> {
     return this.checkInCheckOutService.reservationDates$
   }
+
+  setReservationDates(dates: { checkIn: Date; checkOut: Date }): void {
+    this.checkInCheckOutService.setReservationDates(dates)
+  }
 }

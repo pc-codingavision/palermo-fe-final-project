@@ -1,5 +1,6 @@
 <cav-latest-container></cav-latest-container>
-<cav-check-in-check-out *ngIf="getReservationDates() | async" fxLayoutAlign="center">
+<cav-check-in-check-out *ngIf="reservationDates" fxLayoutAlign="center"
+  (toggleDatesInput)="setReservationDates($event)" [reservationDate]="reservationDates">
 </cav-check-in-check-out>
 <div fxLayout="row" fxLayoutAlign="center none" id="body">
   <cav-sidebar-container class="sidebar">

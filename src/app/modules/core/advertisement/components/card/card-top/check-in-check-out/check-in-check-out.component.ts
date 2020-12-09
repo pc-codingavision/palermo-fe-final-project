@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import moment from 'moment'
 
 @Component({
@@ -9,6 +8,8 @@ import moment from 'moment'
   styleUrls: ['./check-in-check-out.component.scss'],
 })
 export class CheckInCheckOutComponent implements OnInit {
+  @Input() reservationDate: { checkIn: Date; checkOut: Date }
+  @Output() toggleDatesInput = new EventEmitter<{ checkIn: Date; checkOut: Date }>()
   minCheckInDate: Date
   minCheckOutDate: Date
   maxCheckInDate: Date
@@ -17,14 +18,18 @@ export class CheckInCheckOutComponent implements OnInit {
     picker2: ['', [Validators.required]],
   })
 
-  constructor(
-    private fb: FormBuilder,
-    private checkInCheckoutService: CheckInCheckOutService
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.minCheckInDate = moment().toDate()
     this.minCheckOutDate = moment().toDate()
+
+    if (this.reservationDate) {
+      this.date.setValue({
+        picker1: this.reservationDate.checkIn,
+        picker2: this.reservationDate.checkOut,
+      })
+    }
   }
 
   updateMinCheckOutDate(value: Date): void {
@@ -39,10 +44,10 @@ export class CheckInCheckOutComponent implements OnInit {
 
   toggleDates(): void {
     if (this.date.status === 'VALID') {
-      this.checkInCheckoutService.setReservationDates(
-        this.minCheckInDate,
-        this.minCheckOutDate
-      )
+      this.toggleDatesInput.emit({
+        checkIn: this.date.value.picker1,
+        checkOut: this.date.value.picker2,
+      })
     }
   }
 }

@@ -5,7 +5,7 @@ import { CheckInCheckOutService } from '@modules/core/advertisement/services/che
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Subject, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { combineLatest } from 'rxjs'
 
 @Component({
@@ -17,6 +17,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
+  reservationDates: { checkIn: Date; checkOut: Date }
 
   constructor(
     private sidebarService: SidebarService,
@@ -30,6 +31,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
         (data) => (this.advertisements = data.advertisements)
       )
     )
+    this.getReservationDates()
     combineLatest([
       this.sidebarService.price$,
       this.sidebarService.facility$,
@@ -84,7 +86,15 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     })
   }
 
-  getReservationDates(): Subject<{ checkIn: Date; checkOut: Date }> {
-    return this.checkInCheckOutService.reservationDates$
+  getReservationDates(): void {
+    this.subscriptions.push(
+      this.checkInCheckOutService.reservationDates$.subscribe(
+        (result) => (this.reservationDates = result)
+      )
+    )
+  }
+
+  setReservationDates(dates: { checkIn: Date; checkOut: Date }): void {
+    this.checkInCheckOutService.setReservationDates(dates)
   }
 }

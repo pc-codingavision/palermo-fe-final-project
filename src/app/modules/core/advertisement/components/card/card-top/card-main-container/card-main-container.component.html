@@ -16,7 +16,8 @@
 
       <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
       <cav-score [config]="scoreConfig"></cav-score>
-      <cav-check-in-check-out *ngIf="(getReservationDates() | async) === null">
+      <cav-check-in-check-out *ngIf="(getReservationDates() | async) === null"
+        (toggleDatesInput)="setReservationDates($event)">
       </cav-check-in-check-out>
 
       <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>

@@ -5,13 +5,14 @@ import { Subject } from 'rxjs'
   providedIn: 'root',
 })
 export class CheckInCheckOutService {
+  dates: { checkIn: Date; checkOut: Date }
   reservationDates$: Subject<{ checkIn: Date; checkOut: Date }> = new Subject<{
     checkIn: Date
     checkOut: Date
   }>()
   constructor() {}
 
-  setReservationDates(checkIn: Date, checkOut: Date): void {
-    this.reservationDates$.next({ checkIn, checkOut })
+  setReservationDates(dates): void {
+    this.reservationDates$.next(dates)
   }
 }
