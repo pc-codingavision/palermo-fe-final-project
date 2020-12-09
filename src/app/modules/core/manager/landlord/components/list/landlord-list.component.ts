@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MediaObserver } from '@angular/flex-layout'
+import { ActivatedRoute } from '@angular/router'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
@@ -32,30 +33,35 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
-  private subscription: Subscription
+  subscription: Subscription
 
   constructor(
     private landlordService: LandlordService,
     private searchLandlord: SearchService,
+    private route: ActivatedRoute,
     public media: MediaObserver
   ) {}
 
   ngOnInit(): void {
-    this.getAll()
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe()
-    }
-  }
-
-  getAll(): void {
+    this.landlords$ = this.route.snapshot.data.list
     this.landlords$ = this.searchLandlord.getSearchResult()
   }
+
+  // ngOnInit(): void {
+  //   this.getAll()
+  // }
+
+  // getAll(): void {
+  //   this.landlords$ = this.searchLandlord.getSearchResult()
+  // }
 
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id).subscribe()
     this.subscription = this.searchLandlord.search('', '', '').subscribe()
+  }
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe()
+    }
   }
 }
