@@ -1,10 +1,25 @@
-import { Directive, ElementRef } from '@angular/core'
+import { Directive, ElementRef, HostListener, Input } from '@angular/core'
 
 @Directive({
   selector: '[cavStandUp]',
 })
 export class StandUpDirective {
-  constructor(el: ElementRef) {
-    el.nativeElement.style.backgroundColor = 'yellow'
+  constructor(private el: ElementRef) {}
+
+  @Input('cavStandUp') standUpStyle: string
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.standUp(this.standUpStyle)
   }
+
+  @HostListener('mouseout') onMouseOut() {
+    this.standUp(null)
+  }
+
+  private standUp(boxShadow: string) {
+    this.el.nativeElement.style.shadow = boxShadow
+  }
+  /*private standUp(boxShadow: string) {
+    this.el.nativeElement.style.shadow = boxShadow
+  } */
 }
