@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { SnackBarService } from '@shared/services/snack-bar.service'
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-edit-container',
@@ -149,14 +149,11 @@ export class EditComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    let newLandlord$: Observable<Landlord>
     if (this.isEditLandlord) {
-      newLandlord$ = this.landlordService.update(newLandlord)
+      this.landlordService.update(newLandlord)
     } else {
       this.landlordService.add(newLandlord)
     }
-
-    //newLandlord$.subscribe((l) => console.log(`New Landlord: `, l))
 
     this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }

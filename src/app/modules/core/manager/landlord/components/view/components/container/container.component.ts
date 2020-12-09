@@ -21,8 +21,6 @@ export class ViewContainerComponent implements OnInit {
       this.landlord.status = !this.landlord.status
       this.landlordService.toggleStatus(this.landlord)
     } else if (operation === 'delete') {
-      // chiamata al servizio
-
       this.remove.emit(this.landlord)
     }
   }

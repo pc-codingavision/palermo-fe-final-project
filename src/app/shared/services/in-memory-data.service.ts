@@ -25,9 +25,6 @@ export class InMemoryDataService implements InMemoryDbService {
   genId<T extends IAdvertisement | IUser | IReservation>(dataArray: T[]): number {
     return dataArray.length > 0 ? Math.max(...dataArray.map((data) => data.id)) + 1 : 1
   }
-  // genId(entities: Array<any>): number {
-  //     return entities.length > 0 ? Math.max(...entities.map((adv) => adv.id)) + 1 : 1
-  // }
 
   constructor() {}
 }

@@ -47,14 +47,6 @@ export class LandlordListComponent implements OnInit, OnDestroy {
     this.landlords$ = this.searchLandlord.getSearchResult()
   }
 
-  // ngOnInit(): void {
-  //   this.getAll()
-  // }
-
-  // getAll(): void {
-  //   this.landlords$ = this.searchLandlord.getSearchResult()
-  // }
-
   remove(landlord: Landlord): void {
     this.landlordService.delete(landlord.id).subscribe()
     this.subscription = this.searchLandlord.search('', '', '').subscribe()
