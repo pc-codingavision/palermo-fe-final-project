@@ -63,12 +63,9 @@ export class LandlordService {
       .pipe(catchError(this.handleError<Landlord>('delete')))
   }
 
-  toggleStatus(landlord: Landlord): Observable<any> {
-    return this.http.patch<Landlord>(this.landlordsUrl, landlord).pipe(
-      map((l) => {
-        return (l.status = !l.status)
-      }),
-      catchError(this.handleError<Landlord>('update'))
-    )
+  toggleStatus(landlord: Landlord): Observable<Landlord> {
+    return this.http
+      .patch<Landlord>(this.landlordsUrl, landlord)
+      .pipe(catchError(this.handleError<Landlord>('update')))
   }
 }
