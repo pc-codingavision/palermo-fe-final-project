@@ -1,4 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { RouterTestingModule } from '@angular/router/testing'
 import { InMemoryAuthService } from '@modules/core/auth/auth-in-memory.service'
 import { AuthService } from '@modules/core/auth/auth.service'
@@ -10,7 +11,7 @@ describe('AppComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule],
+        imports: [RouterTestingModule, MatSnackBarModule],
         declarations: [AppComponent],
         providers: commonTestingModules.concat([
           { provide: AuthService, useClass: InMemoryAuthService },

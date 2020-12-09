@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
@@ -10,7 +11,7 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SearchComponent],
-      imports: [MatAutocompleteModule],
+      imports: [MatAutocompleteModule, HttpClientTestingModule],
     }).compileComponents()
   }))
 

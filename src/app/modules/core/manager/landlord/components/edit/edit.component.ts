@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { SnackBarService } from '@shared/services/snack-bar.service'
-import { Subscription } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-edit-container',
@@ -55,6 +55,7 @@ export class EditComponent implements OnInit, OnDestroy {
       this.togglePictureContainer = true
       this.toggleResetPasswordContainer = true
       this.landlord.status = true
+      this.setForm()
     }
   }
 
@@ -148,11 +149,16 @@ export class EditComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    this.isEditLandlord
-      ? this.landlordService.update(newLandlord)
-      : this.landlordService.add(newLandlord)
+    let newLandlord$: Observable<Landlord>
+    if (this.isEditLandlord) {
+      newLandlord$ = this.landlordService.update(newLandlord)
+    } else {
+      this.landlordService.add(newLandlord)
+    }
 
-    this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
+    newLandlord$.subscribe((l) => console.log(`New Landlord: `, l))
+
+    // this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }
 
   goBack(): void {

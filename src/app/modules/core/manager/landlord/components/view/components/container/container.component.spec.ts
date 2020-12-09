@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
 
 import { ViewContainerComponent } from './container.component'
@@ -9,6 +10,7 @@ describe('ContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ViewContainerComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents()
   }))
 
