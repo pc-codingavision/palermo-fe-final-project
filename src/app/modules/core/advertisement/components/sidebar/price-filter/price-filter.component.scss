@@ -1,7 +1,3 @@
-.price-filter {
-  margin-left: 2%;
-}
-
 .price-card {
   width: 200px;
 }
@@ -25,4 +21,8 @@
 
 mat-card-actions {
   margin-top: -12%;
+}
+
+mat-card-content {
+  height: 100px;
 }
