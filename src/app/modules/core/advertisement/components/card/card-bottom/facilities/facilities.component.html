@@ -1,13 +1,6 @@
-<div id="facilities-container" fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
-  fxLayoutWrap="wrap">
-
-  <div class="side" fxFlex="49%">
-    <div fxLayout="row" *ngFor="let facility of facilities | keyvalue">
-      <i [ngStyle]="{'color': facility.value ? 'green' : 'red'}" class="material-icons">
-        {{facility.value ? 'done' : 'clear'}} </i>
-      <p>{{facilityName[facility?.key]}}
-      </p>
-    </div>
-  </div>
-
+<div *ngFor='let facility of facilities | keyvalue' fxLayout='row' fxLayoutGap='5px'>
+  <mat-icon [ngStyle]="{'color': facility.value ? 'green' : 'red'}">
+    {{facility.value ? 'done' : 'clear'}}
+  </mat-icon>
+  <p>{{facilityName[facility?.key]}}</p>
 </div>

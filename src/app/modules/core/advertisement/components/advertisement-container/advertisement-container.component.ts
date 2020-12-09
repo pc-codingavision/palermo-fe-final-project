@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
 import { IFacility } from '@shared/models/property'
 import * as _ from 'lodash'
-import { Subscription } from 'rxjs'
-import { combineLatest } from 'rxjs'
+import { Subscription, combineLatest } from 'rxjs'
 
 @Component({
   selector: 'cav-advertisement-container',
@@ -18,11 +18,13 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
   reservationDates: { checkIn: Date; checkOut: Date }
+  showMobileFilters = false
 
   constructor(
     private sidebarService: SidebarService,
     private activatedRoute: ActivatedRoute,
-    private checkInCheckOutService: CheckInCheckOutService
+    private checkInCheckOutService: CheckInCheckOutService,
+    public media: MediaObserver
   ) {}
 
   ngOnInit(): void {

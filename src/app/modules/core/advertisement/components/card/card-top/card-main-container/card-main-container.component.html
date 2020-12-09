@@ -1,38 +1,48 @@
-<div class="content" fxLayout="row" fxLayoutAlign="space-between end">
-  <mat-card>
+<mat-card id='card'>
+  <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
-    <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="space-between"
-      fxLayoutWrap="wrap">
-
-      <cav-photogallery [images]="advertisement?.property?.images">
-      </cav-photogallery>
-
-      <div fxLayout="column">
+    <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
+      fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
+      fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
+      <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
+      <div fxLayout='column'>
         <cav-facility
-          *ngFor="let facility of advertisement?.property?.facilities |keyvalue"
-          [facility]="facility">
+          *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
+          [facility]='facility'>
         </cav-facility>
       </div>
+    </div>
 
-      <mat-card-title>{{advertisement?.property?.title}}</mat-card-title>
-      <cav-score [config]="scoreConfig"></cav-score>
-      <cav-check-in-check-out *ngIf="(getReservationDates() | async) === null"
-        (toggleDatesInput)="setReservationDates($event)">
-      </cav-check-in-check-out>
+    <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
+      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
+      <mat-card-title fxLayoutAlign.xs='center center'>
+        {{advertisement?.property?.title}}
+        <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
+        </cav-favourite>
+      </mat-card-title>
+      <cav-score [config]='scoreConfig'></cav-score>
+      <cav-check-in-check-out fxShow.xs='false'
+        *ngIf="(getReservationDates() | async) === null"
+        (toggleDatesInput)="setReservationDates($event)"></cav-check-in-check-out>
+    </div>
 
-      <cav-favourite (favouriteEvent)="isFavourite($event)"></cav-favourite>
-    </mat-card-content>
+    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
+    </cav-check-in-check-out>
+    <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
+      (favouriteEvent)='isFavourite($event)'>
+    </cav-favourite>
 
-    <mat-card-actions>
-      <button mat-raised-button color="accent" (click)="expandCardExtra()">More Info
-        <mat-icon>{{!showCardExtra ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}}
-        </mat-icon>
-      </button>
-    </mat-card-actions>
+  </mat-card-content>
 
-    <cav-card-extra *ngIf="showCardExtra" [advertisement]="advertisement"
-      class="card-extra">
-    </cav-card-extra>
-  </mat-card>
+  <div fxLayoutAlign.xs='center center'>
+    <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
+      {{showCardExtra ? "Hide" : "More Info"}}
+      <mat-icon>
+        {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+      </mat-icon>
+    </button>
+  </div>
 
-</div>
+  <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+  </cav-card-extra>
+</mat-card>
