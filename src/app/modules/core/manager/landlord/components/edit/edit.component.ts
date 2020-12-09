@@ -156,9 +156,9 @@ export class EditComponent implements OnInit, OnDestroy {
       this.landlordService.add(newLandlord)
     }
 
-    newLandlord$.subscribe((l) => console.log(`New Landlord: `, l))
+    //newLandlord$.subscribe((l) => console.log(`New Landlord: `, l))
 
-    // this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
+    this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }
 
   goBack(): void {
