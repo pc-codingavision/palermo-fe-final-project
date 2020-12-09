@@ -25,10 +25,6 @@ export class CardMainContainerComponent implements OnInit {
     }
   }
 
-  expandCardExtra(): void {
-    this.showCardExtra = !this.showCardExtra
-  }
-
   isFavourite(favourite: boolean): void {
     console.log('favourite: ', favourite)
   }
