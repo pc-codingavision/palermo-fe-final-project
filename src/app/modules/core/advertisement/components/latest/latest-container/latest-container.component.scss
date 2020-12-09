@@ -1,17 +1,7 @@
-.container {
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 2%;
-}
-
-.material-icons {
-  font-size: 10vh;
-}
-
-.arrow-button {
-  border: none;
-  color: black;
-  background-color: transparent;
-  outline: none;
+.icons {
+  font-size: 50pt;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }

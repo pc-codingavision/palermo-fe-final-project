@@ -14,8 +14,13 @@ export class SearchService {
 
   constructor(private landlordService: LandlordService) {}
 
-  getSearchResult(): Observable<Landlord[]> {
-    return this.filteredLandlords$.asObservable()
+  getSearchResult(
+    length = this.landlordService.landlords.length,
+    start: number = 0
+  ): Observable<Landlord[]> {
+    return this.filteredLandlords$
+      .asObservable()
+      .pipe(map((landlords) => landlords.slice(start, length)))
   }
 
   search(fullName: string, email: string, digits: string): Observable<void> {

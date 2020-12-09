@@ -1,6 +1,5 @@
 <div>
-  <h3>{{review?.title}}</h3>
+  <h3 id='review-title'>{{review?.title}}</h3>
   <p>{{review?.description}}</p>
-
   <cav-score [config]="scoreConfig" (scoreValue)="review.vote = $event"></cav-score>
 </div>

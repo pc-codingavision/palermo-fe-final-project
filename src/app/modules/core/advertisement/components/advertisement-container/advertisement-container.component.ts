@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { SidebarService } from '@modules/core/advertisement/services/sidebar.service'
@@ -16,10 +17,12 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   advertisements: MockAdvertisement[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
+  showMobileFilters = false
 
   constructor(
     private sidebarService: SidebarService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public media: MediaObserver
   ) {}
 
   ngOnInit(): void {
