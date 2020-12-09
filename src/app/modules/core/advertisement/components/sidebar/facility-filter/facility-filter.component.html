@@ -1,40 +1,32 @@
-<div class="facility-filter">
-  <mat-card class="facility-card" fxLayout="column">
-    <mat-card-title id="facility-card-title" fxLayoutAlign="start center">
-      Facility
-    </mat-card-title>
-    <mat-card-content>
-      <mat-divider id="facility-divider" [inset]="true"></mat-divider>
-      <div class="facility-checkbox" fxLayout="column">
-        <mat-checkbox (change)="emitFacilityFilter('tv',$event.checked)">Tv</mat-checkbox>
-        <mat-checkbox (change)="emitFacilityFilter('wifi',$event.checked)">Free Wi-Fi
+<mat-card class='facility-card' fxLayout='column'>
+  <mat-card-title id='facility-card-title' fxLayoutAlign='start center'>
+    Facility
+  </mat-card-title>
+  <mat-card-content>
+    <mat-divider id='facility-divider' [inset]='true'></mat-divider>
+    <div class='facility-checkbox' fxLayout='column'>
+      <mat-checkbox (change)="emitFacilityFilter('tv',$event.checked)">Tv</mat-checkbox>
+      <mat-checkbox (change)="emitFacilityFilter('wifi',$event.checked)">Free Wi-Fi
+      </mat-checkbox>
+      <mat-checkbox (change)="emitFacilityFilter('breakfastIncluded',$event.checked)">
+        Breakfast
+        included
+      </mat-checkbox>
+      <mat-checkbox (change)="emitFacilityFilter('parking',$event.checked)">Parking
+      </mat-checkbox>
+      <ng-template [ngIf]='expanded'>
+        <mat-checkbox (change)="emitFacilityFilter('kitchen',$event.checked)">Kitchen
         </mat-checkbox>
-        <mat-checkbox (change)="emitFacilityFilter('breakfastIncluded',$event.checked)">
-          Breakfast
-          included
+        <mat-checkbox (change)="emitFacilityFilter('shower',$event.checked)">Shower
         </mat-checkbox>
-        <mat-checkbox (change)="emitFacilityFilter('parking',$event.checked)">Parking
+        <mat-checkbox (change)="emitFacilityFilter('bath',$event.checked)">Bath
         </mat-checkbox>
-        <ng-template [ngIf]="expanded">
-          <mat-checkbox (change)="emitFacilityFilter('kitchen',$event.checked)">Kitchen
-          </mat-checkbox>
-          <mat-checkbox (change)="emitFacilityFilter('shower',$event.checked)">Shower
-          </mat-checkbox>
-          <mat-checkbox (change)="emitFacilityFilter('bath',$event.checked)">Bath
-          </mat-checkbox>
-          <div id="facility-less" fxLayout="row" fxLayoutAlign="center"
-            (click)="expand()">
-            <span>Hide</span>
-            <span class="material-icons"> expand_less </span>
-          </div>
-        </ng-template>
-      </div>
-      <ng-template [ngIf]="!expanded">
-        <div id="facility-more" fxLayout="row" fxLayoutAlign="center" (click)="expand()">
-          <span>Show more</span>
-          <span class="material-icons"> expand_more </span>
-        </div>
       </ng-template>
-    </mat-card-content>
-  </mat-card>
-</div>
+      <div id='facility-less' fxLayout='row' fxLayoutAlign='center'
+        (click)='expanded = !expanded'>
+        <p>{{expanded ? 'Hide' : 'Show more'}}</p>
+        <mat-icon>{{expanded ? 'expand_less' : 'expand_more'}}</mat-icon>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

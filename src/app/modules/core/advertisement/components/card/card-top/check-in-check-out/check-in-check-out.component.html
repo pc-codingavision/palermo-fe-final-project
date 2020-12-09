@@ -1,31 +1,28 @@
-<div [formGroup]="date">
-
-  <mat-form-field appearance="fill">
-    <mat-label>Check-in</mat-label>
-    <input matInput matNativeControl [min]="minCheckInDate" [max]="maxCheckInDate"
-      (dateChange)="updateMinCheckOutDate($event.value)" formControlName="picker1"
-      [matDatepicker]="picker1" required>
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-    <mat-error *ngIf="date.get('picker1').hasError('required')">
-      Please enter a valid date
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Check-out</mat-label>
-    <input matInput matNativeControl [min]="minCheckOutDate" formControlName="picker2"
-      (dateChange)="updateMaxCheckInDate($event.value)" [matDatepicker]="picker2"
-      required>
-    <mat-datepicker-toggle matSuffix [for]="picker2">
-    </mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-    <mat-error *ngIf="date.get('picker2').hasError('required')">
-      Please enter a valid date
-    </mat-error>
-  </mat-form-field>
-
-  <button type="submit" [disabled]="date.invalid" mat-raised-button
-    class="button">Book</button>
-
+<div fxLayout.lt-lg='column'>
+  <div [formGroup]="date" fxLayout='row' fxLayout.lt-lg='column' fxLayoutGap.gt-md='10px'>
+    <mat-form-field appearance="fill">
+      <mat-label>Check-in</mat-label>
+      <input matInput matNativeControl [min]="minCheckInDate" [max]="maxCheckInDate"
+        (dateChange)="updateMinCheckOutDate($event.value)" formControlName="picker1"
+        [matDatepicker]="picker1" required>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="date.get('picker1').hasError('required')">
+        Please enter a valid date
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Check-out</mat-label>
+      <input matInput matNativeControl [min]="minCheckOutDate" formControlName="picker2"
+        (dateChange)="updateMaxCheckInDate($event.value)" [matDatepicker]="picker2"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="picker2">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <mat-error *ngIf="date.get('picker2').hasError('required')">
+        Please enter a valid date
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button type="submit" [disabled]="date.invalid" mat-raised-button>Book</button>
 </div>

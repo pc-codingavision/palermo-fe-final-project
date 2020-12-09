@@ -1,12 +1,19 @@
-<cav-latest-container></cav-latest-container>
-<div fxLayout="row" fxLayoutAlign="center none" id="body">
-  <cav-sidebar-container class="sidebar">
-  </cav-sidebar-container>
-  <div id="divider"></div>
-  <cav-advertisement-list [advertisements]="filteredAdvertisements">
-  </cav-advertisement-list>
-  <h1 id="emptylist" fxLayoutAlign="center center"
-    *ngIf="filteredAdvertisements.length === 0"> Nessun annuncio corrisponde ai criteri di
-    ricerca
-  </h1>
+<div fxLayout='column' fxLayoutGap='30px' id='body'>
+  <div>
+    <cav-latest-container></cav-latest-container>
+  </div>
+  <div fxLayout='row' fxLayout.lt-md='column' fxLayoutGap='30px'>
+    <div fxLayout='column' fxLayoutAlign.lt-md='center center' fxLayoutGap='4%'>
+      <button fxFill mat-raised-button color='accent' fxShow.gt-xs='false'
+        (click)='showMobileFilters = !showMobileFilters'>
+        {{showMobileFilters ? "Hide Filters" : "Show Filters"}}
+        <mat-icon>{{showMobileFilters ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+        </mat-icon>
+      </button>
+      <cav-sidebar-container *ngIf="!media.isActive('xs') || showMobileFilters">
+      </cav-sidebar-container>
+    </div>
+    <cav-advertisement-list fxFlex [advertisements]='filteredAdvertisements'>
+    </cav-advertisement-list>
+  </div>
 </div>
