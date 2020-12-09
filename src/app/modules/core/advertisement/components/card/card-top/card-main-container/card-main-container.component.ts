@@ -9,6 +9,9 @@ import { IScoreConfig } from '@shared/models/advertisement'
   styleUrls: ['./card-main-container.component.scss'],
 })
 export class CardMainContainerComponent implements OnInit {
+  boxShadow = 'yellow'
+  //boxShadow = '5px 10px #888888'
+
   @Input() advertisement: MockAdvertisement
   showCardExtra = false
   scoreConfig: IScoreConfig
