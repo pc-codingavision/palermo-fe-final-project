@@ -17,7 +17,7 @@ export class StandUpDirective {
   }
 
   private standUp(boxShadow: string) {
-    this.el.nativeElement.style.shadow = boxShadow
+    this.el.nativeElement.style.backgroundColor = boxShadow
   }
   /*private standUp(boxShadow: string) {
     this.el.nativeElement.style.shadow = boxShadow
