@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnChanges, OnInit } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 
 @Component({
@@ -6,17 +6,36 @@ import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertiseme
   templateUrl: './latest-container.component.html',
   styleUrls: ['./latest-container.component.scss'],
 })
-export class LatestContainerComponent implements OnInit {
+export class LatestContainerComponent implements OnInit, OnChanges {
   @Input() advertisements: IMockAdvertisement[]
+  // tslint:disable-next-line:variable-name
+  private _maxAdv: number
+  latestAdvertisements: IMockAdvertisement[]
   start = 0
   end = 5
+
+  @Input() set maxAdv(maxAdv: number) {
+    if (maxAdv > 5) {
+      this._maxAdv = maxAdv
+    } else {
+      this._maxAdv = 5
+    }
+  }
+
+  get maxAdv(): number {
+    return this._maxAdv
+  }
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  ngOnChanges(): void {
+    this.latestAdvertisements = this.advertisements.slice(0, this.maxAdv)
+  }
+
   goForward(): void {
-    if (this.end < this.advertisements.length) {
+    if (this.end < this.latestAdvertisements.length) {
       this.start++
       this.end++
     } else {
@@ -30,8 +49,8 @@ export class LatestContainerComponent implements OnInit {
       this.start--
       this.end--
     } else {
-      this.start = this.advertisements.length - 5
-      this.end = this.advertisements.length
+      this.start = this.latestAdvertisements.length - 5
+      this.end = this.latestAdvertisements.length
     }
   }
 }
