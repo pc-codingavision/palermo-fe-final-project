@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { MediaObserver } from '@angular/flex-layout'
 import { ActivatedRoute } from '@angular/router'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
@@ -21,12 +22,14 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   reservations: IReservation[]
   filteredAdvertisements: MockAdvertisement[] = []
   subscriptions: Subscription[] = []
+  showMobileFilters = false
 
   constructor(
     private sidebarService: SidebarService,
     private activatedRoute: ActivatedRoute,
     private checkInCheckOutService: CheckInCheckOutService,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    public media: MediaObserver
   ) {}
 
   ngOnInit(): void {

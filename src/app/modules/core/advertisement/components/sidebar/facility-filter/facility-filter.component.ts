@@ -23,10 +23,6 @@ export class FacilityFilterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  expand(): boolean {
-    return (this.expanded = !this.expanded)
-  }
-
   emitFacilityFilter(facility: string, status: boolean): void {
     this.filterObj[facility] = status
     this.filter.emit(this.filterObj)

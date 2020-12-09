@@ -134,4 +134,11 @@ describe('LandlordService', () => {
     service.landlords = []
     expect(service.genId()).toEqual(1)
   })
+
+  it('#getLenght should return the length of all landlords ', (done: DoneFn) => {
+    service
+      .getLength()
+      .subscribe((length) => expect(length).toEqual(service.landlords.length))
+    done()
+  })
 })
