@@ -8,6 +8,7 @@ import { AdvertisementListComponent } from '@modules/core/advertisement/componen
 import { AboutComponent } from '@modules/core/advertisement/components/card/card-bottom/about/about.component'
 import { CardExtraComponent } from '@modules/core/advertisement/components/card/card-bottom/card-extra/card-extra.component'
 import { FacilitiesComponent } from '@modules/core/advertisement/components/card/card-bottom/facilities/facilities.component'
+import { ReviewDialogComponent } from '@modules/core/advertisement/components/card/card-bottom/review-dialog/review-dialog.component'
 import { ReviewComponent } from '@modules/core/advertisement/components/card/card-bottom/review/review.component'
 import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
 import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
@@ -21,10 +22,8 @@ import { FacilityFilterComponent } from '@modules/core/advertisement/components/
 import { PriceFilterComponent } from '@modules/core/advertisement/components/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from '@modules/core/advertisement/components/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/sidebar/sidebar-container/sidebar-container.component'
+import { StandUpDirective } from '@modules/core/advertisement/stand-up.directive'
 import { SharedModule } from '@modules/shared/shared.module'
-
-import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component';
-import { StandUpDirective } from './stand-up.directive'
 
 const advertisementsComponent = [
   AdvertisementListComponent,
@@ -47,10 +46,11 @@ const advertisementsComponent = [
   PriceFilterComponent,
   FacilitiesComponent,
   ReviewDialogComponent,
+  StandUpDirective,
 ]
 
 @NgModule({
-  declarations: [...advertisementsComponent, StandUpDirective],
+  declarations: [...advertisementsComponent],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
   providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
 })
