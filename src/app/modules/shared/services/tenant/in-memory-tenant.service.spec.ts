@@ -111,15 +111,6 @@ describe('InMemoryTenantService', () => {
       req.flush(errorResponse)
       expect(data).toBe(errorResponse)
     })
-
-    it('should throw an ErrorEvent for not existing id ', () => {
-      service.getById(6).subscribe()
-
-      httpTestingController.expectOne('api/tenants/6').error(new ErrorEvent(''), {
-        status: 404,
-        statusText: `Tenants' with id=6 not found`,
-      })
-    })
   })
 
   describe('GetByName', () => {

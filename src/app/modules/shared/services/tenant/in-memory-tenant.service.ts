@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class InMemoryTenantService {
-  constructor(private http: HttpClient, private snackBar: SnackBarService) { }
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   private tenantsUrl = 'api/tenants'
   private httpOptions = {
