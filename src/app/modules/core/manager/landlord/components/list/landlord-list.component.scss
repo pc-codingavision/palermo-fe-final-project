@@ -30,11 +30,10 @@ tr.element-row:not(.expanded-row):active {
   height: 450px;
 }
 
-#button {
+.button {
   padding: 8px;
-  width: 100%;
 }
-#add-button {
+.add-button {
   width: 5%;
 }
 
@@ -51,7 +50,7 @@ tr.element-row:not(.expanded-row):active {
   .element-diagram {
     height: 105%;
   }
-  #add-button {
+  .add-button {
     width: 10%;
   }
 }
@@ -60,7 +59,7 @@ tr.element-row:not(.expanded-row):active {
   .element-diagram {
     height: 105%;
   }
-  #add-button {
+  .add-button {
     width: 8%;
   }
 }
