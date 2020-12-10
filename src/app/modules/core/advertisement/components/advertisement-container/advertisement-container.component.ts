@@ -63,7 +63,10 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     facility: IFacility,
     reservationDate: { checkIn: Date; checkOut: Date }
   ): void {
-    let tmpAdvertisement: MockAdvertisement[] = this.advertisements
+    let tmpAdvertisement: MockAdvertisement[] = this.advertisements?.map((adv) => ({
+      ...adv,
+    })) as MockAdvertisement[]
+    tmpAdvertisement = tmpAdvertisement?.map((adv) => MockAdvertisement.Build(adv))
     this.filteredAdvertisements = []
     if (price == null && score == null && facility == null && reservationDate == null) {
       this.advertisements?.forEach((adv) => this.filteredAdvertisements.push(adv))
