@@ -105,7 +105,7 @@ export class InMemoryTenantService {
     if (tenant) {
       return this.http
         .put<Tenant>(this.tenantsUrl, tenant, this.httpOptions)
-        .pipe(catchError(this.handleError<any>('update')))
+        .pipe(catchError(this.handleError<Tenant>('update')))
     }
     return of(null)
   }
