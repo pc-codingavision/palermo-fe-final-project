@@ -5,6 +5,7 @@ import { TenantEditComponent } from '@modules/core/manager/tenant/components/edi
 import { TenantListComponent } from '@modules/core/manager/tenant/components/list/tenant-list.component'
 import { TenantViewComponent } from '@modules/core/manager/tenant/components/view/tenant-view.component'
 import { TenantRoutingModule } from '@modules/core/manager/tenant/tenant-routing.module'
+import { SharedModule } from '@modules/shared/shared.module'
 
 const tenantComponents = [
   TenantEditComponent,
@@ -14,6 +15,6 @@ const tenantComponents = [
 ]
 @NgModule({
   declarations: [...tenantComponents],
-  imports: [CommonModule, TenantRoutingModule],
+  imports: [CommonModule, TenantRoutingModule, SharedModule],
 })
 export class TenantModule {}
