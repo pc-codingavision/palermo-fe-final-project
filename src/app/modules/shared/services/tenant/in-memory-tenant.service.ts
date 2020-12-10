@@ -53,7 +53,7 @@ export class InMemoryTenantService {
   }
 
   getBySurname(surname: string): Observable<Tenant[] | null> {
-    if (typeof surname === 'string') {
+    if (typeof surname === 'string' && surname.trim() !== '') {
       const surnameUrl = this.createCriteriaParameters('surname', surname)
       return this.http
         .get<Tenant[]>(surnameUrl)
