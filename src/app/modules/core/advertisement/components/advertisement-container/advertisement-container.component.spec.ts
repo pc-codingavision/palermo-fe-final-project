@@ -1,4 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay'
+import { HttpClientModule } from '@angular/common/http'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AdvertisementContainerComponent } from '@modules/core/advertisement/components/advertisement-container/advertisement-container.component'
 
@@ -10,7 +13,8 @@ describe('AdvertismentContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [AdvertisementContainerComponent],
-        imports: [RouterTestingModule],
+        imports: [RouterTestingModule, HttpClientModule],
+        providers: [MatSnackBar, Overlay],
       }).compileComponents()
     })
   )
