@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { InMemoryAuthService } from '@modules/core/auth/auth-in-memory.service'
 
 import { AuthService } from '../../../modules/core/auth/auth.service'
 import { commonTestingModules } from '../../common.testing'
@@ -12,7 +13,7 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
       imports: [...commonTestingModules],
-      providers: [AuthService],
+      providers: [{ provide: AuthService, useClass: InMemoryAuthService }],
     }).compileComponents()
   })
 

@@ -1,8 +1,5 @@
 <div>
-  <h3>{{review?.title}}</h3>
+  <h3 id='review-title'>{{review?.title}}</h3>
   <p>{{review?.description}}</p>
-  <i
-    class="material-icons">{{'grade '.repeat(score) + 'star_outline '.repeat(5 - score)}}</i>
-
-  <br>
+  <cav-score [config]="scoreConfig" (scoreValue)="review.vote = $event"></cav-score>
 </div>

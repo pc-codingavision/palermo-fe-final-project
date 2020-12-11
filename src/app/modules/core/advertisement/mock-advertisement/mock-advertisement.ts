@@ -13,6 +13,7 @@ export interface IMockReview {
   tenant: IMockTenant
   description: string
   vote: number
+  date: Date | string | null
 }
 export interface IMockAdvertisement {
   id: number
@@ -22,23 +23,53 @@ export interface IMockAdvertisement {
   price: number
   score?: number
 }
+
+export class MockReview implements IMockReview {
+  private constructor(
+    public date: Date | null = null,
+    public description: string = '',
+    public tenant = null,
+    public title = '',
+    public vote: number = null
+  ) {}
+
+  static Build(mockReviews?: IMockReview): MockReview {
+    if (typeof mockReviews.date === 'string') {
+      mockReviews.date = new Date(mockReviews.date)
+    }
+
+    if (!mockReviews) {
+      return new MockReview()
+    }
+
+    return new MockReview(
+      mockReviews.date,
+      mockReviews.description,
+      mockReviews.tenant,
+      mockReviews.title,
+      mockReviews.vote
+    )
+  }
+}
+
 export class MockAdvertisement implements IMockAdvertisement {
   private constructor(
     public id = null,
     public landlord = null,
     public property = null,
-    public reviews = [],
+    public reviews: MockReview[] = [],
     public price = null
   ) {}
   static Build(mockAdvertisement?: IMockAdvertisement): MockAdvertisement {
     if (!mockAdvertisement) {
       return new MockAdvertisement()
     }
+
     return new this(
       mockAdvertisement.id,
       mockAdvertisement.landlord,
       mockAdvertisement.property,
-      mockAdvertisement.reviews,
+      mockAdvertisement.reviews.map((review) => MockReview.Build(review)) as MockReview[],
       mockAdvertisement.price
     )
   }
@@ -93,27 +124,74 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         shower: true,
         bath: false,
       },
-      imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+      images: [
+        {
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          alt: 'Camera da letto',
+        },
+        {
+          image: 'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
+          thumbImage:
+            'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
+          alt: 'Camera da letto',
+        },
+      ],
       status: Status.Open,
     },
     reviews: [
       {
-        title: 'Fantastic vacation',
+        title: 'Fantastic vacation 2',
         tenant: {
           id: 1,
           name: { firstName: 'Ugo', surname: 'Fantozzi' },
         },
-        description: 'Fantastic vacation. Perfect house',
+        description:
+          'La camera era calda , accogliente , pulita  e il letto molto comodo ! La colazione è ottima anche per chi ha problemi di intolleranza al lattosio come il mio ragazzo che ha preso una brioches vegana ai frutti di bosco e un cappuccino alla soya  molto buoni',
         vote: 4.5,
+        date: new Date(2020, 10, 27),
       },
       {
-        title: 'Good',
+        title: 'Good 4',
         tenant: {
           id: 2,
           name: { firstName: 'Gigi', surname: 'Filini' },
         },
         description: 'Nice house, very very clean',
         vote: 4,
+        date: '2020-10-14',
+      },
+      {
+        title: 'Good 3',
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
+        description: 'Nice house, very very clean',
+        vote: 4,
+        date: '2020-11-14',
+      },
+      {
+        title: 'Good 1',
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
+        description: 'Nice house, very very clean',
+        vote: 4,
+        date: '2020-12-14',
+      },
+      {
+        title: 'Good 5',
+        tenant: {
+          id: 2,
+          name: { firstName: 'Gigi', surname: 'Filini' },
+        },
+        description: 'Nice house, very very clean',
+        vote: 4,
+        date: '2020-08-14',
       },
     ],
     price: 40,
@@ -167,7 +245,15 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         shower: true,
         bath: false,
       },
-      imagesPath: ['https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg'],
+      images: [
+        {
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          alt: 'Camera da letto',
+        },
+      ],
       status: Status.Open,
     },
     reviews: [
@@ -179,6 +265,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Very spacious and accessible house',
         vote: 4.5,
+        date: '2020-08-15',
       },
     ],
     price: 30,
@@ -231,8 +318,14 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         shower: true,
         bath: true,
       },
-      imagesPath: [
-        'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+      images: [
+        {
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
+          alt: 'Camera da letto',
+        },
       ],
       status: Status.Open,
     },
@@ -245,6 +338,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'The hostel was very very chaotic',
         vote: 1.5,
+        date: new Date(2020, 2, 21),
       },
       {
         title: 'Terrible',
@@ -254,6 +348,7 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
         },
         description: 'Very busy and people without masks',
         vote: 2,
+        date: new Date(2020, 9, 19),
       },
     ],
     price: 20,

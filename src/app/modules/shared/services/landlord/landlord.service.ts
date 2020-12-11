@@ -22,6 +22,10 @@ export class LandlordService {
     return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
   }
 
+  getLength(): Observable<number> {
+    return of(this.landlords.length)
+  }
+
   getById(id: number): Observable<Landlord | null> {
     if (id !== null) {
       const landlordById = this.landlords.find((landlord) => landlord.id === id)
