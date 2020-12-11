@@ -18,8 +18,8 @@ export class AdvertisementService {
     return this.http
       .get<MockAdvertisement[]>(this.advertisementsUrl)
       .pipe(
-        map(this.mapAdvsArrayToAdvsArrayBuild()),
-        catchError(this.handleError<MockAdvertisement[]>('findAll'))
+        map(this.mapAdvsArrayToAdvsArrayBuild),
+        catchError(this.handleError<MockAdvertisement[]>('findAll', []))
       )
   }
 
@@ -27,8 +27,8 @@ export class AdvertisementService {
     return this.http
       .get<MockAdvertisement>(`${this.advertisementsUrl}/${id}`)
       .pipe(
-        map(this.mapAdvToAdvBuild()),
-        catchError(this.handleError<MockAdvertisement>('findById'))
+        map(this.mapAdvToAdvBuild),
+        catchError(this.handleError<MockAdvertisement>('findById id=${id}'))
       )
   }
 
@@ -45,19 +45,16 @@ export class AdvertisementService {
     )
   }
 
-  private mapAdvsArrayToAdvsArrayBuild(): (advertisements) => any {
-    return (advertisements) => advertisements.map(this.mapAdvToAdvBuild())
-  }
+  private mapAdvsArrayToAdvsArrayBuild = (advertisements) =>
+    advertisements.map(this.mapAdvToAdvBuild)
 
-  private mapAdvToAdvBuild(): (advertisement) => MockAdvertisement {
-    return (advertisement) => MockAdvertisement.Build(advertisement)
-  }
+  private mapAdvToAdvBuild = (advertisement) => MockAdvertisement.Build(advertisement)
 
   private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${JSON.stringify(error)}`)
 
-      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
+      this.snackBar.openSnackBar(`${error?.body?.error}`, 'close', 10000)
 
       return of(result as T)
     }

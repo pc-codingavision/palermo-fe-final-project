@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
 import {
   MOCKADVERTISEMENTS_MOCK_DATA,
@@ -18,7 +19,7 @@ describe('AdvertisementService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, BrowserAnimationsModule],
       providers: [AdvertisementService, MatSnackBar, Overlay],
     })
     service = TestBed.inject(AdvertisementService)
@@ -52,8 +53,8 @@ describe('AdvertisementService', () => {
       req.flush([])
     })
 
-    xit('should turn 404 into an empty advs result', () => {
-      service.findAll().subscribe((advs) => expect(advs.length).toEqual(0))
+    it('should turn 404 into an empty advs result', () => {
+      service.findAll().subscribe((advs) => expect(advs.length).toEqual(0), fail)
 
       const req = httpTestingController.expectOne(service.advertisementsUrl)
 
@@ -73,7 +74,7 @@ describe('AdvertisementService', () => {
       req.flush(mockData[0])
     })
 
-    xit('should return undefined if the passed id does not exist on advertisements data', () => {
+    it('should return undefined if the passed id does not exist on advertisements data', () => {
       service
         .findById(5)
         .subscribe((advertisement) => expect(advertisement).toBeUndefined())
