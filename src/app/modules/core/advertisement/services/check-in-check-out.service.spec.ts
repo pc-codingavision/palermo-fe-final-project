@@ -13,4 +13,27 @@ describe('CheckInCheckOutService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
+
+  it('#setReservationDates should set reservationDates$', (done: DoneFn) => {
+    service.setReservationDates({
+      checkIn: new Date(2020, 10, 11),
+      checkOut: new Date(2020, 10, 12),
+    })
+    service.reservationDates$.subscribe((result) =>
+      expect(result).toEqual({
+        checkIn: new Date(2020, 10, 11),
+        checkOut: new Date(2020, 10, 12),
+      })
+    )
+    done()
+  })
+
+  it("#setReservationDates shouldn't set reservationDates$ if we pass null or undefined", (done: DoneFn) => {
+    service.setReservationDates(undefined)
+    service.reservationDates$.subscribe((result) => expect(result).toEqual(null))
+
+    service.setReservationDates(null)
+    service.reservationDates$.subscribe((result) => expect(result).toEqual(null))
+    done()
+  })
 })

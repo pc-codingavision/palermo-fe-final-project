@@ -196,7 +196,6 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
     ],
     price: 40,
   },
-
   {
     id: 2,
     landlord: {

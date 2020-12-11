@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs'
   providedIn: 'root',
 })
 export class CheckInCheckOutService {
-  dates: { checkIn: Date; checkOut: Date }
   reservationDates$: BehaviorSubject<{
     checkIn: Date
     checkOut: Date
@@ -16,11 +15,9 @@ export class CheckInCheckOutService {
 
   constructor() {}
 
-  setReservationDates(dates): void {
-    this.reservationDates$.next(dates)
-  }
-
-  getReservationDates(): BehaviorSubject<{ checkIn: Date; checkOut: Date }> {
-    return this.reservationDates$
+  setReservationDates(dates: { checkIn: Date; checkOut: Date }): void {
+    if (dates) {
+      this.reservationDates$.next(dates)
+    }
   }
 }

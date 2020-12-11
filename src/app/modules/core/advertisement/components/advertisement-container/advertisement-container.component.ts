@@ -121,9 +121,9 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
 
   getReservationDates(): void {
     this.subscriptions.push(
-      this.checkInCheckOutService
-        .getReservationDates()
-        .subscribe((result) => (this.reservationDates = result))
+      this.checkInCheckOutService.reservationDates$.subscribe(
+        (result) => (this.reservationDates = result)
+      )
     )
   }
 
