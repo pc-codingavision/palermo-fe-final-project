@@ -39,9 +39,11 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       )
     )
     this.getReservationDates()
-    this.reservationService
-      .getAll()
-      .subscribe((reservations) => (this.reservations = reservations))
+    this.subscriptions.push(
+      this.reservationService
+        .getAll()
+        .subscribe((reservations) => (this.reservations = reservations))
+    )
 
     combineLatest([
       this.sidebarService.price$,
