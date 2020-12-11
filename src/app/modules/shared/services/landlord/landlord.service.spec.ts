@@ -159,7 +159,7 @@ describe('LandlordService', () => {
       },
       fullName: 'dfgdfg',
     }
-    xit('should change landlord status to false', () => {
+    it('should change landlord status to false', () => {
       service
         .toggleStatus(landlordUpdated)
         .subscribe((landlord: Landlord) => expect(landlord.status).toBeFalse())

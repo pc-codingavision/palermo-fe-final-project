@@ -12,24 +12,6 @@ export class LandlordService {
 
   constructor(private http: HttpClient) {}
 
-  private mapLandlordArrayToLandlordArrayBuild(): (a: Landlord[]) => Landlord[] {
-    return (landlords) => landlords.map(this.mapLandlordToLandlordBuild())
-  }
-
-  private mapLandlordToLandlordBuild(): (a: Landlord) => Landlord {
-    return (landlord) => Landlord.Build(landlord)
-  }
-
-  private handleError<T>(operation = 'operation', result?: T): (a: any) => Observable<T> {
-    return (error: any): Observable<T> => {
-      console.error(error)
-
-      console.log(`LandlordService: ${operation} failed: ${error.message}`)
-
-      return of(result as T)
-    }
-  }
-
   getAll(): Observable<Landlord[]> {
     return this.http
       .get<Landlord[]>(this.landlordsUrl)
@@ -67,5 +49,23 @@ export class LandlordService {
     return this.http
       .patch<Landlord>(this.landlordsUrl, landlord)
       .pipe(catchError(this.handleError<Landlord>('update')))
+  }
+
+  private mapLandlordArrayToLandlordArrayBuild(): (a: Landlord[]) => Landlord[] {
+    return (landlords) => landlords.map(this.mapLandlordToLandlordBuild())
+  }
+
+  private mapLandlordToLandlordBuild(): (a: Landlord) => Landlord {
+    return (landlord) => Landlord.Build(landlord)
+  }
+
+  private handleError<T>(operation = 'operation', result?: T): (a: any) => Observable<T> {
+    return (error: any): Observable<T> => {
+      console.error(error)
+
+      console.log(`LandlordService: ${operation} failed: ${error.message}`)
+
+      return of(result as T)
+    }
   }
 }
