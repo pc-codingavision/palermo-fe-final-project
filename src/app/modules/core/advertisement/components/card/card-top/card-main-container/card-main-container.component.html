@@ -1,47 +1,51 @@
-<mat-card [cavStandUp]="boxShadow" id='card'>
-  <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
+<div appShadow="'hotpink'"  appShadowX="'12px'"  appShadowY="'6px'"
+    appShadowBlur="'30px'">
+  <mat-card id='card'>
+    <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
-    <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
-      fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
-      fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
-      <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
-      <div fxLayout='column'>
-        <cav-facility
-          *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
-          [facility]='facility'>
-        </cav-facility>
+      <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
+        fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
+        fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
+        <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
+        <div fxLayout='column'>
+          <cav-facility
+            *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
+            [facility]='facility'>
+          </cav-facility>
+        </div>
       </div>
+
+      <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
+        fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
+        <mat-card-title fxLayoutAlign.xs='center center'>
+          {{advertisement?.property?.title}}
+          <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
+          </cav-favourite>
+        </mat-card-title>
+        <cav-score [config]='scoreConfig'></cav-score>
+        <cav-check-in-check-out fxShow.xs='false'></cav-check-in-check-out>
+      </div>
+
+      <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
+      </cav-check-in-check-out>
+      <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
+        (favouriteEvent)='isFavourite($event)'>
+      </cav-favourite>
+
+    </mat-card-content>
+
+    <div fxLayoutAlign.xs='center center'>
+      <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
+        {{showCardExtra ? "Hide" : "More Info"}}
+        <mat-icon>
+          {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
+        </mat-icon>
+      </button>
     </div>
 
-    <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
-      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
-      <mat-card-title fxLayoutAlign.xs='center center'>
-        {{advertisement?.property?.title}}
-        <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
-        </cav-favourite>
-      </mat-card-title>
-      <cav-score [config]='scoreConfig'></cav-score>
-      <cav-check-in-check-out fxShow.xs='false'></cav-check-in-check-out>
-    </div>
+    <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+    </cav-card-extra>
+    <p [cavStandUp]="color"> Highlight me!</p>
+  </mat-card>
 
-    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
-    </cav-check-in-check-out>
-    <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
-      (favouriteEvent)='isFavourite($event)'>
-    </cav-favourite>
-
-  </mat-card-content>
-
-  <div fxLayoutAlign.xs='center center'>
-    <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
-      {{showCardExtra ? "Hide" : "More Info"}}
-      <mat-icon>
-        {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
-      </mat-icon>
-    </button>
-  </div>
-
-  <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
-  </cav-card-extra>
-  <p [cavStandUp]="boxShadow"> Highlight me!</p>
-</mat-card>
+</div>
