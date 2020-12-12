@@ -79,7 +79,7 @@ describe('AdvertisementService', () => {
         .findById(20)
         .subscribe((advertisement) => expect(advertisement).toBeUndefined())
 
-      const req = httpTestingController.expectOne('api/advertisements/5')
+      const req = httpTestingController.expectOne('api/advertisements/20')
       expect(req.request.method).toEqual('GET')
       const msg = 'Advertisement not found'
       req.flush(msg)
