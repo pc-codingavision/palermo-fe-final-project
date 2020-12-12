@@ -38,7 +38,7 @@ describe('AdvertisementService', () => {
 
     it('should return undefined if the passed id does not exist on advertisements data', () => {
       service
-        .findById(5)
+        .findById(20)
         .subscribe((advertisement) => expect(advertisement).toBeUndefined())
     })
   })
