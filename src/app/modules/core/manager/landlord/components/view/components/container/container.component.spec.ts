@@ -1,5 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 import { ViewContainerComponent } from './container.component'
 
@@ -11,6 +13,7 @@ describe('ContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ViewContainerComponent],
       imports: [HttpClientTestingModule],
+      providers: [MatSnackBar, Overlay],
     }).compileComponents()
   }))
 

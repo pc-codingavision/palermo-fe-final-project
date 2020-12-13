@@ -48,8 +48,12 @@ export class LandlordListComponent implements OnInit, OnDestroy {
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id).subscribe()
+    this.subscription = this.landlordService.delete(landlord.id).subscribe()
     this.subscription = this.searchLandlord.search('', '', '').subscribe()
+  }
+
+  update(landlord: Landlord): void {
+    this.subscription = this.landlordService.toggleStatus(landlord).subscribe()
   }
   ngOnDestroy(): void {
     if (this.subscription) {

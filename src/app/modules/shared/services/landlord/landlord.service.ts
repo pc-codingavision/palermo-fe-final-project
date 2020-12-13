@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Landlord } from '@shared/models/landlord'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, of } from 'rxjs'
 import { catchError, map } from 'rxjs/operators'
 
@@ -10,12 +11,15 @@ import { catchError, map } from 'rxjs/operators'
 export class LandlordService {
   landlordsUrl = 'api/landlords'
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   getAll(): Observable<Landlord[]> {
     return this.http
       .get<Landlord[]>(this.landlordsUrl)
-      .pipe(map(this.mapLandlordArrayToLandlordArrayBuild()))
+      .pipe(
+        map(this.mapLandlordArrayToLandlordArrayBuild),
+        catchError(this.handleError<Landlord[]>('getAll'))
+      )
   }
 
   getById(id: number): Observable<Landlord> {
@@ -24,7 +28,10 @@ export class LandlordService {
     }
     return this.http
       .get<Landlord>(`${this.landlordsUrl}/${id}`)
-      .pipe(map(this.mapLandlordToLandlordBuild()))
+      .pipe(
+        map(this.mapLandlordToLandlordBuild),
+        catchError(this.handleError<Landlord>('getById'))
+      )
   }
 
   add(landlord: any): Observable<Landlord> {
@@ -45,25 +52,22 @@ export class LandlordService {
       .pipe(catchError(this.handleError<Landlord>('delete')))
   }
 
-  toggleStatus(landlord: Landlord): Observable<Landlord> {
-    return this.http
-      .patch<Landlord>(this.landlordsUrl, landlord)
-      .pipe(catchError(this.handleError<Landlord>('update')))
+  toggleStatus(landlord: Landlord): Observable<boolean> {
+    return this.http.patch<string>(this.landlordsUrl, landlord).pipe(
+      map((result: string) => (result === 'true' ? true : false)),
+      catchError(this.handleError<Landlord>('update'))
+    )
   }
 
-  private mapLandlordArrayToLandlordArrayBuild(): (a: Landlord[]) => Landlord[] {
-    return (landlords) => landlords.map(this.mapLandlordToLandlordBuild())
-  }
+  private mapLandlordArrayToLandlordArrayBuild = (landlords) =>
+    landlords.map(this.mapLandlordToLandlordBuild)
 
-  private mapLandlordToLandlordBuild(): (a: Landlord) => Landlord {
-    return (landlord) => Landlord.Build(landlord)
-  }
+  private mapLandlordToLandlordBuild = (landlord) => Landlord.Build(landlord)
 
-  private handleError<T>(operation = 'operation', result?: T): (a: any) => Observable<T> {
+  private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
-      console.error(error)
-
-      console.log(`LandlordService: ${operation} failed: ${error.message}`)
+      console.error(`${operation} failed: ${JSON.stringify(error)}`)
+      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
 
       return of(result as T)
     }

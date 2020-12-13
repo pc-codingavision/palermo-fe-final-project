@@ -12,14 +12,15 @@ export class ViewContainerComponent implements OnInit {
   @Output() remove = new EventEmitter<Landlord>()
   @Output() update = new EventEmitter<Landlord>()
 
-  constructor(private landlordService: LandlordService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   toggleStatus(operation: string): void {
     if (operation === 'deactivate' || operation === 'activate') {
+      this.update.emit(this.landlord)
       this.landlord.status = !this.landlord.status
-      this.landlordService.toggleStatus(this.landlord)
+      console.log(this.landlord.status)
     } else if (operation === 'delete') {
       this.remove.emit(this.landlord)
     }
