@@ -176,4 +176,11 @@ describe('LandlordService', () => {
       req.event(resp)
     })
   })
+
+  it('#getLenght should return the length of all landlords ', (done: DoneFn) => {
+    service
+      .getLength()
+      .subscribe((length) => expect(length).toEqual(service.landlords.length))
+    done()
+  })
 })

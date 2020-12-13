@@ -1,6 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { MediaObserver } from '@angular/flex-layout'
+import { MatPaginator, PageEvent } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort'
+import { MatTableDataSource } from '@angular/material/table'
 import { ActivatedRoute } from '@angular/router'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
@@ -29,11 +32,15 @@ export interface Elements {
     ]),
   ],
 })
-export class LandlordListComponent implements OnInit, OnDestroy {
+export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator
+  @ViewChild(MatSort) sort: MatSort
   displayedColumns: string[] = ['id', 'fullName', 'mail', 'phoneNumber']
+  subscriptions: Subscription[] = []
+  dataSource: MatTableDataSource<Landlord>
+  landlords: Landlord[]
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
-  subscription: Subscription
 
   constructor(
     private landlordService: LandlordService,
@@ -44,20 +51,49 @@ export class LandlordListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.landlords$ = this.route.snapshot.data.list
-    this.landlords$ = this.searchLandlord.getSearchResult()
+    this.getLandlords(5, 0)
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscriptions.length) {
+      this.subscriptions.forEach((subscription) => subscription.unsubscribe())
+    }
+  }
+
+  getLandlords(length: number, start: number = 0): void {
+    this.subscriptions.push(
+      this.searchLandlord.getSearchResult(length, start).subscribe((landlords) => {
+        this.dataSource = new MatTableDataSource<Landlord>(landlords)
+        this.landlords = landlords
+      })
+    )
+  }
+
+  getLength(): Observable<number> {
+    return this.landlordService.getLength()
+  }
+
+  paginatorInput(pageEvent: PageEvent): void {
+    if (pageEvent.previousPageIndex !== pageEvent.pageIndex) {
+      this.getLandlords(
+        (pageEvent.pageIndex + 1) * pageEvent.pageSize,
+        pageEvent.pageIndex * pageEvent.pageSize
+      )
+    } else {
+      this.getLandlords(pageEvent.pageSize)
+    }
   }
 
   remove(landlord: Landlord): void {
-    this.subscription = this.landlordService.delete(landlord.id).subscribe()
-    this.subscription = this.searchLandlord.search('', '', '').subscribe()
+    this.landlordService.delete(landlord.id)
+    this.subscriptions.push(this.searchLandlord.search('', '', '').subscribe())
   }
 
   update(landlord: Landlord): void {
     this.subscription = this.landlordService.toggleStatus(landlord).subscribe()
-  }
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe()
-    }
   }
 }

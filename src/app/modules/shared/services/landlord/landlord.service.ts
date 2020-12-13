@@ -22,9 +22,16 @@ export class LandlordService {
       )
   }
 
-  getById(id: number): Observable<Landlord> {
-    if (!id) {
-      throw new Error('You must provide an id!')
+  getLength(): Observable<number> {
+    return of(this.landlords.length)
+  }
+
+  getById(id: number): Observable<Landlord | null> {
+    if (id !== null) {
+      const landlordById = this.landlords.find((landlord) => landlord.id === id)
+      if (landlordById !== undefined) {
+        return of(Landlord.Build(landlordById))
+      }
     }
     return this.http
       .get<Landlord>(`${this.landlordsUrl}/${id}`)

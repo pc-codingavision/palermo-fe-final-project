@@ -334,8 +334,8 @@ export const RESERVATIONS_MOCK_DATA: IReservation[] = [
     tenantId: 1,
     propertyId: 1,
     guestNumber: 3,
-    checkIn: '24/10/2020',
-    checkOut: '30/10/2020',
+    checkIn: '2020-12-24',
+    checkOut: '2020-12-30',
     specialRequest: '',
   },
   {
@@ -343,8 +343,8 @@ export const RESERVATIONS_MOCK_DATA: IReservation[] = [
     tenantId: 2,
     propertyId: 2,
     guestNumber: 3,
-    checkIn: '26/11/2020',
-    checkOut: '30/11/2020',
+    checkIn: '2021-01-26',
+    checkOut: '2021-01-30',
     specialRequest: 'I would like to do the check-in in early morning.',
   },
 ]
