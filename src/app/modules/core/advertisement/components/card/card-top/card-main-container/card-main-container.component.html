@@ -1,7 +1,7 @@
 <mat-card id='card'>
   <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
-    <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
+    <div fxFlex.gt-sm='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
       fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
       fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
       <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
