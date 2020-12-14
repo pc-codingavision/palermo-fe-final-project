@@ -18,6 +18,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import localeIt from '@angular/common/locales/it'
+import { registerLocaleData } from '@angular/common'
+
+registerLocaleData(localeIt)
 
 const appComponents = [
   AppComponent,
