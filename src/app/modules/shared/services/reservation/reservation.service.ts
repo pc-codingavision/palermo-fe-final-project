@@ -52,7 +52,8 @@ export class ReservationService {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${JSON.stringify(error)}`)
 
-      this.snackBar.openSnackBar(`${error?.body?.error}`, 'close', 10000)
+      error = error.body ? error.body.error : error
+      this.snackBar.openSnackBar(`${error}`, 'close', 10000)
 
       return of(result as T)
     }

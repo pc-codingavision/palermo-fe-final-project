@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AuthService } from '@modules/core/auth/auth.service'
+import { Role } from '@shared/enum/enums'
 import { combineLatest } from 'rxjs'
 import { catchError, filter, tap } from 'rxjs/operators'
 import { SubSink } from 'subsink'
@@ -65,7 +66,17 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(
         filter(([authStatus, user]) => authStatus.isAuthenticated && user?.id !== null),
         tap(([authStatus, user]) => {
-          this.router.navigate([this.redirectUrl || '/manager'])
+          switch (authStatus.userRole) {
+            case Role.Manager:
+              this.router.navigate([this.redirectUrl || '/manager'])
+              break
+            case Role.Landlord:
+              this.router.navigate([this.redirectUrl || '/landlord'])
+              break
+            case Role.Tenant:
+              this.router.navigate([this.redirectUrl || '/tenant'])
+              break
+          }
         })
       )
       .subscribe()
