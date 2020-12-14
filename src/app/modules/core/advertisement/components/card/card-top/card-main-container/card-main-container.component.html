@@ -20,6 +20,9 @@
         <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
         </cav-favourite>
       </mat-card-title>
+      <div fxLayoutAlign.xs='center center' fxShow.gt-xs='false'>
+        <h2>{{advertisement?.price}}€</h2>
+      </div>
       <cav-score [config]='scoreConfig'></cav-score>
       <cav-check-in-check-out fxShow.xs='false'
         *ngIf="(getReservationDates() | async) === null"
@@ -28,10 +31,15 @@
 
     <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
     </cav-check-in-check-out>
-    <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
-      (favouriteEvent)='isFavourite($event)'>
-    </cav-favourite>
-
+    <div fxLayout="column" fxShow.xs='false'>
+      <div>
+        <cav-favourite fxFlex='5%' (favouriteEvent)='isFavourite($event)'>
+        </cav-favourite>
+      </div>
+      <div>
+        <h2>{{advertisement?.price}}€</h2>
+      </div>
+    </div>
   </mat-card-content>
 
   <div fxLayoutAlign.xs='center center'>
