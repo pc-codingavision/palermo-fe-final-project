@@ -1,13 +1,10 @@
 import { Overlay } from '@angular/cdk/overlay'
 import { HttpResponse } from '@angular/common/http'
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing'
+import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { ReservationService } from '@modules/shared/services/reservation/reservation.service'
+import { commonTestingModules } from '@shared/common.testing'
 import { RESERVATIONS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { IReservation } from '@shared/models/reservation'
 
@@ -17,7 +14,7 @@ describe('ReservationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, NoopAnimationsModule],
+      imports: [commonTestingModules],
       providers: [MatSnackBar, Overlay],
     })
     service = TestBed.inject(ReservationService)

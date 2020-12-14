@@ -1,7 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { commonTestingModules } from '@shared/common.testing'
 
 import { SnackBarService } from './snack-bar.service'
 
@@ -10,7 +10,7 @@ describe('SnackBarService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule],
+      imports: [commonTestingModules],
       providers: [MatSnackBar, Overlay],
     })
     service = TestBed.inject(SnackBarService)
