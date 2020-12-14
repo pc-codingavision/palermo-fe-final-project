@@ -8,15 +8,18 @@ import { map, tap } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class SearchService {
-  private filteredLandlords$: Subject<Landlord[]> = new BehaviorSubject<Landlord[]>(
-    null
-    // this.landlordService.landlords
-  )
+  private filteredLandlords$: Subject<Landlord[]> = new BehaviorSubject<Landlord[]>([])
+  landlords: Landlord[] = []
 
-  constructor(private landlordService: LandlordService) {}
+  constructor(private landlordService: LandlordService) {
+    landlordService.getAll().subscribe((landlords) => {
+      this.filteredLandlords$.next(landlords)
+      this.landlords = landlords
+    })
+  }
 
   getSearchResult(
-    length = this.landlordService.landlords.length,
+    length = this.landlords.length,
     start: number = 0
   ): Observable<Landlord[]> {
     return this.filteredLandlords$

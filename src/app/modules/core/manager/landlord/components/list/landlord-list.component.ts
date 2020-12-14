@@ -94,6 +94,6 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   update(landlord: Landlord): void {
-    this.subscription = this.landlordService.toggleStatus(landlord).subscribe()
+    this.subscriptions.push(this.landlordService.toggleStatus(landlord).subscribe())
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { SearchService } from '@modules/core/manager/landlord/services/search.service'
+import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { Landlord } from '@shared/models/landlord'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
@@ -16,10 +17,14 @@ export class SearchComponent implements OnInit {
   email = ''
   phone = ''
 
-  constructor(private searchService: SearchService) {}
+  constructor(
+    private searchService: SearchService,
+    private landlordService: LandlordService
+  ) {}
 
   ngOnInit(): void {
     this.landlords$ = this.searchService.getSearchResult()
+
     this.landlords$
       .pipe(
         map((landlords) => landlords.flatMap((l) => l.phone)),
