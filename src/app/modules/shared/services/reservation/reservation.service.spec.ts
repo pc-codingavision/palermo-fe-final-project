@@ -6,6 +6,7 @@ import {
 } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { ReservationService } from '@modules/shared/services/reservation/reservation.service'
 import { RESERVATIONS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { IReservation } from '@shared/models/reservation'
@@ -16,7 +17,7 @@ describe('ReservationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, NoopAnimationsModule],
       providers: [MatSnackBar, Overlay],
     })
     service = TestBed.inject(ReservationService)
