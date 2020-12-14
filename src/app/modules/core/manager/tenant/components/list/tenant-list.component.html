@@ -1,3 +1,17 @@
+<div id='search-area' fxLayout='row' fxLayoutGap=10%>
+  <div fxLayoutAlign='center center'>
+    <mat-form-field>
+      <input matInput placeholder="Search">
+    </mat-form-field>
+  </div>
+  <div fxLayoutAlign='center center'>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Active</mat-radio-button>
+      <mat-radio-button value="2">Inactive</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+
 <table mat-table [dataSource]="tenants">
 
   <ng-container matColumnDef="avatar">
