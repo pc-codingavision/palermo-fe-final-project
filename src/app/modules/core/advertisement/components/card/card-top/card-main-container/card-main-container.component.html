@@ -21,7 +21,7 @@
         </cav-favourite>
       </mat-card-title>
       <div fxLayoutAlign.xs='center center' fxShow.gt-xs='false'>
-        <h2>{{advertisement?.price}}€</h2>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}}</h2>
       </div>
       <cav-score [config]='scoreConfig'></cav-score>
       <cav-check-in-check-out fxShow.xs='false'
@@ -37,7 +37,7 @@
         </cav-favourite>
       </div>
       <div>
-        <h2>{{advertisement?.price}}€</h2>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}} </h2>
       </div>
     </div>
   </mat-card-content>
