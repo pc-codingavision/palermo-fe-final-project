@@ -7,7 +7,14 @@ import { IReservation } from '@shared/models/reservation'
   styleUrls: ['./reservation-list.component.scss'],
 })
 export class ReservationListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'Tenant id', 'checkIn', 'checkOut', 'guests']
+  displayedColumns: string[] = [
+    'id',
+    'Tenant id',
+    'checkIn',
+    'checkOut',
+    'guests',
+    'details',
+  ]
   @Input() reservations: IReservation[]
   constructor() {}
 
