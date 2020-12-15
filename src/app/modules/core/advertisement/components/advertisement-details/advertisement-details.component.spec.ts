@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { RouterTestingModule } from '@angular/router/testing'
 import { AdvertisementDetailsComponent } from '@modules/core/advertisement/components/advertisement-details/advertisement-details.component'
+import { commonTestingModules } from '@shared/common.testing'
 
 describe('AdvertisementDetailsComponent', () => {
   let component: AdvertisementDetailsComponent
@@ -9,6 +11,7 @@ describe('AdvertisementDetailsComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [AdvertisementDetailsComponent],
+        imports: [RouterTestingModule, commonTestingModules],
       }).compileComponents()
     })
   )
