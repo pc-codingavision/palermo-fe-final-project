@@ -2,7 +2,7 @@
   <span>{{isEditLandlord ? 'Edit' : 'Add'}} Landlord</span>
 </mat-toolbar>
 
-<form [formGroup]="landlordForm">
+<form *ngIf="landlord" [formGroup]="landlordForm">
   <div fxLayout="row" fxLayoutAlign="center start">
     <div fxLayout="column" fxLayoutAlign="center center" id="picture-container">
       <img [src]="landlordForm?.value?.picture">
