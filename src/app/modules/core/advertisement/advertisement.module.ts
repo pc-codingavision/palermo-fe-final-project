@@ -51,6 +51,6 @@ const advertisementsComponent = [
 @NgModule({
   declarations: [...advertisementsComponent],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
-  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
+  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'it-IT' }],
 })
 export class AdvertisementModule {}

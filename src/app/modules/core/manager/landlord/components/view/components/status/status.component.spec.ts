@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 
 import { StatusComponent } from './status.component'
 
@@ -6,11 +6,13 @@ describe('StatusComponent', () => {
   let component: StatusComponent
   let fixture: ComponentFixture<StatusComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [StatusComponent],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [StatusComponent],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(StatusComponent)

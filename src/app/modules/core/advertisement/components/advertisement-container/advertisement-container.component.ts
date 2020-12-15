@@ -130,4 +130,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
   setReservationDates(dates: { checkIn: Date; checkOut: Date }): void {
     this.checkInCheckOutService.setReservationDates(dates)
   }
+
+  resetReservationDates(): void {
+    this.checkInCheckOutService.resetReservationDates()
+  }
 }

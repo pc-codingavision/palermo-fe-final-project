@@ -3,9 +3,15 @@
     <cav-latest-container [advertisements]='advertisements'>
     </cav-latest-container>
   </div>
-  <cav-check-in-check-out *ngIf="reservationDates" fxLayoutAlign="center"
-    (toggleDatesInput)="setReservationDates($event)" [reservationDate]="reservationDates">
-  </cav-check-in-check-out>
+  <div *ngIf="reservationDates" fxLayout='column' id="check-in-check-out">
+    <cav-check-in-check-out fxLayoutAlign="center"
+      (toggleDatesInput)="setReservationDates($event)"
+      [reservationDate]="reservationDates"></cav-check-in-check-out>
+    <div fxLayoutAlign="center">
+      <button mat-raised-button color="primary"
+        (click)="resetReservationDates()">Clear</button>
+    </div>
+  </div>
   <div fxLayout='row' fxLayout.lt-md='column' fxLayoutGap='30px'>
     <div fxLayout='column' fxLayoutAlign.lt-md='center center' fxLayoutGap='4%'>
       <button fxFill mat-raised-button color='accent' fxShow.gt-xs='false'

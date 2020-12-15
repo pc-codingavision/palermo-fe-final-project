@@ -400,9 +400,11 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
       images: [
         {
-          image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          alt: 'Salotto',
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
         {
           image: 'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
@@ -420,7 +422,8 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
           id: 1,
           name: { firstName: 'Ugo', surname: 'Fantozzi' },
         },
-        description: 'Fantastic vacation. Perfect house',
+        description:
+          'La camera era calda , accogliente , pulita  e il letto molto comodo ! La colazione è ottima anche per chi ha problemi di intolleranza al lattosio come il mio ragazzo che ha preso una brioches vegana ai frutti di bosco e un cappuccino alla soya  molto buoni',
         vote: 4.5,
         date: new Date(2020, 10, 27),
       },
@@ -518,9 +521,11 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
       images: [
         {
-          image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          alt: 'Salotto',
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
       ],
       status: Status.Open,
@@ -590,10 +595,10 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       images: [
         {
           image:
-            'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
           thumbImage:
-            'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
-          alt: 'Terrazza',
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
       ],
       status: Status.Open,
@@ -669,9 +674,11 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
       images: [
         {
-          image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          alt: 'Salotto',
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
         {
           image: 'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
@@ -689,7 +696,8 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
           id: 1,
           name: { firstName: 'Ugo', surname: 'Fantozzi' },
         },
-        description: 'Fantastic vacation. Perfect house',
+        description:
+          'La camera era calda , accogliente , pulita  e il letto molto comodo ! La colazione è ottima anche per chi ha problemi di intolleranza al lattosio come il mio ragazzo che ha preso una brioches vegana ai frutti di bosco e un cappuccino alla soya  molto buoni',
         vote: 4.5,
         date: new Date(2020, 10, 27),
       },
@@ -787,9 +795,11 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
       images: [
         {
-          image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          alt: 'Salotto',
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_bedroom_chair_style_39759_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
       ],
       status: Status.Open,
@@ -859,10 +869,10 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       images: [
         {
           image:
-            'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
           thumbImage:
-            'https://www.grossoandpartners.com/docs/immobili/1925/foto/A126-Attici-Mansarde-Treviso-Treviso-77491.jpeg',
-          alt: 'Terrazza',
+            'https://www.wallpapers4u.org/wp-content/uploads/bed_paintings_furniture_interior_design_39698_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
       ],
       status: Status.Open,
@@ -938,9 +948,11 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
       },
       images: [
         {
-          image: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          thumbImage: 'https://cf.bstatic.com/images/hotel/max1024x768/228/228549673.jpg',
-          alt: 'Salotto',
+          image:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          thumbImage:
+            'https://www.wallpapers4u.org/wp-content/uploads/bedroom_bed_style_interior_39274_1920x1080.jpg',
+          alt: 'Camera da letto',
         },
         {
           image: 'https://cdn.pixabay.com/photo/2016/11/19/13/06/bed-1839184_960_720.jpg',
@@ -958,7 +970,8 @@ export const MOCKADVERTISEMENTS_MOCK_DATA: IMockAdvertisement[] = [
           id: 1,
           name: { firstName: 'Ugo', surname: 'Fantozzi' },
         },
-        description: 'Fantastic vacation. Perfect house',
+        description:
+          'La camera era calda , accogliente , pulita  e il letto molto comodo ! La colazione è ottima anche per chi ha problemi di intolleranza al lattosio come il mio ragazzo che ha preso una brioches vegana ai frutti di bosco e un cappuccino alla soya  molto buoni',
         vote: 4.5,
         date: new Date(2020, 10, 27),
       },

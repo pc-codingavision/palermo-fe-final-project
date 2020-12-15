@@ -36,4 +36,16 @@ describe('CheckInCheckOutService', () => {
     service.reservationDates$.subscribe((result) => expect(result).toEqual(null))
     done()
   })
+
+  it('#resetReservationDates should reset reservationDates$', (done: DoneFn) => {
+    service.setReservationDates({
+      checkIn: new Date(2020, 10, 11),
+      checkOut: new Date(2020, 10, 12),
+    })
+
+    service.resetReservationDates()
+
+    service.reservationDates$.subscribe((result) => expect(result).toBeNull())
+    done()
+  })
 })

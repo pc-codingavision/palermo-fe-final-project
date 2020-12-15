@@ -1,6 +1,4 @@
-import { Overlay } from '@angular/cdk/overlay'
-import { HttpClientTestingModule } from '@angular/common/http/testing'
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatSnackBar } from '@angular/material/snack-bar'
 
@@ -10,13 +8,14 @@ describe('SearchComponent', () => {
   let component: SearchComponent
   let fixture: ComponentFixture<SearchComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SearchComponent],
-      imports: [MatAutocompleteModule, HttpClientTestingModule],
-      providers: [MatSnackBar, Overlay],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SearchComponent],
+        imports: [MatAutocompleteModule],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent)

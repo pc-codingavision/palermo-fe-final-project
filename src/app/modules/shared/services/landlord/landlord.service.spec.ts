@@ -39,6 +39,7 @@ describe('LandlordService', () => {
       req.flush(buildLandlords)
     })
 
+    //<<<<<<< HEAD
     it("should return error 404 if get call don't work", () => {
       const msg = 'deliberate 404 error'
       service.getAll().subscribe((landlords) => expect(landlords.length).toBe(0))
@@ -59,6 +60,37 @@ describe('LandlordService', () => {
 
       req.flush(buildLandlords[0])
     })
+
+    // it('#getdById should return null for not existing id or null', (done: DoneFn) => {
+    //   service.getById(100).subscribe((landlord) => expect(landlord).toBeNull())
+    //   service.getById(null).subscribe((landlord) => expect(landlord).toBeNull())
+    //   done()
+    // })
+
+    // it('#deleteLandlord should delete landlord', () => {
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    //   service.delete(1)
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length - 1)
+    //   expect(service.landlords).not.toContain(buildLandlords[0])
+    // })
+
+    // it("#delete shouldn't delete a landarlord for not existing id", () => {
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    //   service.delete(LANDLORDS_MOCK_DATA.length + 1)
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    // })
+
+    // it('#add should add a landlord', () => {
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    //   service.add(defaultLandlord)
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length + 1)
+    //   expect(service.landlords).toContain(defaultLandlord)
+    // })
+
+    // it("#add shouldn't add if we don't pass Landlord ", () => {
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    //   service.add(null)
+    //   expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
   })
 
   describe('#delete', () => {
@@ -177,10 +209,21 @@ describe('LandlordService', () => {
     })
   })
 
-  it('#getLenght should return the length of all landlords ', (done: DoneFn) => {
+  // it('#getLenght should return the length of all landlords ', (done: DoneFn) => {
+  //   service
+  //     .getLength()
+  //     .subscribe((length) => expect(length).toEqual(service.landlords.length))
+  //   done()
+  // })
+
+  it('#getLenght should return the length of all landlords ', () => {
     service
       .getLength()
-      .subscribe((length) => expect(length).toEqual(service.landlords.length))
-    done()
+      .subscribe((length) => expect(length).toEqual(buildLandlords.length))
+
+    const req = httpTestingController.expectOne(service.landlordsUrl)
+    expect(req.request.method).toEqual('GET')
+
+    req.flush(buildLandlords.length)
   })
 })

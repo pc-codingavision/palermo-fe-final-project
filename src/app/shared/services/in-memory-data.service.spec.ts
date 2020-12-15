@@ -45,7 +45,7 @@ describe('InMemoryDataService', () => {
     })
 
     it('should return the highest landlord id + 1 if an array of landlords has been passed', () => {
-      expect(service.genId(LANDLORDS_MOCK_DATA)).toBe(4)
+      expect(service.genId(LANDLORDS_MOCK_DATA)).toBe(LANDLORDS_MOCK_DATA.length + 1)
     })
 
     it('should return the highest reservation id + 1 if an array of reservations has been passed', () => {

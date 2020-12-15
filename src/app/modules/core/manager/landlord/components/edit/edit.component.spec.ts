@@ -1,11 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay'
-import { HttpClientTestingModule } from '@angular/common/http/testing'
-import { ComponentFixture, TestBed, async } from '@angular/core/testing'
-import { ReactiveFormsModule } from '@angular/forms'
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { RouterTestingModule } from '@angular/router/testing'
-import { MaterialModule } from '@modules/shared/material.module'
+import { commonTestingModules } from '@shared/common.testing'
 
 import { EditComponent } from './edit.component'
 
@@ -13,19 +9,15 @@ describe('EditContainerComponent', () => {
   let component: EditComponent
   let fixture: ComponentFixture<EditComponent>
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [EditComponent],
-      imports: [
-        HttpClientTestingModule,
-        RouterTestingModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        BrowserAnimationsModule,
-      ],
-      providers: [MatSnackBar, Overlay],
-    }).compileComponents()
-  }))
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [EditComponent],
+        imports: [commonTestingModules],
+        providers: [MatSnackBar, Overlay],
+      }).compileComponents()
+    })
+  )
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EditComponent)
