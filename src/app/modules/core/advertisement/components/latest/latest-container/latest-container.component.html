@@ -6,8 +6,9 @@
         <mat-icon [inline]="true" (click)='goBehind()'>chevron_left</mat-icon>
       </div>
 
-      <cav-latest-mini-card *ngFor='let advertisement of latestAdvertisements | async'
-        [advertisement]='advertisement' [images]='advertisement?.property?.images'>
+      <cav-latest-mini-card
+        *ngFor="let advertisement of latestAdvertisements?.slice(start,end)"
+        [advertisement]="advertisement" [images]="advertisement?.property?.images">
       </cav-latest-mini-card>
 
       <div class='icons'>

@@ -11,7 +11,7 @@ export const advertisementRoutes: Routes = [
     component: AdvertisementContainerComponent,
     resolve: { advertisements: AdvertisementResolver },
   },
-  { path: 'advertisement/details/:id', component: AdvertisementDetailsComponent },
+  { path: 'advertisement/:id', component: AdvertisementDetailsComponent },
 ]
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
+import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { IAdvertisement } from '@shared/models/advertisement'
 import {
-  ADVERTISEMENTS_MOCK_DATA,
   LANDLORDS_MOCK_DATA,
   RESERVATIONS_MOCK_DATA,
   TENANTS_MOCK_DATA,
@@ -20,12 +20,13 @@ import { Observable } from 'rxjs'
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb(): any {
-    const advertisements = ADVERTISEMENTS_MOCK_DATA
+    const advertisements = MOCKADVERTISEMENTS_MOCK_DATA
     const tenants = TENANTS_MOCK_DATA
     const landlords = LANDLORDS_MOCK_DATA
     const reservations = RESERVATIONS_MOCK_DATA
     return { advertisements, tenants, landlords, reservations }
   }
+
   genId<T extends IAdvertisement | IUser | IReservation>(dataArray: T[]): number {
     return dataArray.length > 0 ? Math.max(...dataArray.map((t) => t.id)) + 1 : 1
   }

@@ -1,4 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { commonTestingModules } from '@shared/common.testing'
 
 import { LatestContainerComponent } from './latest-container.component'
 
@@ -10,6 +13,8 @@ describe('LatestContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [LatestContainerComponent],
+        imports: [commonTestingModules],
+        providers: [MatSnackBar, Overlay],
       }).compileComponents()
     })
   )
