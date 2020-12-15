@@ -4,9 +4,7 @@ import { ReservationService } from '@modules/shared/services/reservation/reserva
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { IReservation } from '@shared/models/reservation'
 import { Tenant } from '@shared/models/tenant'
-import { subtract } from 'lodash'
 import { Observable } from 'rxjs'
-import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'cav-reservation-details',
