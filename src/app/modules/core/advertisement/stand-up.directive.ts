@@ -2,38 +2,25 @@ import {
   Directive,
   ElementRef,
   HostListener,
-  Input,
-  OnInit,
-  Renderer2,
 } from '@angular/core'
 
 @Directive({
   selector: '[cavStandUp]',
 })
 export class StandUpDirective {
-  constructor(private el: ElementRef) // private renderer: Renderer2,
-  {}
+  constructor(private el: ElementRef) {}
 
-  /*@Input() appShadow: string
-  @Input() appShadowX: string
-  @Input() appShadowY: string
-  @Input() appShadowBlur: string */
-
-  @Input('cavStandUp') standUpStyle: string
-
-  /*@HostListener('mouseenter') onMouseEnter() {
-    let shadowStr = `${this.appShadowX} ${this.appShadowY} ${this.appShadowBlur} ${this.appShadow}`
-    this.renderer.setStyle(this.el.nativeElement, 'box-shadow', shadowStr)
-  }*/
+  // @Input('cavStandUp') standUpStyle: string
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.standUp(this.standUpStyle || 'red')
-  }
-  @HostListener('mouseout') onMouseOut() {
-    this.standUp(null)
+    this.el.nativeElement.style.boxShadow = '10px 10px 22px 0px rgb(140, 140, 140, 1)'
   }
 
-  private standUp(color: string) {
-    this.el.nativeElement.style.backgroundColor = color
+  @HostListener('mouseout') onMouseOut() {
+    this.el.nativeElement.style.boxShadow = null
   }
+
+  /* private standUp(color: string) {
+    this.el.nativeElement.style.backgroundColor = color
+  }*/
 }
