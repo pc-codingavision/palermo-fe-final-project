@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { IReservation } from '@shared/models/reservation'
 
 @Component({
   selector: 'cav-reservation-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./reservation-list.component.scss'],
 })
 export class ReservationListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'Tenant id', 'checkIn', 'checkOut', 'guests']
+  @Input() reservations: IReservation[]
   constructor() {}
 
   ngOnInit(): void {}
