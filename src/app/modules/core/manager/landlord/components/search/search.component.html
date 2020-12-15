@@ -1,4 +1,4 @@
-<div class="general">
+<div class="general" fxLayout="column" fxLayoutGap="20px">
   <div class="title">
     <mat-toolbar>
       <span>Search</span>
@@ -6,10 +6,10 @@
   </div>
   <div class="inputs" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="4%"
     fxLayoutAlign="center center">
-    <div id="i-style">
-      <form id="i-form">
-        <input type="search" placeholder="Name" [(ngModel)]="fullName" name="fullName"
-          (ngModelChange)="onChange()" id="input" [matAutocomplete]="auto">
+    <div>
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search by Name" [(ngModel)]="fullName"
+          name="fullName" (ngModelChange)="onChange()" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           <div *ngIf="fullName.length > 1">
             <mat-option *ngFor="let landlord of landlords$ | async"
@@ -18,12 +18,16 @@
             </mat-option>
           </div>
         </mat-autocomplete>
-      </form>
+        <button mat-button *ngIf="fullName" matSuffix mat-icon-button aria-label="Clear"
+          (click)="fullName=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
-    <div id="i-style">
-      <form id="i-form">
-        <input type="search" placeholder="Email" [(ngModel)]="email" name="email"
-          (ngModelChange)="onChange()" id="input" [matAutocomplete]="mail">
+    <div>
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search by Email" [(ngModel)]="email"
+          name="email" (ngModelChange)="onChange()" [matAutocomplete]="mail">
         <mat-autocomplete #mail="matAutocomplete">
           <div *ngIf="email.length > 1">
             <mat-option *ngFor="let landlord of landlords$ | async"
@@ -32,12 +36,17 @@
             </mat-option>
           </div>
         </mat-autocomplete>
-      </form>
+        <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear"
+          (click)="email=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
-    <div id="i-style">
-      <form id="i-form">
-        <input type="search" placeholder="Phone" [(ngModel)]="phone" name="phone"
-          (ngModelChange)="onChange()" id="input" [matAutocomplete]="telephone">
+    <div>
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search by Phone" [(ngModel)]="phone"
+          name="phone" (ngModelChange)="onChange()"
+          (keypress)="isCharacterAllowed($event)" [matAutocomplete]="telephone">
         <mat-autocomplete #telephone="matAutocomplete">
           <div *ngIf="phone.length > 1">
             <mat-option *ngFor="let phone of phoneMatch$ | async" [value]="phone">
@@ -45,7 +54,11 @@
             </mat-option>
           </div>
         </mat-autocomplete>
-      </form>
+        <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear"
+          (click)="phone=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
   </div>
 </div>
