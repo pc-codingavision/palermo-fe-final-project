@@ -1,17 +1,54 @@
-<mat-tab-group>
-  <mat-tab label="Landlord">
-    <ng-template matTabContent>
-      Landlord Container Component
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Tenant">
-    <ng-template matTabContent>
-      Tenant Container Component
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="Reservation">
-    <ng-template matTabContent>
-      Reservation Container Component
-    </ng-template>
-  </mat-tab>
-</mat-tab-group>
+<div class="container" fxLayout="column" fxLayoutGap="20px">
+  <!-- Manager / Profile Section-->
+  <mat-card fxFlex>
+    <mat-card-title-group>
+      <mat-card-title>Profile</mat-card-title>
+      <mat-card-subtitle>Go to the Manager profile</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      From here, each manager can manage its own profile and modify manager related information.
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button disabled [routerLink]="['/manager/profile']">GO</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Manager / Landlord Section-->
+  <mat-card fxFlex>
+    <mat-card-title-group>
+      <mat-card-title>Landlords</mat-card-title>
+      <mat-card-subtitle>Go to the Landlord Management Dashboard</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      For here you can manage information related to landlords
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button [routerLink]="['/manager/landlord']">GO</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Manager / Tenant Section-->
+  <mat-card fxFlex>
+    <mat-card-title-group>
+      <mat-card-title>Tenant</mat-card-title>
+      <mat-card-subtitle>Go to the Tenant Management Dashboard</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      For here you can manage information related to tenant
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button [routerLink]="['/manager/tenant']">GO</button>
+    </mat-card-actions>
+  </mat-card>
+  <!-- Manager / Reservation Section-->
+  <mat-card fxFlex>
+    <mat-card-title-group>
+      <mat-card-title>Reservation</mat-card-title>
+      <mat-card-subtitle>Manage Reservations</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      Manage application reservations
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button [routerLink]="['/manager/reservation']">GO</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
