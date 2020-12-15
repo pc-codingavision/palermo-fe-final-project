@@ -1,12 +1,12 @@
-<div appShadow="'hotpink'"  appShadowX="'12px'"  appShadowY="'6px'"
-    appShadowBlur="'30px'">
-  <mat-card id='card'>
+<div>
+  <mat-card cavStandUp id='card'>
     <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
       <div fxFlex='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
         fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
         fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
-        <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
+        <cav-photogallery [images]='advertisement?.property?.images'>
+        </cav-photogallery>
         <div fxLayout='column'>
           <cav-facility
             *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
@@ -45,7 +45,7 @@
 
     <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
     </cav-card-extra>
-    <p [cavStandUp]="color"> Highlight me!</p>
+
   </mat-card>
 
 </div>
