@@ -21,13 +21,15 @@
         </cav-favourite>
       </mat-card-title>
       <cav-score [config]='scoreConfig'></cav-score>
-      <cav-check-in-check-out fxShow.xs='false'
+      <cav-check-in-check-out fxShow.xs='false' fxFlexOrder.xs='3'
         *ngIf="(getReservationDates() | async) === null"
         (toggleDatesInput)="setReservationDates($event)"></cav-check-in-check-out>
     </div>
 
-    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
-    </cav-check-in-check-out>
+    <div fxFlexOrder.xs='4' fxFlexAlign="center">
+      <button type="submit" mat-raised-button [disabled]="(getReservationDates() | async) === null" (click)="openBookingDialog()">Book</button>
+    </div>
+
     <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
       (favouriteEvent)='isFavourite($event)'>
     </cav-favourite>
@@ -46,3 +48,4 @@
   <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
   </cav-card-extra>
 </mat-card>
+

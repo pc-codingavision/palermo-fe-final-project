@@ -3,7 +3,11 @@ import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisemen
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
 import { Icon } from '@shared/enum/enums'
 import { IScoreConfig } from '@shared/models/advertisement'
-import { Subject } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
+import { DialogService } from '@shared/services/dialog.service'
+import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
+import { IUser } from '@shared/models/users'
+import { AuthService } from '@modules/core/auth/auth.service'
 
 @Component({
   selector: 'cav-card-main-container',
@@ -14,8 +18,14 @@ export class CardMainContainerComponent implements OnInit {
   @Input() advertisement: MockAdvertisement
   showCardExtra = false
   scoreConfig: IScoreConfig
+  currentUser: IUser
+  reservationDates: { checkIn: Date; checkOut: Date }
 
-  constructor(private checkInCheckOutService: CheckInCheckOutService) {}
+  constructor(
+    private checkInCheckOutService: CheckInCheckOutService,
+    private dialogService: DialogService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.scoreConfig = {
@@ -25,6 +35,7 @@ export class CardMainContainerComponent implements OnInit {
       score: this.advertisement?.score,
       scoreIcon: Icon.Star,
     }
+    this.getCurrentUser()
   }
 
   isFavourite(favourite: boolean): void {
@@ -37,5 +48,22 @@ export class CardMainContainerComponent implements OnInit {
 
   setReservationDates(dates: { checkIn: Date; checkOut: Date }): void {
     this.checkInCheckOutService.setReservationDates(dates)
+  }
+
+  openBookingDialog(): void {
+    this.dialogService.openCustomDialog(NewReservationComponent, {
+      tenantUsername: this.currentUser.username,
+      propertyName: this.advertisement.property.title,
+      price: this.advertisement.price,
+      checkIn: this.reservationDates.checkIn,
+      checkOut: this.reservationDates.checkOut,
+    })
+  }
+
+  getCurrentUser(): void {
+    this.authService.currentUser$.subscribe((user) => (this.currentUser = user))
+    this.getReservationDates().subscribe(
+      (reservationDates) => (this.reservationDates = reservationDates)
+    )
   }
 }

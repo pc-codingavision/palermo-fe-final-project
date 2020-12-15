@@ -1,0 +1,30 @@
+<h1>Booking summary</h1>
+
+<h2>User: {{data.tenantUsername}}</h2>
+<h2>Property: {{data.propertyName}}</h2>
+<h2>Price: {{data.price | currency}}</h2>
+
+<cav-check-in-check-out [reservationDate]="{checkIn: data.checkIn, checkOut: data.checkOut}" [disabledPicker]="true"></cav-check-in-check-out>
+
+<mat-form-field appearance="fill">
+  <mat-label>Guests: </mat-label>
+  <mat-select>
+    <mat-option value="option">1</mat-option>
+    <mat-option value="option">2</mat-option>
+    <mat-option value="option">3</mat-option>
+    <mat-option value="option">4</mat-option>
+    <mat-option value="option">5</mat-option>
+    <mat-option value="option">6</mat-option>
+    <mat-option value="option">7</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+
+<mat-form-field appearance="fill">
+  <mat-label>Special Request</mat-label>
+  <textarea matInput></textarea>
+</mat-form-field>
+
+<br>
+<button mat-raised-button color="primary">Confirm</button>
