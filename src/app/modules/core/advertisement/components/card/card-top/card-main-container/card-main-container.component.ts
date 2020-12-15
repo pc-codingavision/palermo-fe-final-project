@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
@@ -9,19 +9,20 @@ import { IScoreConfig } from '@shared/models/advertisement'
 import { IUser } from '@shared/models/users'
 import { DialogService } from '@shared/services/dialog.service'
 import { SnackBarService } from '@shared/services/snack-bar.service'
-import { Subject } from 'rxjs'
+import { Subject, Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-card-main-container',
   templateUrl: './card-main-container.component.html',
   styleUrls: ['./card-main-container.component.scss'],
 })
-export class CardMainContainerComponent implements OnInit {
+export class CardMainContainerComponent implements OnInit, OnDestroy {
   @Input() advertisement: MockAdvertisement
   showCardExtra = false
   scoreConfig: IScoreConfig
   currentUser: IUser
   reservationDates: { checkIn: Date; checkOut: Date }
+  subscriptions: Subscription[] = []
 
   constructor(
     private checkInCheckOutService: CheckInCheckOutService,
@@ -40,6 +41,10 @@ export class CardMainContainerComponent implements OnInit {
       scoreIcon: Icon.Star,
     }
     this.getReservationInfo()
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe())
   }
 
   isFavourite(favourite: boolean): void {
@@ -64,34 +69,42 @@ export class CardMainContainerComponent implements OnInit {
         checkOut: this.reservationDates.checkOut,
       })
 
-      this.dialogService
-        .getDialogRef()
-        .afterClosed()
-        .subscribe((result: { guestNumber: number; specialRequest: string }) => {
-          if (result) {
-            const newReservation = {
-              id: null,
-              tenantId: this.currentUser.id,
-              propertyId: this.advertisement.property.id,
-              guestNumber: +result.guestNumber,
-              checkIn: this.reservationDates.checkIn,
-              checkOut: this.reservationDates.checkOut,
-              specialRequest: result.specialRequest,
+      this.subscriptions.push(
+        this.dialogService
+          .getDialogRef()
+          .afterClosed()
+          .subscribe((result: { guestNumber: number; specialRequest: string }) => {
+            if (result) {
+              const newReservation = {
+                id: null,
+                tenantId: this.currentUser.id,
+                propertyId: this.advertisement.property.id,
+                guestNumber: +result.guestNumber,
+                checkIn: this.reservationDates.checkIn,
+                checkOut: this.reservationDates.checkOut,
+                specialRequest: result.specialRequest,
+              }
+              this.reservationService
+                .add(newReservation)
+                .subscribe(() =>
+                  this.snackBarService.openSnackBar('Reservation made correctly', 'Close')
+                )
             }
-
-            console.log(newReservation)
-            this.reservationService.add(newReservation).subscribe()
-          }
-        })
+          })
+      )
     } else {
       this.snackBarService.openSnackBar('You must be logged to make a booking', 'Close')
     }
   }
 
   getReservationInfo(): void {
-    this.authService.currentUser$.subscribe((user) => (this.currentUser = user))
-    this.getReservationDates().subscribe(
-      (reservationDates) => (this.reservationDates = reservationDates)
+    this.subscriptions.push(
+      this.authService.currentUser$.subscribe((user) => (this.currentUser = user))
+    )
+    this.subscriptions.push(
+      this.getReservationDates().subscribe(
+        (reservationDates) => (this.reservationDates = reservationDates)
+      )
     )
   }
 }
