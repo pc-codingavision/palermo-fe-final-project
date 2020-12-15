@@ -1,1 +1,43 @@
-<p>advertisement-details works!</p>
+<mat-card id='card' *ngIf='advertisement'>
+  <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
+
+    <div fxFlex.gt-sm='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
+      fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
+      fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
+      <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
+      <div fxLayout='column'>
+        <cav-facility
+          *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
+          [facility]='facility'>
+        </cav-facility>
+      </div>
+    </div>
+
+    <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
+      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
+      <mat-card-title fxLayoutAlign.xs='center center'>
+        {{advertisement?.property?.title}}
+        <cav-favourite fxShow.gt-xs='false'></cav-favourite>
+      </mat-card-title>
+      <div fxLayoutAlign.xs='center center' fxShow.gt-xs='false'>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}}</h2>
+      </div>
+      <cav-score [config]='scoreConfig'></cav-score>
+      <cav-check-in-check-out fxShow.xs='false'></cav-check-in-check-out>
+    </div>
+
+    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
+    </cav-check-in-check-out>
+    <div fxLayout="column" fxShow.xs='false'>
+      <div>
+        <cav-favourite fxFlex='5%'>
+        </cav-favourite>
+      </div>
+      <div>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}} </h2>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <cav-card-extra [advertisement]='advertisement'></cav-card-extra>
+</mat-card>
