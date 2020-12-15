@@ -34,4 +34,8 @@ export class SearchComponent implements OnInit {
   onChange(): void {
     this.searchService.search(this.fullName, this.email, this.phone).subscribe()
   }
+
+  isCharacterAllowed(event: KeyboardEvent): boolean {
+    return event.key.match(/[^0-9]/g) === null
+  }
 }
