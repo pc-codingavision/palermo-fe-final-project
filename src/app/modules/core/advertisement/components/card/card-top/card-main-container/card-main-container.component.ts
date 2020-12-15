@@ -81,7 +81,6 @@ export class CardMainContainerComponent implements OnInit {
 
             console.log(newReservation)
             this.reservationService.add(newReservation).subscribe()
-            this.reservationService.getAll().subscribe((test) => console.log(test))
           }
         })
     } else {

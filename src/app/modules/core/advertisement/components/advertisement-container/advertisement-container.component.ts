@@ -39,19 +39,22 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
       )
     )
     this.getReservationDates()
-    this.subscriptions.push(
-      this.reservationService
-        .getAll()
-        .subscribe((reservations) => (this.reservations = reservations))
-    )
+    this.reservationService.getAll()
 
     combineLatest([
       this.sidebarService.price$,
       this.sidebarService.facility$,
       this.sidebarService.score$,
       this.checkInCheckOutService.reservationDates$,
-    ]).subscribe(([price, facility, score, reservationDate]) =>
-      this.getFilteredAdvertisements(price, score, facility, reservationDate)
+      this.reservationService.reservations$,
+    ]).subscribe(([price, facility, score, reservationDate, reservations]) =>
+      this.getFilteredAdvertisements(
+        price,
+        score,
+        facility,
+        reservationDate,
+        reservations
+      )
     )
   }
 
@@ -63,7 +66,8 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
     price: number,
     score: number,
     facility: IFacility,
-    reservationDate: { checkIn: Date; checkOut: Date }
+    reservationDate: { checkIn: Date; checkOut: Date },
+    reservations: IReservation[]
   ): void {
     let tmpAdvertisement: MockAdvertisement[] = this.advertisements?.map((adv) => ({
       ...adv,
@@ -93,7 +97,7 @@ export class AdvertisementContainerComponent implements OnInit, OnDestroy {
         })
       }
       if (reservationDate != null) {
-        const filteredReservations: IReservation[] = this.reservations.filter(
+        const filteredReservations: IReservation[] = reservations.filter(
           (res) =>
             (moment(reservationDate.checkIn).isSameOrBefore(res.checkIn) &&
               moment(reservationDate.checkOut).isSameOrAfter(res.checkOut)) ||
