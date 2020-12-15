@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
@@ -13,7 +14,7 @@ describe('CardMainContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [CardMainContainerComponent],
-        imports: [MatDialogModule, MatSnackBarModule],
+        imports: [MatDialogModule, MatSnackBarModule, HttpClientModule],
         providers: [{ provide: AuthService, useClass: InMemoryAuthService }],
       }).compileComponents()
     })
