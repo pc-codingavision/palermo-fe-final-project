@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
-import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 @Component({
@@ -10,7 +10,8 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./tenant-container.component.scss'],
 })
 export class TenantContainerComponent implements OnInit {
-  tenants$: Observable<Tenant[]>
+  tenants: Tenant[]
+  dataSource: MatTableDataSource<Tenant>
   constructor(private inMemoryTenantService: InMemoryTenantService) {}
 
   ngOnInit(): void {
@@ -18,8 +19,17 @@ export class TenantContainerComponent implements OnInit {
   }
 
   getAll(): void {
-    this.tenants$ = this.inMemoryTenantService
+    this.inMemoryTenantService
       .getAll()
       .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
+      .subscribe((tenants) => {
+        this.dataSource = new MatTableDataSource<Tenant>(tenants)
+        this.tenants = tenants
+      })
+  }
+
+  applyFilter(event: string): void {
+    const filterValue = event
+    this.dataSource.filter = filterValue?.trim().toLowerCase()
   }
 }

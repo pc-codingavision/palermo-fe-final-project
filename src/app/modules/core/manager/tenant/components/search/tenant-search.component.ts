@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 
 @Component({
-  selector: 'cav-search',
+  selector: 'cav-tenant-search',
   templateUrl: './tenant-search.component.html',
   styleUrls: ['./tenant-search.component.scss'],
 })
 export class TenantSearchComponent implements OnInit {
+  @Output() inputSearch = new EventEmitter<string>()
   constructor() {}
 
   ngOnInit(): void {}
+
+  emitString(data: string): void {
+    this.inputSearch.emit(data)
+  }
 }

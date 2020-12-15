@@ -1,1 +1,3 @@
-<cav-tenant-list [tenants]="tenants$ |async"></cav-tenant-list>
+<cav-tenant-search (inputSearch)="applyFilter($event)">
+</cav-tenant-search>
+<cav-tenant-list [dataSource]="dataSource"></cav-tenant-list>
