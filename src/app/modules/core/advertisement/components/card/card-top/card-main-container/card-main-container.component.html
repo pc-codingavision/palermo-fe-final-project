@@ -20,22 +20,29 @@
         <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
         </cav-favourite>
       </mat-card-title>
+      <div fxLayoutAlign.xs='center center' fxShow.gt-xs='false'>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}}</h2>
+      </div>
       <cav-score [config]='scoreConfig'></cav-score>
       <cav-check-in-check-out fxShow.xs='false' fxFlexOrder.xs='3'
         *ngIf="(getReservationDates() | async) === null"
         (toggleDatesInput)="setReservationDates($event)"></cav-check-in-check-out>
+      <div>
+        <button type="submit" mat-raised-button
+          [disabled]="(getReservationDates() | async) === null"
+          (click)="openBookingDialog()">Book</button>
+      </div>
     </div>
 
-    <div fxFlexOrder.xs='4' fxFlexAlign="center">
-      <button type="submit" mat-raised-button
-        [disabled]="(getReservationDates() | async) === null"
-        (click)="openBookingDialog()">Book</button>
+    <div fxLayout="column" fxShow.xs='false'>
+      <div>
+        <cav-favourite fxFlex='5%' (favouriteEvent)='isFavourite($event)'>
+        </cav-favourite>
+      </div>
+      <div>
+        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}} </h2>
+      </div>
     </div>
-
-    <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
-      (favouriteEvent)='isFavourite($event)'>
-    </cav-favourite>
-
   </mat-card-content>
 
   <div fxLayoutAlign.xs='center center'>
