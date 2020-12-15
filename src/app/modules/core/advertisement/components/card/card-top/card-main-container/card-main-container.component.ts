@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
+import { AuthService } from '@modules/core/auth/auth.service'
 import { Icon } from '@shared/enum/enums'
 import { IScoreConfig } from '@shared/models/advertisement'
-import { Observable, Subject } from 'rxjs'
-import { DialogService } from '@shared/services/dialog.service'
-import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { IUser } from '@shared/models/users'
-import { AuthService } from '@modules/core/auth/auth.service'
+import { DialogService } from '@shared/services/dialog.service'
+import { Subject } from 'rxjs'
 
 @Component({
   selector: 'cav-card-main-container',

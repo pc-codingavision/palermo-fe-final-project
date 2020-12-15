@@ -4,7 +4,9 @@
 <h2>Property: {{data.propertyName}}</h2>
 <h2>Price: {{data.price | currency}}</h2>
 
-<cav-check-in-check-out [reservationDate]="{checkIn: data.checkIn, checkOut: data.checkOut}" [disabledPicker]="true"></cav-check-in-check-out>
+<cav-check-in-check-out
+  [reservationDate]="{checkIn: data.checkIn, checkOut: data.checkOut}"
+  [disabledPicker]="true"></cav-check-in-check-out>
 
 <mat-form-field appearance="fill">
   <mat-label>Guests: </mat-label>

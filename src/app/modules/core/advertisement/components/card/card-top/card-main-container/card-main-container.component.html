@@ -27,7 +27,9 @@
     </div>
 
     <div fxFlexOrder.xs='4' fxFlexAlign="center">
-      <button type="submit" mat-raised-button [disabled]="(getReservationDates() | async) === null" (click)="openBookingDialog()">Book</button>
+      <button type="submit" mat-raised-button
+        [disabled]="(getReservationDates() | async) === null"
+        (click)="openBookingDialog()">Book</button>
     </div>
 
     <cav-favourite fxFlex='5%' fxLayoutAlign='end' fxShow.xs='false'
@@ -48,4 +50,3 @@
   <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
   </cav-card-extra>
 </mat-card>
-
