@@ -24,12 +24,14 @@ export class TenantContainerComponent implements OnInit {
       .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
       .subscribe((tenants) => {
         this.dataSource = new MatTableDataSource<Tenant>(tenants)
-        this.tenants = tenants
       })
   }
 
   applyFilter(event: string): void {
-    const filterValue = event
-    this.dataSource.filter = filterValue?.trim().toLowerCase()
+    this.dataSource.filter = event.trim().toLowerCase()
+  }
+
+  selectStatus(event: string): void {
+    this.dataSource.filter = event
   }
 }

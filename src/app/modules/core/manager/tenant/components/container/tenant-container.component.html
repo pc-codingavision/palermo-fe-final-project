@@ -1,3 +1,4 @@
-<cav-tenant-search (inputSearch)="applyFilter($event)">
+<cav-tenant-search (inputSearch)="applyFilter($event)"
+  (checkStatus)="selectStatus($event)">
 </cav-tenant-search>
 <cav-tenant-list [dataSource]="dataSource"></cav-tenant-list>
