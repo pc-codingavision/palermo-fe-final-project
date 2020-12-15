@@ -7,47 +7,46 @@
   <div class="inputs" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="4%"
     fxLayoutAlign="center center">
     <div>
-        <mat-form-field>
-          <input matInput type="search" placeholder="Search by Name" [(ngModel)]="fullName" name="fullName"
-                                (ngModelChange)="onChange()" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <div *ngIf="fullName.length > 1">
-              <mat-option *ngFor="let landlord of landlords$ | async"
-                          [value]="landlord.fullName.toLowerCase()">
-                {{landlord.fullName}}
-              </mat-option>
-            </div>
-          </mat-autocomplete>
-          <button mat-button *ngIf="fullName" matSuffix mat-icon-button aria-label="Clear" (click)="fullName=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field>
-          <input matInput type="search" placeholder="Search by Email" [(ngModel)]="email" name="email"
-                                (ngModelChange)="onChange()" [matAutocomplete]="mail">
-          <mat-autocomplete #mail="matAutocomplete">
-            <div *ngIf="email.length > 1">
-              <mat-option *ngFor="let landlord of landlords$ | async"
-                          [value]="landlord.mail">
-                {{landlord.mail}}
-              </mat-option>
-            </div>
-          </mat-autocomplete>
-          <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="email=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search by Name" [(ngModel)]="fullName"
+          name="fullName" (ngModelChange)="onChange()" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <div *ngIf="fullName.length > 1">
+            <mat-option *ngFor="let landlord of landlords$ | async"
+              [value]="landlord.fullName.toLowerCase()">
+              {{landlord.fullName}}
+            </mat-option>
+          </div>
+        </mat-autocomplete>
+        <button mat-button *ngIf="fullName" matSuffix mat-icon-button aria-label="Clear"
+          (click)="fullName=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
     <div>
       <mat-form-field>
-        <input matInput type="search"
-               placeholder="Search by Phone"
-               [(ngModel)]="phone" name="phone"
-                (ngModelChange)="onChange()"
-               (keypress)="isCharacterAllowed($event)"
-               [matAutocomplete]="telephone">
+        <input matInput type="search" placeholder="Search by Email" [(ngModel)]="email"
+          name="email" (ngModelChange)="onChange()" [matAutocomplete]="mail">
+        <mat-autocomplete #mail="matAutocomplete">
+          <div *ngIf="email.length > 1">
+            <mat-option *ngFor="let landlord of landlords$ | async"
+              [value]="landlord.mail">
+              {{landlord.mail}}
+            </mat-option>
+          </div>
+        </mat-autocomplete>
+        <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear"
+          (click)="email=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput type="search" placeholder="Search by Phone" [(ngModel)]="phone"
+          name="phone" (ngModelChange)="onChange()"
+          (keypress)="isCharacterAllowed($event)" [matAutocomplete]="telephone">
         <mat-autocomplete #telephone="matAutocomplete">
           <div *ngIf="phone.length > 1">
             <mat-option *ngFor="let phone of phoneMatch$ | async" [value]="phone">
@@ -55,7 +54,8 @@
             </mat-option>
           </div>
         </mat-autocomplete>
-        <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''">
+        <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear"
+          (click)="phone=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
