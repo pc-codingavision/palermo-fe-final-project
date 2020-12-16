@@ -1,43 +1,56 @@
-import { Component, OnInit } from '@angular/core'
-import { AdvertisementService } from '@modules/core/advertisement/advertisement.service'
+import { Component, Input, OnChanges, OnInit } from '@angular/core'
 import { IMockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
-import { Observable } from 'rxjs'
 
 @Component({
   selector: 'cav-latest-container',
   templateUrl: './latest-container.component.html',
   styleUrls: ['./latest-container.component.scss'],
 })
-export class LatestContainerComponent implements OnInit {
-  latestAdvertisements: Observable<IMockAdvertisement[]>
+export class LatestContainerComponent implements OnInit, OnChanges {
+  @Input() advertisements: IMockAdvertisement[]
+  // tslint:disable-next-line:variable-name
+  private _maxAdv: number
+  latestAdvertisements: IMockAdvertisement[]
   start = 0
-  end = 2
+  end = 5
 
-  constructor(private advService: AdvertisementService) {}
+  @Input() set maxAdv(maxAdv: number) {
+    if (maxAdv > 5) {
+      this._maxAdv = maxAdv
+    } else {
+      this._maxAdv = 5
+    }
+  }
 
-  ngOnInit(): void {
-    this.latestAdvertisements = this.advService.getLatestAdv()
+  get maxAdv(): number {
+    return this._maxAdv
+  }
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    this.latestAdvertisements = this.advertisements.slice(0, this.maxAdv)
   }
 
   goForward(): void {
-    if (this.end !== 3) {
+    if (this.end < this.latestAdvertisements.length) {
       this.start++
       this.end++
-    } else if (this.end === 3) {
+    } else {
       this.start = 0
-      this.end = 2
+      this.end = 5
     }
-    this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
   }
 
   goBehind(): void {
     if (this.start !== 0) {
       this.start--
       this.end--
-    } else if (this.start === 0) {
-      this.start = 1
-      this.end = 3
+    } else {
+      this.start = this.latestAdvertisements.length - 5
+      this.end = this.latestAdvertisements.length
     }
-    this.latestAdvertisements = this.advService.getLatestAdv(this.start, this.end)
   }
 }

@@ -76,35 +76,35 @@ describe('LandlordService', () => {
   })
 
   it('#getdById should return null for not existing id or null', (done: DoneFn) => {
-    service.getById(5).subscribe((landlord) => expect(landlord).toBeNull())
+    service.getById(100).subscribe((landlord) => expect(landlord).toBeNull())
     service.getById(null).subscribe((landlord) => expect(landlord).toBeNull())
     done()
   })
 
   it('#deleteLandlord should delete landlord', () => {
-    expect(service.landlords.length).toBe(3)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
     service.delete(1)
-    expect(service.landlords.length).toBe(2)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length - 1)
     expect(service.landlords).not.toContain(buildLandlords[0])
   })
 
   it("#delete shouldn't delete a landarlord for not existing id", () => {
-    expect(service.landlords.length).toBe(3)
-    service.delete(6)
-    expect(service.landlords.length).toBe(3)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
+    service.delete(LANDLORDS_MOCK_DATA.length + 1)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
   })
 
   it('#add should add a landlord', () => {
-    expect(service.landlords.length).toBe(3)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
     service.add(defaultLandlord)
-    expect(service.landlords.length).toBe(4)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length + 1)
     expect(service.landlords).toContain(defaultLandlord)
   })
 
   it("#add shouldn't add if we don't pass Landlord ", () => {
-    expect(service.landlords.length).toBe(3)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
     service.add(null)
-    expect(service.landlords.length).toBe(3)
+    expect(service.landlords.length).toBe(LANDLORDS_MOCK_DATA.length)
   })
 
   it('#update should update a landlord and return it', (done: DoneFn) => {
@@ -130,7 +130,7 @@ describe('LandlordService', () => {
   })
 
   it('#genId should generate a new id', () => {
-    expect(service.genId()).toEqual(4)
+    expect(service.genId()).toEqual(LANDLORDS_MOCK_DATA.length + 1)
     service.landlords = []
     expect(service.genId()).toEqual(1)
   })

@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing'
+import { MOCKADVERTISEMENTS_MOCK_DATA } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import {
   ADVERTISEMENTS_MOCK_DATA,
   LANDLORDS_MOCK_DATA,
@@ -26,7 +27,7 @@ describe('InMemoryDataService', () => {
     })
 
     it('the advertisements property should contain the advertisements mock data', () => {
-      expect(service.createDb().advertisements).toEqual(ADVERTISEMENTS_MOCK_DATA)
+      expect(service.createDb().advertisements).toEqual(MOCKADVERTISEMENTS_MOCK_DATA)
     })
 
     it('the landlords property should contain the landlords mock data', () => {
@@ -44,7 +45,7 @@ describe('InMemoryDataService', () => {
     })
 
     it('should return the highest landlord id + 1 if an array of landlords has been passed', () => {
-      expect(service.genId(LANDLORDS_MOCK_DATA)).toBe(4)
+      expect(service.genId(LANDLORDS_MOCK_DATA)).toBe(LANDLORDS_MOCK_DATA.length + 1)
     })
 
     it('should return the highest reservation id + 1 if an array of reservations has been passed', () => {

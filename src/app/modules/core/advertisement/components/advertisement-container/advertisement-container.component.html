@@ -1,6 +1,16 @@
 <div fxLayout='column' fxLayoutGap='30px' id='body'>
   <div>
-    <cav-latest-container></cav-latest-container>
+    <cav-latest-container [advertisements]='advertisements'>
+    </cav-latest-container>
+  </div>
+  <div *ngIf="reservationDates" fxLayout='column' id="check-in-check-out">
+    <cav-check-in-check-out fxLayoutAlign="center"
+      (toggleDatesInput)="setReservationDates($event)"
+      [reservationDate]="reservationDates"></cav-check-in-check-out>
+    <div fxLayoutAlign="center">
+      <button mat-raised-button color="primary"
+        (click)="resetReservationDates()">Clear</button>
+    </div>
   </div>
   <div fxLayout='row' fxLayout.lt-md='column' fxLayoutGap='30px'>
     <div fxLayout='column' fxLayoutAlign.lt-md='center center' fxLayoutGap='4%'>
