@@ -17,10 +17,7 @@ export class SearchComponent implements OnInit {
   email = ''
   phone = ''
 
-  constructor(
-    private searchService: SearchService,
-    private landlordService: LandlordService
-  ) {}
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
     this.landlords$ = this.searchService.getSearchResult()
