@@ -49,7 +49,6 @@ export class TenantContainerComponent implements OnInit {
   }
 
   selectStatus(status: string): void {
-    console.log(`Status: ${status}`)
     this.dataSource.filter = JSON.stringify(
       Object.assign(this.filterCriteria, {
         status: status === 'true',
