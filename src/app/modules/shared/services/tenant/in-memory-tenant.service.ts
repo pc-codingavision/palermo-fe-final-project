@@ -46,7 +46,7 @@ export class InMemoryTenantService {
           if (tenant !== undefined) {
             return Tenant.Build(tenant)
           }
-          return console.log('mha')
+          return tenant
         }),
         catchError(this.handleError<Tenant>('getById'))
       )

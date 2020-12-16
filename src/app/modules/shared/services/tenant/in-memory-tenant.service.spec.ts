@@ -1,5 +1,4 @@
 import { Overlay } from '@angular/cdk/overlay'
-import { HttpErrorResponse } from '@angular/common/http'
 import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -91,22 +90,6 @@ describe('InMemoryTenantService', () => {
       expect(req.request.method).toEqual('GET')
       req.flush(buildTenants[0])
       expect(data).toEqual(buildTenants[0])
-    })
-
-    it('should throw errorResponse for not existing id ', () => {
-      const errorResponse = new ErrorEvent('error', {
-        message: `'Tenants' with id=6 not found`,
-      })
-      service.getById(6).subscribe(
-        (response) => fail(),
-        (error: HttpErrorResponse) => {
-          expect(error.error.message).toEqual(errorResponse)
-        }
-      )
-
-      const req = httpTestingController.expectOne('api/tenants/6')
-      expect(req.request.method).toEqual('GET')
-      req.error(errorResponse)
     })
   })
 
