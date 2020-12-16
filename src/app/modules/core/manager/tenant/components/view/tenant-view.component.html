@@ -1,1 +1,57 @@
-<p>view works!</p>
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
+
+    <mat-label>Status: <strong [ngClass]="(tenant?.status)?'active':'disactive'">
+        {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
+  </mat-card-header>
+
+  <mat-card-content fxLayoutAlign='center'>
+    <form [formGroup]='tenantForm' fxLayout='row'>
+      <div fxLayout='column'>
+        <mat-label>First Name:</mat-label>
+        <input type="text" formControlName='firstName' readonly>
+
+        <mat-label>Last Name:</mat-label>
+        <input type="text" formControlName='lastName' readonly>
+
+        <mat-label>Email:</mat-label>
+        <input type="text" formControlName='email' readonly>
+
+        <mat-label>Username:</mat-label>
+        <input type="text" formControlName='username' readonly>
+
+        <mat-label>Date of Birth:</mat-label>
+        <input type="text" formControlName='dateOfBirth'>
+      </div>
+
+      <div fxLayout='column'>
+        <mat-label>Line 1:</mat-label>
+        <input type="text" formControlName='line1' readonly>
+
+        <mat-label>Line 2:</mat-label>
+        <input type="text" formControlName='line2' readonly>
+
+        <mat-label>City:</mat-label>
+        <input type="text" formControlName='city' readonly>
+
+        <mat-label>State:</mat-label>
+        <input type="text" formControlName='state' readonly>
+
+        <mat-label>Zip Code:</mat-label>
+        <input type="text" formControlName='zipCode' readonly>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+
+    <button mat-raised-button color="primary"
+      routerLink="/manager/tenant/edit/{{tenant?.id}}">Edit</button>
+
+    <button mat-raised-button color="accent"
+      (click)="openDialog(tenant.status ? 'deactivate' : 'activate')">{{tenant?.status ? 'Deactivate' : 'Activate'}}</button>
+
+    <button mat-raised-button color="warn" (click)="openDialog('delete')">Delete</button>
+
+  </mat-card-actions>
+</mat-card>
