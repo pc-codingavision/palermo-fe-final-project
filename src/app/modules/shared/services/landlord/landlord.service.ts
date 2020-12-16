@@ -22,12 +22,8 @@ export class LandlordService {
         catchError(this.handleError<Landlord[]>('getAll'))
       )
   }
-  getLength(): Observable<any> {
-    return this.getAll().pipe(
-      map((landlords) => {
-        console.log(landlords), landlords.length
-      })
-    )
+  getLength(): Observable<number> {
+    return this.getAll().pipe(map((landlords) => landlords.length))
   }
 
   getById(id: number): Observable<Landlord | null> {
