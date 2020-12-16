@@ -85,12 +85,18 @@ describe('TenantService', () => {
   it('#getByStatus should return all tenants who have that status', (done: DoneFn) => {
     service
       .getByStatus(true)
-      .subscribe((tenants) => expect(tenants).toEqual(service.tenants))
+      .subscribe((tenants) =>
+        expect(tenants).toEqual(service.tenants.filter((x) => x.status === true))
+      )
     done()
   })
 
   it("#getByStatus should return an empty array if it doesn't find anything with that status or if we pass null", (done: DoneFn) => {
-    service.getByStatus(false).subscribe((tenants) => expect(tenants).toEqual([]))
+    service
+      .getByStatus(false)
+      .subscribe((tenants) =>
+        expect(tenants).toEqual(service.tenants.filter((x) => x.status === false))
+      )
     service.getByStatus(null).subscribe((tenants) => expect(tenants).toEqual([]))
     done()
   })
@@ -103,9 +109,9 @@ describe('TenantService', () => {
   })
 
   it("#add shouldn't add if we don't pass tenant ", () => {
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length)
     service.add(null)
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length)
   })
 
   it('#update should update a tenant and return it', (done: DoneFn) => {
@@ -123,15 +129,15 @@ describe('TenantService', () => {
   })
 
   it('#delete should delete tenant', () => {
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length)
     service.delete(1)
-    expect(service.tenants.length).toBe(1)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length - 1)
     expect(service.tenants).not.toContain(buildTenants[0])
   })
 
   it("#delete shouldn't delete a tenant for not existing id", () => {
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length)
     service.delete(6)
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(TENANTS_MOCK_DATA.length)
   })
 })
