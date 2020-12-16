@@ -1,12 +1,15 @@
+import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { PhoneType, Role } from '@shared/enum/enums'
 import { Landlord } from '@shared/models/landlord'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
 
+import { commonTestingModules } from './../../../../../shared/common.testing'
 import { SearchService } from './search.service'
 
 describe('SearchService', () => {
   let service: SearchService
+  let httpTestingController: HttpTestingController
   const landlord: Landlord = {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
@@ -31,8 +34,13 @@ describe('SearchService', () => {
   }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({})
+    TestBed.configureTestingModule({
+      imports: [commonTestingModules],
+    })
+
+    httpTestingController = TestBed.inject(HttpTestingController)
     service = TestBed.inject(SearchService)
+    service.filteredLandlords$.next(LANDLORDS_MOCK_DATA)
   })
 
   it('should be created', () => {

@@ -22,8 +22,12 @@ export class LandlordService {
         catchError(this.handleError<Landlord[]>('getAll'))
       )
   }
-  getLength(): Observable<number> {
-    return this.getAll().pipe(map((landlords) => landlords.length))
+  getLength(): Observable<any> {
+    return this.getAll().pipe(
+      map((landlords) => {
+        console.log(landlords), landlords.length
+      })
+    )
   }
 
   getById(id: number): Observable<Landlord | null> {
@@ -68,7 +72,8 @@ export class LandlordService {
   private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${JSON.stringify(error)}`)
-      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
+      error = error.body ? error.body.error : error
+      this.snackBar.openSnackBar(`${error}`, 'close', 10000)
 
       return of(result as T)
     }
