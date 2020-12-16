@@ -1,4 +1,5 @@
 import { Overlay } from '@angular/cdk/overlay'
+import { HttpErrorResponse } from '@angular/common/http'
 import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -97,7 +98,7 @@ describe('InMemoryTenantService', () => {
         message: `'Tenants' with id=6 not found`,
       })
       service.getById(6).subscribe(
-        (response) => fail(errorResponse),
+        (response) => fail(),
         (error: HttpErrorResponse) => {
           expect(error.error.message).toEqual(errorResponse)
         }
