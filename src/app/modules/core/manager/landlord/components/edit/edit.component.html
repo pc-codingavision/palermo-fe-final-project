@@ -159,7 +159,7 @@
             <mat-error *ngIf="landlordForm?.get('zipCode')?.hasError('required')">
               Input required
             </mat-error>
-            <mat-error *ngIf="landlordForm?.get('zipCode').value?.length !== 5">
+            <mat-error *ngIf="landlordForm?.get('zipCode')?.value?.length !== 5">
               Zip Code, must be 5 characters long
             </mat-error>
           </mat-form-field>

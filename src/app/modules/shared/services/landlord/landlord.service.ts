@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Landlord } from '@shared/models/landlord'
 import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, of } from 'rxjs'
-import { catchError, map } from 'rxjs/operators'
+import { catchError, map, tap } from 'rxjs/operators'
+import { Landlord } from 'src/app/shared/models/landlord'
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,6 @@ export class LandlordService {
         catchError(this.handleError<Landlord[]>('getAll'))
       )
   }
-
   getLength(): Observable<number> {
     return this.getAll().pipe(map((landlords) => landlords.length))
   }
@@ -35,7 +34,13 @@ export class LandlordService {
       )
   }
 
-  add(landlord: any): Observable<Landlord> {
+  delete(id: number): Observable<Landlord> {
+    return this.http
+      .delete<Landlord>(`${this.landlordsUrl}/${id}`)
+      .pipe(catchError(this.handleError<Landlord>('delete')))
+  }
+
+  add(landlord: Landlord): Observable<Landlord> {
     return this.http
       .post<Landlord>(this.landlordsUrl, landlord)
       .pipe(catchError(this.handleError<Landlord>('add')))
@@ -47,14 +52,8 @@ export class LandlordService {
       .pipe(catchError(this.handleError<Landlord>('update')))
   }
 
-  delete(id: number): Observable<Landlord> {
-    return this.http
-      .delete<Landlord>(`${this.landlordsUrl}/${id}`)
-      .pipe(catchError(this.handleError<Landlord>('delete')))
-  }
-
   toggleStatus(landlord: Landlord): Observable<boolean> {
-    return this.http.patch<string>(this.landlordsUrl, landlord).pipe(
+    return this.http.put<string>(this.landlordsUrl, landlord).pipe(
       map((result: string) => (result === 'true' ? true : false)),
       catchError(this.handleError<Landlord>('update'))
     )
@@ -68,7 +67,8 @@ export class LandlordService {
   private handleError<T>(operation = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${JSON.stringify(error)}`)
-      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
+      error = error.body ? error.body.error : error
+      this.snackBar.openSnackBar(`${error}`, 'close', 10000)
 
       return of(result as T)
     }

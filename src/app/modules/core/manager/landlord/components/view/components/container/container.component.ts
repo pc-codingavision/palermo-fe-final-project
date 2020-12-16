@@ -17,9 +17,8 @@ export class ViewContainerComponent implements OnInit {
 
   toggleStatus(operation: string): void {
     if (operation === 'deactivate' || operation === 'activate') {
-      this.update.emit(this.landlord)
       this.landlord.status = !this.landlord.status
-      console.log(this.landlord.status)
+      this.update.emit(this.landlord)
     } else if (operation === 'delete') {
       this.remove.emit(this.landlord)
     }

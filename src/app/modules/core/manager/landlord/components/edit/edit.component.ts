@@ -149,11 +149,9 @@ export class EditComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    if (this.isEditLandlord) {
-      this.landlordService.update(newLandlord)
-    } else {
-      this.landlordService.add(newLandlord)
-    }
+    this.isEditLandlord
+      ? this.landlordService.update(newLandlord).subscribe()
+      : this.landlordService.add(newLandlord).subscribe()
 
     this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }
