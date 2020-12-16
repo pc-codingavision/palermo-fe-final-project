@@ -1,12 +1,9 @@
 import { Overlay } from '@angular/cdk/overlay'
-import { HttpErrorResponse } from '@angular/common/http'
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing'
+import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
+import { commonTestingModules } from '@shared/common.testing'
 import { PhoneType, Role } from '@shared/enum/enums'
 import { TENANTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Tenant } from '@shared/models/tenant'
@@ -52,7 +49,7 @@ describe('InMemoryTenantService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [commonTestingModules],
       providers: [InMemoryTenantService, MatSnackBar, Overlay],
     })
 

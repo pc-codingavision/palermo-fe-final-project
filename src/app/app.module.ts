@@ -1,4 +1,6 @@
+import { registerLocaleData } from '@angular/common'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
+import localeIt from '@angular/common/locales/it'
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -18,6 +20,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+
+registerLocaleData(localeIt)
 
 const appComponents = [
   AppComponent,

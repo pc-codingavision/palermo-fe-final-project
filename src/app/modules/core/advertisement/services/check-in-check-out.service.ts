@@ -20,4 +20,8 @@ export class CheckInCheckOutService {
       this.reservationDates$.next(dates)
     }
   }
+
+  resetReservationDates(): void {
+    this.reservationDates$.next(null)
+  }
 }

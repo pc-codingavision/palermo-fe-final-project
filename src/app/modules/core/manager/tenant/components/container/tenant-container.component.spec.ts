@@ -1,8 +1,8 @@
 import { Overlay } from '@angular/cdk/overlay'
-import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { TenantContainerComponent } from '@modules/core/manager/tenant/components/container/tenant-container.component'
+import { commonTestingModules } from '@shared/common.testing'
 
 describe('TenantContainerComponent', () => {
   let component: TenantContainerComponent
@@ -12,7 +12,7 @@ describe('TenantContainerComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [TenantContainerComponent],
-        imports: [HttpClientTestingModule],
+        imports: [commonTestingModules],
         providers: [MatSnackBar, Overlay],
       }).compileComponents()
     })

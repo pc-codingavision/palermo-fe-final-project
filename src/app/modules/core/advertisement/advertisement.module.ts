@@ -24,6 +24,7 @@ import { SidebarContainerComponent } from '@modules/core/advertisement/component
 import { SharedModule } from '@modules/shared/shared.module'
 
 import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component'
+import { NewReservationComponent } from './components/reservation/new-reservation/new-reservation.component'
 
 const advertisementsComponent = [
   AdvertisementListComponent,
@@ -46,11 +47,12 @@ const advertisementsComponent = [
   PriceFilterComponent,
   FacilitiesComponent,
   ReviewDialogComponent,
+  NewReservationComponent,
 ]
 
 @NgModule({
   declarations: [...advertisementsComponent],
   imports: [CommonModule, AdvertisementRoutingModule, SharedModule],
-  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'en-EN' }],
+  providers: [AdvertisementService, { provide: LOCALE_ID, useValue: 'it-IT' }],
 })
 export class AdvertisementModule {}
