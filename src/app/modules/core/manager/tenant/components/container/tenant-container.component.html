@@ -1,1 +1,2 @@
-<cav-tenant-list [tenants]="tenants$ |async"></cav-tenant-list>
+<cav-tenant-list [tenants]="tenants$ |async" (update)="updateTenant($event)">
+</cav-tenant-list>
