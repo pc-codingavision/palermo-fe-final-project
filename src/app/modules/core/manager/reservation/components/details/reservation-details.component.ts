@@ -23,12 +23,6 @@ export class ReservationDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 0)
-    // this.reservation = this.reservationService.getById(id).pipe(
-    //   map((reservation) => {
-    //     this.tenant = this.tenantService.getById(reservation.tenantId)
-    //     return reservation
-    //   })
-    // )
     this.reservationService.getById(id).subscribe((reservation) => {
       this.tenant = this.tenantService.getById(reservation.tenantId)
       return (this.reservation = reservation)
