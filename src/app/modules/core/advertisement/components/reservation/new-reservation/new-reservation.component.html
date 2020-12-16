@@ -1,0 +1,44 @@
+<div>
+  <h1>Booking summary</h1>
+
+  <h3>User: {{data.tenantUsername}}</h3>
+  <h3>Property: {{data.propertyName}}</h3>
+  <h3>Price: {{data?.price | currency:'EUR':'symbol':'.0'}}</h3>
+
+  <cav-check-in-check-out
+    [reservationDate]="{checkIn: data.checkIn, checkOut: data.checkOut}"
+    [disabledPicker]="true"></cav-check-in-check-out>
+
+  <form [formGroup]="bookingRequest">
+    <mat-form-field appearance="fill">
+      <mat-label>Guests: </mat-label>
+      <mat-select formControlName="guestNumber">
+        <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+        <mat-option value="7">7</mat-option>
+        <mat-option value="8">8</mat-option>
+        <mat-option value="9">9</mat-option>
+        <mat-option value="10">10</mat-option>
+      </mat-select>
+      <mat-error *ngIf="bookingRequest.get('guestNumber').hasError('required')">
+        Input required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Special Request</mat-label>
+      <textarea matInput formControlName="specialRequest"></textarea>
+    </mat-form-field>
+  </form>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="warn" mat-dialog-close>Cancel</button>
+
+    <button mat-button color="primary" [disabled]="bookingRequest.invalid"
+      [mat-dialog-close]="bookingRequest.value">Confirm</button>
+  </div>
+</div>

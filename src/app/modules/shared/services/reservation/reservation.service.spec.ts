@@ -27,9 +27,10 @@ describe('ReservationService', () => {
 
   describe('#getAll', () => {
     it('should return all the reservations', () => {
-      service
-        .getAll()
-        .subscribe((result) => expect(result).toEqual(RESERVATIONS_MOCK_DATA))
+      service.getAll()
+      service.reservations$.subscribe((result) =>
+        expect(result).toEqual(RESERVATIONS_MOCK_DATA)
+      )
 
       const request = httpTestingController.expectOne('api/reservations')
       expect(request.request.method).toEqual('GET')
@@ -37,7 +38,8 @@ describe('ReservationService', () => {
     })
 
     it('should return an empty array if the API response return an empty body', () => {
-      service.getAll().subscribe((result) => expect(result.length).toBe(0))
+      service.getAll()
+      service.reservations$.subscribe((result) => expect(result.length).toBe(0))
 
       const request = httpTestingController.expectOne('api/reservations')
       expect(request.request.method).toEqual('GET')
@@ -119,10 +121,11 @@ describe('ReservationService', () => {
 
   describe('#delete', () => {
     it('should delete the reservation matching the passed id/reservation', () => {
+      service.getAll()
       service.delete(1).subscribe()
-      service
-        .getAll()
-        .subscribe((result) => expect(result).toEqual(RESERVATIONS_MOCK_DATA.slice(1)))
+      service.reservations$.subscribe((result) =>
+        expect(result).toEqual(RESERVATIONS_MOCK_DATA.slice(1))
+      )
 
       const deleteReq = httpTestingController.expectOne('api/reservations/1')
       expect(deleteReq.request.method).toEqual('DELETE')

@@ -95,14 +95,14 @@ export abstract class AuthService extends CacheService implements IAuthService {
     const jwtToken = this.getToken()
 
     if (jwtToken) {
-      const payload = jwt_decode(jwtToken) as any
+      const payload = jwt_decode(jwtToken, { header: true }) as any
       return Date.now() >= payload.exp * 1000
     }
     return true
   }
 
   protected getAuthStatusFromToken(): IAuthStatus {
-    return this.transformJwtToken(jwt_decode(this.getToken()))
+    return this.transformJwtToken(jwt_decode(this.getToken(), { header: true }))
   }
 
   login(email: string, password: string): Observable<void> {

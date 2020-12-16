@@ -24,13 +24,31 @@
         <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}}</h2>
       </div>
       <cav-score [config]='scoreConfig'></cav-score>
-      <cav-check-in-check-out fxShow.xs='false'
-        *ngIf="(getReservationDates() | async) === null"
-        (toggleDatesInput)="setReservationDates($event)"></cav-check-in-check-out>
+
+      <cav-check-in-check-out fxFlexOrder.xs='3' fxShow.xs='false'
+        *ngIf='(getReservationDates() | async) === null'
+        (toggleDatesInput)='setReservationDates($event)'></cav-check-in-check-out>
+
+      <div>
+        <button type='submit' mat-raised-button fxShow.xs='false'
+          [disabled]='(getReservationDates() | async) === null'
+          (click)='openBookingDialog()'>Book
+        </button>
+      </div>
     </div>
 
-    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'>
-    </cav-check-in-check-out>
+    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'
+      *ngIf='(getReservationDates() | async) === null'
+      (toggleDatesInput)='setReservationDates($event)'></cav-check-in-check-out>
+
+    <div fxShow.gt-xs='false' fxFlexOrder.xs='4' fxLayout="row"
+      fxLayoutAlign="center center">
+      <button type='submit' mat-raised-button
+        [disabled]='(getReservationDates() | async) === null'
+        (click)='openBookingDialog()'>Book
+      </button>
+    </div>
+
     <div fxLayout="column" fxShow.xs='false'>
       <div>
         <cav-favourite fxFlex='5%' (favouriteEvent)='isFavourite($event)'>
