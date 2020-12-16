@@ -18,6 +18,7 @@ import { PhotogalleryComponent } from '@modules/core/advertisement/components/ca
 import { ScoreComponent } from '@modules/core/advertisement/components/card/card-top/score/score.component'
 import { LatestContainerComponent } from '@modules/core/advertisement/components/latest/latest-container/latest-container.component'
 import { LatestMiniCardComponent } from '@modules/core/advertisement/components/latest/latest-mini-card/latest-mini-card.component'
+import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { FacilityFilterComponent } from '@modules/core/advertisement/components/sidebar/facility-filter/facility-filter.component'
 import { PriceFilterComponent } from '@modules/core/advertisement/components/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from '@modules/core/advertisement/components/sidebar/score-filter/score-filter.component'
@@ -47,6 +48,7 @@ const advertisementsComponent = [
   FacilitiesComponent,
   ReviewDialogComponent,
   StandUpDirective,
+  NewReservationComponent,
 ]
 
 @NgModule({
