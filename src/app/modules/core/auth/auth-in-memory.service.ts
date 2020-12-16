@@ -15,6 +15,7 @@ import { Tenant } from '@shared/models/tenant'
 import { IUser, User } from '@shared/models/users'
 import { SnackBarService } from '@shared/services/snack-bar.service'
 import { sign } from 'fake-jwt-sign'
+import * as moment from 'moment'
 import { Observable, concat, from, of, throwError } from 'rxjs'
 import { catchError, find } from 'rxjs/operators'
 
@@ -68,7 +69,7 @@ export class InMemoryAuthService extends AuthService {
 
     const authResponse = {
       accessToken: sign(authUser, 'secret', {
-        expiresIn: '1h',
+        expiresIn: moment(moment.now()).add(1, 'hour').valueOf(),
         algorithm: 'none',
       }),
     } as IServerAuthResponse
