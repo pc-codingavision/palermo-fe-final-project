@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import moment from 'moment'
 
 @Component({
@@ -9,20 +9,29 @@ import moment from 'moment'
 })
 export class CheckInCheckOutComponent implements OnInit {
   @Input() reservationDate: { checkIn: Date; checkOut: Date }
+  @Input() disabledPicker: boolean
   @Output() toggleDatesInput = new EventEmitter<{ checkIn: Date; checkOut: Date }>()
   minCheckInDate: Date
   minCheckOutDate: Date
   maxCheckInDate: Date
-  date: FormGroup = this.fb.group({
-    picker1: ['', [Validators.required]],
-    picker2: ['', [Validators.required]],
-  })
+  date: FormGroup
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.minCheckInDate = moment().toDate()
     this.minCheckOutDate = moment().toDate()
+
+    this.date = this.fb.group({
+      picker1: new FormControl(
+        { value: '', disabled: this.disabledPicker },
+        Validators.required
+      ),
+      picker2: new FormControl(
+        { value: '', disabled: this.disabledPicker },
+        Validators.required
+      ),
+    })
 
     if (this.reservationDate) {
       this.date.setValue({
