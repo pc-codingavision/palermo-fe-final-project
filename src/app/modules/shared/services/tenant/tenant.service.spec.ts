@@ -64,7 +64,7 @@ describe('TenantService', () => {
   })
 
   it('#getdById should return null for not existing id or null', (done: DoneFn) => {
-    service.getById(5).subscribe((tenant) => expect(tenant).toBeNull())
+    service.getById(10).subscribe((tenant) => expect(tenant).toBeNull())
     service.getById(null).subscribe((tenant) => expect(tenant).toBeNull())
     done()
   })
@@ -96,9 +96,9 @@ describe('TenantService', () => {
   })
 
   it('#add should add a tenant', () => {
-    expect(service.tenants.length).toBe(2)
+    expect(service.tenants.length).toBe(5)
     service.add(defaultTenant)
-    expect(service.tenants.length).toBe(3)
+    expect(service.tenants.length).toBe(6)
     expect(service.tenants).toContain(defaultTenant)
   })
 

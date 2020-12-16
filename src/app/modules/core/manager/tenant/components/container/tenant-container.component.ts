@@ -64,7 +64,6 @@ export class TenantContainerComponent implements OnInit {
     const filterCriteria: { searchTerm: string; status: boolean } = JSON.parse(criteria)
 
     if (filterCriteria.searchTerm !== '') {
-      debugger
       return (
         (tenant.fullName
           .toLowerCase()
@@ -76,7 +75,6 @@ export class TenantContainerComponent implements OnInit {
         tenant.status === filterCriteria.status
       )
     } else {
-      debugger
       return tenant.status === filterCriteria.status
     }
   }

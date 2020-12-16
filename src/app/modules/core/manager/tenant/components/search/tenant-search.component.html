@@ -5,9 +5,8 @@
     </mat-form-field>
   </div>
   <div fxLayoutAlign='center center'>
-    <mat-radio-group aria-label="Select an option"
-           [selected]="active"
-           (change)="radioChange($event.value)">
+    <mat-radio-group aria-label="Select an option" [selected]="active"
+      (change)="radioChange($event.value)">
       <mat-radio-button value="true" #active>Active</mat-radio-button>
       <mat-radio-button value="false" #inactive>Inactive</mat-radio-button>
     </mat-radio-group>
