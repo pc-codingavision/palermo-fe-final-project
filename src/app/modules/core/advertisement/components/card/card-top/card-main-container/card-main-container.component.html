@@ -1,74 +1,84 @@
 <mat-card cavStandUp id='card'>
   <mat-card-content fxLayout.xs='column' fxLayoutGap='15px'>
 
-    <div fxFlex.gt-sm='40%' fxLayout='row wrap' fxLayout.xs='column' fxFlexOrder.xs='2'
-      fxLayoutAlign.gt-xs='start start' fxLayoutAlign.xs='center center'
-      fxLayoutGap.gt-xs='15px grid' fxLayoutGap.xs='15px'>
-      <cav-photogallery [images]='advertisement?.property?.images'></cav-photogallery>
-      <div fxLayout='column'>
-        <cav-facility
+    <div (mouseenter)='getBoxShadow()' fxFlex.gt-sm='40%' fxLayout='row wrap'
+      fxLayout.xs='column' fxFlexOrder.xs='2' fxLayoutAlign.gt-xs='start start'
+      fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='15px grid'
+      fxLayoutGap.xs='15px'>
+      <cav-photogallery (mouseenter)='getBoxShadow()'
+        [images]='advertisement?.property?.images'>
+      </cav-photogallery>
+      <div (mouseenter)='getBoxShadow()' fxLayout='column'>
+        <cav-facility (mouseenter)='getBoxShadow()'
           *ngFor='let facility of advertisement?.property?.facilities | keyvalue'
           [facility]='facility'>
         </cav-facility>
       </div>
     </div>
 
-    <div fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
+    <div (mouseenter)='getBoxShadow()' fxFlex='55%' fxLayout='column' fxFlexOrder.xs='1'
       fxLayoutAlign.xs='center center' fxLayoutGap.gt-xs='20px'>
-      <mat-card-title fxLayoutAlign.xs='center center'>
+      <mat-card-title (mouseenter)='getBoxShadow()' fxLayoutAlign.xs='center center'>
         {{advertisement?.property?.title}}
-        <cav-favourite fxShow.gt-xs='false' (favouriteEvent)='isFavourite($event)'>
+        <cav-favourite (mouseenter)='getBoxShadow()' fxShow.gt-xs='false'
+          (favouriteEvent)='isFavourite($event)'>
         </cav-favourite>
       </mat-card-title>
-      <div fxLayoutAlign.xs='center center' fxShow.gt-xs='false'>
+      <div (mouseenter)='getBoxShadow()' fxLayoutAlign.xs='center center'
+        fxShow.gt-xs='false'>
         <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}}</h2>
       </div>
-      <cav-score [config]='scoreConfig'></cav-score>
+      <cav-score (mouseenter)='getBoxShadow()' [config]='scoreConfig'></cav-score>
 
-      <cav-check-in-check-out fxFlexOrder.xs='3' fxShow.xs='false'
-        *ngIf='(getReservationDates() | async) === null'
+      <cav-check-in-check-out (mouseenter)='getBoxShadow()' fxFlexOrder.xs='3'
+        fxShow.xs='false' *ngIf='(getReservationDates() | async) === null'
         (toggleDatesInput)='setReservationDates($event)'></cav-check-in-check-out>
 
       <div>
-        <button type='submit' mat-raised-button fxShow.xs='false'
-          [disabled]='(getReservationDates() | async) === null'
+        <button (mouseenter)='getBoxShadow()' type='submit' mat-raised-button
+          fxShow.xs='false' [disabled]='(getReservationDates() | async) === null'
           (click)='openBookingDialog()'>Book
         </button>
       </div>
     </div>
 
-    <cav-check-in-check-out fxShow.gt-xs='false' fxFlexOrder.xs='3'
-      *ngIf='(getReservationDates() | async) === null'
+    <cav-check-in-check-out (mouseenter)='getBoxShadow()' fxShow.gt-xs='false'
+      fxFlexOrder.xs='3' *ngIf='(getReservationDates() | async) === null'
       (toggleDatesInput)='setReservationDates($event)'></cav-check-in-check-out>
 
-    <div fxShow.gt-xs='false' fxFlexOrder.xs='4' fxLayout="row"
-      fxLayoutAlign="center center">
-      <button type='submit' mat-raised-button
+    <div (mouseenter)='getBoxShadow()' fxShow.gt-xs='false' fxFlexOrder.xs='4'
+      fxLayout="row" fxLayoutAlign="center center">
+      <button (mouseenter)='getBoxShadow()' type='submit' mat-raised-button
         [disabled]='(getReservationDates() | async) === null'
         (click)='openBookingDialog()'>Book
       </button>
     </div>
 
-    <div fxLayout="column" fxShow.xs='false'>
+    <div (mouseenter)='getBoxShadow()' fxLayout="column" fxShow.xs='false'>
       <div>
-        <cav-favourite fxFlex='5%' (favouriteEvent)='isFavourite($event)'>
+        <cav-favourite (mouseenter)='getBoxShadow()' fxFlex='5%'
+          (favouriteEvent)='isFavourite($event)'>
         </cav-favourite>
       </div>
-      <div>
-        <h2>{{advertisement?.price | currency:'EUR':'symbol':'.0'}} </h2>
+      <div (mouseenter)='getBoxShadow()'>
+        <h2 (mouseenter)='getBoxShadow()'>
+          {{advertisement?.price | currency:'EUR':'symbol':'.0'}}
+        </h2>
       </div>
     </div>
   </mat-card-content>
 
-  <div fxLayoutAlign.xs='center center'>
-    <button mat-raised-button color='accent' (click)='showCardExtra = !showCardExtra'>
+  <div (mouseenter)='getBoxShadow()' fxLayoutAlign.xs='center center'>
+    <button (mouseenter)='getBoxShadow()' mat-raised-button color='accent'
+      (click)='showCardExtra = !showCardExtra'>
       {{showCardExtra ? "Hide" : "More Info"}}
-      <mat-icon>
+      <mat-icon (mouseenter)='getBoxShadow()'>
         {{showCardExtra ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}
       </mat-icon>
     </button>
   </div>
 
-  <cav-card-extra *ngIf='showCardExtra' [advertisement]='advertisement'>
+  <cav-card-extra (mouseenter)='getBoxShadow()' *ngIf='showCardExtra'
+    [advertisement]='advertisement'>
   </cav-card-extra>
 </mat-card>
