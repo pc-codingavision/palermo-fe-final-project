@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http'
-import { HttpTestingController } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { LandlordService } from '@modules/shared/services/landlord/landlord.service'
 import { commonTestingModules } from '@shared/common.testing'
@@ -12,7 +11,7 @@ import { SearchService } from './search.service'
 
 xdescribe('SearchService', () => {
   let service: SearchService
-  let httpTestingController: HttpTestingController
+
   const landlord: Landlord = {
     id: 1,
     name: { firstName: 'Piero', surname: 'Cascio' },
@@ -42,7 +41,6 @@ xdescribe('SearchService', () => {
       providers: [LandlordService, { deps: [HttpClient, SnackBarService] }],
     })
 
-    httpTestingController = TestBed.inject(HttpTestingController)
     service = TestBed.inject(SearchService)
   })
 

@@ -94,7 +94,7 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscriptions.push(this.landlordService.delete(landlord.id).subscribe())
     this.subscriptions.push(this.searchLandlord.search('', '', '').subscribe())
   }
-  update(landlord) {
+  update(landlord): void {
     this.subscriptions.push(this.landlordService.update(landlord).subscribe())
   }
 }

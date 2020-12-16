@@ -40,7 +40,7 @@ describe('LandlordService', () => {
       req.flush(buildLandlords)
     })
 
-    //<<<<<<< HEAD
+    // <<<<<<< HEAD
 
     // Todo: per Piero
     // it("should return error 404 if get call doesn't work", () => {

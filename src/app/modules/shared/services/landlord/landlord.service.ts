@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, of } from 'rxjs'
-import { catchError, map, tap } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 @Injectable({
