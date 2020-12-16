@@ -12,9 +12,8 @@ import { Observable } from 'rxjs'
   styleUrls: ['./reservation-details.component.scss'],
 })
 export class ReservationDetailsComponent implements OnInit {
-  tenantId: number
   reservation: IReservation
-  tenant: Observable<Tenant>
+  tenant$: Observable<Tenant>
   constructor(
     private route: ActivatedRoute,
     private reservationService: ReservationService,
@@ -24,8 +23,8 @@ export class ReservationDetailsComponent implements OnInit {
   ngOnInit(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id'), 0)
     this.reservationService.getById(id).subscribe((reservation) => {
-      this.tenant = this.tenantService.getById(reservation.tenantId)
-      return (this.reservation = reservation)
+      this.tenant$ = this.tenantService.getById(reservation.tenantId)
+      this.reservation = reservation
     })
   }
 }

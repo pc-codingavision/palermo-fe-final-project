@@ -5,10 +5,10 @@
       <mat-card-title>Tenant Info</mat-card-title>
     </div>
     <mat-card-content>
-      <p>Name: {{(tenant | async)?.name.firstName}}</p>
-      <p>Surname: {{(tenant | async)?.name.surname}}</p>
-      <p>Email: {{(tenant | async)?.mail}}</p>
-      <p>Telephone: {{(tenant | async)?.phone[0].digits}}</p>
+      <p>Name: {{(tenant$ | async)?.name.firstName}}</p>
+      <p>Surname: {{(tenant$ | async)?.name.surname}}</p>
+      <p>Email: {{(tenant$ | async)?.mail}}</p>
+      <p>Telephone: {{(tenant$ | async)?.phone[0].digits}}</p>
     </mat-card-content>
   </mat-card>
 
@@ -25,7 +25,7 @@
     </mat-card-content>
   </mat-card>
 
-  <div id='request'>
+  <div>
     <mat-card *ngIf="!(reservation?.specialRequest === '') " fxLayout="column"
       fxLayoutGap="10px">
       <div fxLayoutAlign="start">
