@@ -17,6 +17,7 @@ export class ReservationContainerComponent implements OnInit {
   }
 
   getReservations(): void {
-    this.reservations$ = this.reservationService.getAll()
+    this.reservationService.getAll()
+    this.reservations$ = this.reservationService.reservations$
   }
 }
