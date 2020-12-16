@@ -1,76 +1,76 @@
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { LANDLORDS_MOCK_DATA } from '@shared/models/mock-data/data'
+import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Observable, of } from 'rxjs'
+import { catchError, map, tap } from 'rxjs/operators'
 import { Landlord } from 'src/app/shared/models/landlord'
 
 @Injectable({
   providedIn: 'root',
 })
 export class LandlordService {
-  landlords: Landlord[] = LANDLORDS_MOCK_DATA.map((landlord) => ({
-    ...landlord,
-  })) as Landlord[]
+  landlordsUrl = 'api/landlords'
 
-  constructor() {}
-
-  private getArrayIndexById(id: number): number | null {
-    const index = this.landlords.findIndex((landlord) => landlord.id === id)
-    return index === -1 ? null : index
-  }
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   getAll(): Observable<Landlord[]> {
-    return of(this.landlords.map((landlord) => Landlord.Build(landlord)))
+    return this.http
+      .get<Landlord[]>(this.landlordsUrl)
+      .pipe(
+        map(this.mapLandlordArrayToLandlordArrayBuild),
+        catchError(this.handleError<Landlord[]>('getAll'))
+      )
   }
-
   getLength(): Observable<number> {
-    return of(this.landlords.length)
+    return this.getAll().pipe(map((landlords) => landlords.length))
   }
 
   getById(id: number): Observable<Landlord | null> {
-    if (id !== null) {
-      const landlordById = this.landlords.find((landlord) => landlord.id === id)
-      if (landlordById !== undefined) {
-        return of(Landlord.Build(landlordById))
-      }
-    }
-    return of(null)
+    return this.http
+      .get<Landlord>(`${this.landlordsUrl}/${id}`)
+      .pipe(
+        map(this.mapLandlordToLandlordBuild),
+        catchError(this.handleError<Landlord>('getById'))
+      )
   }
 
-  delete(id: number): void {
-    if (this.getArrayIndexById(id) !== null) {
-      this.landlords.splice(this.getArrayIndexById(id), 1)
-    }
+  delete(id: number): Observable<Landlord> {
+    return this.http
+      .delete<Landlord>(`${this.landlordsUrl}/${id}`)
+      .pipe(catchError(this.handleError<Landlord>('delete')))
   }
 
-  add(landlord: Landlord): void {
-    if (landlord !== null) {
-      landlord.id = this.genId()
-      this.landlords.push(landlord)
-    }
+  add(landlord: Landlord): Observable<Landlord> {
+    return this.http
+      .post<Landlord>(this.landlordsUrl, landlord)
+      .pipe(catchError(this.handleError<Landlord>('add')))
   }
 
   update(landlord: Landlord): Observable<Landlord | null> {
-    if (landlord !== null) {
-      const index = this.getArrayIndexById(landlord.id)
-      if (typeof index === 'number') {
-        return of((this.landlords[index] = landlord))
-      }
-    }
-    return of(null)
+    return this.http
+      .put<Landlord>(this.landlordsUrl, landlord)
+      .pipe(catchError(this.handleError<Landlord>('update')))
   }
 
-  toggleStatus(id: number): Observable<Landlord | null> {
-    const index = this.getArrayIndexById(id)
-    if (typeof index === 'number') {
-      this.landlords[index].status = !this.landlords[index].status
-      return of(this.landlords[index])
-    }
-    return of(null)
+  toggleStatus(landlord: Landlord): Observable<boolean> {
+    return this.http.put<string>(this.landlordsUrl, landlord).pipe(
+      map((result: string) => (result === 'true' ? true : false)),
+      catchError(this.handleError<Landlord>('update'))
+    )
   }
 
-  genId(): number {
-    return this.landlords.length
-      ? Math.max(...this.landlords.map((landlord) => landlord.id)) + 1
-      : 1
+  private mapLandlordArrayToLandlordArrayBuild = (landlords) =>
+    landlords.map(this.mapLandlordToLandlordBuild)
+
+  private mapLandlordToLandlordBuild = (landlord) => Landlord.Build(landlord)
+
+  private handleError<T>(operation = 'operation', result?: T): any {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${JSON.stringify(error)}`)
+      this.snackBar.openSnackBar(`${error.body.error}`, 'close', 10000)
+
+      return of(result as T)
+    }
   }
 }

@@ -9,6 +9,7 @@ import { Landlord } from '@shared/models/landlord'
 export class ViewContainerComponent implements OnInit {
   @Input() landlord: Landlord
   @Output() remove = new EventEmitter<Landlord>()
+  @Output() update = new EventEmitter<Landlord>()
 
   constructor() {}
 
@@ -16,10 +17,9 @@ export class ViewContainerComponent implements OnInit {
 
   toggleStatus(operation: string): void {
     if (operation === 'deactivate' || operation === 'activate') {
-      // chiamata al servizio
       this.landlord.status = !this.landlord.status
+      this.update.emit(this.landlord)
     } else if (operation === 'delete') {
-      // chiamata al servizio
       this.remove.emit(this.landlord)
     }
   }

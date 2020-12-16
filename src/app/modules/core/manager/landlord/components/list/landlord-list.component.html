@@ -55,7 +55,7 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
-    (page)="paginatorInput($event)" [length]="getLength() | async"></mat-paginator>
+    (page)="paginatorInput($event)" [length]="landlordsLength"></mat-paginator>
 </div>
 
 
@@ -83,7 +83,8 @@
     <div class="element-detail"
       [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
       <div class="element-diagram">
-        <cav-view-container [landlord]="element" (remove)="remove($event)">
+        <cav-view-container [landlord]="element" (remove)="remove($event)"
+          (update)="update($event)">
         </cav-view-container>
       </div>
     </div>

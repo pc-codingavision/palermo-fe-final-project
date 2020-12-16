@@ -35,7 +35,6 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isEditLandlord = this.activatedRoute?.snapshot?.url[0]?.path === 'edit'
     this.getLandlord()
-    this.setForm()
   }
 
   ngOnDestroy(): void {
@@ -47,14 +46,16 @@ export class EditComponent implements OnInit, OnDestroy {
   getLandlord(): void {
     if (this.isEditLandlord) {
       const id = +this.activatedRoute.snapshot.paramMap.get('id')
-      this.landlord$ = this.landlordService
-        .getById(id)
-        .subscribe((landlord) => (this.landlord = landlord))
+      this.landlord$ = this.landlordService.getById(id).subscribe((landlord) => {
+        this.landlord = landlord
+        this.setForm()
+      })
     } else {
       this.landlord = Landlord.Build()
       this.togglePictureContainer = true
       this.toggleResetPasswordContainer = true
       this.landlord.status = true
+      this.setForm()
     }
   }
 
@@ -149,8 +150,8 @@ export class EditComponent implements OnInit, OnDestroy {
     }
 
     this.isEditLandlord
-      ? this.landlordService.update(newLandlord)
-      : this.landlordService.add(newLandlord)
+      ? this.landlordService.update(newLandlord).subscribe()
+      : this.landlordService.add(newLandlord).subscribe()
 
     this.snackBarService.openSnackBar('The landlord was saved', 'Cancel', 3000)
   }
