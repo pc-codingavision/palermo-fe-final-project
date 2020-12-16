@@ -9,7 +9,7 @@ import { catchError, map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class InMemoryTenantService {
-  constructor(private http: HttpClient, private snackBar: SnackBarService) { }
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   private tenantsUrl = 'api/tenants'
   private httpOptions = {
@@ -23,23 +23,34 @@ export class InMemoryTenantService {
     return `${this.tenantsUrl}?${key}=${value}`
   }
 
+  private buildTenants(tenants: Tenant[]): Tenant[] {
+    if (Array.isArray(tenants)) {
+      return tenants.map((tenant) => Tenant.Build(tenant))
+    }
+    return tenants
+  }
+
   getAll(): Observable<Tenant[]> {
     return this.http.get<Tenant[]>(this.tenantsUrl).pipe(
-      map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))),
-      catchError(this.handleError<any[]>('getAll'))
+      map((tenants) => this.buildTenants(tenants)),
+      catchError(this.handleError<Tenant[]>('getAll'))
     )
   }
 
   getById(id: number): Observable<Tenant | null> {
-    if (typeof id === 'string' || typeof id === 'number') {
+    if ((typeof id === 'string' && id !== '') || typeof id === 'number') {
       id = +id
       const idUrl = `${this.tenantsUrl}/${id}`
       return this.http.get<Tenant>(idUrl).pipe(
-        map((tenant) => Tenant.Build(tenant)),
+        map((tenant) => {
+          if (tenant !== undefined) {
+            return Tenant.Build(tenant)
+          }
+          return console.log('mha')
+        }),
         catchError(this.handleError<Tenant>('getById'))
       )
     }
-
     return of(null)
   }
 
@@ -47,11 +58,10 @@ export class InMemoryTenantService {
     if (typeof name === 'string') {
       const nameUrl = this.createCriteriaParameters('name', name)
       return this.http.get<Tenant[]>(nameUrl).pipe(
-        map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))),
+        map((tenants) => this.buildTenants(tenants)),
         catchError(this.handleError<Tenant[]>('getByName'))
       )
     }
-
     return of(null)
   }
 
@@ -59,8 +69,8 @@ export class InMemoryTenantService {
     if (typeof surname === 'string' && surname.trim() !== '') {
       const surnameUrl = this.createCriteriaParameters('surname', surname)
       return this.http.get<Tenant[]>(surnameUrl).pipe(
-        map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))),
-        catchError(this.handleError<Tenant[]>('getBySurname'))
+        map((tenants) => this.buildTenants(tenants)),
+        catchError(this.handleError<Tenant[]>('getByName'))
       )
     }
     return of(null)
@@ -70,10 +80,11 @@ export class InMemoryTenantService {
     if (typeof mail === 'string') {
       const mailUrl = this.createCriteriaParameters('mail', mail)
       return this.http.get<Tenant[]>(mailUrl).pipe(
-        map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))),
+        map((tenants) => this.buildTenants(tenants)),
         catchError(this.handleError<Tenant[]>('getByMail'))
       )
     }
+
     return of(null)
   }
 
@@ -81,7 +92,7 @@ export class InMemoryTenantService {
     if (typeof status === 'boolean') {
       const statusUrl = `${this.tenantsUrl}?status=${status}`
       return this.http.get<Tenant[]>(statusUrl).pipe(
-        map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))),
+        map((tenants) => this.buildTenants(tenants)),
         catchError(this.handleError<Tenant[]>('getByStatus'))
       )
     }

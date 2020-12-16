@@ -10,7 +10,7 @@ import { Observable } from 'rxjs'
 })
 export class TenantContainerComponent implements OnInit {
   tenants$: Observable<Tenant[]>
-  constructor(private inMemoryTenantService: InMemoryTenantService) { }
+  constructor(private inMemoryTenantService: InMemoryTenantService) {}
 
   ngOnInit(): void {
     this.getAll()
