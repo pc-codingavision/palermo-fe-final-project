@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
 import { Observable, Subscription } from 'rxjs'
-import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'cav-tenant-container',
@@ -23,9 +22,7 @@ export class TenantContainerComponent implements OnInit, OnDestroy {
   }
 
   getAll(): void {
-    this.tenants$ = this.inMemoryTenantService
-      .getAll()
-      .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
+    this.tenants$ = this.inMemoryTenantService.getAll()
   }
 
   updateTenant(event: number | Tenant): void {
