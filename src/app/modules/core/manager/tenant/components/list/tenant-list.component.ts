@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { Tenant } from '@shared/models/tenant'
 
 @Component({
@@ -8,7 +9,7 @@ import { Tenant } from '@shared/models/tenant'
 })
 export class TenantListComponent implements OnInit {
   displayedColumns: string[] = ['avatar', 'fullName', 'username', 'mail']
-  @Input() tenants: Tenant[]
+  @Input() dataSource: MatTableDataSource<Tenant[]>
   constructor() {}
 
   ngOnInit(): void {}
