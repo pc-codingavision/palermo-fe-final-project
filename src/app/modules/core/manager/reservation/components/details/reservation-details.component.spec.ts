@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { ReservationDetailsComponent } from '@modules/core/manager/reservation/components/details/reservation-details.component'
+import { commonTestingModules } from '@shared/common.testing'
 
 describe('ReservationDetailsComponent', () => {
   let component: ReservationDetailsComponent
@@ -9,6 +10,7 @@ describe('ReservationDetailsComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ReservationDetailsComponent],
+        imports: [commonTestingModules],
       }).compileComponents()
     })
   )
