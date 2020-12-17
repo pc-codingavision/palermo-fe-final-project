@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms'
 import { Tenant } from '@shared/models/tenant'
 import { DialogService } from '@shared/services/dialog.service'
 
@@ -31,27 +31,7 @@ export class TenantViewComponent implements OnInit {
 
   constructor(private dialogService: DialogService, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.setForm()
-  }
-
-  setForm(): void {
-    this.tenantForm = this.formBuilder.group({
-      firstName: [this.tenant?.name.firstName, [Validators.required]],
-      lastName: [this.tenant?.name.surname, [Validators.required]],
-      email: [this.tenant?.mail, [Validators.required, Validators.email]],
-      username: [this.tenant?.username, [Validators.required]],
-      dateOfBirth: [this.tenant?.dateOfBirth.toLocaleDateString(), [Validators.required]],
-      line1: [this.tenant?.address.line1, [Validators.required]],
-      line2: [this.tenant?.address.line2],
-      city: [this.tenant?.address.city, [Validators.required]],
-      state: [this.tenant?.address.state, [Validators.required]],
-      zipCode: [
-        this.tenant?.address.postCode,
-        [Validators.required, Validators.minLength(5), Validators.maxLength(5)],
-      ],
-    })
-  }
+  ngOnInit(): void {}
 
   openDialog(operation: string): void {
     if (operation === 'deactivate') {

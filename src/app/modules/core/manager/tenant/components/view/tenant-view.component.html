@@ -1,4 +1,5 @@
 <mat-card>
+  <mat-card-title>{{tenant?.fullName}} details</mat-card-title>
   <mat-card-header>
     <img mat-card-avatar src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
 
@@ -6,39 +7,51 @@
         {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
   </mat-card-header>
 
-  <mat-card-content fxLayoutAlign='center'>
-    <form [formGroup]='tenantForm' fxLayout='row'>
-      <div fxLayout='column'>
+  <mat-card-content fxLayout='row' fxLayoutAlign='space-evenly'>
+    <div fxLayout='column'>
+      <mat-card-subtitle>
+        <span>First Name: </span>{{tenant?.name.firstName}}
+      </mat-card-subtitle>
 
-        <mat-label>First Name:<input type="text" formControlName='firstName' readonly>
-        </mat-label>
+      <mat-card-subtitle>
+        <span>Last Name: </span>{{tenant?.name.middleName}}
+      </mat-card-subtitle>
 
-        <mat-label>Last Name:<input type="text" formControlName='lastName' readonly>
-        </mat-label>
+      <mat-card-subtitle>
+        <span>Email: </span>{{tenant?.mail}}
+      </mat-card-subtitle>
 
-        <mat-label>Email:<input type="text" formControlName='email' readonly></mat-label>
+      <mat-card-subtitle>
+        <span>Username: </span>{{tenant?.username}}
+      </mat-card-subtitle>
 
-        <mat-label>Username:<input type="text" formControlName='username' readonly>
-        </mat-label>
+      <mat-card-subtitle>
+        <span>Date of Birth: </span>{{tenant?.dateOfBirth | date}}
+      </mat-card-subtitle>
+    </div>
 
-        <mat-label>Date of Birth:<input type="text" formControlName='dateOfBirth'>
-        </mat-label>
+    <div fxLayout='column'>
+      <mat-card-subtitle>
+        <span>Line 1: </span>{{tenant?.address.line1}}
+      </mat-card-subtitle>
 
-      </div>
-      <div fxLayout='column'>
-        <mat-label>Line 1:<input type="text" formControlName='line1' readonly></mat-label>
+      <mat-card-subtitle>
+        <span>Line 2: </span>{{tenant?.address.line2}}
+      </mat-card-subtitle>
 
-        <mat-label>Line 2:<input type="text" formControlName='line2' readonly></mat-label>
+      <mat-card-subtitle>
+        <span>City: </span>{{tenant?.address.city}}
+      </mat-card-subtitle>
 
-        <mat-label>City: <input type="text" formControlName='city' readonly></mat-label>
+      <mat-card-subtitle>
+        <span>State: </span>{{tenant?.address.state}}
+      </mat-card-subtitle>
 
-        <mat-label>State:<input type="text" formControlName='state' readonly></mat-label>
+      <mat-card-subtitle>
+        <span>Zip Code: </span>{{tenant?.address.postCode}}
+      </mat-card-subtitle>
+    </div>
 
-        <mat-label>Zip Code:<input type="text" formControlName='zipCode' readonly>
-        </mat-label>
-
-      </div>
-    </form>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
 

@@ -6,6 +6,15 @@
   color: #ffc107;
 }
 
-input {
-  margin: 5px;
+mat-card-subtitle {
+  color: black;
+}
+
+mat-card-subtitle span {
+  color: rgb(31, 31, 31);
+  font-weight: bold;
+}
+
+mat-card-title {
+  margin: 2%;
 }
