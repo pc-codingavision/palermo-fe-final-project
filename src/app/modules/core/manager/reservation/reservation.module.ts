@@ -4,6 +4,7 @@ import { ReservationContainerComponent } from '@modules/core/manager/reservation
 import { ReservationDetailsComponent } from '@modules/core/manager/reservation/components/details/reservation-details.component'
 import { ReservationListComponent } from '@modules/core/manager/reservation/components/list/reservation-list.component'
 import { ReservationRoutingModule } from '@modules/core/manager/reservation/reservation-routing.module'
+import { SharedModule } from '@modules/shared/shared.module'
 
 const reservationComponents = [
   ReservationContainerComponent,
@@ -12,6 +13,6 @@ const reservationComponents = [
 ]
 @NgModule({
   declarations: [...reservationComponents],
-  imports: [CommonModule, ReservationRoutingModule],
+  imports: [CommonModule, ReservationRoutingModule, SharedModule],
 })
 export class ReservationModule {}

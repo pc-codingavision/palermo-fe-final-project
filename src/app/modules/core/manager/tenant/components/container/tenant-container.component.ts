@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
-import { Observable } from 'rxjs'
+import { SpinnerService } from '@shared/services/spinner.service'
 import { map } from 'rxjs/operators'
 
 @Component({
@@ -10,16 +11,70 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./tenant-container.component.scss'],
 })
 export class TenantContainerComponent implements OnInit {
-  tenants$: Observable<Tenant[]>
-  constructor(private inMemoryTenantService: InMemoryTenantService) {}
+  tenants: Tenant[]
+  filteredTenants: Tenant[]
+  dataSource: MatTableDataSource<Tenant>
+  filterCriteria: { searchTerm: string; status: boolean }
 
-  ngOnInit(): void {
-    this.getAll()
+  constructor(
+    private inMemoryTenantService: InMemoryTenantService,
+    private spinnerService: SpinnerService
+  ) {
+    this.filterCriteria = {
+      searchTerm: '',
+      status: true,
+    }
   }
 
-  getAll(): void {
-    this.tenants$ = this.inMemoryTenantService
+  ngOnInit(): void {
+    this.spinnerService.showSpinner()
+    this.inMemoryTenantService
       .getAll()
       .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
+      .subscribe((tenants) => {
+        this.dataSource = new MatTableDataSource<Tenant>(tenants)
+
+        this.dataSource.filterPredicate = this.customerFilter
+        this.dataSource.filter = JSON.stringify(this.filterCriteria)
+        this.spinnerService.hideSpinner()
+      })
+  }
+
+  applyFilter(event: string): void {
+    this.dataSource.filter = JSON.stringify(
+      Object.assign(this.filterCriteria, {
+        searchTerm: event.trim().toLowerCase(),
+      })
+    )
+  }
+
+  selectStatus(status: string): void {
+    this.dataSource.filter = JSON.stringify(
+      Object.assign(this.filterCriteria, {
+        status: status === 'true',
+      })
+    )
+  }
+
+  private customerFilter: (tenant: Tenant, criteria: string) => boolean = (
+    tenant: Tenant,
+    criteria: string
+  ) => {
+    const filterCriteria: { searchTerm: string; status: boolean } = JSON.parse(criteria)
+
+    if (filterCriteria.searchTerm !== '') {
+      return (
+        (tenant.fullName
+          .toLowerCase()
+          .includes(filterCriteria.searchTerm.toLowerCase()) ||
+          tenant.username
+            .toLowerCase()
+            .includes(filterCriteria.searchTerm.toLowerCase()) ||
+          tenant.mail.toLowerCase().includes(filterCriteria.searchTerm.toLowerCase())) &&
+        tenant.status === filterCriteria.status
+      )
+    } else {
+      return tenant.status === filterCriteria.status
+    }
   }
 }

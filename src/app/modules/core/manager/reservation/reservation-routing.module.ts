@@ -7,7 +7,7 @@ import { ReservationListComponent } from '@modules/core/manager/reservation/comp
 const reservationRoutes: Routes = [
   { path: '', component: ReservationContainerComponent },
   { path: 'list', component: ReservationListComponent },
-  { path: 'details', component: ReservationDetailsComponent },
+  { path: ':id', component: ReservationDetailsComponent },
 ]
 
 @NgModule({
