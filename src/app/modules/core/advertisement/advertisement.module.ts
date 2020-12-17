@@ -8,6 +8,7 @@ import { AdvertisementListComponent } from '@modules/core/advertisement/componen
 import { AboutComponent } from '@modules/core/advertisement/components/card/card-bottom/about/about.component'
 import { CardExtraComponent } from '@modules/core/advertisement/components/card/card-bottom/card-extra/card-extra.component'
 import { FacilitiesComponent } from '@modules/core/advertisement/components/card/card-bottom/facilities/facilities.component'
+import { ReviewDialogComponent } from '@modules/core/advertisement/components/card/card-bottom/review-dialog/review-dialog.component'
 import { ReviewComponent } from '@modules/core/advertisement/components/card/card-bottom/review/review.component'
 import { CardMainContainerComponent } from '@modules/core/advertisement/components/card/card-top/card-main-container/card-main-container.component'
 import { CheckInCheckOutComponent } from '@modules/core/advertisement/components/card/card-top/check-in-check-out/check-in-check-out.component'
@@ -17,14 +18,13 @@ import { PhotogalleryComponent } from '@modules/core/advertisement/components/ca
 import { ScoreComponent } from '@modules/core/advertisement/components/card/card-top/score/score.component'
 import { LatestContainerComponent } from '@modules/core/advertisement/components/latest/latest-container/latest-container.component'
 import { LatestMiniCardComponent } from '@modules/core/advertisement/components/latest/latest-mini-card/latest-mini-card.component'
+import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { FacilityFilterComponent } from '@modules/core/advertisement/components/sidebar/facility-filter/facility-filter.component'
 import { PriceFilterComponent } from '@modules/core/advertisement/components/sidebar/price-filter/price-filter.component'
 import { ScoreFilterComponent } from '@modules/core/advertisement/components/sidebar/score-filter/score-filter.component'
 import { SidebarContainerComponent } from '@modules/core/advertisement/components/sidebar/sidebar-container/sidebar-container.component'
+import { StandUpDirective } from '@modules/core/advertisement/stand-up.directive'
 import { SharedModule } from '@modules/shared/shared.module'
-
-import { ReviewDialogComponent } from './components/card/card-bottom/review-dialog/review-dialog.component'
-import { NewReservationComponent } from './components/reservation/new-reservation/new-reservation.component'
 
 const advertisementsComponent = [
   AdvertisementListComponent,
@@ -47,6 +47,7 @@ const advertisementsComponent = [
   PriceFilterComponent,
   FacilitiesComponent,
   ReviewDialogComponent,
+  StandUpDirective,
   NewReservationComponent,
 ]
 

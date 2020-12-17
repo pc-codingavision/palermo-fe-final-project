@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core'
 import { NewReservationComponent } from '@modules/core/advertisement/components/reservation/new-reservation/new-reservation.component'
 import { MockAdvertisement } from '@modules/core/advertisement/mock-advertisement/mock-advertisement'
 import { CheckInCheckOutService } from '@modules/core/advertisement/services/check-in-check-out.service'
@@ -11,13 +18,18 @@ import { DialogService } from '@shared/services/dialog.service'
 import { SnackBarService } from '@shared/services/snack-bar.service'
 import { Subject, Subscription } from 'rxjs'
 
+import { StandUpDirective } from './../../../../stand-up.directive'
+
 @Component({
   selector: 'cav-card-main-container',
   templateUrl: './card-main-container.component.html',
   styleUrls: ['./card-main-container.component.scss'],
 })
 export class CardMainContainerComponent implements OnInit, OnDestroy {
-  @Input() advertisement: MockAdvertisement
+  @ViewChildren(StandUpDirective) standUpChildren: QueryList<StandUpDirective>
+
+  @Input()
+  advertisement: MockAdvertisement
   showCardExtra = false
   scoreConfig: IScoreConfig
   currentUser: IUser
@@ -106,5 +118,9 @@ export class CardMainContainerComponent implements OnInit, OnDestroy {
         (reservationDates) => (this.reservationDates = reservationDates)
       )
     )
+  }
+
+  getBoxShadow(): void {
+    this.standUpChildren.forEach((item) => item.onMouseEnter())
   }
 }
