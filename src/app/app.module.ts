@@ -43,6 +43,7 @@ const appModules = [
   HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
     delay: 1000,
     dataEncapsulation: false,
+    put204: false,
   }),
 ]
 

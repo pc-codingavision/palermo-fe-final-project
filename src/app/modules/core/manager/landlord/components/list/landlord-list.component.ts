@@ -41,6 +41,7 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   landlords: Landlord[]
   expandedElement: Elements | null
   landlords$: Observable<Landlord[]>
+  landlordsLength: number
 
   constructor(
     private landlordService: LandlordService,
@@ -52,6 +53,7 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit(): void {
     this.landlords$ = this.route.snapshot.data.list
     this.getLandlords(5, 0)
+    this.getLength().subscribe((x) => (this.landlordsLength = x))
   }
 
   ngAfterViewInit(): void {
@@ -89,7 +91,10 @@ export class LandlordListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   remove(landlord: Landlord): void {
-    this.landlordService.delete(landlord.id)
+    this.subscriptions.push(this.landlordService.delete(landlord.id).subscribe())
     this.subscriptions.push(this.searchLandlord.search('', '', '').subscribe())
+  }
+  update(landlord): void {
+    this.subscriptions.push(this.landlordService.update(landlord).subscribe())
   }
 }

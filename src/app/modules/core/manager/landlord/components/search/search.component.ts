@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.landlords$ = this.searchService.getSearchResult()
+
     this.landlords$
       .pipe(
         map((landlords) => landlords.flatMap((l) => l.phone)),
