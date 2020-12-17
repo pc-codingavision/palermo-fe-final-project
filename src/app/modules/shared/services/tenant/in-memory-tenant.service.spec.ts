@@ -106,7 +106,7 @@ describe('InMemoryTenantService', () => {
       expect(data).toEqual(buildTenants[0])
     })
 
-    it("should return null if it doesn't find anything with passed name", () => {
+    it("should return empty array if it doesn't find anything with passed name", () => {
       let data
       service.getByName('mario').subscribe((response) => {
         data = response
@@ -114,18 +114,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants?name=mario')
       expect(req.request.method).toEqual('GET')
-      req.flush(null)
-      expect(data).toBeNull()
-    })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getByName(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?name=null')
-      expect(data).toBeNull()
+      req.flush([])
+      expect(data.length).toBe(0)
     })
   })
 
@@ -153,17 +143,6 @@ describe('InMemoryTenantService', () => {
       req.flush([])
       expect(data.length).toBe(0)
     })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getBySurname(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?surname=null')
-
-      expect(data).toBeNull()
-    })
   })
 
   describe('GetByMail', () => {
@@ -180,15 +159,6 @@ describe('InMemoryTenantService', () => {
       req.flush(buildTenants[0])
       expect(data).toEqual(buildTenants[0])
     })
-
-    it('should return null if we pass null ', () => {
-      let data
-      service.getByMail(null).subscribe((response) => {
-        data = response
-      })
-      httpTestingController.expectNone('api/tenants?mail=rAg-fantOzzi%40test.com')
-      expect(data).toBeNull()
-    })
   })
 
   describe('GetByStatus', () => {
@@ -202,16 +172,6 @@ describe('InMemoryTenantService', () => {
       expect(req.request.method).toEqual('GET')
       req.flush(buildTenants)
       expect(data).toEqual(buildTenants)
-    })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getByStatus(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?status=null')
-      expect(data).toBeNull()
     })
   })
 

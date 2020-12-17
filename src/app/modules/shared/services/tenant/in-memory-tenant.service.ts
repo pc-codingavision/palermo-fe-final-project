@@ -16,11 +16,17 @@ export class InMemoryTenantService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   }
 
-  createCriteriaParameters(key: string, value: string): string {
+  private createCriteriaParameters(key: string, value: string): string {
     if (key === 'mail') {
       return `${this.tenantsUrl}?${key}=${encodeURIComponent(value)}`
     }
     return `${this.tenantsUrl}?${key}=${value}`
+  }
+
+  private handleException(key: any): void {
+    if (key === null || key === undefined || key === '') {
+      throw new Error(`'${key}' is not allowed"`)
+    }
   }
 
   private buildTenants(tenants: Tenant[]): Tenant[] {
@@ -38,57 +44,48 @@ export class InMemoryTenantService {
   }
 
   getById(id: number): Observable<Tenant | null> {
-    if ((typeof id === 'string' && id !== '') || typeof id === 'number') {
-      id = +id
-      const idUrl = `${this.tenantsUrl}/${id}`
-      return this.http.get<Tenant>(idUrl).pipe(
-        map((tenant) => {
-          if (tenant !== undefined) {
-            return Tenant.Build(tenant)
-          }
-          return tenant
-        }),
-        catchError(this.handleError<Tenant>('getById'))
-      )
-    }
-    return of(null)
+    this.handleException(id)
+    const idUrl = `${this.tenantsUrl}/${id}`
+    return this.http.get<Tenant>(idUrl).pipe(
+      map((tenant) => {
+        if (tenant !== undefined) {
+          return Tenant.Build(tenant)
+        }
+        return tenant
+      }),
+      catchError(this.handleError<Tenant>('getById'))
+    )
   }
 
   getByName(name: string): Observable<Tenant[] | null> {
-    if (typeof name === 'string') {
-      const nameUrl = this.createCriteriaParameters('name', name)
-      return this.http.get<Tenant[]>(nameUrl).pipe(
-        map((tenants) => this.buildTenants(tenants)),
-        catchError(this.handleError<Tenant[]>('getByName'))
-      )
-    }
-    return of(null)
+    this.handleException(name)
+    const nameUrl = this.createCriteriaParameters('name', name)
+    return this.http.get<Tenant[]>(nameUrl).pipe(
+      map((tenants) => this.buildTenants(tenants)),
+      catchError(this.handleError<Tenant[]>('getByName'))
+    )
   }
 
   getBySurname(surname: string): Observable<Tenant[] | null> {
-    if (typeof surname === 'string' && surname.trim() !== '') {
-      const surnameUrl = this.createCriteriaParameters('surname', surname)
-      return this.http.get<Tenant[]>(surnameUrl).pipe(
-        map((tenants) => this.buildTenants(tenants)),
-        catchError(this.handleError<Tenant[]>('getByName'))
-      )
-    }
-    return of(null)
+    this.handleException(surname)
+    const surnameUrl = this.createCriteriaParameters('surname', surname)
+    return this.http.get<Tenant[]>(surnameUrl).pipe(
+      map((tenants) => this.buildTenants(tenants)),
+      catchError(this.handleError<Tenant[]>('getByName'))
+    )
   }
 
   getByMail(mail: string): Observable<Tenant[] | null> {
-    if (typeof mail === 'string') {
-      const mailUrl = this.createCriteriaParameters('mail', mail)
-      return this.http.get<Tenant[]>(mailUrl).pipe(
-        map((tenants) => this.buildTenants(tenants)),
-        catchError(this.handleError<Tenant[]>('getByMail'))
-      )
-    }
-
-    return of(null)
+    this.handleException(mail)
+    const mailUrl = this.createCriteriaParameters('mail', mail)
+    return this.http.get<Tenant[]>(mailUrl).pipe(
+      map((tenants) => this.buildTenants(tenants)),
+      catchError(this.handleError<Tenant[]>('getByMail'))
+    )
   }
 
   getByStatus(status: boolean): Observable<Tenant[] | null> {
+    this.handleException(status)
     if (typeof status === 'boolean') {
       const statusUrl = `${this.tenantsUrl}?status=${status}`
       return this.http.get<Tenant[]>(statusUrl).pipe(
@@ -100,6 +97,10 @@ export class InMemoryTenantService {
   }
 
   add(tenant: Tenant): Observable<Tenant | null> {
+    this.handleException(tenant)
+    if (tenant.id !== null) {
+      tenant.id = null
+    }
     if (tenant) {
       return this.http
         .post<Tenant>(this.tenantsUrl, tenant, this.httpOptions)
@@ -109,6 +110,7 @@ export class InMemoryTenantService {
   }
 
   delete(id: number): Observable<{} | null> {
+    this.handleException(id)
     if (id) {
       const idUrl = `${this.tenantsUrl}/${id}`
       return this.http
@@ -119,12 +121,10 @@ export class InMemoryTenantService {
   }
 
   update(tenant: Tenant): Observable<Tenant | null> {
-    if (tenant) {
-      return this.http
-        .put<Tenant>(this.tenantsUrl, tenant, this.httpOptions)
-        .pipe(catchError(this.handleError<Tenant>('update')))
-    }
-    return of(null)
+    this.handleException(tenant)
+    return this.http
+      .put<Tenant>(this.tenantsUrl, tenant, this.httpOptions)
+      .pipe(catchError(this.handleError<Tenant>('update')))
   }
 
   private handleError<T>(operation = 'operation', result?: T): any {
