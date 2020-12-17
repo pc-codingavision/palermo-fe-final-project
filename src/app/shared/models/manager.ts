@@ -31,6 +31,10 @@ export class Manager implements IUser {
       manager.dateOfBirth = new Date(manager.dateOfBirth)
     }
 
+    if (typeof manager.status === 'string') {
+      manager.status = manager.status === 'true'
+    }
+
     return new this(
       manager.id,
       manager.name,
