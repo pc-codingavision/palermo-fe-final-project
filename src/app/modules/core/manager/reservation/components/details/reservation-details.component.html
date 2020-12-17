@@ -1,1 +1,39 @@
-<p>details works!</p>
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap.xs='20px'
+  fxLayoutAlign="space-around center" *ngIf="reservation">
+  <mat-card fxLayout="column" fxLayoutGap="10px">
+    <div fxLayoutAlign="start">
+      <mat-card-title>Tenant Info</mat-card-title>
+    </div>
+    <mat-card-content>
+      <p>Name: {{(tenant$ | async)?.name.firstName}}</p>
+      <p>Surname: {{(tenant$ | async)?.name.surname}}</p>
+      <p>Email: {{(tenant$ | async)?.mail}}</p>
+      <p>Telephone: {{(tenant$ | async)?.phone[0].digits}}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card fxLayout="column" fxLayoutGap="10px">
+    <div fxLayoutAlign="start">
+      <mat-card-title>Reservation Info</mat-card-title>
+    </div>
+    <mat-card-content>
+      <p>Reservation Id: {{reservation?.id}}</p>
+      <p>Property Id: {{reservation?.propertyId}}</p>
+      <p>Check-in: {{reservation?.checkIn}}</p>
+      <p>Check-out: {{reservation?.checkOut}}</p>
+      <p>Guests number: {{reservation?.guestNumber}}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div>
+    <mat-card *ngIf="!(reservation?.specialRequest === '') " fxLayout="column"
+      fxLayoutGap="10px">
+      <div fxLayoutAlign="start">
+        <mat-card-title>Special requests</mat-card-title>
+      </div>
+      <mat-card-content>
+        <p>{{reservation?.specialRequest}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

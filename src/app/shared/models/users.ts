@@ -28,7 +28,7 @@ export interface IUser {
   picture: string
   username: string
   password: string
-  status: boolean
+  status: boolean | string
   dateOfBirth: Date | null | string
   role: Role
   address?: IAddress
@@ -72,7 +72,7 @@ export class User implements IUser {
       user.picture,
       user.username,
       user.password,
-      user.status,
+      user.status === 'true',
       user.dateOfBirth,
       user.role as Role,
       user.address

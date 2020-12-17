@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { Tenant } from '@shared/models/tenant'
 
 export interface Elements {
@@ -25,10 +26,11 @@ export interface Elements {
   ],
 })
 export class TenantListComponent implements OnInit {
-  @Input() tenants: Tenant[]
+  @Input() dataSource: MatTableDataSource<Tenant[]>
   @Output() update: EventEmitter<number | Tenant> = new EventEmitter<number | Tenant>()
   displayedColumns: string[] = ['avatar', 'fullName', 'username', 'mail']
   expandedElement: Elements | null
+
   constructor() {}
 
   ngOnInit(): void {}

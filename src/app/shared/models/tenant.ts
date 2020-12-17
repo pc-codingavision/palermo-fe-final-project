@@ -10,7 +10,7 @@ export class Tenant implements IUser {
     public picture = '',
     public username = '',
     public password = '',
-    public status = false,
+    public status: boolean = false,
     public dateOfBirth: Date | null = null,
     public role = Role.Tenant,
     public address = {
@@ -28,6 +28,10 @@ export class Tenant implements IUser {
     }
     if (typeof tenant.dateOfBirth === 'string') {
       tenant.dateOfBirth = new Date(tenant.dateOfBirth)
+    }
+
+    if (typeof tenant.status === 'string') {
+      tenant.status = tenant.status === 'true'
     }
 
     return new this(

@@ -30,6 +30,10 @@ export class Landlord implements IUser {
     if (typeof landlord.dateOfBirth === 'string') {
       landlord.dateOfBirth = new Date(landlord.dateOfBirth)
     }
+    if (typeof landlord.status === 'string') {
+      landlord.status = landlord.status === 'true'
+    }
+
     return new Landlord(
       landlord.id,
       landlord.name,
