@@ -9,7 +9,7 @@ import { catchError, map } from 'rxjs/operators'
   providedIn: 'root',
 })
 export class InMemoryTenantService {
-  constructor(private http: HttpClient, private snackBar: SnackBarService) { }
+  constructor(private http: HttpClient, private snackBar: SnackBarService) {}
 
   private tenantsUrl = 'api/tenants'
   private httpOptions = {
@@ -25,6 +25,7 @@ export class InMemoryTenantService {
 
   private handleException(key: any): void {
     if (key === null || key === undefined || key === '') {
+      this.snackBar.openSnackBar('Sorry, something went wrong', 'close', 5000)
       throw new Error(`'${key}' is not allowed`)
     }
   }
