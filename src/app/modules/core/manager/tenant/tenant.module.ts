@@ -7,10 +7,13 @@ import { TenantViewComponent } from '@modules/core/manager/tenant/components/vie
 import { TenantRoutingModule } from '@modules/core/manager/tenant/tenant-routing.module'
 import { SharedModule } from '@modules/shared/shared.module'
 
+import { TenantSearchComponent } from './components/search/tenant-search.component'
+
 const tenantComponents = [
   TenantEditComponent,
   TenantListComponent,
   TenantViewComponent,
+  TenantSearchComponent,
   TenantContainerComponent,
 ]
 @NgModule({
