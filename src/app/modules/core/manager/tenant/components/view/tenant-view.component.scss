@@ -1,3 +1,9 @@
+img {
+  width: 130px;
+  height: 130px;
+  display: block;
+}
+
 .active {
   color: #28a745;
 }
@@ -16,5 +22,9 @@ mat-card-subtitle span {
 }
 
 mat-card-title {
+  margin: 2%;
+}
+
+mat-card-header {
   margin: 2%;
 }
