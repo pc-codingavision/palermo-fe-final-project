@@ -5,7 +5,7 @@ import { TenantEditComponent } from '@modules/core/manager/tenant/components/edi
 
 const routes: Routes = [
   { path: '', component: TenantContainerComponent },
-  { path: 'edit', component: TenantEditComponent },
+  { path: 'edit/:id', component: TenantEditComponent },
 ]
 
 @NgModule({
