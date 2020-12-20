@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
-import { SnackBarService } from '@shared/services/snack-bar.service'
+import { DialogService } from '@shared/services/dialog.service'
 import { SpinnerService } from '@shared/services/spinner.service'
 import { Subscription } from 'rxjs'
 
@@ -14,19 +14,28 @@ import { Subscription } from 'rxjs'
 })
 export class TenantEditComponent implements OnInit, OnDestroy {
   tenant: Tenant
-  tenant$: Subscription
+  subscription: Subscription
   tenantForm: FormGroup
   maxDate = new Date()
-  isSavedForm = false
   defaultPicture = 'https://www.flaticon.com/svg/static/icons/svg/149/149071.svg'
+
+  // Save
+  titleSave = 'Are you sure?'
+  subTitleSave = 'The tenant information has changed'
+  textSave = 'Do you want to save the changes?'
+
+  // Cancel
+  titleCancel = 'Cancel it?'
+  subTitleCancel = 'The tenant information has been modified.'
+  textCancel = 'If you cancel, you will loose the changes. Do you want to cancel it?'
 
   constructor(
     private inMemoryTenantService: InMemoryTenantService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private snackBarService: SnackBarService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -35,12 +44,12 @@ export class TenantEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.tenant$.unsubscribe()
+    this.subscription.unsubscribe()
   }
 
   getTenant(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id')
-    this.tenant$ = this.inMemoryTenantService.getById(id).subscribe((tenant) => {
+    this.subscription = this.inMemoryTenantService.getById(id).subscribe((tenant) => {
       this.tenant = tenant
       this.setForm()
       this.spinnerService.hideSpinner()
@@ -76,8 +85,7 @@ export class TenantEditComponent implements OnInit, OnDestroy {
     return this.tenantForm.valid
   }
 
-  updateLandlord(): void {
-    this.isSavedForm = true
+  openDialog(operation: string): void {
     const newTenant: Tenant = {
       id: this.tenant.id,
       name: {
@@ -112,10 +120,35 @@ export class TenantEditComponent implements OnInit, OnDestroy {
       fullName: '',
     }
 
-    this.inMemoryTenantService.update(newTenant).subscribe()
-    this.inMemoryTenantService.add(newTenant).subscribe()
+    if (operation === 'save') {
+      this.dialogService.openDialog({
+        title: this.titleSave,
+        subtitle: this.subTitleSave,
+        text: this.textSave,
+        returnValue: operation,
+      })
+    } else if (operation === 'cancel') {
+      this.dialogService.openDialog({
+        title: this.titleCancel,
+        subtitle: this.subTitleCancel,
+        text: this.textCancel,
+        returnValue: operation,
+      })
+    }
 
-    this.snackBarService.openSnackBar('The tenant was saved', 'Cancel', 3000)
+    this.dialogService
+      .getDialogRef()
+      .afterClosed()
+      .subscribe((result: string) => {
+        if (result === 'save') {
+          this.inMemoryTenantService.update(newTenant).subscribe()
+          this.inMemoryTenantService.add(newTenant).subscribe()
+          this.goBack()
+        } else if (result === 'cancel') {
+          this.setForm()
+          this.goBack()
+        }
+      })
   }
 
   goBack(): void {
