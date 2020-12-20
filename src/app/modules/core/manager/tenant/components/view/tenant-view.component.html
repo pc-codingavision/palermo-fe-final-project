@@ -1,11 +1,10 @@
 <mat-card>
   <mat-card-title>{{tenant?.fullName}} details</mat-card-title>
-  <mat-card-header fxLayout="row" fxLayoutGap="10px">
+  <mat-card-header fxLayout="column" fxLayoutGap="10px">
     <img src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
 
-    <mat-label>Status:</mat-label> <strong
-      [ngClass]="(tenant?.status)?'active':'disactive'">
-      {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong>
+    <mat-label>Status: <strong [ngClass]="(tenant?.status)?'active':'disactive'">
+        {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
   </mat-card-header>
 
   <mat-card-content fxLayout='row' fxLayoutAlign='space-evenly'>
