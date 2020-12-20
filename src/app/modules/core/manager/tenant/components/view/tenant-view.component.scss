@@ -1,7 +1,21 @@
+#container {
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  height: auto;
+}
+
 img {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   display: block;
+}
+
+h1 {
+  margin: 2%;
+}
+
+button {
+  margin: 10px;
 }
 
 .active {
@@ -12,6 +26,18 @@ img {
   color: #ffc107;
 }
 
+mat-card {
+  width: 25%;
+  height: auto;
+  align-items: center;
+}
+
+mat-label {
+  color: black;
+  font-weight: bold;
+  margin-top: 5%;
+}
+
 mat-card-subtitle {
   color: black;
 }
@@ -19,18 +45,4 @@ mat-card-subtitle {
 mat-card-subtitle span {
   color: rgb(31, 31, 31);
   font-weight: bold;
-}
-
-mat-label {
-  color: black;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-mat-card-title {
-  margin: 2%;
-}
-
-mat-card-header {
-  margin: 2%;
 }

@@ -1,14 +1,16 @@
-<mat-card>
-  <mat-card-title>{{tenant?.fullName}} details</mat-card-title>
-  <mat-card-header fxLayout="column" fxLayoutGap="10px">
-    <img src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
+<div id="container">
+  <h1>{{tenant?.fullName}} details</h1>
 
-    <mat-label>Status: <strong [ngClass]="(tenant?.status)?'active':'disactive'">
-        {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
-  </mat-card-header>
+  <div fxLayout="row" fxLayoutAlign='space-evenly'>
 
-  <mat-card-content fxLayout='row' fxLayoutAlign='space-evenly'>
-    <div fxLayout='column'>
+    <mat-card fxLayout="column">
+      <img src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
+
+      <mat-label>Status: <strong [ngClass]="(tenant?.status)?'active':'disactive'">
+          {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
+    </mat-card>
+
+    <mat-card fxLayout='column'>
       <mat-card-subtitle>
         <span>First Name: </span>{{tenant?.name.firstName}}
       </mat-card-subtitle>
@@ -28,9 +30,9 @@
       <mat-card-subtitle>
         <span>Date of Birth: </span>{{tenant?.dateOfBirth | date}}
       </mat-card-subtitle>
-    </div>
+    </mat-card>
 
-    <div fxLayout='column'>
+    <mat-card fxLayout='column'>
       <mat-card-subtitle>
         <span>Line 1: </span>{{tenant?.address.line1}}
       </mat-card-subtitle>
@@ -50,11 +52,11 @@
       <mat-card-subtitle>
         <span>Zip Code: </span>{{tenant?.address.postCode}}
       </mat-card-subtitle>
-    </div>
+    </mat-card>
 
-  </mat-card-content>
-  <mat-card-actions fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+  </div>
 
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
     <button mat-raised-button color="primary"
       routerLink="/manager/tenant/edit/{{tenant?.id}}">Edit</button>
 
@@ -62,6 +64,6 @@
       (click)="openDialog(tenant.status ? 'deactivate' : 'activate')">{{tenant?.status ? 'Deactivate' : 'Activate'}}</button>
 
     <button mat-raised-button color="warn" (click)="openDialog('delete')">Delete</button>
+  </div>
 
-  </mat-card-actions>
-</mat-card>
+</div>
