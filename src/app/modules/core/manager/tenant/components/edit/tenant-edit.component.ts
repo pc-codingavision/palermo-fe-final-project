@@ -19,16 +19,6 @@ export class TenantEditComponent implements OnInit, OnDestroy {
   maxDate = new Date()
   defaultPicture = 'https://www.flaticon.com/svg/static/icons/svg/149/149071.svg'
 
-  // Save
-  titleSave = 'Are you sure?'
-  subTitleSave = 'The tenant information has changed'
-  textSave = 'Do you want to save the changes?'
-
-  // Cancel
-  titleCancel = 'Cancel it?'
-  subTitleCancel = 'The tenant information has been modified.'
-  textCancel = 'If you cancel, you will loose the changes. Do you want to cancel it?'
-
   constructor(
     private inMemoryTenantService: InMemoryTenantService,
     private formBuilder: FormBuilder,
@@ -122,16 +112,16 @@ export class TenantEditComponent implements OnInit, OnDestroy {
 
     if (operation === 'save') {
       this.dialogService.openDialog({
-        title: this.titleSave,
-        subtitle: this.subTitleSave,
-        text: this.textSave,
+        title: 'Are you sure?',
+        subtitle: `The information on the tenant ${this.tenant?.fullName} has changed.`,
+        text: 'Do you want to save the changes?',
         returnValue: operation,
       })
     } else if (operation === 'cancel') {
       this.dialogService.openDialog({
-        title: this.titleCancel,
-        subtitle: this.subTitleCancel,
-        text: this.textCancel,
+        title: 'Cancel it?',
+        subtitle: `The information on the tenant ${this.tenant?.fullName} has changed.`,
+        text: 'If you cancel, you will loose the changes. Do you want to cancel it?',
         returnValue: operation,
       })
     }
