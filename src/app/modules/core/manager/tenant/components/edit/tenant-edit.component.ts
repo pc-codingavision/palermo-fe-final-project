@@ -126,7 +126,7 @@ export class TenantEditComponent implements OnInit, OnDestroy {
       })
     }
 
-    this.dialogService
+    this.subscription = this.dialogService
       .getDialogRef()
       .afterClosed()
       .subscribe((result: string) => {
