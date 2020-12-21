@@ -25,7 +25,6 @@ export class InMemoryTenantService {
 
   private handleException(key: any): void {
     if (key === null || key === undefined || key === '') {
-      this.snackBar.openSnackBar('Sorry, something went wrong', 'close', 5000)
       throw new Error(`'${key}' is not allowed`)
     }
   }
@@ -49,7 +48,7 @@ export class InMemoryTenantService {
     const idUrl = `${this.tenantsUrl}/${id}`
     return this.http.get<Tenant>(idUrl).pipe(
       map((tenant) => {
-        if (tenant !== undefined) {
+        if (!tenant) {
           return Tenant.Build(tenant)
         }
         return tenant
@@ -94,14 +93,11 @@ export class InMemoryTenantService {
         catchError(this.handleError<Tenant[]>('getByStatus'))
       )
     }
-    return of(null)
+    return of([])
   }
 
   add(tenant: Tenant): Observable<Tenant | null> {
     this.handleException(tenant)
-    if (tenant.id !== null) {
-      tenant.id = null
-    }
     if (tenant) {
       return this.http
         .post<Tenant>(this.tenantsUrl, tenant, this.httpOptions)
