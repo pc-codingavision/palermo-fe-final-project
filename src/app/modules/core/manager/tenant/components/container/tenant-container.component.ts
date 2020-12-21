@@ -3,7 +3,6 @@ import { MatTableDataSource } from '@angular/material/table'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
 import { SpinnerService } from '@shared/services/spinner.service'
-import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'cav-tenant-container',
@@ -28,16 +27,12 @@ export class TenantContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.showSpinner()
-    this.inMemoryTenantService
-      .getAll()
-      .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
-      .subscribe((tenants) => {
-        this.dataSource = new MatTableDataSource<Tenant>(tenants)
-
-        this.dataSource.filterPredicate = this.customerFilter
-        this.dataSource.filter = JSON.stringify(this.filterCriteria)
-        this.spinnerService.hideSpinner()
-      })
+    this.inMemoryTenantService.getAll().subscribe((tenants) => {
+      this.dataSource = new MatTableDataSource<Tenant>(tenants)
+      this.dataSource.filterPredicate = this.customerFilter
+      this.dataSource.filter = JSON.stringify(this.filterCriteria)
+      this.spinnerService.hideSpinner()
+    })
   }
 
   applyFilter(event: string): void {

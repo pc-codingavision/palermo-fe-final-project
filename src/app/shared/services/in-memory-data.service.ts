@@ -46,11 +46,12 @@ export class InMemoryDataService implements InMemoryDbService {
       const collection = reqInfo.collection.slice()
       const name = reqInfo.query.get('name')[0]
 
-      const data = name.trim()
-        ? collection.filter(
-            (item) => item.name.firstName.toLowerCase() === name.toLowerCase()
-          )
-        : []
+      const data =
+        name && name.trim() !== ''
+          ? collection.filter(
+              (item) => item.name.firstName.toLowerCase() === name.toLowerCase()
+            )
+          : []
 
       const options: ResponseOptions = data
         ? {
@@ -70,11 +71,12 @@ export class InMemoryDataService implements InMemoryDbService {
       const collection = reqInfo.collection.slice()
       const surname = reqInfo.query.get('surname')[0]
 
-      const data = surname.trim()
-        ? collection.filter(
-            (item) => item.name.surname.toLowerCase() === surname.toLowerCase()
-          )
-        : []
+      const data =
+        surname && surname.trim() !== ''
+          ? collection.filter(
+              (item) => item.name.surname.toLowerCase() === surname.toLowerCase()
+            )
+          : []
 
       const options: ResponseOptions = data
         ? {

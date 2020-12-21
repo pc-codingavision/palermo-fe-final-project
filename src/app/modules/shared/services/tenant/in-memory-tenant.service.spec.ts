@@ -7,13 +7,12 @@ import { commonTestingModules } from '@shared/common.testing'
 import { PhoneType, Role } from '@shared/enum/enums'
 import { TENANTS_MOCK_DATA } from '@shared/models/mock-data/data'
 import { Tenant } from '@shared/models/tenant'
-import { ResponseOptions } from 'angular-in-memory-web-api'
 
 describe('InMemoryTenantService', () => {
   let service: InMemoryTenantService
   let httpTestingController: HttpTestingController
+  const buildTenants = TENANTS_MOCK_DATA.map((tenant) => Tenant.Build(tenant))
 
-  const mockTenants = TENANTS_MOCK_DATA
   const newTenant: Tenant = {
     id: 3,
     name: { firstName: 'Vito', surname: 'Telli' },
@@ -75,8 +74,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants)
-      expect(data).toEqual(mockTenants)
+      req.flush(buildTenants)
+      expect(data).toEqual(buildTenants)
     })
   })
 
@@ -89,25 +88,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants/1')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants[0])
-      expect(data).toEqual(mockTenants[0])
-    })
-
-    it('should throw errorResponse for not existing id ', () => {
-      let data
-      const errorResponse: ResponseOptions = {
-        body: { error: `'Tenants' with id=6 not found` },
-        status: 404,
-      }
-
-      service.getById(6).subscribe((response) => {
-        data = response
-      })
-
-      const req = httpTestingController.expectOne('api/tenants/6')
-      expect(req.request.method).toEqual('GET')
-      req.flush(errorResponse)
-      expect(data).toBe(errorResponse)
+      req.flush(buildTenants[0])
+      expect(data).toEqual(buildTenants[0])
     })
   })
 
@@ -120,11 +102,11 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants?name=ugo')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants[0])
-      expect(data).toEqual(mockTenants[0])
+      req.flush(buildTenants[0])
+      expect(data).toEqual(buildTenants[0])
     })
 
-    it("should return null if it doesn't find anything with passed name", () => {
+    it("should return empty array if it doesn't find anything with passed name", () => {
       let data
       service.getByName('mario').subscribe((response) => {
         data = response
@@ -132,18 +114,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants?name=mario')
       expect(req.request.method).toEqual('GET')
-      req.flush(null)
-      expect(data).toBeNull()
-    })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getByName(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?name=null')
-      expect(data).toBeNull()
+      req.flush([])
+      expect(data.length).toBe(0)
     })
   })
 
@@ -156,8 +128,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants?surname=fantozzi')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants[0])
-      expect(data).toEqual(mockTenants[0])
+      req.flush(buildTenants[0])
+      expect(data).toEqual(buildTenants[0])
     })
 
     it("should return an empty array if it doesn't find anything with that surname", () => {
@@ -171,41 +143,21 @@ describe('InMemoryTenantService', () => {
       req.flush([])
       expect(data.length).toBe(0)
     })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getBySurname(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?surname=null')
-
-      expect(data).toBeNull()
-    })
   })
 
   describe('GetByMail', () => {
-    it('should return all tenants who have passed email', () => {
+    it('should return all tenants who have passed email rag-fantozzi@test.com', () => {
       let data
-      service.getByMail('rAg-fantOzzi@test.com').subscribe((response) => {
+      service.getByMail('rag-fantozzi@test.com').subscribe((response) => {
         data = response
       })
 
       const req = httpTestingController.expectOne(
-        'api/tenants?mail=rAg-fantOzzi%40test.com'
+        'api/tenants?mail=rag-fantozzi%40test.com'
       )
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants[0])
-      expect(data).toEqual(mockTenants[0])
-    })
-
-    it('should return null if we pass null ', () => {
-      let data
-      service.getByMail(null).subscribe((response) => {
-        data = response
-      })
-      httpTestingController.expectNone('api/tenants?mail=rAg-fantOzzi%40test.com')
-      expect(data).toBeNull()
+      req.flush(buildTenants[0])
+      expect(data).toEqual(buildTenants[0])
     })
   })
 
@@ -218,18 +170,8 @@ describe('InMemoryTenantService', () => {
 
       const req = httpTestingController.expectOne('api/tenants?status=true')
       expect(req.request.method).toEqual('GET')
-      req.flush(mockTenants)
-      expect(data).toEqual(mockTenants)
-    })
-
-    it('should return null if we pass null', () => {
-      let data
-      service.getByStatus(null).subscribe((response) => {
-        data = response
-      })
-
-      httpTestingController.expectNone('api/tenants?status=null')
-      expect(data).toBeNull()
+      req.flush(buildTenants)
+      expect(data).toEqual(buildTenants)
     })
   })
 
