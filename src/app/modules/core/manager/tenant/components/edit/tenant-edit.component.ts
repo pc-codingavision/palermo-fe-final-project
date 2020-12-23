@@ -132,7 +132,6 @@ export class TenantEditComponent implements OnInit, OnDestroy {
       .subscribe((result: string) => {
         if (result === 'save') {
           this.inMemoryTenantService.update(newTenant).subscribe()
-          this.inMemoryTenantService.add(newTenant).subscribe()
           this.goBack()
         } else if (result === 'cancel') {
           this.setForm()
