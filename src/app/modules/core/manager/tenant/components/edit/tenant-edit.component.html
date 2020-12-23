@@ -1,1 +1,179 @@
-<p>edit works!</p>
+  <form *ngIf="tenant" [formGroup]="tenantForm">
+    <div fxLayout="row" fxLayoutAlign="space-evenly">
+
+      <div fxLayout="column">
+        <h2>
+          Edit: {{tenant?.fullName}}
+        </h2>
+        <img [src]="tenantForm?.value.picture" alt="{{tenant?.fullName}} picture">
+      </div>
+
+      <div fxLayout="row">
+        <mat-card fxLayout="column">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName">
+            <button mat-button *ngIf="tenantForm?.get('firstName').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('firstName')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('firstName').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('firstName').hasError('minlength')">
+              Invalid First Name, need to be at least 2 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName">
+            <button mat-button *ngIf="tenantForm?.get('lastName').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('lastName').reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('lastName').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('lastName').hasError('minlength')">
+              Invalid Last Name, need to be at least 2 characters long
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Mail</mat-label>
+            <input matInput type="text" formControlName="email">
+            <button mat-button *ngIf="tenantForm?.get('email')?.value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('email')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('email')?.hasError('required')">
+              E-mail is required
+            </mat-error>
+            <mat-hint>Example test@mail.com</mat-hint>
+            <mat-error *ngIf="tenantForm?.get('email')?.hasError('email')">
+              Invalid Email
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username">
+            <button mat-button *ngIf="tenantForm?.get('username').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('username')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('username').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('username').hasError('minlength')">
+              Invalid Username, need to be at least 2 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate"
+              formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Date Format: dd/MM/YYYY</mat-hint>
+          </mat-form-field>
+        </mat-card>
+      </div>
+
+      <div fxLayout="row">
+        <mat-card fxLayout="column">
+          <mat-form-field>
+            <mat-label>Line 1</mat-label>
+            <input matInput type="text" formControlName="line1">
+            <button mat-button *ngIf="tenantForm?.get('line1').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('line1').reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('line1').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('line1').hasError('minlength')">
+              Invalid address line 1 provided, need to be at least 4 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Line 2</mat-label>
+            <input matInput type="text" formControlName="line2">
+            <button mat-button *ngIf="tenantForm?.get('line2').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('line2')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName="city">
+            <button mat-button *ngIf="tenantForm?.get('city').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('city').reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('city').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('city').hasError('minlength')">
+              Invalid City name, need to be at least 4 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <input matInput type="text" formControlName="state">
+            <button mat-button *ngIf="tenantForm?.get('state').value" matSuffix
+              mat-icon-button aria-label="Clear" class="no-hover"
+              (click)="tenantForm?.get('state').reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('state').hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('state').hasError('minlength')">
+              Invalid State name, need to be at least 4 characters long
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Zip Code</mat-label>
+            <input matInput type="text" formControlName="zipCode">
+            <button mat-button *ngIf="tenantForm?.get('zipCode').value" matSuffix
+              mat-icon-button aria-label="Clear" class="sidenav-toggle no-hover"
+              (click)="tenantForm?.get('zipCode').reset()">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="tenantForm?.get('zipCode')?.hasError('required')">
+              Input required
+            </mat-error>
+            <mat-error *ngIf="tenantForm?.get('zipCode')?.value?.length !== 5">
+              Zip Code, must be 5 characters long
+            </mat-error>
+          </mat-form-field>
+        </mat-card>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="1%">
+      <button mat-raised-button (click)="openDialog('save')" [disabled]="!validateForm()"
+        color="primary">
+        <span class="material-icons">check_circle</span> Save
+      </button>
+
+      <button mat-raised-button (click)="openDialog('cancel')" color="warn">
+        <span class=" material-icons">clear</span> Cancel
+      </button>
+    </div>
+  </form>

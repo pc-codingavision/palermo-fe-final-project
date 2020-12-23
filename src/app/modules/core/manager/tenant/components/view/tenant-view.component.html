@@ -1,1 +1,70 @@
-<p>view works!</p>
+<div id="container">
+  <h1>{{tenant?.fullName}} details</h1>
+
+  <div fxLayout="row" fxLayoutAlign='space-evenly'>
+
+    <mat-card fxLayout="column">
+      <img src="{{tenant?.picture}}" alt="{{tenant?.fullName}} picture">
+
+      <mat-label>Status: <strong [ngClass]="(tenant?.status)?'active':'disactive'">
+          {{tenant?.status ? 'ACTIVE' : 'DISACTIVE'}}</strong></mat-label>
+    </mat-card>
+
+    <mat-card fxLayout='column'>
+      <mat-card-subtitle>
+        <span>First Name: </span>{{tenant?.name.firstName}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Last Name: </span>{{tenant?.name.surname}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Email: </span>{{tenant?.mail}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Username: </span>{{tenant?.username}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Date of Birth: </span>{{tenant?.dateOfBirth | date}}
+      </mat-card-subtitle>
+    </mat-card>
+
+    <mat-card fxLayout='column'>
+      <mat-card-subtitle>
+        <span>Line 1: </span>{{tenant?.address.line1}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Line 2: </span>{{tenant?.address.line2}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>City: </span>{{tenant?.address.city}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>State: </span>{{tenant?.address.state}}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle>
+        <span>Zip Code: </span>{{tenant?.address.postCode}}
+      </mat-card-subtitle>
+    </mat-card>
+
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+    <button mat-raised-button color="primary"
+      routerLink="/manager/tenant/edit/{{tenant?.id}}">Edit</button>
+
+    <button mat-raised-button color="accent"
+      (click)="openDialogStatus(tenant.status ? 'deactivate' : 'activate')">{{tenant?.status ? 'Deactivate' : 'Activate'}}</button>
+
+    <button mat-raised-button color="warn"
+      (click)="openDialogDelete('delete')">Delete</button>
+  </div>
+
+</div>

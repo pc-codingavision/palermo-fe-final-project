@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { MatTableDataSource } from '@angular/material/table'
 import { InMemoryTenantService } from '@modules/shared/services/tenant/in-memory-tenant.service'
 import { Tenant } from '@shared/models/tenant'
 import { SpinnerService } from '@shared/services/spinner.service'
-import { map } from 'rxjs/operators'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'cav-tenant-container',
   templateUrl: './tenant-container.component.html',
   styleUrls: ['./tenant-container.component.scss'],
 })
-export class TenantContainerComponent implements OnInit {
-  tenants: Tenant[]
+export class TenantContainerComponent implements OnInit, OnDestroy {
   filteredTenants: Tenant[]
   dataSource: MatTableDataSource<Tenant>
   filterCriteria: { searchTerm: string; status: boolean }
+  subscriptions: Subscription[] = []
 
   constructor(
     private inMemoryTenantService: InMemoryTenantService,
@@ -28,16 +28,32 @@ export class TenantContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.showSpinner()
-    this.inMemoryTenantService
-      .getAll()
-      .pipe(map((tenants) => tenants.map((tenant) => Tenant.Build(tenant))))
-      .subscribe((tenants) => {
+    this.getAll()
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe())
+  }
+
+  getAll(): void {
+    this.subscriptions.push(
+      this.inMemoryTenantService.getAll().subscribe((tenants) => {
         this.dataSource = new MatTableDataSource<Tenant>(tenants)
 
         this.dataSource.filterPredicate = this.customerFilter
         this.dataSource.filter = JSON.stringify(this.filterCriteria)
         this.spinnerService.hideSpinner()
       })
+    )
+  }
+
+  toggleStatus(event: Tenant): void {
+    this.subscriptions.push(this.inMemoryTenantService.update(event).subscribe())
+  }
+
+  deleteTenant(event: number): void {
+    this.subscriptions.push(this.inMemoryTenantService.delete(event).subscribe())
+    this.getAll()
   }
 
   applyFilter(event: string): void {
