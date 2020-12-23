@@ -10,14 +10,15 @@ import { DialogService } from '@shared/services/dialog.service'
 })
 export class TenantViewComponent implements OnInit {
   @Input() tenant: Tenant
-  @Output() update: EventEmitter<number | Tenant> = new EventEmitter<number | Tenant>()
+  @Output() toggleStatus: EventEmitter<Tenant> = new EventEmitter<Tenant>()
+  @Output() deleteTenant: EventEmitter<number> = new EventEmitter<number>()
   tenantForm: FormGroup
 
   constructor(private dialogService: DialogService) {}
 
   ngOnInit(): void {}
 
-  openDialog(operation: string): void {
+  openDialogStatus(operation: string): void {
     if (operation === 'deactivate') {
       this.dialogService.openDialog({
         title: 'Deactivate',
@@ -33,7 +34,21 @@ export class TenantViewComponent implements OnInit {
         text: '',
         returnValue: operation,
       })
-    } else {
+    }
+
+    this.dialogService
+      .getDialogRef()
+      .afterClosed()
+      .subscribe((result: string) => {
+        if (result === 'deactivate' || result === 'activate') {
+          this.tenant.status = !this.tenant.status
+          this.toggleStatus.emit(this.tenant)
+        }
+      })
+  }
+
+  openDialogDelete(operation: string): void {
+    if (operation === 'delete') {
       this.dialogService.openDialog({
         title: 'Delete',
         subtitle: `Are you sure you want to delete the tenant ${this.tenant.fullName}?`,
@@ -46,11 +61,8 @@ export class TenantViewComponent implements OnInit {
       .getDialogRef()
       .afterClosed()
       .subscribe((result: string) => {
-        if (result === 'deactivate' || result === 'activate') {
-          this.tenant.status = !this.tenant.status
-          this.update.emit(this.tenant)
-        } else if (result === 'delete') {
-          this.update.emit(this.tenant.id)
+        if (result === 'delete') {
+          this.deleteTenant.emit(this.tenant.id)
         }
       })
   }

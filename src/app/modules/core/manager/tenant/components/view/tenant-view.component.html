@@ -61,9 +61,10 @@
       routerLink="/manager/tenant/edit/{{tenant?.id}}">Edit</button>
 
     <button mat-raised-button color="accent"
-      (click)="openDialog(tenant.status ? 'deactivate' : 'activate')">{{tenant?.status ? 'Deactivate' : 'Activate'}}</button>
+      (click)="openDialogStatus(tenant.status ? 'deactivate' : 'activate')">{{tenant?.status ? 'Deactivate' : 'Activate'}}</button>
 
-    <button mat-raised-button color="warn" (click)="openDialog('delete')">Delete</button>
+    <button mat-raised-button color="warn"
+      (click)="openDialogDelete('delete')">Delete</button>
   </div>
 
 </div>

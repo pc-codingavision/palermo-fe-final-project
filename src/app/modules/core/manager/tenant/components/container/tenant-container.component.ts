@@ -47,13 +47,13 @@ export class TenantContainerComponent implements OnInit, OnDestroy {
     )
   }
 
-  updateTenant(event: number | Tenant): void {
-    if (typeof event === 'number') {
-      this.subscriptions.push(this.inMemoryTenantService.delete(event).subscribe())
-      this.getAll()
-    } else {
-      this.subscriptions.push(this.inMemoryTenantService.update(event).subscribe())
-    }
+  toggleStatus(event: Tenant): void {
+    this.subscriptions.push(this.inMemoryTenantService.update(event).subscribe())
+  }
+
+  deleteTenant(event: number): void {
+    this.subscriptions.push(this.inMemoryTenantService.delete(event).subscribe())
+    this.getAll()
   }
 
   applyFilter(event: string): void {

@@ -25,7 +25,8 @@
       <div class="element-detail"
         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="element-diagram">
-          <cav-tenant-view [tenant]="element" (update)="updateTenant($event)">
+          <cav-tenant-view [tenant]="element" (toggleStatus)="toggleStatus($event)"
+            (deleteTenant)="deleteTenant($event)">
           </cav-tenant-view>
         </div>
       </div>

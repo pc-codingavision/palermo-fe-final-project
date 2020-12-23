@@ -27,7 +27,8 @@ export interface Elements {
 })
 export class TenantListComponent implements OnInit {
   @Input() dataSource: MatTableDataSource<Tenant[]>
-  @Output() update: EventEmitter<number | Tenant> = new EventEmitter<number | Tenant>()
+  @Output() toogleStatus: EventEmitter<Tenant> = new EventEmitter<Tenant>()
+  @Output() delete: EventEmitter<number> = new EventEmitter<number>()
   displayedColumns: string[] = ['avatar', 'fullName', 'username', 'mail']
   expandedElement: Elements | null
 
@@ -35,7 +36,11 @@ export class TenantListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  updateTenant(event: number | Tenant): void {
-    this.update.emit(event)
+  toggleStatus(event: Tenant): void {
+    this.toogleStatus.emit(event)
+  }
+
+  deleteTenant(event: number): void {
+    this.delete.emit(event)
   }
 }
