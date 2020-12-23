@@ -107,7 +107,7 @@ export class TenantEditComponent implements OnInit, OnDestroy {
         state: this.tenantForm.value.state,
         postCode: this.tenantForm.value.zipCode,
       },
-      fullName: '',
+      fullName: this.tenant.fullName,
     }
 
     if (operation === 'save') {
